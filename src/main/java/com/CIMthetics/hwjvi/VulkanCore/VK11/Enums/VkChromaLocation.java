@@ -1,0 +1,19 @@
+package com.CIMthetics.hwjvi.VulkanCore.VK11.Enums;
+
+public enum VkChromaLocation
+{
+    VK_CHROMA_LOCATION_COSITED_EVEN(0),
+    VK_CHROMA_LOCATION_MIDPOINT(1),
+    VK_CHROMA_LOCATION_COSITED_EVEN_KHR(VK_CHROMA_LOCATION_COSITED_EVEN.valueOf()),
+    VK_CHROMA_LOCATION_MIDPOINT_KHR(VK_CHROMA_LOCATION_MIDPOINT.valueOf()),
+    VK_CHROMA_LOCATION_BEGIN_RANGE(VK_CHROMA_LOCATION_COSITED_EVEN.valueOf()),
+    VK_CHROMA_LOCATION_END_RANGE(VK_CHROMA_LOCATION_MIDPOINT.valueOf()),
+    VK_CHROMA_LOCATION_RANGE_SIZE((VK_CHROMA_LOCATION_MIDPOINT.valueOf() - VK_CHROMA_LOCATION_COSITED_EVEN.valueOf() + 1)),
+    VK_CHROMA_LOCATION_MAX_ENUM(0x7FFFFFFF);
+
+    private int value;
+    
+    private VkChromaLocation(int value) { this.value = value; }
+    
+    public int valueOf() { return value; }
+}

@@ -1,0 +1,167 @@
+package com.CIMthetics.hwjvi.VulkanCore.VK11.Structures.CreateInfos;
+
+import java.util.EnumSet;
+
+import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkFormat;
+import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkImageCreateFlagBits;
+import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkImageLayout;
+import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkImageTiling;
+import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkImageType;
+import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkImageUsageFlagBits;
+import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkSampleCountFlagBits;
+import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkSharingMode;
+import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkStructureType;
+import com.CIMthetics.hwjvi.VulkanCore.VK11.Structures.VkExtent3D;
+
+public class VkImageCreateInfo extends VulkanCreateInfoStructure
+{
+    private long                            pNext;
+    private EnumSet<VkImageCreateFlagBits>  flags = EnumSet.noneOf(VkImageCreateFlagBits.class);
+    private VkImageType                     imageType;
+    private VkFormat                        format;
+    private VkExtent3D                      extent;
+    private int                             mipLevels;
+    private int                             arrayLayers;
+    private VkSampleCountFlagBits           samples;
+    private VkImageTiling                   tiling;
+    private EnumSet<VkImageUsageFlagBits>   usage;
+    private VkSharingMode                   sharingMode;
+    private int[]                           queueFamilyIndices;
+    private VkImageLayout                   initialLayout;
+
+    public VkImageCreateInfo()
+    {
+        super(VkStructureType.VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO);
+    }
+
+    public long getpNext()
+    {
+        return pNext;
+    }
+
+    public void setpNext(long pNext)
+    {
+        this.pNext = pNext;
+    }
+
+    public EnumSet<VkImageCreateFlagBits> getFlags()
+    {
+        return flags;
+    }
+
+    public void setFlags(EnumSet<VkImageCreateFlagBits> flags)
+    {
+        this.flags = flags;
+    }
+
+    public VkImageType getImageType()
+    {
+        return imageType;
+    }
+
+    public void setImageType(VkImageType imageType)
+    {
+        this.imageType = imageType;
+    }
+
+    public VkFormat getFormat()
+    {
+        return format;
+    }
+
+    public void setFormat(VkFormat format)
+    {
+        this.format = format;
+    }
+
+    public VkExtent3D getExtent()
+    {
+        return extent;
+    }
+
+    public void setExtent(VkExtent3D extent)
+    {
+        this.extent = extent;
+    }
+
+    public int getMipLevels()
+    {
+        return mipLevels;
+    }
+
+    public void setMipLevels(int mipLevels)
+    {
+        this.mipLevels = mipLevels;
+    }
+
+    public int getArrayLayers()
+    {
+        return arrayLayers;
+    }
+
+    public void setArrayLayers(int arrayLayers)
+    {
+        this.arrayLayers = arrayLayers;
+    }
+
+    public VkSampleCountFlagBits getSamples()
+    {
+        return samples;
+    }
+
+    public void setSamples(VkSampleCountFlagBits samples)
+    {
+        this.samples = samples;
+    }
+
+    public VkImageTiling getTiling()
+    {
+        return tiling;
+    }
+
+    public void setTiling(VkImageTiling tiling)
+    {
+        this.tiling = tiling;
+    }
+
+    public EnumSet<VkImageUsageFlagBits> getUsage()
+    {
+        return usage;
+    }
+
+    public void setUsage(EnumSet<VkImageUsageFlagBits> usage)
+    {
+        this.usage = usage;
+    }
+
+    public VkSharingMode getSharingMode()
+    {
+        return sharingMode;
+    }
+
+    public void setSharingMode(VkSharingMode sharingMode)
+    {
+        this.sharingMode = sharingMode;
+    }
+
+    public int[] getQueueFamilyIndices()
+    {
+        return queueFamilyIndices;
+    }
+
+    public void setQueueFamilyIndices(int[] queueFamilyIndices)
+    {
+        this.queueFamilyIndices = queueFamilyIndices;
+    }
+
+    public VkImageLayout getInitialLayout()
+    {
+        return initialLayout;
+    }
+
+    public void setInitialLayout(VkImageLayout initialLayout)
+    {
+        this.initialLayout = initialLayout;
+    }
+    
+}

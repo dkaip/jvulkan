@@ -1,0 +1,16 @@
+package com.CIMthetics.hwjvi.VulkanExtensions.VK11.Enums;
+
+public enum VkValidationCacheHeaderVersionEXT
+{
+    VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT(1),
+    VK_VALIDATION_CACHE_HEADER_VERSION_BEGIN_RANGE_EXT(VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT.valueOf()),
+    VK_VALIDATION_CACHE_HEADER_VERSION_END_RANGE_EXT(VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT.valueOf()),
+    VK_VALIDATION_CACHE_HEADER_VERSION_RANGE_SIZE_EXT((VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT.valueOf() - VK_VALIDATION_CACHE_HEADER_VERSION_ONE_EXT.valueOf() + 1)),
+    VK_VALIDATION_CACHE_HEADER_VERSION_MAX_ENUM_EXT(0x7FFFFFFF);
+
+    private int value;
+    
+    private VkValidationCacheHeaderVersionEXT(int value) { this.value = value; }
+    
+    public int valueOf() { return value; }
+}

@@ -1,0 +1,17 @@
+package com.CIMthetics.hwjvi.VulkanExtensions.VK11.Enums;
+
+public enum VkDiscardRectangleModeEXT
+{
+    VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT(0),
+    VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT(1),
+    VK_DISCARD_RECTANGLE_MODE_BEGIN_RANGE_EXT(VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT.valueOf()),
+    VK_DISCARD_RECTANGLE_MODE_END_RANGE_EXT(VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT.valueOf()),
+    VK_DISCARD_RECTANGLE_MODE_RANGE_SIZE_EXT((VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT.valueOf() - VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT.valueOf() + 1)),
+    VK_DISCARD_RECTANGLE_MODE_MAX_ENUM_EXT(0x7FFFFFFF);
+
+    private int value;
+    
+    private VkDiscardRectangleModeEXT(int value) { this.value = value; }
+    
+    public int valueOf() { return value; }
+}

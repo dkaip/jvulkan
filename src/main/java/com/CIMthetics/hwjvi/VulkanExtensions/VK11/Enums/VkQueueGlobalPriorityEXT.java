@@ -1,0 +1,19 @@
+package com.CIMthetics.hwjvi.VulkanExtensions.VK11.Enums;
+
+public enum VkQueueGlobalPriorityEXT
+{
+    VK_QUEUE_GLOBAL_PRIORITY_LOW_EXT(128),
+    VK_QUEUE_GLOBAL_PRIORITY_MEDIUM_EXT(256),
+    VK_QUEUE_GLOBAL_PRIORITY_HIGH_EXT(512),
+    VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT(1024),
+    VK_QUEUE_GLOBAL_PRIORITY_BEGIN_RANGE_EXT(VK_QUEUE_GLOBAL_PRIORITY_LOW_EXT.valueOf()),
+    VK_QUEUE_GLOBAL_PRIORITY_END_RANGE_EXT(VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT.valueOf()),
+    VK_QUEUE_GLOBAL_PRIORITY_RANGE_SIZE_EXT((VK_QUEUE_GLOBAL_PRIORITY_REALTIME_EXT.valueOf() - VK_QUEUE_GLOBAL_PRIORITY_LOW_EXT.valueOf() + 1)),
+    VK_QUEUE_GLOBAL_PRIORITY_MAX_ENUM_EXT(0x7FFFFFFF);
+
+    private int value;
+    
+    private VkQueueGlobalPriorityEXT(int value) { this.value = value; }
+    
+    public int valueOf() { return value; }
+}

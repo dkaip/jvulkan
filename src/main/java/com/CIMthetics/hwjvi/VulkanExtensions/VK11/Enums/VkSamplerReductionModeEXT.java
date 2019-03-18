@@ -1,0 +1,18 @@
+package com.CIMthetics.hwjvi.VulkanExtensions.VK11.Enums;
+
+public enum VkSamplerReductionModeEXT
+{
+    VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_EXT(0),
+    VK_SAMPLER_REDUCTION_MODE_MIN_EXT(1),
+    VK_SAMPLER_REDUCTION_MODE_MAX_EXT(2),
+    VK_SAMPLER_REDUCTION_MODE_BEGIN_RANGE_EXT(VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_EXT.valueOf()),
+    VK_SAMPLER_REDUCTION_MODE_END_RANGE_EXT(VK_SAMPLER_REDUCTION_MODE_MAX_EXT.valueOf()),
+    VK_SAMPLER_REDUCTION_MODE_RANGE_SIZE_EXT((VK_SAMPLER_REDUCTION_MODE_MAX_EXT.valueOf() - VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_EXT.valueOf() + 1)),
+    VK_SAMPLER_REDUCTION_MODE_MAX_ENUM_EXT(0x7FFFFFFF);
+
+    private int value;
+    
+    private VkSamplerReductionModeEXT(int value) { this.value = value; }
+    
+    public int valueOf() { return value; }
+}

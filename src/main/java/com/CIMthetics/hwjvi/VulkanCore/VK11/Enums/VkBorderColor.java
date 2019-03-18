@@ -1,0 +1,21 @@
+package com.CIMthetics.hwjvi.VulkanCore.VK11.Enums;
+
+public enum VkBorderColor
+{
+    VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK(0),
+    VK_BORDER_COLOR_INT_TRANSPARENT_BLACK(1),
+    VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK(2),
+    VK_BORDER_COLOR_INT_OPAQUE_BLACK(3),
+    VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE(4),
+    VK_BORDER_COLOR_INT_OPAQUE_WHITE(5),
+    VK_BORDER_COLOR_BEGIN_RANGE(VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK.valueOf()),
+    VK_BORDER_COLOR_END_RANGE(VK_BORDER_COLOR_INT_OPAQUE_WHITE.valueOf()),
+    VK_BORDER_COLOR_RANGE_SIZE((VK_BORDER_COLOR_INT_OPAQUE_WHITE.valueOf() - VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK.valueOf() + 1)),
+    VK_BORDER_COLOR_MAX_ENUM(0x7FFFFFFF);
+
+    private int value;
+    
+    private VkBorderColor(int value) { this.value = value; }
+    
+    public int valueOf() { return value; }
+}

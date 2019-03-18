@@ -1,0 +1,19 @@
+package com.CIMthetics.hwjvi.VulkanCore.VK11.Enums;
+
+public enum VkSamplerYcbcrRange
+{
+    VK_SAMPLER_YCBCR_RANGE_ITU_FULL(0),
+    VK_SAMPLER_YCBCR_RANGE_ITU_NARROW(1),
+    VK_SAMPLER_YCBCR_RANGE_ITU_FULL_KHR(VK_SAMPLER_YCBCR_RANGE_ITU_FULL.valueOf()),
+    VK_SAMPLER_YCBCR_RANGE_ITU_NARROW_KHR(VK_SAMPLER_YCBCR_RANGE_ITU_NARROW.valueOf()),
+    VK_SAMPLER_YCBCR_RANGE_BEGIN_RANGE(VK_SAMPLER_YCBCR_RANGE_ITU_FULL.valueOf()),
+    VK_SAMPLER_YCBCR_RANGE_END_RANGE(VK_SAMPLER_YCBCR_RANGE_ITU_NARROW.valueOf()),
+    VK_SAMPLER_YCBCR_RANGE_RANGE_SIZE((VK_SAMPLER_YCBCR_RANGE_ITU_NARROW .valueOf()- VK_SAMPLER_YCBCR_RANGE_ITU_FULL.valueOf() + 1)),
+    VK_SAMPLER_YCBCR_RANGE_MAX_ENUM(0x7FFFFFFF);
+
+    private int value;
+    
+    private VkSamplerYcbcrRange(int value) { this.value = value; }
+    
+    public int valueOf() { return value; }
+}

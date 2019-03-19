@@ -144,28 +144,8 @@ public class VulkanFunctions
     
     static
     {
-//        System.load("/home/dkaip/Downloads/VulkanSDK/1.1.77.0/x86_64/lib/libVkLayer_monitor.so");
-//        System.load("/home/dkaip/Downloads/VulkanSDK/1.1.77.0/x86_64/lib/libVkLayer_object_tracker.so");
-//        System.load("/home/dkaip/Downloads/VulkanSDK/1.1.77.0/x86_64/lib/libVkLayer_parameter_validation.so");
-//        System.load("/home/dkaip/Downloads/VulkanSDK/1.1.77.0/x86_64/lib/libVkLayer_screenshot.so");
-//        System.load("/home/dkaip/Downloads/VulkanSDK/1.1.77.0/x86_64/lib/libVkLayer_threading.so");
-//        System.load("/home/dkaip/Downloads/VulkanSDK/1.1.77.0/x86_64/lib/libVkLayer_unique_objects.so");
-//        System.load("/home/dkaip/Downloads/VulkanSDK/1.1.77.0/x86_64/lib/libVkLayer_utils.so");
-//        System.load("/home/dkaip/Downloads/VulkanSDK/1.1.77.0/x86_64/lib/libVkLayer_vktrace_layer.so");
-//        System.load("/home/dkaip/Downloads/VulkanSDK/1.1.77.0/x86_64/lib/libvulkan.so");
-//        System.load("/home/dkaip/Downloads/VulkanSDK/1.1.77.0/x86_64/lib/libvulkan.so.1");
-//        System.load("/home/dkaip/Downloads/VulkanSDK/1.1.77.0/x86_64/lib/libvulkan.so.1.1.77");
-
         System.load("/home/dkaip/JavaWorkspaces/CIMthetics/hwjvi-Linux-x86_64-natives/Debug/libhwjvi-Linux-x86_64-natives.so");
         
-//        System.load("");
-//        System.load("");
-//        System.load("");
-//        System.load("");
-//        System.load("");
-        
-//        System.loadLibrary("hwjvi-Linux-x86_64-natives");
-//        System.loadLibrary("VulkanCoreProxyImplementation");
         v11ProxyLibrary = new NativeProxies();
     }
 

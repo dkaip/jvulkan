@@ -15,9 +15,9 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
-import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkStructureType;
-import com.CIMthetics.hwjvi.VulkanCore.VK11.Handles.VkBuffer;
-import com.CIMthetics.hwjvi.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkBuffer;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 
 public class VkBufferDeviceAddressInfoEXT extends VulkanCreateInfoStructure
 {

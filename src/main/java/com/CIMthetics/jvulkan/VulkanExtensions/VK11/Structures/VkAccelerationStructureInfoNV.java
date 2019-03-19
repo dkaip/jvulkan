@@ -18,10 +18,10 @@ package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 import java.util.Collection;
 import java.util.EnumSet;
 
-import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkStructureType;
-import com.CIMthetics.hwjvi.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
-import com.CIMthetics.hwjvi.VulkanExtensions.VK11.Enums.VkAccelerationStructureTypeNV;
-import com.CIMthetics.hwjvi.VulkanExtensions.VK11.Enums.VkBuildAccelerationStructureFlagBitsNV;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkAccelerationStructureTypeNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkBuildAccelerationStructureFlagBitsNV;
 
 public class VkAccelerationStructureInfoNV extends VulkanCreateInfoStructure
 {

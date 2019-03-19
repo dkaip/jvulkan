@@ -17,7 +17,7 @@ package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
 import java.util.EnumSet;
 
-import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkFormatFeatureFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkFormatFeatureFlagBits;
 
 public class VkDrmFormatModifierPropertiesEXT
 {

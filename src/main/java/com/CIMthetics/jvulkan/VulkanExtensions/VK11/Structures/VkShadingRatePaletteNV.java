@@ -17,7 +17,7 @@ package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
 import java.util.Collection;
 
-import com.CIMthetics.hwjvi.VulkanExtensions.VK11.Enums.VkShadingRatePaletteEntryNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkShadingRatePaletteEntryNV;
 
 public class VkShadingRatePaletteNV
 {

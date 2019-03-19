@@ -17,9 +17,9 @@ package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
 import java.util.EnumSet;
 
-import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkShaderStageFlagBits;
-import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkStructureType;
-import com.CIMthetics.hwjvi.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkShaderStageFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 
 public class VkPhysicalDeviceCooperativeMatrixPropertiesNV extends VulkanCreateInfoStructure
 {

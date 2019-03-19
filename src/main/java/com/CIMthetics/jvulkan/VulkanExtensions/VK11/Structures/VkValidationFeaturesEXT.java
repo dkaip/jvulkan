@@ -17,10 +17,10 @@ package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
 import java.util.Collection;
 
-import com.CIMthetics.hwjvi.VulkanCore.VK11.Enums.VkStructureType;
-import com.CIMthetics.hwjvi.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
-import com.CIMthetics.hwjvi.VulkanExtensions.VK11.Enums.VkValidationFeatureDisableEXT;
-import com.CIMthetics.hwjvi.VulkanExtensions.VK11.Enums.VkValidationFeatureEnableEXT;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkValidationFeatureDisableEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkValidationFeatureEnableEXT;
 
 public class VkValidationFeaturesEXT extends VulkanCreateInfoStructure
 {

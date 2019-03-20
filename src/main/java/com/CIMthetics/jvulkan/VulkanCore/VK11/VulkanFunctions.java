@@ -144,7 +144,7 @@ public class VulkanFunctions
     
     static
     {
-        System.load("/home/dkaip/JavaWorkspaces/CIMthetics/hwjvi-Linux-x86_64-natives/Debug/libhwjvi-Linux-x86_64-natives.so");
+        System.load("/home/dkaip/JavaWorkspaces/CIMthetics/jvulkan-natives-Linux-x86_64/Debug/libjvulkan-natives-Linux-x86_64.so");
         
         v11ProxyLibrary = new NativeProxies();
     }

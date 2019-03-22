@@ -60,6 +60,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkShaderModule;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkSwapchainKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.IntReturnValue;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkAcquireNextImageInfoKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkAllocationCallbacks;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferImageCopy;
@@ -1011,6 +1012,16 @@ public class VulkanFunctions
     }
     
     
+    public static VkResult vkAcquireNextImage2KHR(
+            VkDevice vulkanLogicalDevice,
+            VkAcquireNextImageInfoKHR acquireInfo,
+            int imageIndex)
+    {
+        return v11ProxyLibrary.vkAcquireNextImage2KHR(
+                vulkanLogicalDevice,
+                acquireInfo,
+                imageIndex);
+    }
     
     public static VkResult vkAcquireNextImageKHR(
             VkDevice vulkanLogicalDevice,

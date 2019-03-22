@@ -57,6 +57,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkShaderModule;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkSwapchainKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.IntReturnValue;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkAcquireNextImageInfoKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkAllocationCallbacks;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferImageCopy;
@@ -136,6 +137,11 @@ import com.CIMthetics.jvulkan.Wayland.Handles.WlSurface;
 
 class NativeProxies
 {
+    native VkResult vkAcquireNextImage2KHR(
+            VkDevice vulkanLogicalDevice,
+            VkAcquireNextImageInfoKHR acquireInfo,
+            int imageIndex);
+    
     native VkResult vkAcquireNextImageKHR(
             VkDevice vulkanLogicalDevice,
             VkSwapchainKHR swapchain,

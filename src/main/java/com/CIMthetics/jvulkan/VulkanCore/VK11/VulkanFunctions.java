@@ -62,6 +62,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.IntReturnValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkAcquireNextImageInfoKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkAllocationCallbacks;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBindBufferMemoryInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferImageCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferMemoryBarrier;
@@ -1823,9 +1824,28 @@ public class VulkanFunctions
                 physicalDevice,
                 properties);
     }
+    
+    public static  VkResult vkBindBufferMemory2(
+            VkDevice vulkanLogicalDevice,
+            Collection<VkBindBufferMemoryInfo> bindInfos)
+    {
+        return v11ProxyLibrary.vkBindBufferMemory2(
+                vulkanLogicalDevice,
+                bindInfos);
+    }
+    
+    public static  VkResult vkBindBufferMemory2KHR(
+            VkDevice vulkanLogicalDevice,
+            Collection<VkBindBufferMemoryInfo> bindInfos)
+    {
+        return v11ProxyLibrary.vkBindBufferMemory2KHR(
+                vulkanLogicalDevice,
+                bindInfos);
+    }
+    
 
-
-
+    
+    
     
     
     

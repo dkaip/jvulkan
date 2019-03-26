@@ -60,6 +60,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.IntReturnValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkAcquireNextImageInfoKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkAllocationCallbacks;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBindBufferMemoryInfo;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBindImageMemoryInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferImageCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferMemoryBarrier;
@@ -194,6 +195,14 @@ class NativeProxies
             VkImage vkImage,
             VkDeviceMemory vkDeviceMemory,
             long vkDeviceSize);
+    
+    native VkResult vkBindImageMemory2(
+            VkDevice vulkanLogicalDevice,
+            Collection<VkBindImageMemoryInfo> bindInfos);
+    
+    native VkResult vkBindImageMemory2KHR(
+            VkDevice vulkanLogicalDevice,
+            Collection<VkBindImageMemoryInfo> bindInfos);
     
     native void vkCmdBeginConditionalRenderingEXT(
             VkCommandBuffer vkCommandBuffer,

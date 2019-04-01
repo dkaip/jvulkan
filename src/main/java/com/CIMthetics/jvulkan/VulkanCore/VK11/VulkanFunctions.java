@@ -35,6 +35,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkResult;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkSubpassContents;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.MappedMemoryPointer;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkBuffer;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkBufferView;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkCommandBuffer;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkCommandPool;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDescriptorPool;
@@ -83,6 +84,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSurfaceFormatKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkWriteDescriptorSet;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkApplicationInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkBufferCreateInfo;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkBufferViewCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkCommandBufferAllocateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkCommandBufferBeginInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkCommandPoolCreateInfo;
@@ -1086,6 +1088,19 @@ public class VulkanFunctions
                 vkBufferCreateInfo,
                 alternateAllocator,
                 vkBuffer);
+    }
+    
+    public static VkResult vkCreateBufferView(
+            VkDevice vulkanLogicalDevice,
+            VkBufferViewCreateInfo vkBufferViewCreateInfo,
+            VkAllocationCallbacks alternateAllocator,
+            VkBufferView vkBufferView)
+    {
+        return v11ProxyLibrary.vkCreateBufferView(
+                vulkanLogicalDevice,
+                vkBufferViewCreateInfo,
+                alternateAllocator,
+                vkBufferView);
     }
     
     public static VkResult vkCreateRayTracingPipelinesNV(

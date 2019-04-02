@@ -84,6 +84,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkBufferVie
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkCommandBufferAllocateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkCommandBufferBeginInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkCommandPoolCreateInfo;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkComputePipelineCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDescriptorPoolCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDescriptorSetAllocateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDescriptorSetLayoutCreateInfo;
@@ -455,6 +456,13 @@ class NativeProxies
             VkCommandPoolCreateInfo vkCommandPoolCreateInfo,
             VkAllocationCallbacks alternateAllocator,
             VkCommandPool commandPool);
+    
+    native VkResult vkCreateComputePipelines(
+            VkDevice vulkanLogicalDevice,
+            VkPipelineCache vkPipelineCache,
+            Collection<VkComputePipelineCreateInfo> createInfos,
+            VkAllocationCallbacks alternateAllocator,
+            Collection<VkPipeline> pipelines);
     
     // TODO these may need to be removed and put into a debug section...
     native VkResult vkCreateDebugReportCallbackEXT(

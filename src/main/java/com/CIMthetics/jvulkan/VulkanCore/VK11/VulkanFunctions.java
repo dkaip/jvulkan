@@ -88,6 +88,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkBufferVie
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkCommandBufferAllocateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkCommandBufferBeginInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkCommandPoolCreateInfo;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkComputePipelineCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDescriptorPoolCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDescriptorSetAllocateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDescriptorSetLayoutCreateInfo;
@@ -1101,6 +1102,26 @@ public class VulkanFunctions
                 vkBufferViewCreateInfo,
                 alternateAllocator,
                 vkBufferView);
+    }
+    
+    public static VkResult vkCreateComputePipelines(
+            VkDevice vulkanLogicalDevice,
+            VkPipelineCache vkPipelineCache,
+            Collection<VkComputePipelineCreateInfo> createInfos,
+            VkAllocationCallbacks alternateAllocator,
+            Collection<VkPipeline> pipelines)
+    {
+        if (pipelines == null)
+        {
+            throw new IllegalArgumentException("Pipelines argument must not be null.  I should be an empty collection.");
+        }
+        
+        return v11ProxyLibrary.vkCreateComputePipelines(
+                vulkanLogicalDevice,
+                vkPipelineCache,
+                createInfos,
+                alternateAllocator,
+                pipelines);
     }
     
     public static VkResult vkCreateRayTracingPipelinesNV(

@@ -147,14 +147,30 @@ import com.CIMthetics.jvulkan.Wayland.Handles.WlSurface;
 public class VulkanFunctions
 {
     private static NativeProxies v11ProxyLibrary;
+    private static String pathToNativeLibrary;
+    private static String nativeLibraryName;
     
-    static
+    public VulkanFunctions(String pathToNativeLibrary, String nativeLibraryName)
     {
-        System.load("/home/dkaip/JavaWorkspaces/CIMthetics/jvulkan-natives-Linux-x86_64/Debug/libjvulkan-natives-Linux-x86_64.so");
+        if (pathToNativeLibrary.endsWith("/") == false)
+            VulkanFunctions.pathToNativeLibrary = pathToNativeLibrary + "/";
+        else
+            VulkanFunctions.pathToNativeLibrary = pathToNativeLibrary;
         
+        VulkanFunctions.nativeLibraryName = nativeLibraryName;
+
+        System.load(VulkanFunctions.pathToNativeLibrary + VulkanFunctions.nativeLibraryName );
+
         v11ProxyLibrary = new NativeProxies();
     }
-
+    
+//    static
+//    {
+//        System.load("/home/dkaip/JavaWorkspaces/CIMthetics/jvulkan-natives-Linux-x86_64/Debug/libjvulkan-natives-Linux-x86_64.so");
+//        
+//        v11ProxyLibrary = new NativeProxies();
+//    }
+//
     public static int VK_API_VERSION_1_1()
     {
         return VK_MAKE_VERSION(1, 1, 0);
@@ -862,7 +878,7 @@ public class VulkanFunctions
                 subpassEndInfoKHR);
     }
     
-    public void vkCmdSetCoarseSampleOrderNV(
+    public static void vkCmdSetCoarseSampleOrderNV(
             VkCommandBuffer vkCommandBuffer,
             VkCoarseSampleOrderTypeNV sampleOrderType,
             Collection<VkCoarseSampleOrderCustomNV> customSampleOrders)

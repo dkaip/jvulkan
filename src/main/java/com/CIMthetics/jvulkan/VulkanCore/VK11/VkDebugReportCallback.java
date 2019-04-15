@@ -40,7 +40,7 @@ public interface VkDebugReportCallback
      * @param layerPrefix
      * @param messageText
      * @param userData
-     * @return - this method MUST return false unless you are debugging the validation layers themselves.
+     * @return - this method MUST return <code>false</code> unless you are debugging the validation layers themselves.
      */
     abstract boolean invoke(
             EnumSet<VkDebugReportFlagBitsEXT>   flags,

@@ -27,6 +27,7 @@ class VkAccessFlagBitsTest
         VkAccessFlagBits[] values = VkAccessFlagBits.values();
         assertEquals(29, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
+    
     @Test
     void testValues()
     {

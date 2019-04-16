@@ -1,0 +1,44 @@
+/*
+ * Copyright 2019 Douglas Kaip
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class VkCoarseSampleOrderTypeNVTest
+{
+    @Test
+    void testNumberOfElements()
+    {
+        VkCoarseSampleOrderTypeNV[] values = VkCoarseSampleOrderTypeNV.values();
+        assertEquals(8, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
+    }
+
+
+    @Test
+    void testValues()
+    {
+        assertEquals(0, VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV.valueOf(), VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV.toString() + " has an unexpected value.");
+        assertEquals(1, VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV.valueOf(), VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_CUSTOM_NV.toString() + " has an unexpected value.");
+        assertEquals(2, VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV.valueOf(), VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_PIXEL_MAJOR_NV.toString() + " has an unexpected value.");
+        assertEquals(3, VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV.valueOf(), VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV.toString() + " has an unexpected value.");
+        assertEquals(VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV.valueOf(), VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_BEGIN_RANGE_NV.valueOf(), VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_BEGIN_RANGE_NV.toString() + " has an unexpected value.");
+        assertEquals(VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV.valueOf(), VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_END_RANGE_NV.valueOf(), VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_END_RANGE_NV.toString() + " has an unexpected value.");
+        assertEquals((VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_SAMPLE_MAJOR_NV.valueOf() - VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_DEFAULT_NV.valueOf() + 1), VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_RANGE_SIZE_NV.valueOf(), VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_RANGE_SIZE_NV.toString() + " has an unexpected value.");
+        assertEquals(0x7FFFFFFF, VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_MAX_ENUM_NV.valueOf(), VkCoarseSampleOrderTypeNV.VK_COARSE_SAMPLE_ORDER_TYPE_MAX_ENUM_NV.toString() + " has an unexpected value.");
+    }
+}

@@ -292,7 +292,7 @@ public enum VkFormat
     
     private VkFormat(int value) { this.value = value; }
     
-    private int valueOf() { return value; }
+    int valueOf() { return value; }
 
     static VkFormat fromValue(int inputValue)
     {

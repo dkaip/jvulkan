@@ -15,7 +15,7 @@
  */
 package com.CIMthetics.jvulkan.VulkanCore.VK11.Enums;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +27,8 @@ class VkAccessFlagBitsTest
         VkAccessFlagBits[] values = VkAccessFlagBits.values();
         assertEquals(29, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
-    
+
+
     @Test
     void testValues()
     {
@@ -51,11 +52,14 @@ class VkAccessFlagBitsTest
         assertEquals(0x00020000, VkAccessFlagBits.VK_ACCESS_COMMAND_PROCESS_READ_BIT_NVX.valueOf(), VkAccessFlagBits.VK_ACCESS_COMMAND_PROCESS_READ_BIT_NVX.toString() + " has an unexpected value.");
         assertEquals(0x00040000, VkAccessFlagBits.VK_ACCESS_COMMAND_PROCESS_WRITE_BIT_NVX.valueOf(), VkAccessFlagBits.VK_ACCESS_COMMAND_PROCESS_WRITE_BIT_NVX.toString() + " has an unexpected value.");
         assertEquals(0x00080000, VkAccessFlagBits.VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT.valueOf(), VkAccessFlagBits.VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT.toString() + " has an unexpected value.");
+        assertEquals(0x00100000, VkAccessFlagBits.VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT.valueOf(), VkAccessFlagBits.VK_ACCESS_CONDITIONAL_RENDERING_READ_BIT_EXT.toString() + " has an unexpected value.");
+        assertEquals(0x00200000, VkAccessFlagBits.VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_NV.valueOf(), VkAccessFlagBits.VK_ACCESS_ACCELERATION_STRUCTURE_READ_BIT_NV.toString() + " has an unexpected value.");
+        assertEquals(0x00400000, VkAccessFlagBits.VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_NV.valueOf(), VkAccessFlagBits.VK_ACCESS_ACCELERATION_STRUCTURE_WRITE_BIT_NV.toString() + " has an unexpected value.");
+        assertEquals(0x00800000, VkAccessFlagBits.VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV.valueOf(), VkAccessFlagBits.VK_ACCESS_SHADING_RATE_IMAGE_READ_BIT_NV.toString() + " has an unexpected value.");
         assertEquals(0x01000000, VkAccessFlagBits.VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT.valueOf(), VkAccessFlagBits.VK_ACCESS_FRAGMENT_DENSITY_MAP_READ_BIT_EXT.toString() + " has an unexpected value.");
         assertEquals(0x02000000, VkAccessFlagBits.VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT.valueOf(), VkAccessFlagBits.VK_ACCESS_TRANSFORM_FEEDBACK_WRITE_BIT_EXT.toString() + " has an unexpected value.");
         assertEquals(0x04000000, VkAccessFlagBits.VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT.valueOf(), VkAccessFlagBits.VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_READ_BIT_EXT.toString() + " has an unexpected value.");
         assertEquals(0x08000000, VkAccessFlagBits.VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT.valueOf(), VkAccessFlagBits.VK_ACCESS_TRANSFORM_FEEDBACK_COUNTER_WRITE_BIT_EXT.toString() + " has an unexpected value.");
         assertEquals(0x7FFFFFFF, VkAccessFlagBits.VK_ACCESS_FLAG_BITS_MAX_ENUM.valueOf(), VkAccessFlagBits.VK_ACCESS_FLAG_BITS_MAX_ENUM.toString() + " has an unexpected value.");
     }
-
 }

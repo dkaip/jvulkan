@@ -19,12 +19,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class VkAttachmentDescriptionFlagBitsTest
+class VkCommandBufferResetFlagBitsTest
 {
     @Test
     void testNumberOfElements()
     {
-        VkAttachmentDescriptionFlagBits[] values = VkAttachmentDescriptionFlagBits.values();
+        VkCommandBufferResetFlagBits[] values = VkCommandBufferResetFlagBits.values();
         assertEquals(2, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
@@ -32,7 +32,7 @@ class VkAttachmentDescriptionFlagBitsTest
     @Test
     void testValues()
     {
-        assertEquals(0x00000001, VkAttachmentDescriptionFlagBits.VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT.valueOf(), VkAttachmentDescriptionFlagBits.VK_ATTACHMENT_DESCRIPTION_MAY_ALIAS_BIT.toString() + " has an unexpected value.");
-        assertEquals(0x7FFFFFFF, VkAttachmentDescriptionFlagBits.VK_ATTACHMENT_DESCRIPTION_FLAG_BITS_MAX_ENUM.valueOf(), VkAttachmentDescriptionFlagBits.VK_ATTACHMENT_DESCRIPTION_FLAG_BITS_MAX_ENUM.toString() + " has an unexpected value.");
+        assertEquals(0x00000001, VkCommandBufferResetFlagBits.VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT.valueOf(), VkCommandBufferResetFlagBits.VK_COMMAND_BUFFER_RESET_RELEASE_RESOURCES_BIT.toString() + " has an unexpected value.");
+        assertEquals(0x7FFFFFFF, VkCommandBufferResetFlagBits.VK_COMMAND_BUFFER_RESET_FLAG_BITS_MAX_ENUM.valueOf(), VkCommandBufferResetFlagBits.VK_COMMAND_BUFFER_RESET_FLAG_BITS_MAX_ENUM.toString() + " has an unexpected value.");
     }
 }

@@ -43,15 +43,22 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 pip install foobar
 ```
 
-## Usage
+## Usage Notes
+The [Vulkan® SDK](https://www.lunarg.com/vulkan-sdk/) from LUNARG is written in c++ 
+and as you might imagine there are some challenges when "wrapping" c++ code with Java. 
+As a result there are some systematic differences between using **jvulkan** and Java 
+versus using c++ and the LUNARG Vulkan® SDK directly.
 
-```python
-import foobar
+When the documentation ([Vulkan® Specification](https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/)) indicates that an array of <code>SomeObjectType</code> is to be passed as an argument and there is an additional argument indicating the number of elements contained within the array the corresponding argument using **jvulkan** will be passed as a <code>Collection&lt;SomeObjectType&gt;</code>.  Additionally, the argument indicating the number of elements contained within the array 
+will not be present since a Java collection knows its size.
 
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
+If a Java <code>Collection</code> is expected as a return argument from a **jvulkan** method make
+sure the <code>Collection&lt;SomeObjectType&gt;</code> is created first 
+(i.e. <code>Collection&lt;SomeObjectType&gt; myCollection = new LinkedList&lt;SomeObjectType&gt;()</code>).  In most cases in this situation the collection should be empty.
+
+When a "handle" is returned (basically an object that extends <code>VulkanHandle</code>) make sure
+you create the handle before you use it as an argument to a method. 
+(i.e.<code>VkDebugReportCallbackEXT debugCallbackHandle = new VkDebugReportCallbackEXT();</code>) 
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

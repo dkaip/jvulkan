@@ -38,6 +38,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkBuffer;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkBufferView;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkCommandBuffer;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkCommandPool;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDebugUtilsMessengerEXT;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDescriptorPool;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDescriptorSet;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDescriptorSetLayout;
@@ -129,6 +130,7 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkMemoryRequireme
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkShadingRatePaletteNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkAccelerationStructureCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDebugReportCallbackCreateInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDebugUtilsMessengerCreateInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkRayTracingPipelineCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkWaylandSurfaceCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.CheckpointMarker;
@@ -1914,6 +1916,20 @@ public class VulkanFunctions
                 bindInfos);
     }
     
+    public static VkResult vkCreateDebugUtilsMessengerEXT(
+            VkInstance vkInstance,
+            VkDebugUtilsMessengerCreateInfoEXT createInfo,
+            VkAllocationCallbacks alternateAllocator,
+            VkDebugUtilsMessengerEXT messenger)
+    {
+        return v11ProxyLibrary.vkCreateDebugUtilsMessengerEXT(
+                vkInstance,
+                createInfo,
+                alternateAllocator,
+                messenger);
+    }
+    
+
 
     
     

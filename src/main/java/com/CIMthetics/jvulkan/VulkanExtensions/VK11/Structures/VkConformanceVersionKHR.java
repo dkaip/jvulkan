@@ -17,47 +17,47 @@ package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
 public class VkConformanceVersionKHR
 {
-    private long major;
-    private long minor;
-    private long subminor;
-    private long patch;
+    private byte major;
+    private byte minor;
+    private byte subminor;
+    private byte patch;
     
-    public long getMajor()
+    public byte getMajor()
     {
         return major;
     }
     
-    void setMajor(long major)
+    void setMajor(byte major)
     {
         this.major = major;
     }
     
-    public long getMinor()
+    public byte getMinor()
     {
         return minor;
     }
     
-    void setMinor(long minor)
+    void setMinor(byte minor)
     {
         this.minor = minor;
     }
     
-    public long getSubminor()
+    public byte getSubminor()
     {
         return subminor;
     }
     
-    void setSubminor(long subminor)
+    void setSubminor(byte subminor)
     {
         this.subminor = subminor;
     }
     
-    public long getPatch()
+    public byte getPatch()
     {
         return patch;
     }
     
-    void setPatch(long patch)
+    void setPatch(byte patch)
     {
         this.patch = patch;
     }

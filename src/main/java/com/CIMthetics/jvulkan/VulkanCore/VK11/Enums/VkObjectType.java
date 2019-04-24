@@ -67,4 +67,138 @@ public enum VkObjectType
     private VkObjectType(int value) { this.value = value; }
     
     public int valueOf() { return value; }
+
+    static VkObjectType fromValue(int inputValue)
+    {
+        VkObjectType result = null;
+        
+        switch(inputValue)
+        {
+            case 0:
+                result = VK_OBJECT_TYPE_UNKNOWN;
+                break;
+            case 1:
+                result = VK_OBJECT_TYPE_INSTANCE;
+                break;
+            case 2:
+                result = VK_OBJECT_TYPE_PHYSICAL_DEVICE;
+                break;
+            case 3:
+                result =  VK_OBJECT_TYPE_DEVICE;
+                break;
+            case 4:
+                result = VK_OBJECT_TYPE_QUEUE;
+                break;
+            case 5:
+                result = VK_OBJECT_TYPE_SEMAPHORE;
+                break;
+            case 6:
+                result = VK_OBJECT_TYPE_COMMAND_BUFFER;
+                break;
+            case 7:
+                result = VK_OBJECT_TYPE_FENCE;
+                break;
+            case 8:
+                result = VK_OBJECT_TYPE_DEVICE_MEMORY;
+                break;
+            case 9:
+                result = VK_OBJECT_TYPE_BUFFER;
+                break;
+            case 10:
+                result = VK_OBJECT_TYPE_IMAGE;
+                break;
+            case 11:
+                result = VK_OBJECT_TYPE_EVENT;
+                break;
+            case 12:
+                result = VK_OBJECT_TYPE_QUERY_POOL;
+                break;
+            case 13:
+                result =  VK_OBJECT_TYPE_BUFFER_VIEW;
+                break;
+            case 14:
+                result = VK_OBJECT_TYPE_IMAGE_VIEW;
+                break;
+            case 15:
+                result = VK_OBJECT_TYPE_SHADER_MODULE;
+                break;
+            case 16:
+                result = VK_OBJECT_TYPE_PIPELINE_CACHE;
+                break;
+            case 17:
+                result = VK_OBJECT_TYPE_PIPELINE_LAYOUT;
+                break;
+            case 18:
+                result =  VK_OBJECT_TYPE_RENDER_PASS;
+                break;
+            case 19:
+                result = VK_OBJECT_TYPE_PIPELINE;
+                break;
+            case 20:
+                result = VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT;
+                break;
+            case 21:
+                result = VK_OBJECT_TYPE_SAMPLER;
+                break;
+            case 22:
+                result = VK_OBJECT_TYPE_DESCRIPTOR_POOL;
+                break;
+            case 23:
+                result =  VK_OBJECT_TYPE_DESCRIPTOR_SET;
+                break;
+            case 24:
+                result = VK_OBJECT_TYPE_FRAMEBUFFER;
+                break;
+            case 25:
+                result = VK_OBJECT_TYPE_COMMAND_POOL;
+                break;
+            case 1000156000:
+                result = VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION;
+                break;
+            case 1000085000:
+                result = VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE;
+                break;
+            case 1000000000:
+                result = VK_OBJECT_TYPE_SURFACE_KHR;
+                break;
+            case 1000001000:
+                result = VK_OBJECT_TYPE_SWAPCHAIN_KHR;
+                break;
+            case 1000002000:
+                result = VK_OBJECT_TYPE_DISPLAY_KHR;
+                break;
+            case 1000002001:
+                result = VK_OBJECT_TYPE_DISPLAY_MODE_KHR;
+                break;
+            case 1000011000:
+                result = VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT;
+                break;
+            case 1000086000:
+                result =  VK_OBJECT_TYPE_OBJECT_TABLE_NVX;
+                break;
+            case 1000086001:
+                result = VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NVX;
+                break;
+            case 1000128000:
+                result = VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT;
+                break;
+            case 1000160000:
+                result = VK_OBJECT_TYPE_VALIDATION_CACHE_EXT;
+                break;
+            case 1000165000:
+                result = VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV;
+                break;
+            case 0x7FFFFFFF:
+                result = VK_OBJECT_TYPE_MAX_ENUM;
+                break;
+        }
+
+        if (inputValue == (VK_OBJECT_TYPE_COMMAND_POOL.valueOf() - VK_OBJECT_TYPE_UNKNOWN.valueOf() + 1))
+            result = VK_OBJECT_TYPE_RANGE_SIZE;
+        
+        if (result == null)
+            throw new IllegalArgumentException("Illegal value specified for this Enum.");
+
+        return result;
+    }
 }

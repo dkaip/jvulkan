@@ -60,6 +60,9 @@ When a "handle" is returned (basically an object that extends <code>VulkanHandle
 you create the handle before you use it as an argument to a method. 
 (i.e.<code>VkDebugReportCallbackEXT debugCallbackHandle = new VkDebugReportCallbackEXT();</code>) 
 
+
+<code>javah -classpath /home/dkaip/git/jvulkan/src/main/java com.CIMthetics.jvulkan.VulkanCore.VK11.NativeProxies</code>
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

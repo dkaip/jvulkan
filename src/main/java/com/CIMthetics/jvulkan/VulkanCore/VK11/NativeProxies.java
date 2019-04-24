@@ -111,6 +111,8 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkSubpassEn
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkSwapchainCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkCoarseSampleOrderTypeNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkCopyAccelerationStructureModeNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessageSeverityFlagBitsEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessageTypeFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkTimeDomainEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStructureInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStructureMemoryRequirementsInfoNV;
@@ -121,6 +123,11 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCheckpointDataN
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCoarseSampleOrderCustomNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkConditionalRenderingBeginInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCooperativeMatrixPropertiesNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsLabelEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsLabelEXTlabelInfo;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsMessengerCallbackDataEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsObjectNameInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsObjectTagInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkImageDrmFormatModifierPropertiesEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkMemoryRequirements2KHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkShadingRatePaletteNV;
@@ -213,6 +220,10 @@ class NativeProxies
             VkCommandBuffer vkCommandBuffer,
             VkConditionalRenderingBeginInfoEXT vkConditionalRenderingBeginInfoEXT);
     
+    native void vkCmdBeginDebugUtilsLabelEXT(
+            VkCommandBuffer commandBuffer,
+            VkDebugUtilsLabelEXT labelInfo);
+    
     native void vkCmdBeginQueryIndexedEXT(
             VkCommandBuffer commandBuffer,
             VkQueryPool queryPool,
@@ -275,12 +286,6 @@ class NativeProxies
             Collection<VkBuffer> vkBufferCollection,
             long[] offsets);
     
-    native void vkCmdCopyBuffer(
-            VkCommandBuffer vkCommandBuffer,
-            VkBuffer srcBuffer,
-            VkBuffer dstBuffer,
-            Collection<VkBufferCopy> vkBufferCopyCollection);
-    
     native void vkCmdBuildAccelerationStructureNV(
             VkCommandBuffer vkCommandBuffer,
             VkAccelerationStructureInfoNV info,
@@ -297,6 +302,12 @@ class NativeProxies
             VkAccelerationStructureNV dst,
             VkAccelerationStructureNV src,
             VkCopyAccelerationStructureModeNV mode);
+    
+    native void vkCmdCopyBuffer(
+            VkCommandBuffer vkCommandBuffer,
+            VkBuffer srcBuffer,
+            VkBuffer dstBuffer,
+            Collection<VkBufferCopy> vkBufferCopyCollection);
     
     native void vkCmdCopyBufferToImage(
             VkCommandBuffer vkCommandBuffer,
@@ -353,6 +364,9 @@ class NativeProxies
     native void vkCmdEndConditionalRenderingEXT(
             VkCommandBuffer vkCommandBuffer);
     
+    native void vkCmdEndDebugUtilsLabelEXT(
+            VkCommandBuffer commandBuffer);
+    
     native void vkCmdEndQueryIndexedEXT(
             VkCommandBuffer commandBuffer,
             VkQueryPool queryPool,
@@ -372,6 +386,10 @@ class NativeProxies
             int counterBufferCount,
             Collection<VkBuffer> counterBuffers,
             long[] counterBufferOffsets);
+    
+    native void vkCmdInsertDebugUtilsLabelEXT(
+            VkCommandBuffer commandBuffer,
+            VkDebugUtilsLabelEXT labelInfo);
     
     native void vkCmdNextSubpass2KHR(
             VkCommandBuffer vkCommandBuffer,
@@ -606,6 +624,11 @@ class NativeProxies
     native void vkDestroyDebugReportCallbackEXT(
             VkInstance vkInstance,
             VkDebugReportCallbackEXT debugCallbackHandle,
+            VkAllocationCallbacks alternateAllocator);
+    
+    native void vkDestroyDebugUtilsMessengerEXT(
+            VkInstance instance,
+            VkDebugUtilsMessengerEXT messenger,
             VkAllocationCallbacks alternateAllocator);
     
     native void vkDestroyDescriptorPool(
@@ -844,6 +867,17 @@ class NativeProxies
             EnumSet<VkMemoryMapFlagBits> flags,
             MappedMemoryPointer pData);
     
+    native void vkQueueBeginDebugUtilsLabelEXT(
+            VkQueue queue,
+            VkDebugUtilsLabelEXTlabelInfo labelInfo);
+    
+    native void vkQueueEndDebugUtilsLabelEXT(
+            VkQueue queue);
+    
+    native void vkQueueInsertDebugUtilsLabelEXT(
+            VkQueue queue,
+            VkDebugUtilsLabelEXT labelInfo);
+    
     native VkResult vkQueuePresentKHR(
             VkQueue queue,
             VkPresentInfoKHR vkPresentInfoKHR);
@@ -859,6 +893,20 @@ class NativeProxies
     native void vkResetFences(
             VkDevice vulkanLogicalDevice,
             Collection<VkFence> vkFences);
+    
+    native VkResult vkSetDebugUtilsObjectNameEXT(
+            VkDevice device,
+            VkDebugUtilsObjectNameInfoEXT nameInfo);
+    
+    native VkResult vkSetDebugUtilsObjectTagEXT(
+            VkDevice device,
+            VkDebugUtilsObjectTagInfoEXT tagInfo);
+    
+    native void vkSubmitDebugUtilsMessageEXT(
+            VkInstance instance,
+            VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
+            EnumSet<VkDebugUtilsMessageTypeFlagBitsEXT> messageTypes,
+            VkDebugUtilsMessengerCallbackDataEXT callbackData);
     
     native void vkUnmapMemory(
             VkDevice vulkanLogicalDevice,

@@ -28,4 +28,30 @@ public enum VkDebugUtilsMessageSeverityFlagBitsEXT
     private VkDebugUtilsMessageSeverityFlagBitsEXT(int value) { this.value = value; }
     
     public int valueOf() { return value; }
+    
+    static VkDebugUtilsMessageSeverityFlagBitsEXT fromValue(int inputValue)
+    {
+        VkDebugUtilsMessageSeverityFlagBitsEXT result = null;
+        
+        switch(inputValue)
+        {
+            case 0x00000001:
+                result = VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT;
+                break;
+            case 0x00000010:
+                result = VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT;
+                break;
+            case 0x00000100:
+                result = VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT;
+                break;
+            case 0x00001000:
+                result = VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT;
+                break;
+        }
+
+        if (result == null)
+            throw new IllegalArgumentException("Illegal value specified for this Enum.");
+
+        return result;
+    }
 }

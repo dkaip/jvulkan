@@ -115,6 +115,8 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkSubpassEn
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkSwapchainCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkCoarseSampleOrderTypeNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkCopyAccelerationStructureModeNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessageSeverityFlagBitsEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessageTypeFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkTimeDomainEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStructureInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStructureMemoryRequirementsInfoNV;
@@ -125,6 +127,11 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCheckpointDataN
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCoarseSampleOrderCustomNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkConditionalRenderingBeginInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCooperativeMatrixPropertiesNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsLabelEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsLabelEXTlabelInfo;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsMessengerCallbackDataEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsObjectNameInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsObjectTagInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkImageDrmFormatModifierPropertiesEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkMemoryRequirements2KHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkShadingRatePaletteNV;
@@ -1929,6 +1936,108 @@ public class VulkanFunctions
                 messenger);
     }
     
+    public static VkResult vkSetDebugUtilsObjectNameEXT(
+            VkDevice device,
+            VkDebugUtilsObjectNameInfoEXT nameInfo)
+    {
+        return v11ProxyLibrary.vkSetDebugUtilsObjectNameEXT(
+                device,
+                nameInfo);
+    }
+    
+    public static VkResult vkSetDebugUtilsObjectTagEXT(
+            VkDevice device,
+            VkDebugUtilsObjectTagInfoEXT tagInfo)
+    {
+        return v11ProxyLibrary.vkSetDebugUtilsObjectTagEXT(
+                device,
+                tagInfo);
+    }
+    
+    public static void vkQueueBeginDebugUtilsLabelEXT(
+            VkQueue queue,
+            VkDebugUtilsLabelEXTlabelInfo labelInfo)
+    {
+        v11ProxyLibrary.vkQueueBeginDebugUtilsLabelEXT(
+                queue,
+                labelInfo);
+    }
+    
+    public static void vkQueueEndDebugUtilsLabelEXT(
+            VkQueue                                     queue)
+    {
+        v11ProxyLibrary.vkQueueEndDebugUtilsLabelEXT(
+                queue);
+    }
+    
+    public static void vkQueueInsertDebugUtilsLabelEXT(
+            VkQueue queue,
+            VkDebugUtilsLabelEXT labelInfo)
+    {
+        v11ProxyLibrary.vkQueueInsertDebugUtilsLabelEXT(
+                queue,
+                labelInfo);
+    }
+    
+    public static void vkCmdBeginDebugUtilsLabelEXT(
+            VkCommandBuffer commandBuffer,
+            VkDebugUtilsLabelEXT labelInfo)
+    {
+        v11ProxyLibrary.vkCmdBeginDebugUtilsLabelEXT(
+                commandBuffer,
+                labelInfo);
+    }
+    
+    public static void vkCmdEndDebugUtilsLabelEXT(
+            VkCommandBuffer commandBuffer)
+    {
+        v11ProxyLibrary.vkCmdEndDebugUtilsLabelEXT(
+                commandBuffer);
+    }
+    
+    public static void vkCmdInsertDebugUtilsLabelEXT(
+            VkCommandBuffer commandBuffer,
+            VkDebugUtilsLabelEXT labelInfo)
+    {
+        v11ProxyLibrary.vkCmdInsertDebugUtilsLabelEXT(
+                commandBuffer,
+                labelInfo);
+    }
+    
+    public static void vkDestroyDebugUtilsMessengerEXT(
+            VkInstance instance,
+            VkDebugUtilsMessengerEXT messenger,
+            VkAllocationCallbacks alternateAllocator)
+    {
+        v11ProxyLibrary.vkDestroyDebugUtilsMessengerEXT(
+                instance,
+                messenger,
+                alternateAllocator);
+    }
+    
+    public static void vkSubmitDebugUtilsMessageEXT(
+            VkInstance instance,
+            VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
+            EnumSet<VkDebugUtilsMessageTypeFlagBitsEXT> messageTypes,
+            VkDebugUtilsMessengerCallbackDataEXT callbackData)
+    {
+        v11ProxyLibrary.vkSubmitDebugUtilsMessageEXT(
+                instance,
+                messageSeverity,
+                messageTypes,
+                callbackData);
+    }
+    
+
+
+
+
+
+
+
+
+
+
 
 
     

@@ -37,12 +37,6 @@ command above it would be <code>cd jvulkan</code>.
 In addition to this library you will need to retrieve and build the 
 **jvulkan-natives-Linux-x86_64** project.
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
-```bash
-pip install foobar
-```
-
 ## Usage Notes
 The [Vulkan® SDK](https://www.lunarg.com/vulkan-sdk/) from LUNARG is written in c++ 
 and as you might imagine there are some challenges when "wrapping" c++ code with Java. 

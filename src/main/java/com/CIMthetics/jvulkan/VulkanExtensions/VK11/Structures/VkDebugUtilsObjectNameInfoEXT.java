@@ -72,4 +72,10 @@ public class VkDebugUtilsObjectNameInfoEXT extends VulkanCreateInfoStructure
         this.objectName = objectName;
     }
 
+    @Override
+    public String toString()
+    {
+        String result = "ObjectType:" + objectType.toString() + " ObjectHandle:" + objectHandle.toString() + " ObjectName:" + objectName;
+        return result;
+    }
 }

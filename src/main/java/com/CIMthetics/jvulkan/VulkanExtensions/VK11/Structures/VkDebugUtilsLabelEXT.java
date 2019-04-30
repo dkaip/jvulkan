@@ -22,7 +22,7 @@ public class VkDebugUtilsLabelEXT extends VulkanCreateInfoStructure
 {
     private long    pNext;
     private String  labelName;
-    private float[] color = new float[4];
+    private float[] color = {1.0f, 1.0f, 1.0f, 1.0f};
     
     public VkDebugUtilsLabelEXT()
     {
@@ -57,5 +57,12 @@ public class VkDebugUtilsLabelEXT extends VulkanCreateInfoStructure
     public void setColor(float[] color)
     {
         this.color = color;
+    }
+    
+    @Override
+    public String toString()
+    {
+        String result = "LabelName:" + labelName + " Color R:" + color[0] + " G:" + color[1] + " B:" + color[2] + " A:" + color[3];
+        return result;
     }
 }

@@ -34,7 +34,7 @@ This will create a <code>jvulkan</code> directory in your current directory
 Change your current directory (<code>cd</code>) to the project root directory.  If you used the 
 command above it would be <code>cd jvulkan</code>.  
 
-Enter the following<code>gradle</code> command:
+Enter the following <code>gradle</code> command:
 
 <code>gradle assemble test</code>
 

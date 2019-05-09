@@ -25,6 +25,7 @@ public class VkDescriptorUpdateTemplateEntry
     private VkDescriptorType    descriptorType;
     private long                offset;
     private long                stride;
+    
     public int getDstBinding()
     {
         return dstBinding;

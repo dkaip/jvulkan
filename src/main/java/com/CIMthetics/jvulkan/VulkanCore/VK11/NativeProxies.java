@@ -39,6 +39,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDebugUtilsMessengerEXT;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDescriptorPool;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDescriptorSet;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDescriptorSetLayout;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDescriptorUpdateTemplate;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDevice;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDeviceMemory;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkFence;
@@ -89,6 +90,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkComputePi
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDescriptorPoolCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDescriptorSetAllocateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDescriptorSetLayoutCreateInfo;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDescriptorUpdateTemplateCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDeviceCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkFenceCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkFramebufferCreateInfo;
@@ -134,12 +136,15 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkShadingRatePale
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkAccelerationStructureCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDebugReportCallbackCreateInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDebugUtilsMessengerCreateInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDisplayModeCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkRayTracingPipelineCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkWaylandSurfaceCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.CheckpointMarker;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkAccelerationStructureNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDebugReportCallbackEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDeviceAddress;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayModeKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkSurfaceKHR;
 import com.CIMthetics.jvulkan.Wayland.WlRegistryListener;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlCompositor;
@@ -509,12 +514,31 @@ class NativeProxies
             VkAllocationCallbacks alternateAllocator,
             VkDescriptorSetLayout vkDescriptorSetLayout);
     
+    native VkResult vkCreateDescriptorUpdateTemplate(
+            VkDevice device,
+            VkDescriptorUpdateTemplateCreateInfo createInfo,
+            VkAllocationCallbacks alternateAllocator,
+            VkDescriptorUpdateTemplate vkDescriptorUpdateTemplateHandle);
+    
+    native VkResult vkCreateDescriptorUpdateTemplateKHR(
+            VkDevice device,
+            VkDescriptorUpdateTemplateCreateInfo createInfo,
+            VkAllocationCallbacks alternateAllocator,
+            VkDescriptorUpdateTemplate vkDescriptorUpdateTemplateHandle);
+
     native VkResult vkCreateDevice(
             VkPhysicalDevice physicalDevice,
             VkDeviceCreateInfo deviceCreateInfo,
             VkAllocationCallbacks alternateAllocator,
             VkDevice device);
     
+    native VkResult vkCreateDisplayModeKHR(
+            VkPhysicalDevice physicalDevice,
+            VkDisplayKHR display,
+            VkDisplayModeCreateInfoKHR createInfo,
+            VkAllocationCallbacks alternateAllocator,
+            VkDisplayModeKHR vkDisplayModeKHRHandle);
+
     native VkResult vkCreateFence(
             VkDevice vulkanLogicalDevice,
             VkFenceCreateInfo vkFenceCreateInfo,

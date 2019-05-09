@@ -30,7 +30,7 @@ public class VkDescriptorUpdateTemplateCreateInfo extends VulkanCreateInfoStruct
 {
     private long                                                pNext;
     private EnumSet<VkDescriptorUpdateTemplateCreateFlagBits>   flags = EnumSet.noneOf(VkDescriptorUpdateTemplateCreateFlagBits.class);
-    private Collection<VkDescriptorUpdateTemplateEntry>         queueCreateInfos;
+    private Collection<VkDescriptorUpdateTemplateEntry>         descriptorUpdateEntries;
     private VkDescriptorUpdateTemplateType                      templateType;
     private VkDescriptorSetLayout                               descriptorSetLayout;
     private VkPipelineBindPoint                                 pipelineBindPoint;
@@ -62,15 +62,15 @@ public class VkDescriptorUpdateTemplateCreateInfo extends VulkanCreateInfoStruct
         this.flags = flags;
     }
 
-    public Collection<VkDescriptorUpdateTemplateEntry> getQueueCreateInfos()
+    public Collection<VkDescriptorUpdateTemplateEntry> getDescriptorUpdateEntries()
     {
-        return queueCreateInfos;
+        return descriptorUpdateEntries;
     }
 
-    public void setQueueCreateInfos(
-            Collection<VkDescriptorUpdateTemplateEntry> queueCreateInfos)
+    public void setDescriptorUpdateEntries(
+            Collection<VkDescriptorUpdateTemplateEntry> descriptorUpdateEntries)
     {
-        this.queueCreateInfos = queueCreateInfos;
+        this.descriptorUpdateEntries = descriptorUpdateEntries;
     }
 
     public VkDescriptorUpdateTemplateType getTemplateType()
@@ -122,5 +122,5 @@ public class VkDescriptorUpdateTemplateCreateInfo extends VulkanCreateInfoStruct
     {
         this.set = set;
     }
-    
+
 }

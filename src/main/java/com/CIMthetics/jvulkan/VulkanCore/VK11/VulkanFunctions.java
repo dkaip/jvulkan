@@ -141,6 +141,7 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkAcc
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDebugReportCallbackCreateInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDebugUtilsMessengerCreateInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDisplayModeCreateInfoKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDisplaySurfaceCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkRayTracingPipelineCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkWaylandSurfaceCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.CheckpointMarker;
@@ -2072,6 +2073,19 @@ public class VulkanFunctions
                 createInfo,
                 alternateAllocator,
                 vkDisplayModeKHRHandle);
+    }
+    
+    public static VkResult vkCreateDisplayPlaneSurfaceKHR(
+            VkInstance instance,
+            VkDisplaySurfaceCreateInfoKHR createInfo,
+            VkAllocationCallbacks alternateAllocator,
+            VkSurfaceKHR surface)
+    {
+        return v11ProxyLibrary.vkCreateDisplayPlaneSurfaceKHR(
+                instance,
+                createInfo,
+                alternateAllocator,
+                surface);
     }
     
 

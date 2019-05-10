@@ -20,7 +20,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceRayTracingPropertiesNV extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private int     shaderGroupHandleSize;
     private int     maxRecursionDepth;
     private int     maxShaderGroupStride;
@@ -33,16 +32,6 @@ public class VkPhysicalDeviceRayTracingPropertiesNV extends VulkanCreateInfoStru
     public VkPhysicalDeviceRayTracingPropertiesNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public int getShaderGroupHandleSize()

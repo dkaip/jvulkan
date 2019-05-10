@@ -27,7 +27,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 
 public class VkAttachmentDescription2KHR extends VulkanCreateInfoStructure
 {
-    private long                                        pNext;
     private EnumSet<VkAttachmentDescriptionFlagBits>    flags = EnumSet.noneOf(VkAttachmentDescriptionFlagBits.class);
     private VkFormat                                    format;
     private VkSampleCountFlagBits                       samples;
@@ -41,16 +40,6 @@ public class VkAttachmentDescription2KHR extends VulkanCreateInfoStructure
     public VkAttachmentDescription2KHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_ATTACHMENT_DESCRIPTION_2_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkAttachmentDescriptionFlagBits> getFlags()

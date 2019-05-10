@@ -24,7 +24,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkConditionalRendering
 
 public class VkConditionalRenderingBeginInfoEXT extends VulkanCreateInfoStructure
 {
-    private long                                        pNext;
     private VkBuffer                                    buffer;
     private long                                        offset;
     private EnumSet<VkConditionalRenderingFlagBitsEXT>  flags = EnumSet.noneOf(VkConditionalRenderingFlagBitsEXT.class);
@@ -32,16 +31,6 @@ public class VkConditionalRenderingBeginInfoEXT extends VulkanCreateInfoStructur
     public VkConditionalRenderingBeginInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_CONDITIONAL_RENDERING_BEGIN_INFO_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkBuffer getBuffer()

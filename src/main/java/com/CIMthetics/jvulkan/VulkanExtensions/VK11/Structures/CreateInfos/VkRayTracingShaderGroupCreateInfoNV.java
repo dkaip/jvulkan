@@ -21,7 +21,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkRayTracingShaderGrou
 
 public class VkRayTracingShaderGroupCreateInfoNV extends VulkanCreateInfoStructure
 {
-    private long                            pNext;
     private VkRayTracingShaderGroupTypeNV   type;
     private int                             generalShader;
     private int                             closestHitShader;
@@ -31,16 +30,6 @@ public class VkRayTracingShaderGroupCreateInfoNV extends VulkanCreateInfoStructu
     public VkRayTracingShaderGroupCreateInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkRayTracingShaderGroupTypeNV getType()

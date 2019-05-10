@@ -22,7 +22,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkBindImageMemoryInfo extends VulkanCreateInfoStructure
 {
-    private long            pNext;
     private VkImage         image;
     private VkDeviceMemory  memory;
     private long            memoryOffset;
@@ -30,16 +29,6 @@ public class VkBindImageMemoryInfo extends VulkanCreateInfoStructure
     public VkBindImageMemoryInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkImage getImage()

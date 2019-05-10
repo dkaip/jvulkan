@@ -31,7 +31,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkViewport;
  */
 public class VkPipelineViewportStateCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                            pNext;
     private EnumSet<VkPipelineViewportStateCreateFlagBits>  flags = EnumSet.noneOf(VkPipelineViewportStateCreateFlagBits.class);
     private Collection<VkViewport>                          viewports;
     private Collection<VkRect2D>                            scissors;
@@ -39,16 +38,6 @@ public class VkPipelineViewportStateCreateInfo extends VulkanCreateInfoStructure
     public VkPipelineViewportStateCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkPipelineViewportStateCreateFlagBits> getFlags()

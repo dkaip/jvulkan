@@ -25,7 +25,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 
 public class VkPipelineRasterizationStateCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                            pNext;
     private EnumSet<VkPipelineRasterizationStateCreateFlagBits>  flags = EnumSet.noneOf(VkPipelineRasterizationStateCreateFlagBits.class);
     private boolean                                         depthClampEnable;
     private boolean                                         rasterizerDiscardEnable;
@@ -41,16 +40,6 @@ public class VkPipelineRasterizationStateCreateInfo extends VulkanCreateInfoStru
     public VkPipelineRasterizationStateCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkPipelineRasterizationStateCreateFlagBits> getFlags()

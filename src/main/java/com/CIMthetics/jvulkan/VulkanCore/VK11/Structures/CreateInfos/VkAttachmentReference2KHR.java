@@ -21,7 +21,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 
 public class VkAttachmentReference2KHR extends VulkanCreateInfoStructure
 {
-    private long                    pNext;
     private int                     attachment;
     private VkImageLayout           layout;
     private VkImageAspectFlagBits   aspectMask;
@@ -29,16 +28,6 @@ public class VkAttachmentReference2KHR extends VulkanCreateInfoStructure
     public VkAttachmentReference2KHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_ATTACHMENT_REFERENCE_2_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public int getAttachment()

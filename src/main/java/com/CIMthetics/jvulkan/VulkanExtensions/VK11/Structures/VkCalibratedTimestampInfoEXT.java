@@ -21,22 +21,11 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkTimeDomainEXT;
 
 public class VkCalibratedTimestampInfoEXT extends VulkanCreateInfoStructure
 {
-    private long            pNext;
     private VkTimeDomainEXT timeDomain;
 
     public VkCalibratedTimestampInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_CALIBRATED_TIMESTAMP_INFO_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkTimeDomainEXT getTimeDomain()

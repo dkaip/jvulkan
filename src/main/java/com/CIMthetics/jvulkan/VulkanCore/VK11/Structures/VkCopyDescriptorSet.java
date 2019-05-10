@@ -21,7 +21,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkCopyDescriptorSet extends VulkanCreateInfoStructure
 {
-    private long            pNext;
     private VkDescriptorSet srcSet;
     private int             srcBinding;
     private int             srcArrayElement;
@@ -33,16 +32,6 @@ public class VkCopyDescriptorSet extends VulkanCreateInfoStructure
     public VkCopyDescriptorSet()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkDescriptorSet getSrcSet()

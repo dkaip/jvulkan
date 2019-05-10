@@ -20,7 +20,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceFragmentDensityMapFeaturesEXT extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private boolean fragmentDensityMap;
     private boolean fragmentDensityMapDynamic;
     private boolean fragmentDensityMapNonSubsampledImages;
@@ -28,16 +27,6 @@ public class VkPhysicalDeviceFragmentDensityMapFeaturesEXT extends VulkanCreateI
     public VkPhysicalDeviceFragmentDensityMapFeaturesEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isFragmentDensityMap()

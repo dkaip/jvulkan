@@ -21,22 +21,11 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkImageViewASTCDecodeModeEXT extends VulkanCreateInfoStructure
 {
-    private long                pNext;
     private VkFormat            decodeMode;
 
     public VkImageViewASTCDecodeModeEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkFormat getDecodeMode()

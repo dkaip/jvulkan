@@ -24,23 +24,12 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkValidationFeatureEna
 
 public class VkValidationFeaturesEXT extends VulkanCreateInfoStructure
 {
-    private long                                        pNext;
     private Collection<VkValidationFeatureEnableEXT>    enabledValidationFeatures;
     private Collection<VkValidationFeatureDisableEXT>   disabledValidationFeatures;
 
     public VkValidationFeaturesEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public Collection<VkValidationFeatureEnableEXT> getEnabledValidationFeatures()

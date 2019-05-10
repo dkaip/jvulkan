@@ -20,7 +20,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private boolean fragmentShaderBarycentric;
     
     public VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV()
@@ -33,16 +32,6 @@ public class VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV extends VulkanC
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV);
         
         this.fragmentShaderBarycentric = fragmentShaderBarycentric;
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isFragmentShaderBarycentric()

@@ -20,7 +20,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceVulkanMemoryModelFeaturesKHR extends VulkanCreateInfoStructure
 {
-    private long                        pNext;
     private boolean                     vulkanMemoryModel;
     private boolean                     vulkanMemoryModelDeviceScope;
     private boolean                     vulkanMemoryModelAvailabilityVisibilityChains;
@@ -28,16 +27,6 @@ public class VkPhysicalDeviceVulkanMemoryModelFeaturesKHR extends VulkanCreateIn
     public VkPhysicalDeviceVulkanMemoryModelFeaturesKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isVulkanMemoryModel()

@@ -20,7 +20,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends VulkanCreateInfoStructure
 {
-    private long        pNext;
     private int         maxTransformFeedbackStreams;
     private int         maxTransformFeedbackBuffers;
     private long        maxTransformFeedbackBufferSize;
@@ -35,16 +34,6 @@ public class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends VulkanCreate
     public VkPhysicalDeviceTransformFeedbackPropertiesEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public int getMaxTransformFeedbackStreams()

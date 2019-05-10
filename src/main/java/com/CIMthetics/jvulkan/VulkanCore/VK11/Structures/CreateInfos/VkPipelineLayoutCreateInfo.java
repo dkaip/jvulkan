@@ -47,7 +47,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPushConstantRange;
  */
 public class VkPipelineLayoutCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                    pNext;
     private EnumSet<VkPipelineLayoutCreateFlagBits> flags = EnumSet.noneOf(VkPipelineLayoutCreateFlagBits.class);
     private Collection<VkDescriptorSetLayout>       setLayouts;
     private Collection<VkPushConstantRange>         pushConstantRanges;
@@ -55,16 +54,6 @@ public class VkPipelineLayoutCreateInfo extends VulkanCreateInfoStructure
     public VkPipelineLayoutCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkPipelineLayoutCreateFlagBits> getFlags()

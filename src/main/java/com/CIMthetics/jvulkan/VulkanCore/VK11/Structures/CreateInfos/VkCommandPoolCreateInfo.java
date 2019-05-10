@@ -22,23 +22,12 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 
 public class VkCommandPoolCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                    pNext;
     private EnumSet<VkCommandPoolCreateFlagBits>    flags = EnumSet.noneOf(VkCommandPoolCreateFlagBits.class);
     private int                                     queueFamilyIndex;
 
     public VkCommandPoolCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkCommandPoolCreateFlagBits> getFlags()

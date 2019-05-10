@@ -24,7 +24,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkBufferMemoryBarrier extends VulkanCreateInfoStructure
 {
-    private long                        pNext;
     private EnumSet<VkAccessFlagBits>   srcAccessMask = EnumSet.noneOf(VkAccessFlagBits.class);
     private EnumSet<VkAccessFlagBits>   dstAccessMask = EnumSet.noneOf(VkAccessFlagBits.class);
     private int                         srcQueueFamilyIndex;
@@ -36,16 +35,6 @@ public class VkBufferMemoryBarrier extends VulkanCreateInfoStructure
     public VkBufferMemoryBarrier()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkAccessFlagBits> getSrcAccessMask()

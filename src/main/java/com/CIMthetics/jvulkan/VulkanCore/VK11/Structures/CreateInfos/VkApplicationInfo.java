@@ -19,7 +19,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 
 public class VkApplicationInfo extends VulkanCreateInfoStructure
 {
-    private long                    pNext;
     private String                  applicationName;
     private int                     applicationVersion;
     private String                  engineName;
@@ -29,16 +28,6 @@ public class VkApplicationInfo extends VulkanCreateInfoStructure
     public VkApplicationInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_APPLICATION_INFO);
-    }
-    
-    public long getpNext()
-    {
-        return pNext;
-    }
-    
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
     
     public String getApplicationName()

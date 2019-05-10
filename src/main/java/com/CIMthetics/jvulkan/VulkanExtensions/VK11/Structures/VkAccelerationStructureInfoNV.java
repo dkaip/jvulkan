@@ -25,7 +25,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkBuildAccelerationStr
 
 public class VkAccelerationStructureInfoNV extends VulkanCreateInfoStructure
 {
-    private long                                            pNext;
     private VkAccelerationStructureTypeNV                   type;
     private EnumSet<VkBuildAccelerationStructureFlagBitsNV> flags = EnumSet.noneOf(VkBuildAccelerationStructureFlagBitsNV.class);
     private int                                             instanceCount;
@@ -34,16 +33,6 @@ public class VkAccelerationStructureInfoNV extends VulkanCreateInfoStructure
     public VkAccelerationStructureInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_INFO_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkAccelerationStructureTypeNV getType()

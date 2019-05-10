@@ -54,7 +54,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPipelineColorBlendAtt
  */
 public class VkPipelineColorBlendStateCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                                pNext;
     private EnumSet<VkPipelineColorBlendStateCreateFlagBits>    flags = EnumSet.noneOf(VkPipelineColorBlendStateCreateFlagBits.class);
     private boolean                                             logicOpEnable;
     private VkLogicOp                                           logicOp;
@@ -64,16 +63,6 @@ public class VkPipelineColorBlendStateCreateInfo extends VulkanCreateInfoStructu
     public VkPipelineColorBlendStateCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkPipelineColorBlendStateCreateFlagBits> getFlags()

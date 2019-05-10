@@ -27,7 +27,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 
 public class VkSamplerCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                pNext;
     private EnumSet<VkSamplerCreateFlagBits>    flags = EnumSet.noneOf(VkSamplerCreateFlagBits.class);
     private VkFilter                            magFilter;
     private VkFilter                            minFilter;
@@ -48,16 +47,6 @@ public class VkSamplerCreateInfo extends VulkanCreateInfoStructure
     public VkSamplerCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkSamplerCreateFlagBits> getFlags()

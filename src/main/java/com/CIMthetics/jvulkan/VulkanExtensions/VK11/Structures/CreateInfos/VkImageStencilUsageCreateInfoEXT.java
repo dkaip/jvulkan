@@ -23,22 +23,11 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkImageStencilUsageCreateInfoEXT extends VulkanCreateInfoStructure
 {
-    private long                            pNext;
     private EnumSet<VkImageUsageFlagBits>   stencilUsage;
 
     public VkImageStencilUsageCreateInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkImageUsageFlagBits> getStencilUsage()

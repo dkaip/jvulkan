@@ -24,23 +24,12 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDisplayModePara
 
 public class VkDisplayModeCreateInfoKHR extends VulkanCreateInfoStructure
 {
-    private long                                    pNext;
     private EnumSet<VkDisplayModeCreateFlagBitsKHR> flags = EnumSet.noneOf(VkDisplayModeCreateFlagBitsKHR.class);
     private VkDisplayModeParametersKHR              parameters;
     
     public VkDisplayModeCreateInfoKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkDisplayModeCreateFlagBitsKHR> getFlags()

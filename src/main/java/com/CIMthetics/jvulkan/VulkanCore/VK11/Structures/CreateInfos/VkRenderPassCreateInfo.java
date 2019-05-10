@@ -26,7 +26,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSubpassDescription;
 
 public class VkRenderPassCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                       pNext;
     private EnumSet<VkRenderPassCreateFlagBits> flags = EnumSet.noneOf(VkRenderPassCreateFlagBits.class);
     private Collection<VkAttachmentDescription> attachments;
     private Collection<VkSubpassDescription>    subpasses;
@@ -35,16 +34,6 @@ public class VkRenderPassCreateInfo extends VulkanCreateInfoStructure
     public VkRenderPassCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkRenderPassCreateFlagBits> getFlags()

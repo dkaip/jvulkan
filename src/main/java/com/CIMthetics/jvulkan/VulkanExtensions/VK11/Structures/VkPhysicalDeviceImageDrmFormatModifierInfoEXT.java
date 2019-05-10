@@ -21,7 +21,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends VulkanCreateInfoStructure
 {
-    private long            pNext;
     private long            drmFormatModifier;
     private VkSharingMode   sharingMode;
     private int             queueFamilyIndexCount;
@@ -30,16 +29,6 @@ public class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends VulkanCreateI
     public VkPhysicalDeviceImageDrmFormatModifierInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public long getDrmFormatModifier()

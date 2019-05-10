@@ -30,7 +30,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkExtent3D;
 
 public class VkImageCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                            pNext;
     private EnumSet<VkImageCreateFlagBits>  flags = EnumSet.noneOf(VkImageCreateFlagBits.class);
     private VkImageType                     imageType;
     private VkFormat                        format;
@@ -47,16 +46,6 @@ public class VkImageCreateInfo extends VulkanCreateInfoStructure
     public VkImageCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkImageCreateFlagBits> getFlags()

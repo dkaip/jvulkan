@@ -20,23 +20,12 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private boolean vertexAttributeInstanceRateDivisor;
     private boolean vertexAttributeInstanceRateZeroDivisor;
 
     public VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isVertexAttributeInstanceRateDivisor()

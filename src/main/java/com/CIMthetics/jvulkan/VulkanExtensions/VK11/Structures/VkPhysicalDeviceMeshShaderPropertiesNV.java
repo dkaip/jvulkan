@@ -20,7 +20,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceMeshShaderPropertiesNV extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private int     maxDrawMeshTasksCount;
     private int     maxTaskWorkGroupInvocations;
     private int[]   maxTaskWorkGroupSize = new int[3];
@@ -38,16 +37,6 @@ public class VkPhysicalDeviceMeshShaderPropertiesNV extends VulkanCreateInfoStru
     public VkPhysicalDeviceMeshShaderPropertiesNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public int getMaxDrawMeshTasksCount()

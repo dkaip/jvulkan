@@ -23,7 +23,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkAcquireNextImageInfoKHR extends VulkanCreateInfoStructure
 {
-    private long            pNext;
     private VkSwapchainKHR  swapchain;
     private long            timeout;
     private VkSemaphore     semaphore;
@@ -33,16 +32,6 @@ public class VkAcquireNextImageInfoKHR extends VulkanCreateInfoStructure
     public VkAcquireNextImageInfoKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_ACQUIRE_NEXT_IMAGE_INFO_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkSwapchainKHR getSwapchain()

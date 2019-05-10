@@ -20,23 +20,12 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private long[]  heapBudget;
     private long[]  heapUsage;
 
     public VkPhysicalDeviceMemoryBudgetPropertiesEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public long[] getHeapBudget()

@@ -23,22 +23,11 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkAccelerationStruct
 
 public class VkWriteDescriptorSetAccelerationStructureNV extends VulkanCreateInfoStructure
 {
-    private long                                    pNext;
     private Collection<VkAccelerationStructureNV>  accelerationStructures;
 
     public VkWriteDescriptorSetAccelerationStructureNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public Collection<VkAccelerationStructureNV> getAccelerationStructures()

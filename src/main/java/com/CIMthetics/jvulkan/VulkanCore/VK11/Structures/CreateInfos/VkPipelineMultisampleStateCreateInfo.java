@@ -23,7 +23,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 
 public class VkPipelineMultisampleStateCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                                pNext;
     private EnumSet<VkPipelineMultisampleStateCreateFlagBits>   flags = EnumSet.noneOf(VkPipelineMultisampleStateCreateFlagBits.class);
     private VkSampleCountFlagBits                               rasterizationSamples;
     private boolean                                             sampleShadingEnable;
@@ -35,16 +34,6 @@ public class VkPipelineMultisampleStateCreateInfo extends VulkanCreateInfoStruct
     public VkPipelineMultisampleStateCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkPipelineMultisampleStateCreateFlagBits> getFlags()

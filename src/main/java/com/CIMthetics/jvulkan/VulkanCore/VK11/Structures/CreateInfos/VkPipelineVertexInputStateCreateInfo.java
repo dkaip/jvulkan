@@ -25,7 +25,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkVertexInputBindingDes
 
 public class VkPipelineVertexInputStateCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                                pNext;
     private EnumSet<VkPipelineVertexInputStateCreateFlagBits>   flags = EnumSet.noneOf(VkPipelineVertexInputStateCreateFlagBits.class);
     private Collection<VkVertexInputBindingDescription>         vertexBindingDescriptions;
     private Collection<VkVertexInputAttributeDescription>       vertexAttributeDescriptions;
@@ -33,16 +32,6 @@ public class VkPipelineVertexInputStateCreateInfo extends VulkanCreateInfoStruct
     public VkPipelineVertexInputStateCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkPipelineVertexInputStateCreateFlagBits> getFlags()

@@ -23,7 +23,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 
 public class VkInstanceCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                    pNext;
     private EnumSet<VkInstanceCreateFlagBits> flags = EnumSet.noneOf(VkInstanceCreateFlagBits.class);
     private VkApplicationInfo       applicationInfo;
     private Collection<String>      enabledLayerNames;
@@ -34,33 +33,11 @@ public class VkInstanceCreateInfo extends VulkanCreateInfoStructure
         super(VkStructureType.VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO);
     }
     
-    public long getpNext()
-    {
-        return pNext;
-    }
-    
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
-    }
-    
     public EnumSet<VkInstanceCreateFlagBits> getFlags()
     {
         return flags;
     }
     
-//    int getFlagsAsInt()
-//    {
-//        int result = 0;
-//        
-//        for (VkInstanceCreateFlags flag : flags)
-//        {
-//            result |= flag.valueOf();
-//        }
-//            
-//        return result;
-//    }
-//    
     public void setFlags(EnumSet<VkInstanceCreateFlagBits> flags)
     {
         if (flags != null)

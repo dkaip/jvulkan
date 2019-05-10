@@ -26,7 +26,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkRayTracingPipelineCreateInfoNV extends VulkanCreateInfoStructure
 {
-    private long                                            pNext;
     private EnumSet<VkPipelineCreateFlagBits>               flags = EnumSet.noneOf(VkPipelineCreateFlagBits.class);
     private Collection<VkPipelineShaderStageCreateInfo>     stages;
     private Collection<VkRayTracingShaderGroupCreateInfoNV> groups;
@@ -38,16 +37,6 @@ public class VkRayTracingPipelineCreateInfoNV extends VulkanCreateInfoStructure
     public VkRayTracingPipelineCreateInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_RAY_TRACING_PIPELINE_CREATE_INFO_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkPipelineCreateFlagBits> getFlags()

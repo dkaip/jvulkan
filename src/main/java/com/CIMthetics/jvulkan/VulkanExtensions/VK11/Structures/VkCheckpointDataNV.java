@@ -22,23 +22,12 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.CheckpointMarker;
 
 public class VkCheckpointDataNV extends VulkanCreateInfoStructure
 {
-    private long                    pNext;
     private VkPipelineStageFlagBits stage;
     private CheckpointMarker        checkpointMarker;
 
     public VkCheckpointDataNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkPipelineStageFlagBits getStage()

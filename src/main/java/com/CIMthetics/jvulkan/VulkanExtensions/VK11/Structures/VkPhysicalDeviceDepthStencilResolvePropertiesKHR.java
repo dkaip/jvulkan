@@ -21,7 +21,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkResolveModeFlagBitsK
 
 public class VkPhysicalDeviceDepthStencilResolvePropertiesKHR extends VulkanCreateInfoStructure
 {
-    private long                        pNext;
     private VkResolveModeFlagBitsKHR    supportedDepthResolveModes;
     private VkResolveModeFlagBitsKHR    supportedStencilResolveModes;
     private boolean                     independentResolveNone;
@@ -30,16 +29,6 @@ public class VkPhysicalDeviceDepthStencilResolvePropertiesKHR extends VulkanCrea
     public VkPhysicalDeviceDepthStencilResolvePropertiesKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkResolveModeFlagBitsKHR getSupportedDepthResolveModes()

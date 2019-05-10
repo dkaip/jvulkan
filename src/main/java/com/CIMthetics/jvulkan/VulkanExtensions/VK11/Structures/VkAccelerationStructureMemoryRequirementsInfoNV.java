@@ -22,23 +22,12 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkAccelerationStruct
 
 public class VkAccelerationStructureMemoryRequirementsInfoNV extends VulkanCreateInfoStructure
 {
-    private long                                            pNext;
     private VkAccelerationStructureMemoryRequirementsTypeNV type;
     private VkAccelerationStructureNV                       accelerationStructure;
     
     public VkAccelerationStructureMemoryRequirementsInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkAccelerationStructureMemoryRequirementsTypeNV getType()

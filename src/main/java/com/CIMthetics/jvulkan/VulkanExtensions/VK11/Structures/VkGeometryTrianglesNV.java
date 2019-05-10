@@ -23,7 +23,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkGeometryTrianglesNV extends VulkanCreateInfoStructure
 {
-    private long        pNext;
     private VkBuffer    vertexData;
     private long        vertexOffset;
     private int         vertexCount;
@@ -39,16 +38,6 @@ public class VkGeometryTrianglesNV extends VulkanCreateInfoStructure
     public VkGeometryTrianglesNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_GEOMETRY_TRIANGLES_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkBuffer getVertexData()

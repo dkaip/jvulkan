@@ -23,23 +23,12 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkPipelineRasterizatio
 
 public class VkPipelineRasterizationDepthClipStateCreateInfoEXT extends VulkanCreateInfoStructure
 {
-    private long                                                            pNext;
     private EnumSet<VkPipelineRasterizationDepthClipStateCreateFlagsEXT>    flags;
     private boolean                                                         depthClipEnable;
     
     public VkPipelineRasterizationDepthClipStateCreateInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkPipelineRasterizationDepthClipStateCreateFlagsEXT> getFlags()

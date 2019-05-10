@@ -21,23 +21,12 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStr
 
 public class VkAccelerationStructureCreateInfoNV extends VulkanCreateInfoStructure
 {
-    private long                            pNext;
     private long                            compactedSize;
     private VkAccelerationStructureInfoNV   info;
 
     public VkAccelerationStructureCreateInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CREATE_INFO_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public long getCompactedSize()

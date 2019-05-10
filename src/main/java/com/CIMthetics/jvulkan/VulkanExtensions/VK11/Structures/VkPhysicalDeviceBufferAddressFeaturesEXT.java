@@ -20,7 +20,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceBufferAddressFeaturesEXT extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private boolean bufferDeviceAddress;
     private boolean bufferDeviceAddressCaptureReplay;
     private boolean bufferDeviceAddressMultiDevice;
@@ -28,16 +27,6 @@ public class VkPhysicalDeviceBufferAddressFeaturesEXT extends VulkanCreateInfoSt
     public VkPhysicalDeviceBufferAddressFeaturesEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isBufferDeviceAddress()

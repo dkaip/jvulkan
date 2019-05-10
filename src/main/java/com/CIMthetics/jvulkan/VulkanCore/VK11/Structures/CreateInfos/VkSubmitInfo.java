@@ -26,7 +26,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkSemaphore;
 
 public class VkSubmitInfo extends VulkanCreateInfoStructure
 {
-    private long                                            pNext;
     private Collection<VkSemaphore>                         waitSemaphores;
     private Collection<EnumSet<VkPipelineStageFlagBits>>    waitDstStageMask;
     private Collection<VkCommandBuffer>                     commandBuffers;
@@ -35,16 +34,6 @@ public class VkSubmitInfo extends VulkanCreateInfoStructure
     public VkSubmitInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_SUBMIT_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public Collection<VkSemaphore> getWaitSemaphores()

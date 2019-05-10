@@ -23,22 +23,11 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceCooperativeMatrixPropertiesNV extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private EnumSet<VkShaderStageFlagBits>  cooperativeMatrixSupportedStages = EnumSet.noneOf(VkShaderStageFlagBits.class);
 
     public VkPhysicalDeviceCooperativeMatrixPropertiesNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkShaderStageFlagBits> getCooperativeMatrixSupportedStages()

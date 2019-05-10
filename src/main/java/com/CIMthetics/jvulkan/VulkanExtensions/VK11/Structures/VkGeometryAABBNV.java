@@ -21,7 +21,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkGeometryAABBNV extends VulkanCreateInfoStructure
 {
-    private long        pNext;
     private VkBuffer    aabbData;
     private int         numAABBs;
     private int         stride;
@@ -30,16 +29,6 @@ public class VkGeometryAABBNV extends VulkanCreateInfoStructure
     public VkGeometryAABBNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_GEOMETRY_AABB_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkBuffer getAabbData()

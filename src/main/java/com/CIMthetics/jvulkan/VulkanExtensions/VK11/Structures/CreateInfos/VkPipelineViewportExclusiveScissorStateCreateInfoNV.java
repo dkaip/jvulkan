@@ -23,22 +23,11 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPipelineViewportExclusiveScissorStateCreateInfoNV extends VulkanCreateInfoStructure
 {
-    private long                    pNext;
     private Collection<VkRect2D>    exclusiveScissors;
     
     public VkPipelineViewportExclusiveScissorStateCreateInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public Collection<VkRect2D> getExclusiveScissors()

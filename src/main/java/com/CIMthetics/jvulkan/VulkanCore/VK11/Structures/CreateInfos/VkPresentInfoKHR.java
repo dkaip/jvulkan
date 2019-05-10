@@ -24,7 +24,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkSwapchainKHR;
 
 public class VkPresentInfoKHR extends VulkanCreateInfoStructure
 {
-    private long                                    pNext;
     private Collection<VkSemaphore>                 waitSemaphores;
     private Collection<VkSwapchainKHR>              swapchains;
     private int[]                                   imageIndices;
@@ -33,16 +32,6 @@ public class VkPresentInfoKHR extends VulkanCreateInfoStructure
     public VkPresentInfoKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PRESENT_INFO_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public Collection<VkSemaphore> getWaitSemaphores()

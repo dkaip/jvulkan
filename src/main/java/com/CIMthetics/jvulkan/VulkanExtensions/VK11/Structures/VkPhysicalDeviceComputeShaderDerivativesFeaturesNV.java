@@ -20,23 +20,12 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceComputeShaderDerivativesFeaturesNV extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private boolean computeDerivativeGroupQuads;
     private boolean computeDerivativeGroupLinear;
 
     public VkPhysicalDeviceComputeShaderDerivativesFeaturesNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isComputeDerivativeGroupQuads()

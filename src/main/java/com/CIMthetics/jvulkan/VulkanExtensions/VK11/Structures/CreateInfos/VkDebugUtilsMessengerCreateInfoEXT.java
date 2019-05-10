@@ -26,7 +26,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessengerC
 
 public class VkDebugUtilsMessengerCreateInfoEXT extends VulkanCreateInfoStructure
 {
-    private long                                            pNext;
     private EnumSet<VkDebugUtilsMessengerCreateFlagBitsEXT> flags = EnumSet.noneOf(VkDebugUtilsMessengerCreateFlagBitsEXT.class);
     private EnumSet<VkDebugUtilsMessageSeverityFlagBitsEXT> messageSeverity = EnumSet.noneOf(VkDebugUtilsMessageSeverityFlagBitsEXT.class);
     private EnumSet<VkDebugUtilsMessageTypeFlagBitsEXT>     messageType = EnumSet.noneOf(VkDebugUtilsMessageTypeFlagBitsEXT.class);
@@ -36,16 +35,6 @@ public class VkDebugUtilsMessengerCreateInfoEXT extends VulkanCreateInfoStructur
     public VkDebugUtilsMessengerCreateInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkDebugUtilsMessengerCreateFlagBitsEXT> getFlags()

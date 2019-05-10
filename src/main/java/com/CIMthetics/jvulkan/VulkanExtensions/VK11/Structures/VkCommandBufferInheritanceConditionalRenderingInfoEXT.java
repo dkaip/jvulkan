@@ -20,22 +20,11 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkCommandBufferInheritanceConditionalRenderingInfoEXT extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private boolean conditionalRenderingEnable;
 
     public VkCommandBufferInheritanceConditionalRenderingInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isConditionalRenderingEnable()

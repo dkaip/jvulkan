@@ -20,7 +20,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkWriteDescriptorSetInlineUniformBlockEXT extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private long    dataSize;
     // TODO may need to make a byte buffer
     private long    pData;
@@ -28,16 +27,6 @@ public class VkWriteDescriptorSetInlineUniformBlockEXT extends VulkanCreateInfoS
     public VkWriteDescriptorSetInlineUniformBlockEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public long getDataSize()

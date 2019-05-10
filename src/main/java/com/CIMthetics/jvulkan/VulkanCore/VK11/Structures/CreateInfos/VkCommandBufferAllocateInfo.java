@@ -21,7 +21,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkCommandPool;
 
 public class VkCommandBufferAllocateInfo extends VulkanCreateInfoStructure
 {
-    private long                    pNext;
     private VkCommandPool           commandPool;
     private VkCommandBufferLevel    level;
     private int                     commandBufferCount;
@@ -29,16 +28,6 @@ public class VkCommandBufferAllocateInfo extends VulkanCreateInfoStructure
     public VkCommandBufferAllocateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkCommandPool getCommandPool()

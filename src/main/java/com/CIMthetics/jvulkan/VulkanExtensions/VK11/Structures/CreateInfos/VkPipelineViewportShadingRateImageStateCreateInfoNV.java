@@ -23,23 +23,12 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkShadingRatePale
 
 public class VkPipelineViewportShadingRateImageStateCreateInfoNV extends VulkanCreateInfoStructure
 {
-    private long                                pNext;
     private boolean                             shadingRateImageEnable;
     private Collection<VkShadingRatePaletteNV>  shadingRatePalettes;
 
     public VkPipelineViewportShadingRateImageStateCreateInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isShadingRateImageEnable()

@@ -25,7 +25,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkRenderPass;
 
 public class VkFramebufferCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                    pNext;
     private EnumSet<VkFramebufferCreateFlagBits>    flags = EnumSet.noneOf(VkFramebufferCreateFlagBits.class);
     private VkRenderPass                            renderPass;
     private Collection<VkImageView>                 attachments;
@@ -36,16 +35,6 @@ public class VkFramebufferCreateInfo extends VulkanCreateInfoStructure
     public VkFramebufferCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkFramebufferCreateFlagBits> getFlags()

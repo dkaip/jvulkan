@@ -101,7 +101,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkPip
  */
 public class VkGraphicsPipelineCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                        pNext;
     private EnumSet<VkPipelineCreateFlagBits>           flags = EnumSet.noneOf(VkPipelineCreateFlagBits.class);
     private Collection<VkPipelineShaderStageCreateInfo> stages;
     private VkPipelineVertexInputStateCreateInfo        vertexInputState;
@@ -122,16 +121,6 @@ public class VkGraphicsPipelineCreateInfo extends VulkanCreateInfoStructure
     public VkGraphicsPipelineCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkPipelineCreateFlagBits> getFlags()

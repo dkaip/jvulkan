@@ -31,7 +31,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugReportFlagBitsE
  */
 public class VkDebugReportCallbackCreateInfoEXT extends VulkanCreateInfoStructure
 {
-    private long                    pNext;
     private EnumSet<VkDebugReportFlagBitsEXT> flags = EnumSet.noneOf(VkDebugReportFlagBitsEXT.class);
     private VkDebugReportCallback   callbackObject;
     private Object                  userData;
@@ -41,33 +40,11 @@ public class VkDebugReportCallbackCreateInfoEXT extends VulkanCreateInfoStructur
         super(VkStructureType.VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT);
     }
     
-    public long getpNext()
-    {
-        return pNext;
-    }
-    
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
-    }
-    
     public EnumSet<VkDebugReportFlagBitsEXT> getFlags()
     {
         return flags;
     }
     
-//    public int getFlagsAsInt()
-//    {
-//        int result = 0;
-//        
-//        for (VkDebugReportFlagBitsEXT flag : flags)
-//        {
-//            result |= flag.valueOf();
-//        }
-//            
-//        return result;
-//    }
-//    
     public void setFlags(EnumSet<VkDebugReportFlagBitsEXT> flags)
     {
         this.flags = flags;

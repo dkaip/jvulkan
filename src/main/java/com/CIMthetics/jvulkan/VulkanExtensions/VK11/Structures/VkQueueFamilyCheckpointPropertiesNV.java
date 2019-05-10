@@ -23,22 +23,11 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkQueueFamilyCheckpointPropertiesNV extends VulkanCreateInfoStructure
 {
-    private long                        pNext;
     EnumSet<VkPipelineStageFlagBits>    checkpointExecutionStageMask = EnumSet.noneOf(VkPipelineStageFlagBits.class);
 
     public VkQueueFamilyCheckpointPropertiesNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkPipelineStageFlagBits> getCheckpointExecutionStageMask()

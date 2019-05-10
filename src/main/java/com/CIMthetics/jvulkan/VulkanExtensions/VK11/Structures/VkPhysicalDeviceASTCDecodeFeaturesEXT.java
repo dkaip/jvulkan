@@ -20,22 +20,11 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceASTCDecodeFeaturesEXT extends VulkanCreateInfoStructure
 {
-    private long                pNext;
     private boolean             decodeModeSharedExponent;
 
     public VkPhysicalDeviceASTCDecodeFeaturesEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isDecodeModeSharedExponent()

@@ -23,7 +23,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 
 public class VkShaderModuleCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                    pNext;
     private EnumSet<VkShaderModuleCreateFlagBits>   flags = EnumSet.noneOf(VkShaderModuleCreateFlagBits.class);
     private long                                    codeSize;
     private byte[]                                  code;
@@ -31,16 +30,6 @@ public class VkShaderModuleCreateInfo extends VulkanCreateInfoStructure
     public VkShaderModuleCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkShaderModuleCreateFlagBits> getFlags()

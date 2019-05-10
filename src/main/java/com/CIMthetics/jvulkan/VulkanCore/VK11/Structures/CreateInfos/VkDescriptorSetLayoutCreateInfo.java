@@ -25,23 +25,12 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkDescriptorSetLayoutBi
 
 public class VkDescriptorSetLayoutCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                            pNext;
     private EnumSet<VkDescriptorSetLayoutCreateFlagBits>    flags = EnumSet.noneOf(VkDescriptorSetLayoutCreateFlagBits.class);
     private Collection<VkDescriptorSetLayoutBinding>        bindings;
 
     public VkDescriptorSetLayoutCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkDescriptorSetLayoutCreateFlagBits> getFlags()

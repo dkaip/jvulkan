@@ -24,7 +24,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkDescriptorPoolSize;
 
 public class VkDescriptorPoolCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                    pNext;
     private EnumSet<VkDescriptorPoolCreateFlagBits> flags = EnumSet.noneOf(VkDescriptorPoolCreateFlagBits.class);
     private int                                     maxSets;
     private Collection<VkDescriptorPoolSize>        poolSizes;
@@ -32,16 +31,6 @@ public class VkDescriptorPoolCreateInfo extends VulkanCreateInfoStructure
     public VkDescriptorPoolCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkDescriptorPoolCreateFlagBits> getFlags()

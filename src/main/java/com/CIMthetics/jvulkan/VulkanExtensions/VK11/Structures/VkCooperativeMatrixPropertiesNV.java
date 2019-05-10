@@ -22,7 +22,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkScopeNV;
 
 public class VkCooperativeMatrixPropertiesNV extends VulkanCreateInfoStructure
 {
-    private long                pNext;
     private int                 mSize;
     private int                 nSize;
     private int                 kSize;
@@ -35,16 +34,6 @@ public class VkCooperativeMatrixPropertiesNV extends VulkanCreateInfoStructure
     public VkCooperativeMatrixPropertiesNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_COOPERATIVE_MATRIX_PROPERTIES_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public int getmSize()

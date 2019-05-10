@@ -25,7 +25,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceFeature
 
 public class VkDeviceCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                    pNext;
     private EnumSet<VkDeviceCreateFlagBits>         flags = EnumSet.noneOf(VkDeviceCreateFlagBits.class);
     private Collection<VkDeviceQueueCreateInfo>     queueCreateInfos;
     private Collection<String>                      enabledLayerNames;
@@ -37,33 +36,11 @@ public class VkDeviceCreateInfo extends VulkanCreateInfoStructure
         super(VkStructureType.VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO);
     }
     
-    public long getpNext()
-    {
-        return pNext;
-    }
-    
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
-    }
-
     public EnumSet<VkDeviceCreateFlagBits> getFlags()
     {
         return flags;
     }
 
-//    int getFlagsAsInt()
-//    {
-//        int result = 0;
-//        
-//        for (VkDeviceCreateFlagBits flag : flags)
-//        {
-//            result |= flag.valueOf();
-//        }
-//            
-//        return result;
-//    }
-//    
     public void setFlags(EnumSet<VkDeviceCreateFlagBits> flags)
     {
         this.flags = flags;

@@ -23,7 +23,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkImageDrmFormatModifierExplicitCreateInfoEXT extends VulkanCreateInfoStructure
 {
-    private long                            pNext;
     private long                            drmFormatModifier;
     private int                             drmFormatModifierPlaneCount;
     private LinkedList<VkSubresourceLayout> planeLayouts = new LinkedList<VkSubresourceLayout>();
@@ -31,16 +30,6 @@ public class VkImageDrmFormatModifierExplicitCreateInfoEXT extends VulkanCreateI
     public VkImageDrmFormatModifierExplicitCreateInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public long getDrmFormatModifier()

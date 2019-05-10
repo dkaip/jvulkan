@@ -5,23 +5,12 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkDebugUtilsLabelEXTlabelInfo extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private String  labelName;
     private float[] color;
     
     public VkDebugUtilsLabelEXTlabelInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_DEBUG_UTILS_LABEL_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public String getLabelName()

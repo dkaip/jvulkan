@@ -32,7 +32,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkSurfaceKHR;
 
 public class VkSwapchainCreateInfoKHR extends VulkanCreateInfoStructure
 {
-    private long                            pNext;
     private EnumSet<VkSwapchainCreateFlagBitsKHR> flags = EnumSet.noneOf(VkSwapchainCreateFlagBitsKHR.class);
     private VkSurfaceKHR                    surface;
     private int                             minImageCount;
@@ -52,16 +51,6 @@ public class VkSwapchainCreateInfoKHR extends VulkanCreateInfoStructure
     public VkSwapchainCreateInfoKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkSwapchainCreateFlagBitsKHR> getFlags()

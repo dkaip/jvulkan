@@ -24,7 +24,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkStencilOpState;
 
 public class VkPipelineDepthStencilStateCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                                pNext;
     private EnumSet<VkPipelineDepthStencilStateCreateFlagBits>  flags = EnumSet.noneOf(VkPipelineDepthStencilStateCreateFlagBits.class);
     private boolean                                             depthTestEnable;
     private boolean                                             depthWriteEnable;
@@ -39,16 +38,6 @@ public class VkPipelineDepthStencilStateCreateInfo extends VulkanCreateInfoStruc
     public VkPipelineDepthStencilStateCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkPipelineDepthStencilStateCreateFlagBits> getFlags()

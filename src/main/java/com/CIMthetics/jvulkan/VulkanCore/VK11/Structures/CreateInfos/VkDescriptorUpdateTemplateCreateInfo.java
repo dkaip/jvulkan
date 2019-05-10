@@ -28,7 +28,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkDescriptorUpdateTempl
 
 public class VkDescriptorUpdateTemplateCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                                pNext;
     private EnumSet<VkDescriptorUpdateTemplateCreateFlagBits>   flags = EnumSet.noneOf(VkDescriptorUpdateTemplateCreateFlagBits.class);
     private Collection<VkDescriptorUpdateTemplateEntry>         descriptorUpdateEntries;
     private VkDescriptorUpdateTemplateType                      templateType;
@@ -40,16 +39,6 @@ public class VkDescriptorUpdateTemplateCreateInfo extends VulkanCreateInfoStruct
     public VkDescriptorUpdateTemplateCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkDescriptorUpdateTemplateCreateFlagBits> getFlags()

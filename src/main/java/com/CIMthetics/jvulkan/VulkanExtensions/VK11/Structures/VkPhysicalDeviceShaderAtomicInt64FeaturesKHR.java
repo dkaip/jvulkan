@@ -20,23 +20,12 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceShaderAtomicInt64FeaturesKHR extends VulkanCreateInfoStructure
 {
-    private long                    pNext;
     private boolean                 shaderBufferInt64Atomics;
     private boolean                 shaderSharedInt64Atomics;
     
     public VkPhysicalDeviceShaderAtomicInt64FeaturesKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isShaderBufferInt64Atomics()

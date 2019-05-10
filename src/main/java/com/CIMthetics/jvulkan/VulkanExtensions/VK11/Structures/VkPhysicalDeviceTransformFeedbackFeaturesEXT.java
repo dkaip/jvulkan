@@ -21,7 +21,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkAccelerationStruct
 
 public class VkPhysicalDeviceTransformFeedbackFeaturesEXT extends VulkanCreateInfoStructure
 {
-    private long                        pNext;
     private VkAccelerationStructureNV  accelerationStructure;
     private boolean                     transformFeedback;
     private boolean                     geometryStreams;
@@ -29,16 +28,6 @@ public class VkPhysicalDeviceTransformFeedbackFeaturesEXT extends VulkanCreateIn
     public VkPhysicalDeviceTransformFeedbackFeaturesEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkAccelerationStructureNV getAccelerationStructure()

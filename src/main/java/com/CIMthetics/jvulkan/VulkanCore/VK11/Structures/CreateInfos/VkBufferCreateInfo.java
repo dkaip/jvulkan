@@ -24,7 +24,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 
 public class VkBufferCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                            pNext;
     private EnumSet<VkBufferCreateFlagBits> flags = EnumSet.noneOf(VkBufferCreateFlagBits.class);
     private long                            size;
     private EnumSet<VkBufferUsageFlagBits>  usage = EnumSet.noneOf(VkBufferUsageFlagBits.class);
@@ -34,16 +33,6 @@ public class VkBufferCreateInfo extends VulkanCreateInfoStructure
     public VkBufferCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkBufferCreateFlagBits> getFlags()

@@ -21,23 +21,12 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkPipelineRasterizatio
 
 public class VkPipelineRasterizationStateStreamCreateInfoEXT extends VulkanCreateInfoStructure
 {
-    private long                                                pNext;
     private VkPipelineRasterizationStateStreamCreateFlagsEXT    flags;
     private int                                                 rasterizationStream;
     
     public VkPipelineRasterizationStateStreamCreateInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkPipelineRasterizationStateStreamCreateFlagsEXT getFlags()

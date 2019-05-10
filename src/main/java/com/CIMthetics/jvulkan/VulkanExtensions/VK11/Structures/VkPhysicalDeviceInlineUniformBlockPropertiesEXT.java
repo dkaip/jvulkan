@@ -20,7 +20,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceInlineUniformBlockPropertiesEXT extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private long    maxInlineUniformBlockSize;
     private long    maxPerStageDescriptorInlineUniformBlocks;
     private long    maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks;
@@ -30,16 +29,6 @@ public class VkPhysicalDeviceInlineUniformBlockPropertiesEXT extends VulkanCreat
     public VkPhysicalDeviceInlineUniformBlockPropertiesEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public long getMaxInlineUniformBlockSize()

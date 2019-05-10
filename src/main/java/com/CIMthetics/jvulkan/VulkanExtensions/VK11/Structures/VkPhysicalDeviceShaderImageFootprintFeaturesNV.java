@@ -20,7 +20,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceShaderImageFootprintFeaturesNV extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private boolean imageFootprint;
 
     public VkPhysicalDeviceShaderImageFootprintFeaturesNV()
@@ -33,16 +32,6 @@ public class VkPhysicalDeviceShaderImageFootprintFeaturesNV extends VulkanCreate
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV);
         
         this.imageFootprint = imageFootprint;
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isImageFootprint()

@@ -20,7 +20,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDevicePCIBusInfoPropertiesEXT extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private int     pciDomain;
     private int     pciBus;
     private int     pciDevice;
@@ -29,16 +28,6 @@ public class VkPhysicalDevicePCIBusInfoPropertiesEXT extends VulkanCreateInfoStr
     public VkPhysicalDevicePCIBusInfoPropertiesEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public int getPciDomain()

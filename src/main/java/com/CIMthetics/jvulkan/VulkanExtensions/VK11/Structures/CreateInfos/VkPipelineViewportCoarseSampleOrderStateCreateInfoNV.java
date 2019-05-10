@@ -24,23 +24,12 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCoarseSampleOrd
 
 public class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV extends VulkanCreateInfoStructure
 {
-    private long                                    pNext;
     private VkCoarseSampleOrderTypeNV               sampleOrderType;
     private Collection<VkCoarseSampleOrderCustomNV> customSampleOrders;
 
     public VkPipelineViewportCoarseSampleOrderStateCreateInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkCoarseSampleOrderTypeNV getSampleOrderType()

@@ -20,23 +20,12 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkFilterCubicImageViewImageFormatPropertiesEXT extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private boolean filterCubic;
     private boolean filterCubicMinmax;
 
     public VkFilterCubicImageViewImageFormatPropertiesEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isFilterCubic()

@@ -7,7 +7,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkDebugUtilsObjectTagInfoEXT extends VulkanCreateInfoStructure
 {
-    private long            pNext;
     private VkObjectType    objectType;
     private VulkanHandle    objectHandle;
     private long            tagName;
@@ -16,16 +15,6 @@ public class VkDebugUtilsObjectTagInfoEXT extends VulkanCreateInfoStructure
     public VkDebugUtilsObjectTagInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_TAG_INFO_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkObjectType getObjectType()

@@ -20,22 +20,11 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private boolean dedicatedAllocationImageAliasing;
 
     public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isDedicatedAllocationImageAliasing()

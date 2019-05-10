@@ -21,7 +21,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDriverIdKHR;
 
 public class VkPhysicalDeviceDriverPropertiesKHR extends VulkanCreateInfoStructure
 {
-    private long                    pNext;
     private VkDriverIdKHR           driverId;
     private String                  driverName;
     private String                  driverInfo;
@@ -30,16 +29,6 @@ public class VkPhysicalDeviceDriverPropertiesKHR extends VulkanCreateInfoStructu
     public VkPhysicalDeviceDriverPropertiesKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkDriverIdKHR getDriverId()

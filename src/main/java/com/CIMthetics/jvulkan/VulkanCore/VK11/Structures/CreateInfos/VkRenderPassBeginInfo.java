@@ -25,7 +25,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkRect2D;
 
 public class VkRenderPassBeginInfo extends VulkanCreateInfoStructure
 {
-    private long                        pNext;
     private VkRenderPass                renderPass;
     private VkFramebuffer               framebuffer;
     private VkRect2D                    renderArea;
@@ -34,16 +33,6 @@ public class VkRenderPassBeginInfo extends VulkanCreateInfoStructure
     public VkRenderPassBeginInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkRenderPass getRenderPass()

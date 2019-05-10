@@ -20,22 +20,11 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkMemoryPriorityAllocateInfoEXT extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private float   priority;
 
     public VkMemoryPriorityAllocateInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public float getPriority()

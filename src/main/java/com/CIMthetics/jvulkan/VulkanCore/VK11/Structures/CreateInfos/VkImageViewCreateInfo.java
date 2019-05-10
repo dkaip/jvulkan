@@ -27,7 +27,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageSubresourceRange
 
 public class VkImageViewCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                pNext;
     private EnumSet<VkImageViewCreateFlagBits>  flags = EnumSet.noneOf(VkImageViewCreateFlagBits.class);
     private VkImage                             image;
     private VkImageViewType                     viewType;
@@ -38,16 +37,6 @@ public class VkImageViewCreateInfo extends VulkanCreateInfoStructure
     public VkImageViewCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkImageViewCreateFlagBits> getFlags()

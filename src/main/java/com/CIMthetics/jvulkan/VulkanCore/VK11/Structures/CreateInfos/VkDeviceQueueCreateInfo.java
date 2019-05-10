@@ -35,7 +35,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
  */
 public class VkDeviceQueueCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                    pNext;
     private EnumSet<VkDeviceQueueCreateFlagBits>    flags = EnumSet.noneOf(VkDeviceQueueCreateFlagBits.class);
     private int                                     queueFamilyIndex;
     private int                                     queueCount;
@@ -44,16 +43,6 @@ public class VkDeviceQueueCreateInfo extends VulkanCreateInfoStructure
     public VkDeviceQueueCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO);
-    }
-    
-    public long getpNext()
-    {
-        return pNext;
-    }
-    
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
     
     public EnumSet<VkDeviceQueueCreateFlagBits> getFlags()
@@ -66,18 +55,6 @@ public class VkDeviceQueueCreateInfo extends VulkanCreateInfoStructure
         this.flags = flags;
     }
     
-//    int getFlagsAsInt()
-//    {
-//        int result = 0;
-//        
-//        for (VkDeviceQueueCreateFlagBits flag : flags)
-//        {
-//            result |= flag.valueOf();
-//        }
-//            
-//        return result;
-//    }
-//    
     public int getQueueFamilyIndex()
     {
         return queueFamilyIndex;

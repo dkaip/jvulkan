@@ -21,22 +21,11 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkMemoryRequirements2 extends VulkanCreateInfoStructure
 {
-    private long                    pNext;
     private VkMemoryRequirements    memoryRequirements;
 
     public VkMemoryRequirements2()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_MEMORY_REQUIREMENTS_2);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkMemoryRequirements getMemoryRequirements()

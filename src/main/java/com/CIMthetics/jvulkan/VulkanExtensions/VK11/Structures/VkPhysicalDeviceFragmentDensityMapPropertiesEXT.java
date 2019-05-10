@@ -21,7 +21,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceFragmentDensityMapPropertiesEXT extends VulkanCreateInfoStructure
 {
-    private long        pNext;
     private VkExtent2D  minFragmentDensityTexelSize;
     private VkExtent2D  maxFragmentDensityTexelSize;
     private boolean     fragmentDensityInvocations;
@@ -29,16 +28,6 @@ public class VkPhysicalDeviceFragmentDensityMapPropertiesEXT extends VulkanCreat
     public VkPhysicalDeviceFragmentDensityMapPropertiesEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkExtent2D getMinFragmentDensityTexelSize()

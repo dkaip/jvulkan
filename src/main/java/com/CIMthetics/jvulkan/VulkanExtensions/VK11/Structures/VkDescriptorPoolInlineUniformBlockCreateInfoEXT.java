@@ -20,22 +20,11 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkDescriptorPoolInlineUniformBlockCreateInfoEXT extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private long    maxInlineUniformBlockBindings;
 
     public VkDescriptorPoolInlineUniformBlockCreateInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public long getMaxInlineUniformBlockBindings()

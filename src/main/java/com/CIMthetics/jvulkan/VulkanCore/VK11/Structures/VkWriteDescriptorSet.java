@@ -25,7 +25,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkWriteDescriptorSet extends VulkanCreateInfoStructure
 {
-    private long                                pNext;
     private VkDescriptorSet                     dstSet;
     private int                                 dstBinding;
     private int                                 dstArrayElement;
@@ -37,16 +36,6 @@ public class VkWriteDescriptorSet extends VulkanCreateInfoStructure
     public VkWriteDescriptorSet()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkDescriptorSet getDstSet()

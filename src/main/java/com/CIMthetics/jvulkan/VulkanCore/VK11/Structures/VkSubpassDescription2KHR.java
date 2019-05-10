@@ -27,7 +27,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkSubpassDescription2KHR extends VulkanCreateInfoStructure
 {
-    private long                                    pNext;
     private EnumSet<VkSubpassDescriptionFlagBits>   flags = EnumSet.noneOf(VkSubpassDescriptionFlagBits.class);
     private VkPipelineBindPoint                     pipelineBindPoint;
     private BitSet                                  viewMask = new BitSet(32); // The c++ variable is only 32 bits
@@ -40,16 +39,6 @@ public class VkSubpassDescription2KHR extends VulkanCreateInfoStructure
     public VkSubpassDescription2KHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_2_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkSubpassDescriptionFlagBits> getFlags()

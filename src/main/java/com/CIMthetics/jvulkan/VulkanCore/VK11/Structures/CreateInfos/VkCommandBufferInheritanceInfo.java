@@ -25,7 +25,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkRenderPass;
 
 public class VkCommandBufferInheritanceInfo extends VulkanCreateInfoStructure
 {
-    private long                                        pNext;
     private VkRenderPass                                renderPass;
     private int                                         subpass;
     private VkFramebuffer                               framebuffer;
@@ -36,16 +35,6 @@ public class VkCommandBufferInheritanceInfo extends VulkanCreateInfoStructure
     public VkCommandBufferInheritanceInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkRenderPass getRenderPass()

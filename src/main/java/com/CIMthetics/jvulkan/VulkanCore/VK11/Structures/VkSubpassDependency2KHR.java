@@ -25,7 +25,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkSubpassDependency2KHR extends VulkanCreateInfoStructure
 {
-    private long                                pNext;
     private int                                 srcSubpass;
     private int                                 dstSubpass;
     private EnumSet<VkPipelineStageFlagBits>    srcStageMask = EnumSet.noneOf(VkPipelineStageFlagBits.class);
@@ -38,16 +37,6 @@ public class VkSubpassDependency2KHR extends VulkanCreateInfoStructure
     public VkSubpassDependency2KHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_SUBPASS_DEPENDENCY_2_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public int getSrcSubpass()

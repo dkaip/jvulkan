@@ -40,23 +40,12 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
  */
 public class VkPipelineTessellationStateCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                                pNext;
     private EnumSet<VkPipelineTessellationStateCreateFlagBits>  flags = EnumSet.noneOf(VkPipelineTessellationStateCreateFlagBits.class);
     private int                                                 patchControlPoints;
 
     public VkPipelineTessellationStateCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkPipelineTessellationStateCreateFlagBits> getFlags()

@@ -24,7 +24,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessengerC
 
 public class VkDebugUtilsMessengerCallbackDataEXT extends VulkanCreateInfoStructure
 {
-    private long                                                    pNext;
     private EnumSet<VkDebugUtilsMessengerCallbackDataFlagBitsEXT>   flags = EnumSet.noneOf(VkDebugUtilsMessengerCallbackDataFlagBitsEXT.class);
     private String                                                  messageIdName;
     private int                                                     messageIdNumber;
@@ -36,16 +35,6 @@ public class VkDebugUtilsMessengerCallbackDataEXT extends VulkanCreateInfoStruct
     public VkDebugUtilsMessengerCallbackDataEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CALLBACK_DATA_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkDebugUtilsMessengerCallbackDataFlagBitsEXT> getFlags()

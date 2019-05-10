@@ -21,22 +21,11 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkMemoryOverallocation
 
 public class VkDeviceMemoryOverallocationCreateInfoAMD extends VulkanCreateInfoStructure
 {
-    private long                                pNext;
     private VkMemoryOverallocationBehaviorAMD   overallocationBehavior;
 
     public VkDeviceMemoryOverallocationCreateInfoAMD()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkMemoryOverallocationBehaviorAMD getOverallocationBehavior()

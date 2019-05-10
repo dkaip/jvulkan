@@ -22,7 +22,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkAccelerationStruct
 
 public class VkBindAccelerationStructureMemoryInfoNV extends VulkanCreateInfoStructure
 {
-    private long                        pNext;
     private VkAccelerationStructureNV   accelerationStructure;
     private VkDeviceMemory              memory;
     private long                        memoryOffset;
@@ -31,16 +30,6 @@ public class VkBindAccelerationStructureMemoryInfoNV extends VulkanCreateInfoStr
     public VkBindAccelerationStructureMemoryInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_BIND_ACCELERATION_STRUCTURE_MEMORY_INFO_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkAccelerationStructureNV getAccelerationStructure()

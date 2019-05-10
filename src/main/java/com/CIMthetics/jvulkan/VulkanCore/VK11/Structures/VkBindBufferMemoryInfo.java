@@ -22,7 +22,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkBindBufferMemoryInfo extends VulkanCreateInfoStructure
 {
-    private long            pNext;
     private VkBuffer        buffer;
     private VkDeviceMemory  memory;
     private long            memoryOffset;
@@ -30,16 +29,6 @@ public class VkBindBufferMemoryInfo extends VulkanCreateInfoStructure
     public VkBindBufferMemoryInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkBuffer getBuffer()

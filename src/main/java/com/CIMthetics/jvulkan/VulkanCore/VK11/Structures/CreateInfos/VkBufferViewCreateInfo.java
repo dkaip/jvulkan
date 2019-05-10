@@ -24,7 +24,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkBuffer;
 
 public class VkBufferViewCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                pNext;
     private EnumSet<VkBufferViewCreateFlagBits> flags = EnumSet.noneOf(VkBufferViewCreateFlagBits.class);
     private VkBuffer                            buffer;
     private VkFormat                            format;
@@ -34,16 +33,6 @@ public class VkBufferViewCreateInfo extends VulkanCreateInfoStructure
     public VkBufferViewCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkBufferViewCreateFlagBits> getFlags()

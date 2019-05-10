@@ -12,7 +12,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayModeKHR;
 
 public class VkDisplaySurfaceCreateInfoKHR extends VulkanCreateInfoStructure
 {
-    private long                                        pNext;
     private EnumSet<VkDisplaySurfaceCreateFlagBitsKHR>  flags = EnumSet.noneOf(VkDisplaySurfaceCreateFlagBitsKHR.class);
     private VkDisplayModeKHR                            displayMode;
     private int                                         planeIndex;
@@ -25,16 +24,6 @@ public class VkDisplaySurfaceCreateInfoKHR extends VulkanCreateInfoStructure
     public VkDisplaySurfaceCreateInfoKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkDisplaySurfaceCreateFlagBitsKHR> getFlags()

@@ -20,23 +20,12 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceInlineUniformBlockFeaturesEXT extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private boolean inlineUniformBlock;
     private boolean descriptorBindingInlineUniformBlockUpdateAfterBind;
 
     public VkPhysicalDeviceInlineUniformBlockFeaturesEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isInlineUniformBlock()

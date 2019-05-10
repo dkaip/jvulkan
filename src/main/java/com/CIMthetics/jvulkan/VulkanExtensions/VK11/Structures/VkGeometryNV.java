@@ -24,7 +24,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkGeometryTypeNV;
 
 public class VkGeometryNV extends VulkanCreateInfoStructure
 {
-    private long                            pNext;
     private VkGeometryTypeNV               geometryType;
     private VkGeometryDataNV               geometry;
     private EnumSet<VkGeometryFlagBitsNV>  flags = EnumSet.noneOf(VkGeometryFlagBitsNV.class);
@@ -32,16 +31,6 @@ public class VkGeometryNV extends VulkanCreateInfoStructure
     public VkGeometryNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_GEOMETRY_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkGeometryTypeNV getGeometryType()

@@ -22,23 +22,12 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 
 public class VkCommandBufferBeginInfo extends VulkanCreateInfoStructure
 {
-    private long                                    pNext;
     private EnumSet<VkCommandBufferUsageFlagBits>   flags = EnumSet.noneOf(VkCommandBufferUsageFlagBits.class);
     private VkCommandBufferInheritanceInfo          inheritanceInfo;
     
     public VkCommandBufferBeginInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkCommandBufferUsageFlagBits> getFlags()

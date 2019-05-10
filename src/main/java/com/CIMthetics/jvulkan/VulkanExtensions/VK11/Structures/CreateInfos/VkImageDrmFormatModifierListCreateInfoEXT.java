@@ -20,23 +20,12 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkImageDrmFormatModifierListCreateInfoEXT extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private int     drmFormatModifierCount;
     private long[]  drmFormatModifiers;
     
     public VkImageDrmFormatModifierListCreateInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public int getDrmFormatModifierCount()

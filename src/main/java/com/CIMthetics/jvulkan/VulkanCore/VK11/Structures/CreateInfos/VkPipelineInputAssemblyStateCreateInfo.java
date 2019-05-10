@@ -23,7 +23,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 
 public class VkPipelineInputAssemblyStateCreateInfo extends VulkanCreateInfoStructure
 {
-    private long                                                pNext;
     private EnumSet<VkPipelineInputAssemblyStateCreateFlagBits> flags = EnumSet.noneOf(VkPipelineInputAssemblyStateCreateFlagBits.class);
     private VkPrimitiveTopology                                 topology;
     private boolean                                             primitiveRestartEnable;
@@ -31,16 +30,6 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VulkanCreateInfoStru
     public VkPipelineInputAssemblyStateCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public EnumSet<VkPipelineInputAssemblyStateCreateFlagBits> getFlags()

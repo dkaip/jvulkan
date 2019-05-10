@@ -20,23 +20,12 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceCooperativeMatrixFeaturesNV extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private boolean cooperativeMatrix;
     private boolean cooperativeMatrixRobustBufferAccess;
 
     public VkPhysicalDeviceCooperativeMatrixFeaturesNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isCooperativeMatrix()

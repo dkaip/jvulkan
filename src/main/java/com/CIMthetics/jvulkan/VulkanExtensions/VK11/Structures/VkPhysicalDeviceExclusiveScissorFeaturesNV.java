@@ -20,7 +20,6 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 
 public class VkPhysicalDeviceExclusiveScissorFeaturesNV extends VulkanCreateInfoStructure
 {
-    private long    pNext;
     private boolean exclusiveScissor;
     
     public VkPhysicalDeviceExclusiveScissorFeaturesNV()
@@ -33,16 +32,6 @@ public class VkPhysicalDeviceExclusiveScissorFeaturesNV extends VulkanCreateInfo
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV);
         
         this.exclusiveScissor = exclusiveScissor;
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public boolean isExclusiveScissor()

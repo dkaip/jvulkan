@@ -22,7 +22,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkResolveModeFlagBitsK
 
 public class VkSubpassDescriptionDepthStencilResolveKHR extends VulkanCreateInfoStructure
 {
-    private long                        pNext;
     private VkResolveModeFlagBitsKHR    depthResolveMode;
     private VkResolveModeFlagBitsKHR    stencilResolveMode;
     private VkAttachmentReference2KHR   depthStencilResolveAttachment;
@@ -30,16 +29,6 @@ public class VkSubpassDescriptionDepthStencilResolveKHR extends VulkanCreateInfo
     public VkSubpassDescriptionDepthStencilResolveKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR);
-    }
-
-    public long getpNext()
-    {
-        return pNext;
-    }
-
-    public void setpNext(long pNext)
-    {
-        this.pNext = pNext;
     }
 
     public VkResolveModeFlagBitsKHR getDepthResolveMode()

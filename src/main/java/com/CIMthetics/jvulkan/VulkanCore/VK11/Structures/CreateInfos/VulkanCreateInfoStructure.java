@@ -19,8 +19,8 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 
 public abstract class VulkanCreateInfoStructure
 {
-    private VkStructureType sType;
-    private Object          pNext;
+    private VkStructureType             sType;
+    private VulkanCreateInfoStructure   pNext;
 
     public VulkanCreateInfoStructure(VkStructureType sType)
     {
@@ -33,12 +33,12 @@ public abstract class VulkanCreateInfoStructure
         return sType;
     }
     
-    public Object getpNext()
+    public VulkanCreateInfoStructure getpNext()
     {
         return pNext;
     }
     
-    public void setpNext(Object pNext)
+    public void setpNext(VulkanCreateInfoStructure pNext)
     {
         this.pNext = pNext;
     }

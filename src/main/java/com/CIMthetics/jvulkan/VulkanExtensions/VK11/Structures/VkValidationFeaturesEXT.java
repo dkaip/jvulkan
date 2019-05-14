@@ -37,8 +37,7 @@ public class VkValidationFeaturesEXT extends VulkanCreateInfoStructure
         return enabledValidationFeatures;
     }
 
-    public void setEnabledValidationFeatures(
-            Collection<VkValidationFeatureEnableEXT> enabledValidationFeatures)
+    public void setEnabledValidationFeatures(Collection<VkValidationFeatureEnableEXT> enabledValidationFeatures)
     {
         this.enabledValidationFeatures = enabledValidationFeatures;
     }

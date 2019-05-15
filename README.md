@@ -49,7 +49,7 @@ In addition to this library you will need to retrieve and build the
 library provides the linkage between code written in Java using this library and 
 the Vulkan® SDK provided by LUNARG. 
 
-##Documentation
+## Documentation
 
 At the current time, refer to the documentation provided by the 
 [KRONOS® GROUP](https://www.khronos.org/). It may be found here 

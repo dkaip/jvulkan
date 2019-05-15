@@ -70,4 +70,17 @@ public class VkPhysicalDeviceDriverPropertiesKHR extends VulkanCreateInfoStructu
     {
         this.conformanceVersion = conformanceVersion;
     }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkPhysicalDeviceDriverPropertiesKHR\n"));
+        sb.append(String.format("    driverId:%s\n", driverId.toString()));
+        sb.append(String.format("    driverName:%s\n", driverName));
+        sb.append(String.format("    driverInfo:%s\n", driverInfo));
+        sb.append(String.format("    conformanceVersion:%s\n", conformanceVersion.toString()));
+        
+        return sb.toString();
+    }
 }

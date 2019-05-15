@@ -115,4 +115,20 @@ public class VkPhysicalDeviceRayTracingPropertiesNV extends VulkanCreateInfoStru
         this.maxDescriptorSetAccelerationStructures = maxDescriptorSetAccelerationStructures;
     }
 
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkPhysicalDeviceRayTracingPropertiesNV\n"));
+        sb.append(String.format("    shaderGroupHandleSize:%d\n", shaderGroupHandleSize));
+        sb.append(String.format("    maxRecursionDepth:%d\n", maxRecursionDepth));
+        sb.append(String.format("    maxShaderGroupStride:%d\n", maxShaderGroupStride));
+        sb.append(String.format("    shaderGroupBaseAlignment:%d\n", shaderGroupBaseAlignment));
+        sb.append(String.format("    maxGeometryCount:%d\n", maxGeometryCount));
+        sb.append(String.format("    maxInstanceCount:%d\n", maxInstanceCount));
+        sb.append(String.format("    maxTriangleCount:%d\n", maxTriangleCount));
+        sb.append(String.format("    maxDescriptorSetAccelerationStructures:%d\n", maxDescriptorSetAccelerationStructures));
+        
+        return sb.toString();
+    }
 }

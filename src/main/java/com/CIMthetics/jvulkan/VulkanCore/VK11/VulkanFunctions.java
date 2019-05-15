@@ -79,6 +79,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkMemoryRequirements;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceFeatures;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceMemoryProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceProperties;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceProperties2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkQueueFamilyProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkRect2D;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSurfaceCapabilitiesKHR;
@@ -404,6 +405,20 @@ public class VulkanFunctions
             VkPhysicalDeviceProperties deviceProperties)
     {
         v11ProxyLibrary.vkGetPhysicalDeviceProperties(physicalDevice, deviceProperties);
+    }
+    
+    public static void vkGetPhysicalDeviceProperties2(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceProperties2 deviceProperties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceProperties2(physicalDevice, deviceProperties);
+    }
+    
+    public static void vkGetPhysicalDeviceProperties2KHR(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceProperties2 deviceProperties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceProperties2KHR(physicalDevice, deviceProperties);
     }
     
     public static void vkGetPhysicalDeviceFeatures(

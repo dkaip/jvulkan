@@ -31,4 +31,27 @@ public enum VkPointClippingBehavior
     private VkPointClippingBehavior(int value) { this.value = value; }
     
     public int valueOf() { return value; }
+
+    static VkPointClippingBehavior fromValue(int inputValue)
+    {
+        VkPointClippingBehavior result = null;
+        
+        switch(inputValue)
+        {
+            case 0:
+                result = VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES;
+                break;
+            case 1:
+                result = VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY;
+                break;
+        }
+
+        if (inputValue == (VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY.valueOf() - VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES.valueOf() + 1))
+            result = VK_POINT_CLIPPING_BEHAVIOR_RANGE_SIZE;
+        
+        if (result == null)
+            throw new IllegalArgumentException("Illegal value specified for this Enum.");
+
+        return result;
+    }
 }

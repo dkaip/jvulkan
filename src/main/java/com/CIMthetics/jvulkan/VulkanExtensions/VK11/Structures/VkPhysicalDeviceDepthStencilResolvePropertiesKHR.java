@@ -15,40 +15,42 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
+import java.util.EnumSet;
+
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkResolveModeFlagBitsKHR;
 
 public class VkPhysicalDeviceDepthStencilResolvePropertiesKHR extends VulkanCreateInfoStructure
 {
-    private VkResolveModeFlagBitsKHR    supportedDepthResolveModes;
-    private VkResolveModeFlagBitsKHR    supportedStencilResolveModes;
-    private boolean                     independentResolveNone;
-    private boolean                     independentResolve;
+    private EnumSet<VkResolveModeFlagBitsKHR>   supportedDepthResolveModes = EnumSet.noneOf(VkResolveModeFlagBitsKHR.class);
+    private EnumSet<VkResolveModeFlagBitsKHR>   supportedStencilResolveModes = EnumSet.noneOf(VkResolveModeFlagBitsKHR.class);
+    private boolean                             independentResolveNone;
+    private boolean                             independentResolve;
     
     public VkPhysicalDeviceDepthStencilResolvePropertiesKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR);
     }
 
-    public VkResolveModeFlagBitsKHR getSupportedDepthResolveModes()
+    public EnumSet<VkResolveModeFlagBitsKHR> getSupportedDepthResolveModes()
     {
         return supportedDepthResolveModes;
     }
 
     public void setSupportedDepthResolveModes(
-            VkResolveModeFlagBitsKHR supportedDepthResolveModes)
+            EnumSet<VkResolveModeFlagBitsKHR> supportedDepthResolveModes)
     {
         this.supportedDepthResolveModes = supportedDepthResolveModes;
     }
 
-    public VkResolveModeFlagBitsKHR getSupportedStencilResolveModes()
+    public EnumSet<VkResolveModeFlagBitsKHR> getSupportedStencilResolveModes()
     {
         return supportedStencilResolveModes;
     }
 
     public void setSupportedStencilResolveModes(
-            VkResolveModeFlagBitsKHR supportedStencilResolveModes)
+            EnumSet<VkResolveModeFlagBitsKHR> supportedStencilResolveModes)
     {
         this.supportedStencilResolveModes = supportedStencilResolveModes;
     }
@@ -71,6 +73,19 @@ public class VkPhysicalDeviceDepthStencilResolvePropertiesKHR extends VulkanCrea
     public void setIndependentResolve(boolean independentResolve)
     {
         this.independentResolve = independentResolve;
+    }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkPhysicalDeviceDepthStencilResolvePropertiesKHR\n"));
+        sb.append(String.format("    supportedDepthResolveModes:%s\n", supportedDepthResolveModes.toString()));
+        sb.append(String.format("    supportedStencilResolveModes:%s\n", supportedStencilResolveModes.toString()));
+        sb.append(String.format("    independentResolveNone:%b\n", independentResolveNone));
+        sb.append(String.format("    independentResolve:%b\n", independentResolve));
+        
+        return sb.toString();
     }
 
 }

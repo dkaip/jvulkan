@@ -59,4 +59,16 @@ public class VkPhysicalDeviceShadingRateImagePropertiesNV extends VulkanCreateIn
     {
         this.shadingRateMaxCoarseSamples = shadingRateMaxCoarseSamples;
     }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%nVkPhysicalDeviceShadingRateImagePropertiesNV%n"));
+        sb.append(String.format("    shadingRateTexelSize:%s%n", shadingRateTexelSize.toString()));
+        sb.append(String.format("    shadingRatePaletteSize:%d%n", shadingRatePaletteSize));
+        sb.append(String.format("    shadingRateMaxCoarseSamples:%d%n", shadingRateMaxCoarseSamples));
+        
+        return sb.toString();
+    }
 }

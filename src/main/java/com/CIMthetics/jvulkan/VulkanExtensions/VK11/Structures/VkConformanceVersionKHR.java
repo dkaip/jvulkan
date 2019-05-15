@@ -61,4 +61,17 @@ public class VkConformanceVersionKHR
     {
         this.patch = patch;
     }
+    
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkConformanceVersionKHR\n"));
+        sb.append(String.format("    major:%d\n", (int)major));
+        sb.append(String.format("    minor:%d\n", (int)minor));
+        sb.append(String.format("    subminor:%d\n", (int)subminor));
+        sb.append(String.format("    patch:%d\n", (int)patch));
+        
+        return sb.toString();
+    }
 }

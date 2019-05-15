@@ -37,4 +37,51 @@ public enum VkDriverIdKHR
     private VkDriverIdKHR(int value) { this.value = value; }
     
     public int valueOf() { return value; }
+
+    static VkDriverIdKHR fromValue(int inputValue)
+    {
+        VkDriverIdKHR result = null;
+        
+        switch(inputValue)
+        {
+            case 1:
+                result = VK_DRIVER_ID_AMD_PROPRIETARY_KHR;
+                break;
+            case 2:
+                result = VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR;
+                break;
+            case 3:
+                result = VK_DRIVER_ID_MESA_RADV_KHR;
+                break;
+            case 4:
+                result =  VK_DRIVER_ID_NVIDIA_PROPRIETARY_KHR;
+                break;
+            case 5:
+                result = VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS_KHR;
+                break;
+            case 6:
+                result = VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA_KHR;
+                break;
+            case 7:
+                result = VK_DRIVER_ID_IMAGINATION_PROPRIETARY_KHR;
+                break;
+            case 8:
+                result = VK_DRIVER_ID_QUALCOMM_PROPRIETARY_KHR;
+                break;
+            case 9:
+                result = VK_DRIVER_ID_ARM_PROPRIETARY_KHR;
+                break;
+            case 10:
+                result = VK_DRIVER_ID_GOOGLE_PASTEL_KHR;
+                break;
+        }
+
+        if (inputValue == (VK_DRIVER_ID_GOOGLE_PASTEL_KHR.valueOf() - VK_DRIVER_ID_AMD_PROPRIETARY_KHR.valueOf() + 1))
+            result = VK_DRIVER_ID_GOOGLE_PASTEL_KHR;
+        
+        if (result == null)
+            throw new IllegalArgumentException("Illegal value specified for this Enum.");
+
+        return result;
+    }
 }

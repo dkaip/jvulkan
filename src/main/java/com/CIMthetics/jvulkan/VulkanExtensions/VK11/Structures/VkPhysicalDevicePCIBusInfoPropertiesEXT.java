@@ -70,4 +70,16 @@ public class VkPhysicalDevicePCIBusInfoPropertiesEXT extends VulkanCreateInfoStr
         this.pciFunction = pciFunction;
     }
 
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkPhysicalDeviceBlendOperationAdvancedPropertiesEXT\n"));
+        sb.append(String.format("    pciDomain:%d\n", pciDomain));
+        sb.append(String.format("    pciBus:%d\n", pciBus));
+        sb.append(String.format("    pciDevice:%d\n", pciDevice));
+        sb.append(String.format("    pciFunction:%d\n", pciFunction));
+        
+        return sb.toString();
+    }
 }

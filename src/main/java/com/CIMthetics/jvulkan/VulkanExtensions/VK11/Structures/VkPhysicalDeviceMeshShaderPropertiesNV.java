@@ -15,6 +15,8 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
+import java.util.Arrays;
+
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 
@@ -22,11 +24,11 @@ public class VkPhysicalDeviceMeshShaderPropertiesNV extends VulkanCreateInfoStru
 {
     private int     maxDrawMeshTasksCount;
     private int     maxTaskWorkGroupInvocations;
-    private int[]   maxTaskWorkGroupSize = new int[3];
+    private int[]   maxTaskWorkGroupSize;
     private int     maxTaskTotalMemorySize;
     private int     maxTaskOutputCount;
     private int     maxMeshWorkGroupInvocations;
-    private int[]   maxMeshWorkGroupSize = new int[3];
+    private int[]   maxMeshWorkGroupSize;
     private int     maxMeshTotalMemorySize;
     private int     maxMeshOutputVertices;
     private int     maxMeshOutputPrimitives;
@@ -64,6 +66,11 @@ public class VkPhysicalDeviceMeshShaderPropertiesNV extends VulkanCreateInfoStru
         return maxTaskWorkGroupSize;
     }
 
+    public void setMaxTaskWorkGroupSize(int[] maxTaskWorkGroupSize)
+    {
+        this.maxTaskWorkGroupSize = maxTaskWorkGroupSize;
+    }
+
     public int getMaxTaskTotalMemorySize()
     {
         return maxTaskTotalMemorySize;
@@ -97,6 +104,11 @@ public class VkPhysicalDeviceMeshShaderPropertiesNV extends VulkanCreateInfoStru
     public int[] getMaxMeshWorkGroupSize()
     {
         return maxMeshWorkGroupSize;
+    }
+
+    public void setMaxMeshWorkGroupSize(int[] maxMeshWorkGroupSize)
+    {
+        this.maxMeshWorkGroupSize = maxMeshWorkGroupSize;
     }
 
     public int getMaxMeshTotalMemorySize()
@@ -159,5 +171,33 @@ public class VkPhysicalDeviceMeshShaderPropertiesNV extends VulkanCreateInfoStru
             int meshOutputPerPrimitiveGranularity)
     {
         this.meshOutputPerPrimitiveGranularity = meshOutputPerPrimitiveGranularity;
+    }
+
+    @Override
+    public String toString()
+    {
+        if (maxTaskWorkGroupSize == null)
+            maxTaskWorkGroupSize = new int[0];
+        
+        if (maxMeshWorkGroupSize == null)
+            maxMeshWorkGroupSize = new int[0];
+        
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkPhysicalDeviceMeshShaderPropertiesNV\n"));
+        sb.append(String.format("    maxDrawMeshTasksCount:%d\n", maxDrawMeshTasksCount));
+        sb.append(String.format("    maxTaskWorkGroupInvocations:%d\n", maxTaskWorkGroupInvocations));
+        sb.append(String.format("    maxTaskWorkGroupSize:%s\n", Arrays.toString(maxTaskWorkGroupSize)));
+        sb.append(String.format("    maxTaskTotalMemorySize:%d\n", maxTaskTotalMemorySize));
+        sb.append(String.format("    maxTaskOutputCount:%d\n", maxTaskOutputCount));
+        sb.append(String.format("    maxMeshWorkGroupInvocations:%d\n", maxMeshWorkGroupInvocations));
+        sb.append(String.format("    maxMeshWorkGroupSize:%s\n", Arrays.toString(maxMeshWorkGroupSize)));
+        sb.append(String.format("    maxMeshTotalMemorySize:%d\n", maxMeshTotalMemorySize));
+        sb.append(String.format("    maxMeshOutputVertices:%d\n", maxMeshOutputVertices));
+        sb.append(String.format("    maxMeshOutputPrimitives:%d\n", maxMeshOutputPrimitives));
+        sb.append(String.format("    maxMeshMultiviewViewCount:%d\n", maxMeshMultiviewViewCount));
+        sb.append(String.format("    meshOutputPerVertexGranularity:%d\n", meshOutputPerVertexGranularity));
+        sb.append(String.format("    meshOutputPerPrimitiveGranularity:%d\n", meshOutputPerPrimitiveGranularity));
+        
+        return sb.toString();
     }
 }

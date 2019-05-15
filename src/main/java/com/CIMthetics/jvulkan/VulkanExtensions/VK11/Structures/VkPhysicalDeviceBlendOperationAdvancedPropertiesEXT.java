@@ -37,8 +37,7 @@ public class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends VulkanC
         return advancedBlendMaxColorAttachments;
     }
 
-    public void setAdvancedBlendMaxColorAttachments(
-            int advancedBlendMaxColorAttachments)
+    void setAdvancedBlendMaxColorAttachments(int advancedBlendMaxColorAttachments)
     {
         this.advancedBlendMaxColorAttachments = advancedBlendMaxColorAttachments;
     }
@@ -48,8 +47,7 @@ public class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends VulkanC
         return advancedBlendIndependentBlend;
     }
 
-    public void setAdvancedBlendIndependentBlend(
-            boolean advancedBlendIndependentBlend)
+    void setAdvancedBlendIndependentBlend(boolean advancedBlendIndependentBlend)
     {
         this.advancedBlendIndependentBlend = advancedBlendIndependentBlend;
     }
@@ -59,8 +57,7 @@ public class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends VulkanC
         return advancedBlendNonPremultipliedSrcColor;
     }
 
-    public void setAdvancedBlendNonPremultipliedSrcColor(
-            boolean advancedBlendNonPremultipliedSrcColor)
+    void setAdvancedBlendNonPremultipliedSrcColor(boolean advancedBlendNonPremultipliedSrcColor)
     {
         this.advancedBlendNonPremultipliedSrcColor = advancedBlendNonPremultipliedSrcColor;
     }
@@ -70,8 +67,7 @@ public class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends VulkanC
         return advancedBlendNonPremultipliedDstColor;
     }
 
-    public void setAdvancedBlendNonPremultipliedDstColor(
-            boolean advancedBlendNonPremultipliedDstColor)
+    void setAdvancedBlendNonPremultipliedDstColor(boolean advancedBlendNonPremultipliedDstColor)
     {
         this.advancedBlendNonPremultipliedDstColor = advancedBlendNonPremultipliedDstColor;
     }
@@ -81,8 +77,7 @@ public class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends VulkanC
         return advancedBlendCorrelatedOverlap;
     }
 
-    public void setAdvancedBlendCorrelatedOverlap(
-            boolean advancedBlendCorrelatedOverlap)
+    void setAdvancedBlendCorrelatedOverlap(boolean advancedBlendCorrelatedOverlap)
     {
         this.advancedBlendCorrelatedOverlap = advancedBlendCorrelatedOverlap;
     }
@@ -92,9 +87,23 @@ public class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends VulkanC
         return advancedBlendAllOperations;
     }
 
-    public void setAdvancedBlendAllOperations(boolean advancedBlendAllOperations)
+    void setAdvancedBlendAllOperations(boolean advancedBlendAllOperations)
     {
         this.advancedBlendAllOperations = advancedBlendAllOperations;
     }
     
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkPhysicalDeviceBlendOperationAdvancedPropertiesEXT\n"));
+        sb.append(String.format("    advancedBlendMaxColorAttachments:%d\n", advancedBlendMaxColorAttachments));
+        sb.append(String.format("    advancedBlendIndependentBlend:%b\n", advancedBlendIndependentBlend));
+        sb.append(String.format("    advancedBlendNonPremultipliedSrcColor:%b\n", advancedBlendNonPremultipliedSrcColor));
+        sb.append(String.format("    advancedBlendNonPremultipliedDstColor:%b\n", advancedBlendNonPremultipliedDstColor));
+        sb.append(String.format("    advancedBlendCorrelatedOverlap:%b\n", advancedBlendCorrelatedOverlap));
+        sb.append(String.format("    advancedBlendAllOperations:%b", advancedBlendAllOperations));
+        
+        return sb.toString();
+    }
 }

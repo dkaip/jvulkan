@@ -35,10 +35,18 @@ public class VkPhysicalDeviceCooperativeMatrixPropertiesNV extends VulkanCreateI
         return cooperativeMatrixSupportedStages;
     }
 
-    public void setCooperativeMatrixSupportedStages(
-            EnumSet<VkShaderStageFlagBits> cooperativeMatrixSupportedStages)
+    public void setCooperativeMatrixSupportedStages(EnumSet<VkShaderStageFlagBits> cooperativeMatrixSupportedStages)
     {
         this.cooperativeMatrixSupportedStages = cooperativeMatrixSupportedStages;
     }
 
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkPhysicalDeviceCooperativeMatrixPropertiesNV\n"));
+        sb.append(String.format("    cooperativeMatrixSupportedStages:%s\n", cooperativeMatrixSupportedStages.toString()));
+        
+        return sb.toString();
+    }
 }

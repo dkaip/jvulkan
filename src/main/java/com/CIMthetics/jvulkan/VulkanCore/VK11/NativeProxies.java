@@ -76,6 +76,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkMemoryRequirements;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceFeatures;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceMemoryProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceProperties;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceProperties2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkQueueFamilyProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkRect2D;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSurfaceCapabilitiesKHR;
@@ -835,6 +836,14 @@ class NativeProxies
     native void vkGetPhysicalDeviceProperties(
             VkPhysicalDevice physicalDevice,
             VkPhysicalDeviceProperties deviceProperties);
+    
+    native void vkGetPhysicalDeviceProperties2(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceProperties2 deviceProperties);
+    
+    native void vkGetPhysicalDeviceProperties2KHR(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceProperties2 deviceProperties);
     
     native void vkGetPhysicalDeviceQueueFamilyProperties(
             VkPhysicalDevice physicalDevice,

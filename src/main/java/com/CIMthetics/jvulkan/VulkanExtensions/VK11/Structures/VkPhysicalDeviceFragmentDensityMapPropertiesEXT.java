@@ -62,4 +62,15 @@ public class VkPhysicalDeviceFragmentDensityMapPropertiesEXT extends VulkanCreat
         this.fragmentDensityInvocations = fragmentDensityInvocations;
     }
 
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkPhysicalDeviceFragmentDensityMapPropertiesEXT\n"));
+        sb.append(String.format("    minFragmentDensityTexelSize:%s\n", minFragmentDensityTexelSize.toString()));
+        sb.append(String.format("    maxFragmentDensityTexelSize:%s\n", maxFragmentDensityTexelSize.toString()));
+        sb.append(String.format("    fragmentDensityInvocations:%b\n", fragmentDensityInvocations));
+        
+        return sb.toString();
+    }
 }

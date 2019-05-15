@@ -20,6 +20,10 @@ import java.util.EnumSet;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkInstanceCreateFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkValidationFeaturesEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkValidationFlagsEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDebugReportCallbackCreateInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDebugUtilsMessengerCreateInfoEXT;
 
 public class VkInstanceCreateInfo extends VulkanCreateInfoStructure
 {
@@ -75,4 +79,33 @@ public class VkInstanceCreateInfo extends VulkanCreateInfoStructure
     {
         this.enabledExtensionNames = enabledExtensionNames;
     }
+    
+    @Override
+    public void setpNext(VulkanCreateInfoStructure pNext)
+    {
+        /*
+         * Since validation of the full chain must occur in the natives anyway
+         * we will only do a simple validation here.
+         */
+        if ((pNext instanceof VkDebugReportCallbackCreateInfoEXT == true) ||
+            (pNext instanceof VkDebugUtilsMessengerCreateInfoEXT == true))
+        {
+            /*
+             * Because there is special processing for the debug callbacks we 
+             * cannot, at the moment, handle either of these two in the pNext 
+             * chain.
+             */
+            throw new IllegalArgumentException("Unfortunately VkDebugReportCallbackCreateInfoEXT and VkDebugUtilsMessengerCreateInfoEXT are not supported in the pNext chain at the moment...use vkCreateDebugReportCallbackEXT and / or vkCreateDebugUtilsMessengerEXT");
+        }
+        else if ((pNext instanceof VkValidationFeaturesEXT == true) ||
+            (pNext instanceof VkValidationFlagsEXT == true))
+        {
+            super.setpNext(pNext);
+        }
+        else
+        {
+            throw new IllegalArgumentException("For this class pNext may only be a VkDebugReportCallbackCreateInfoEXT, VkDebugUtilsMessengerCreateInfoEXT, VkValidationFeaturesEXT or VkValidationFlagsEXT");
+        }
+    }
+
 }

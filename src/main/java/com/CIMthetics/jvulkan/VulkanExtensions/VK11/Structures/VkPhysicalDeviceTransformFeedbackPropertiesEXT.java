@@ -141,4 +141,23 @@ public class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends VulkanCreate
     {
         this.transformFeedbackDraw = transformFeedbackDraw;
     }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%nVkPhysicalDeviceTransformFeedbackPropertiesEXT%n"));
+        sb.append(String.format("    maxTransformFeedbackStreams:%d%n", maxTransformFeedbackStreams));
+        sb.append(String.format("    maxTransformFeedbackBuffers:%d%n", maxTransformFeedbackBuffers));
+        sb.append(String.format("    maxTransformFeedbackBufferSize:%d%n", maxTransformFeedbackBufferSize));
+        sb.append(String.format("    maxTransformFeedbackStreamDataSize:%d%n", maxTransformFeedbackStreamDataSize));
+        sb.append(String.format("    maxTransformFeedbackBufferDataSize:%d%n", maxTransformFeedbackBufferDataSize));
+        sb.append(String.format("    maxTransformFeedbackBufferDataStride:%d%n", maxTransformFeedbackBufferDataStride));
+        sb.append(String.format("    transformFeedbackQueries:%b%n", transformFeedbackQueries));
+        sb.append(String.format("    transformFeedbackStreamsLinesTriangles:%b%n", transformFeedbackStreamsLinesTriangles));
+        sb.append(String.format("    transformFeedbackRasterizationStreamSelect:%b%n", transformFeedbackRasterizationStreamSelect));
+        sb.append(String.format("    transformFeedbackDraw:%b%n", transformFeedbackDraw));
+        
+        return sb.toString();
+    }
 }

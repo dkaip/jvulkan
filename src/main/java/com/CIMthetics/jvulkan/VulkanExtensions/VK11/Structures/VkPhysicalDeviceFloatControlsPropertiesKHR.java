@@ -225,4 +225,30 @@ public class VkPhysicalDeviceFloatControlsPropertiesKHR extends VulkanCreateInfo
     {
         this.shaderRoundingModeRTZFloat64 = shaderRoundingModeRTZFloat64;
     }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkPhysicalDeviceFloatControlsPropertiesKHR\n"));
+        sb.append(String.format("    separateDenormSettings:%b\n", separateDenormSettings));
+        sb.append(String.format("    separateRoundingModeSettings:%b\n", separateRoundingModeSettings));
+        sb.append(String.format("    shaderSignedZeroInfNanPreserveFloat16:%b\n", shaderSignedZeroInfNanPreserveFloat16));
+        sb.append(String.format("    shaderSignedZeroInfNanPreserveFloat32:%b\n", shaderSignedZeroInfNanPreserveFloat32));
+        sb.append(String.format("    shaderSignedZeroInfNanPreserveFloat64:%b\n", shaderSignedZeroInfNanPreserveFloat64));
+        sb.append(String.format("    shaderDenormPreserveFloat16:%b\n", shaderDenormPreserveFloat16));
+        sb.append(String.format("    shaderDenormPreserveFloat32:%b\n", shaderDenormPreserveFloat32));
+        sb.append(String.format("    shaderDenormPreserveFloat64:%b\n", shaderDenormPreserveFloat64));
+        sb.append(String.format("    shaderDenormFlushToZeroFloat16:%b\n", shaderDenormFlushToZeroFloat16));
+        sb.append(String.format("    shaderDenormFlushToZeroFloat32:%b\n", shaderDenormFlushToZeroFloat32));
+        sb.append(String.format("    shaderDenormFlushToZeroFloat64:%b\n", shaderDenormFlushToZeroFloat64));
+        sb.append(String.format("    shaderRoundingModeRTEFloat16:%b\n", shaderRoundingModeRTEFloat16));
+        sb.append(String.format("    shaderRoundingModeRTEFloat32:%b\n", shaderRoundingModeRTEFloat32));
+        sb.append(String.format("    shaderRoundingModeRTEFloat64:%b\n", shaderRoundingModeRTEFloat64));
+        sb.append(String.format("    shaderRoundingModeRTZFloat16:%b\n", shaderRoundingModeRTZFloat16));
+        sb.append(String.format("    shaderRoundingModeRTZFloat32:%b\n", shaderRoundingModeRTZFloat32));
+        sb.append(String.format("    shaderRoundingModeRTZFloat64:%b\n", shaderRoundingModeRTZFloat64));
+        
+        return sb.toString();
+    }
 }

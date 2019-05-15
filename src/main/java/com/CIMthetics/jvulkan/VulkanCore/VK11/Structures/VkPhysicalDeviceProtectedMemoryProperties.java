@@ -15,55 +15,34 @@
  */
 package com.CIMthetics.jvulkan.VulkanCore.VK11.Structures;
 
-/**
- * VkExtent2D - Structure specifying a two-dimensional extent
- * 
- * @author Douglas Kaip
- *
- */
-public class VkExtent2D
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
+
+public class VkPhysicalDeviceProtectedMemoryProperties extends VulkanCreateInfoStructure
 {
-    private int width;
-    private int height;
-    
-    /**
-     * 
-     * @param width
-     * @param height
-     */
-    public VkExtent2D(int width, int height)
+    private boolean protectedNoFault;
+
+    public VkPhysicalDeviceProtectedMemoryProperties()
     {
-        this.width  = width;
-        this.height = height;
+        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES);
     }
-    
-    public int getWidth()
+
+    public boolean isProtectedNoFault()
     {
-        return width;
+        return protectedNoFault;
     }
-    
-    public void setWidth(int width)
+
+    public void setProtectedNoFault(boolean protectedNoFault)
     {
-        this.width = width;
-    }
-    
-    public int getHeight()
-    {
-        return height;
-    }
-    
-    public void setHeight(int height)
-    {
-        this.height = height;
+        this.protectedNoFault = protectedNoFault;
     }
 
     @Override
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("\nVkExtent2D\n"));
-        sb.append(String.format("    width:%d\n", width));
-        sb.append(String.format("    height:%d\n", height));
+        sb.append(String.format("\nVkPhysicalDeviceProtectedMemoryProperties\n"));
+        sb.append(String.format("    protectedNoFault:%b\n", protectedNoFault));
         
         return sb.toString();
     }

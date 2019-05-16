@@ -20,7 +20,7 @@ Also, do not expect this software to work if you do not have Vulkan drivers avai
 machine for your graphics card.  
 
 Note: This has only been built and tested in a Linux 64 bit environment, 
-at this moment, Fedora 29.  It has been running just fine on a Radeon RX460 with 4GB of RAM. 
+at this moment, Fedora 29 and Fedora 30.  It has been running just fine on a Radeon RX460 with 4GB of RAM. 
 I expect the examples to run fine on a card that has much less memory.
 
 ## Get the code

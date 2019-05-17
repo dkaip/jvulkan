@@ -13,28 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
+package com.CIMthetics.jvulkan.VulkanCore.VK11.Structures;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV extends VulkanCreateInfoStructure
+public class VkPhysicalDeviceFeatures2 extends VulkanCreateInfoStructure
 {
-    private boolean dedicatedAllocationImageAliasing;
+    private VkPhysicalDeviceFeatures    features;  // This will need to be set if this class is used
 
-    public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV()
+    public VkPhysicalDeviceFeatures2()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV);
+        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2);
     }
 
-    public boolean isDedicatedAllocationImageAliasing()
+    public VkPhysicalDeviceFeatures getFeatures()
     {
-        return dedicatedAllocationImageAliasing;
+        return features;
     }
 
-    public void setDedicatedAllocationImageAliasing(boolean dedicatedAllocationImageAliasing)
+    public void setFeatures(VkPhysicalDeviceFeatures features)
     {
-        this.dedicatedAllocationImageAliasing = dedicatedAllocationImageAliasing;
+        this.features = features;
     }
 
 }

@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.VulkanCore.VK11.Structures;
+package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 
 public class VkPhysicalDevice8BitStorageFeaturesKHR extends VulkanCreateInfoStructure
 {
-    private boolean                     storageBuffer8BitAccess;
-    private boolean                     uniformAndStorageBuffer8BitAccess;
-    private boolean                     storagePushConstant8;
-    
+    private boolean storageBuffer8BitAccess;
+    private boolean uniformAndStorageBuffer8BitAccess;
+    private boolean storagePushConstant8;
+
     public VkPhysicalDevice8BitStorageFeaturesKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR);
@@ -59,4 +59,5 @@ public class VkPhysicalDevice8BitStorageFeaturesKHR extends VulkanCreateInfoStru
     {
         this.storagePushConstant8 = storagePushConstant8;
     }
+
 }

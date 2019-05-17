@@ -43,8 +43,7 @@ public class VkPhysicalDeviceConditionalRenderingFeaturesEXT extends VulkanCreat
         return inheritedConditionalRendering;
     }
 
-    public void setInheritedConditionalRendering(
-            boolean inheritedConditionalRendering)
+    public void setInheritedConditionalRendering(boolean inheritedConditionalRendering)
     {
         this.inheritedConditionalRendering = inheritedConditionalRendering;
     }

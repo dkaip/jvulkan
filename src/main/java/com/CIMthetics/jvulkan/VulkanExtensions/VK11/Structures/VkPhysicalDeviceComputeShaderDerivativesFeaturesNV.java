@@ -43,8 +43,7 @@ public class VkPhysicalDeviceComputeShaderDerivativesFeaturesNV extends VulkanCr
         return computeDerivativeGroupLinear;
     }
 
-    public void setComputeDerivativeGroupLinear(
-            boolean computeDerivativeGroupLinear)
+    public void setComputeDerivativeGroupLinear(boolean computeDerivativeGroupLinear)
     {
         this.computeDerivativeGroupLinear = computeDerivativeGroupLinear;
     }

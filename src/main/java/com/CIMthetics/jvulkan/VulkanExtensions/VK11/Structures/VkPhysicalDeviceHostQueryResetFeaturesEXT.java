@@ -18,34 +18,23 @@ package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkPhysicalDeviceCooperativeMatrixFeaturesNV extends VulkanCreateInfoStructure
+public class VkPhysicalDeviceHostQueryResetFeaturesEXT extends VulkanCreateInfoStructure
 {
-    private boolean cooperativeMatrix;
-    private boolean cooperativeMatrixRobustBufferAccess;
+    private boolean hostQueryReset;
 
-    public VkPhysicalDeviceCooperativeMatrixFeaturesNV()
+    public VkPhysicalDeviceHostQueryResetFeaturesEXT()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV);
+        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT);
     }
 
-    public boolean isCooperativeMatrix()
+    public boolean isHostQueryReset()
     {
-        return cooperativeMatrix;
+        return hostQueryReset;
     }
 
-    public void setCooperativeMatrix(boolean cooperativeMatrix)
+    public void setHostQueryReset(boolean hostQueryReset)
     {
-        this.cooperativeMatrix = cooperativeMatrix;
-    }
-
-    public boolean isCooperativeMatrixRobustBufferAccess()
-    {
-        return cooperativeMatrixRobustBufferAccess;
-    }
-
-    public void setCooperativeMatrixRobustBufferAccess(boolean cooperativeMatrixRobustBufferAccess)
-    {
-        this.cooperativeMatrixRobustBufferAccess = cooperativeMatrixRobustBufferAccess;
+        this.hostQueryReset = hostQueryReset;
     }
 
 }

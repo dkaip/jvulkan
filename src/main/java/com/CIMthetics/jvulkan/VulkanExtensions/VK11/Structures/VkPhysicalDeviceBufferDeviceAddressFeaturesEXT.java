@@ -18,15 +18,15 @@ package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkPhysicalDeviceBufferAddressFeaturesEXT extends VulkanCreateInfoStructure
+public class VkPhysicalDeviceBufferDeviceAddressFeaturesEXT extends VulkanCreateInfoStructure
 {
     private boolean bufferDeviceAddress;
     private boolean bufferDeviceAddressCaptureReplay;
     private boolean bufferDeviceAddressMultiDevice;
 
-    public VkPhysicalDeviceBufferAddressFeaturesEXT()
+    public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_ADDRESS_FEATURES_EXT);
+        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT);
     }
 
     public boolean isBufferDeviceAddress()
@@ -44,8 +44,7 @@ public class VkPhysicalDeviceBufferAddressFeaturesEXT extends VulkanCreateInfoSt
         return bufferDeviceAddressCaptureReplay;
     }
 
-    public void setBufferDeviceAddressCaptureReplay(
-            boolean bufferDeviceAddressCaptureReplay)
+    public void setBufferDeviceAddressCaptureReplay(boolean bufferDeviceAddressCaptureReplay)
     {
         this.bufferDeviceAddressCaptureReplay = bufferDeviceAddressCaptureReplay;
     }
@@ -55,8 +54,7 @@ public class VkPhysicalDeviceBufferAddressFeaturesEXT extends VulkanCreateInfoSt
         return bufferDeviceAddressMultiDevice;
     }
 
-    public void setBufferDeviceAddressMultiDevice(
-            boolean bufferDeviceAddressMultiDevice)
+    public void setBufferDeviceAddressMultiDevice(boolean bufferDeviceAddressMultiDevice)
     {
         this.bufferDeviceAddressMultiDevice = bufferDeviceAddressMultiDevice;
     }

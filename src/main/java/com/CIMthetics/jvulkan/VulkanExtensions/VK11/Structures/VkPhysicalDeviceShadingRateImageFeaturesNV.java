@@ -25,7 +25,7 @@ public class VkPhysicalDeviceShadingRateImageFeaturesNV extends VulkanCreateInfo
 
     public VkPhysicalDeviceShadingRateImageFeaturesNV()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV);
+        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV);
     }
 
     public boolean isShadingRateImage()

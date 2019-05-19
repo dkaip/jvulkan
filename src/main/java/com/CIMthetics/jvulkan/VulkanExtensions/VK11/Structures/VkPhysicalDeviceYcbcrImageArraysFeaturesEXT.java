@@ -18,34 +18,23 @@ package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkPhysicalDeviceTransformFeedbackFeaturesEXT extends VulkanCreateInfoStructure
+public class VkPhysicalDeviceYcbcrImageArraysFeaturesEXT extends VulkanCreateInfoStructure
 {
-    private boolean                     transformFeedback;
-    private boolean                     geometryStreams;
-    
-    public VkPhysicalDeviceTransformFeedbackFeaturesEXT()
+    private boolean ycbcrImageArrays;
+
+    public VkPhysicalDeviceYcbcrImageArraysFeaturesEXT()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT);
+        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_IMAGE_ARRAYS_FEATURES_EXT);
     }
 
-    public boolean isTransformFeedback()
+    public boolean isYcbcrImageArrays()
     {
-        return transformFeedback;
+        return ycbcrImageArrays;
     }
 
-    public void setTransformFeedback(boolean transformFeedback)
+    public void setYcbcrImageArrays(boolean ycbcrImageArrays)
     {
-        this.transformFeedback = transformFeedback;
-    }
-
-    public boolean isGeometryStreams()
-    {
-        return geometryStreams;
-    }
-
-    public void setGeometryStreams(boolean geometryStreams)
-    {
-        this.geometryStreams = geometryStreams;
+        this.ycbcrImageArrays = ycbcrImageArrays;
     }
 
 }

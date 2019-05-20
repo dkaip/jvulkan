@@ -73,7 +73,7 @@ versus using c++ and the LUNARG Vulkan® SDK directly.
 
 When the documentation ([Vulkan® Specification](https://www.khronos.org/registry/vulkan/specs/1.1-extensions/html/)) indicates that an array of <code>SomeObjectType</code> is to be passed as an argument there is always an additional argument indicating the number of elements contained within the array.  (There is an exception to this in the cases where there are &quot;parallel&quot; 
 arrays that are directly associated with one another.  In these cases sometimes there is only 
-one &quot;number of elements&quot; argument.) When using **jvulkan** array arguments will be passed as a <code>Collection&lt;SomeObjectType&gt;</code>.  Additionally, the argument indicating the number of elements contained within the array will not be present since a Java collection 
+one &quot;number of elements&quot; argument.) When using **jvulkan** array arguments of objects will be passed as a <code>Collection&lt;SomeObjectType&gt;</code>.  Additionally, the argument indicating the number of elements contained within the array will not be present since a Java collection 
 knows its size. 
 
 The same applies for sending arrays of primitive types.  Java arrays know their size so the 
@@ -90,8 +90,16 @@ VkInstance                                  instance,
 uint32_t*                                   pPhysicalDeviceCount, 
 VkPhysicalDevice*                           pPhysicalDevices);</code> 
 
+<code>
+uint32_t count = 0;
+<br>
+VkPhysicalDevice vkPhysicalDevice = nullptr;
+<br>
+VkResult result = vkEnumeratePhysicalDevices(vulkanInstance, &count, &vkPhysicalDevice);
+</code>
+
 **Java**  
-<code>LinkedList&lt;VkPhysicalDevice&gt; physicalDeviceList = new LinkedList&lt;VkPhysicalDevice&gt;();<br> 
+<code>Collection&lt;VkPhysicalDevice&gt; physicalDeviceList = new LinkedList&lt;VkPhysicalDevice&gt;();<br> 
 VkResult result = vkEnumeratePhysicalDevices(vulkanInstance, physicalDeviceList);</code>  
 
 Notice how, in the Java environment the argument <code>pPhysicalDeviceCount</code> is not 
@@ -100,7 +108,9 @@ In addition, notice how the Collection, in this case a <code>LinkedList&lt;VkPhy
 before the call to <code>vkEnumeratePhysicalDevices</code>.  This is because Java cannot return 
 a created object in this manner, but, it can populate it. The elements that are added to 
 the Collection, if any, are in the Java world meaning they are normal Java objects that will 
-be garbage collected in the normal manner. In most cases in this situation the Collection should be empty.  Creating the object first is necessary when anything is returned via the arguments themselves in the c++ environment.
+be garbage collected in the normal manner. In most cases, in this situation, the Collection should be empty 
+before the call.  Creating the object first is necessary when anything is returned via the arguments 
+themselves in the c++ environment.
 
 In the case where an object is the return value of the function(method) it does not have to be 
 created ahead of time.  The is evident on the example above where the return code 

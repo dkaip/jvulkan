@@ -90,13 +90,11 @@ VkInstance                                  instance,
 uint32_t*                                   pPhysicalDeviceCount, 
 VkPhysicalDevice*                           pPhysicalDevices);</code> 
 
-<code>
-uint32_t count = 0;
+<code>uint32_t count = 0;</code> 
 <br>
-VkPhysicalDevice vkPhysicalDevice = nullptr;
+<code>VkPhysicalDevice vkPhysicalDevice = nullptr;</code> 
 <br>
-VkResult result = vkEnumeratePhysicalDevices(vulkanInstance, &count, &vkPhysicalDevice);
-</code>
+<code>VkResult result = vkEnumeratePhysicalDevices(vulkanInstance, &count, &vkPhysicalDevice);</code>
 
 **Java**  
 <code>Collection&lt;VkPhysicalDevice&gt; physicalDeviceList = new LinkedList&lt;VkPhysicalDevice&gt;();<br> 

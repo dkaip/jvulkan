@@ -19,15 +19,15 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.WindowsSecurityAttributes;
 
-public class VkExportFenceWin32HandleInfoKHR extends VulkanCreateInfoStructure
+public class VkExportSemaphoreWin32HandleInfoKHR extends VulkanCreateInfoStructure
 {
     private WindowsSecurityAttributes   attributes;
     private int                         dwAccess;
     private String                      name;
     
-    public VkExportFenceWin32HandleInfoKHR(VkStructureType sType)
+    public VkExportSemaphoreWin32HandleInfoKHR(VkStructureType sType)
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR);
+        super(VkStructureType.VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR);
     }
 
     public WindowsSecurityAttributes getAttributes()

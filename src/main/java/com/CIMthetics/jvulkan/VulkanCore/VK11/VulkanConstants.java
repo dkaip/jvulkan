@@ -21,7 +21,7 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugReportObjectTyp
 
 public class VulkanConstants
 {
-    public static final int     VK_HEADER_VERSION = 101;
+    public static final int     VK_HEADER_VERSION = 106;
     public static final float   VK_LOD_CLAMP_NONE               = 1000.0f;
     public static final int     VK_REMAINING_MIP_LEVELS         = -1;
     public static final int     VK_REMAINING_ARRAY_LAYERS       = -1;
@@ -612,4 +612,28 @@ public class VulkanConstants
     public static final boolean VK_NV_cooperative_matrix                = true;
     public static final int     VK_NV_COOPERATIVE_MATRIX_SPEC_VERSION   = 1;
     public static final String  VK_NV_COOPERATIVE_MATRIX_EXTENSION_NAME = "VK_NV_cooperative_matrix";
+    
+    public static final boolean VK_KHR_surface_protected_capabilities                = true;
+    public static final int     VK_KHR_SURFACE_PROTECTED_CAPABILITIES_SPEC_VERSION   = 1;
+    public static final String  VK_KHR_SURFACE_PROTECTED_CAPABILITIES_EXTENSION_NAME = "VK_KHR_surface_protected_capabilities";
+
+    public static final boolean VK_NVX_image_view_handle                = true;
+    public static final int     VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION   = 1;
+    public static final String  VK_NVX_IMAGE_VIEW_HANDLE_EXTENSION_NAME = "VK_NVX_image_view_handle";
+
+    public static final boolean VK_EXT_pipeline_creation_feedback                = true;
+    public static final int     VK_EXT_PIPELINE_CREATION_FEEDBACK_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_PIPELINE_CREATION_FEEDBACK_EXTENSION_NAME = "VK_EXT_pipeline_creation_feedback";
+
+    public static final boolean VK_AMD_display_native_hdr                = true;
+    public static final int     VK_AMD_DISPLAY_NATIVE_HDR_SPEC_VERSION   = 1;
+    public static final String  VK_AMD_DISPLAY_NATIVE_HDR_EXTENSION_NAME = "VK_AMD_display_native_hdr";
+
+    public static final boolean VK_EXT_ycbcr_image_arrays                = true;
+    public static final int     VK_EXT_YCBCR_IMAGE_ARRAYS_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_YCBCR_IMAGE_ARRAYS_EXTENSION_NAME = "VK_EXT_ycbcr_image_arrays";
+
+    public static final boolean VK_EXT_host_query_reset                = true;
+    public static final int     VK_EXT_HOST_QUERY_RESET_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_HOST_QUERY_RESET_EXTENSION_NAME = "VK_EXT_host_query_reset";
 }

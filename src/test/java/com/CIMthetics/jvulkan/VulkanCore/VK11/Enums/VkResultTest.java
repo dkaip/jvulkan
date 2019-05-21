@@ -25,7 +25,7 @@ class VkResultTest
     void testNumberOfElements()
     {
         VkResult[] values = VkResult.values();
-        assertEquals(37, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
+        assertEquals(38, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
 
@@ -63,6 +63,7 @@ class VkResultTest
         assertEquals(-1000161000, VkResult.VK_ERROR_FRAGMENTATION_EXT.valueOf(), VkResult.VK_ERROR_FRAGMENTATION_EXT.toString() + " has an unexpected value.");
         assertEquals(-1000174001, VkResult.VK_ERROR_NOT_PERMITTED_EXT.valueOf(), VkResult.VK_ERROR_NOT_PERMITTED_EXT.toString() + " has an unexpected value.");
         assertEquals(-1000244000, VkResult.VK_ERROR_INVALID_DEVICE_ADDRESS_EXT.valueOf(), VkResult.VK_ERROR_INVALID_DEVICE_ADDRESS_EXT.toString() + " has an unexpected value.");
+        assertEquals(-1000255000, VkResult.VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT.valueOf(), VkResult.VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT.toString() + " has an unexpected value.");
         assertEquals(VkResult.VK_ERROR_OUT_OF_POOL_MEMORY.valueOf(), VkResult.VK_ERROR_OUT_OF_POOL_MEMORY_KHR.valueOf(), VkResult.VK_ERROR_OUT_OF_POOL_MEMORY_KHR.toString() + " has an unexpected value.");
         assertEquals(VkResult.VK_ERROR_INVALID_EXTERNAL_HANDLE.valueOf(), VkResult.VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR.valueOf(), VkResult.VK_ERROR_INVALID_EXTERNAL_HANDLE_KHR.toString() + " has an unexpected value.");
         assertEquals(VkResult.VK_ERROR_FRAGMENTED_POOL.valueOf(), VkResult.VK_RESULT_BEGIN_RANGE.valueOf(), VkResult.VK_RESULT_BEGIN_RANGE.toString() + " has an unexpected value.");

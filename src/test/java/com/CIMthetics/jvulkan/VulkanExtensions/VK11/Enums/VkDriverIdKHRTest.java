@@ -25,7 +25,7 @@ class VkDriverIdKHRTest
     void testNumberOfElements()
     {
         VkDriverIdKHR[] values = VkDriverIdKHR.values();
-        assertEquals(14, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
+        assertEquals(15, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
 
@@ -42,9 +42,10 @@ class VkDriverIdKHRTest
         assertEquals(8, VkDriverIdKHR.VK_DRIVER_ID_QUALCOMM_PROPRIETARY_KHR.valueOf(), VkDriverIdKHR.VK_DRIVER_ID_QUALCOMM_PROPRIETARY_KHR.toString() + " has an unexpected value.");
         assertEquals(9, VkDriverIdKHR.VK_DRIVER_ID_ARM_PROPRIETARY_KHR.valueOf(), VkDriverIdKHR.VK_DRIVER_ID_ARM_PROPRIETARY_KHR.toString() + " has an unexpected value.");
         assertEquals(10, VkDriverIdKHR.VK_DRIVER_ID_GOOGLE_PASTEL_KHR.valueOf(), VkDriverIdKHR.VK_DRIVER_ID_GOOGLE_PASTEL_KHR.toString() + " has an unexpected value.");
+        assertEquals(11, VkDriverIdKHR.VK_DRIVER_ID_GGP_PROPRIETARY_KHR.valueOf(), VkDriverIdKHR.VK_DRIVER_ID_GGP_PROPRIETARY_KHR.toString() + " has an unexpected value.");
         assertEquals(VkDriverIdKHR.VK_DRIVER_ID_AMD_PROPRIETARY_KHR.valueOf(), VkDriverIdKHR.VK_DRIVER_ID_BEGIN_RANGE_KHR.valueOf(), VkDriverIdKHR.VK_DRIVER_ID_BEGIN_RANGE_KHR.toString() + " has an unexpected value.");
-        assertEquals(VkDriverIdKHR.VK_DRIVER_ID_GOOGLE_PASTEL_KHR.valueOf(), VkDriverIdKHR.VK_DRIVER_ID_END_RANGE_KHR.valueOf(), VkDriverIdKHR.VK_DRIVER_ID_END_RANGE_KHR.toString() + " has an unexpected value.");
-        assertEquals(VkDriverIdKHR.VK_DRIVER_ID_GOOGLE_PASTEL_KHR.valueOf() - VkDriverIdKHR.VK_DRIVER_ID_AMD_PROPRIETARY_KHR.valueOf() + 1, VkDriverIdKHR.VK_DRIVER_ID_RANGE_SIZE_KHR.valueOf(), VkDriverIdKHR.VK_DRIVER_ID_RANGE_SIZE_KHR.toString() + " has an unexpected value.");
+        assertEquals(VkDriverIdKHR.VK_DRIVER_ID_GGP_PROPRIETARY_KHR.valueOf(), VkDriverIdKHR.VK_DRIVER_ID_END_RANGE_KHR.valueOf(), VkDriverIdKHR.VK_DRIVER_ID_END_RANGE_KHR.toString() + " has an unexpected value.");
+        assertEquals(VkDriverIdKHR.VK_DRIVER_ID_GGP_PROPRIETARY_KHR.valueOf() - VkDriverIdKHR.VK_DRIVER_ID_AMD_PROPRIETARY_KHR.valueOf() + 1, VkDriverIdKHR.VK_DRIVER_ID_RANGE_SIZE_KHR.valueOf(), VkDriverIdKHR.VK_DRIVER_ID_RANGE_SIZE_KHR.toString() + " has an unexpected value.");
         assertEquals(0x7FFFFFFF, VkDriverIdKHR.VK_DRIVER_ID_MAX_ENUM_KHR.valueOf(), VkDriverIdKHR.VK_DRIVER_ID_MAX_ENUM_KHR.toString() + " has an unexpected value.");
     }
 }

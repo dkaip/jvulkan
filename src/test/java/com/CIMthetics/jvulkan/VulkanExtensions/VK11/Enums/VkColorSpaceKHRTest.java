@@ -25,7 +25,7 @@ class VkColorSpaceKHRTest
     void testNumberOfElements()
     {
         VkColorSpaceKHR[] values = VkColorSpaceKHR.values();
-        assertEquals(20, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
+        assertEquals(21, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
 
@@ -47,6 +47,7 @@ class VkColorSpaceKHRTest
         assertEquals(1000104012, VkColorSpaceKHR.VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT.valueOf(), VkColorSpaceKHR.VK_COLOR_SPACE_ADOBERGB_NONLINEAR_EXT.toString() + " has an unexpected value.");
         assertEquals(1000104013, VkColorSpaceKHR.VK_COLOR_SPACE_PASS_THROUGH_EXT.valueOf(), VkColorSpaceKHR.VK_COLOR_SPACE_PASS_THROUGH_EXT.toString() + " has an unexpected value.");
         assertEquals(1000104014, VkColorSpaceKHR.VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT.valueOf(), VkColorSpaceKHR.VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT.toString() + " has an unexpected value.");
+        assertEquals(1000213000, VkColorSpaceKHR.VK_COLOR_SPACE_DISPLAY_NATIVE_AMD.valueOf(), VkColorSpaceKHR.VK_COLOR_SPACE_DISPLAY_NATIVE_AMD.toString() + " has an unexpected value.");
         assertEquals(VkColorSpaceKHR.VK_COLOR_SPACE_SRGB_NONLINEAR_KHR.valueOf(), VkColorSpaceKHR.VK_COLORSPACE_SRGB_NONLINEAR_KHR.valueOf(), VkColorSpaceKHR.VK_COLORSPACE_SRGB_NONLINEAR_KHR.toString() + " has an unexpected value.");
         assertEquals(VkColorSpaceKHR.VK_COLOR_SPACE_SRGB_NONLINEAR_KHR.valueOf(), VkColorSpaceKHR.VK_COLOR_SPACE_BEGIN_RANGE_KHR.valueOf(), VkColorSpaceKHR.VK_COLOR_SPACE_BEGIN_RANGE_KHR.toString() + " has an unexpected value.");
         assertEquals(VkColorSpaceKHR.VK_COLOR_SPACE_SRGB_NONLINEAR_KHR.valueOf(), VkColorSpaceKHR.VK_COLOR_SPACE_END_RANGE_KHR.valueOf(), VkColorSpaceKHR.VK_COLOR_SPACE_END_RANGE_KHR.toString() + " has an unexpected value.");

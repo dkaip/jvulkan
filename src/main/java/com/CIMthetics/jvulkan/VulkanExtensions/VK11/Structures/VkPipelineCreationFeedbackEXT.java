@@ -33,8 +33,8 @@ public class VkPipelineCreationFeedbackEXT
     {
         this.flags = flags;
     }
-    public 
-    long getDuration()
+    
+    public long getDuration()
     {
         return duration;
     }

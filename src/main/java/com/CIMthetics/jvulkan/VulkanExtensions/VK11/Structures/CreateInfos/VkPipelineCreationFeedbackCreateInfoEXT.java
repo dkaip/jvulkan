@@ -23,7 +23,7 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineCreatio
 
 public class VkPipelineCreationFeedbackCreateInfoEXT extends VulkanCreateInfoStructure
 {
-    private VkPipelineCreationFeedbackEXT               pPipelineCreationFeedback;
+    private VkPipelineCreationFeedbackEXT               pipelineCreationFeedback;
     private Collection<VkPipelineCreationFeedbackEXT>   pipelineStageCreationFeedbacks;
 
     public VkPipelineCreationFeedbackCreateInfoEXT()
@@ -31,15 +31,15 @@ public class VkPipelineCreationFeedbackCreateInfoEXT extends VulkanCreateInfoStr
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT);
     }
 
-    public VkPipelineCreationFeedbackEXT getpPipelineCreationFeedback()
+    public VkPipelineCreationFeedbackEXT getPipelineCreationFeedback()
     {
-        return pPipelineCreationFeedback;
+        return pipelineCreationFeedback;
     }
 
-    public void setpPipelineCreationFeedback(
-            VkPipelineCreationFeedbackEXT pPipelineCreationFeedback)
+    public void setPipelineCreationFeedback(
+            VkPipelineCreationFeedbackEXT pipelineCreationFeedback)
     {
-        this.pPipelineCreationFeedback = pPipelineCreationFeedback;
+        this.pipelineCreationFeedback = pipelineCreationFeedback;
     }
 
     public Collection<VkPipelineCreationFeedbackEXT> getPipelineStageCreationFeedbacks()

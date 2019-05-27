@@ -15,26 +15,29 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos;
 
+import java.util.Collection;
+
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkFormat;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkImageDrmFormatModifierListCreateInfoEXT extends VulkanCreateInfoStructure
+public class VkImageFormatListCreateInfoKHR extends VulkanCreateInfoStructure
 {
-    private long[]  drmFormatModifiers;
-    
-    public VkImageDrmFormatModifierListCreateInfoEXT()
+    private Collection<VkFormat>    viewFormats;
+
+    public VkImageFormatListCreateInfoKHR(VkStructureType sType)
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT);
+        super(VkStructureType.VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR);
     }
 
-    public long[] getDrmFormatModifiers()
+    public Collection<VkFormat> getViewFormats()
     {
-        return drmFormatModifiers;
+        return viewFormats;
     }
 
-    public void setDrmFormatModifiers(long[] drmFormatModifiers)
+    public void setViewFormats(Collection<VkFormat> viewFormats)
     {
-        this.drmFormatModifiers = drmFormatModifiers;
+        this.viewFormats = viewFormats;
     }
 
 }

@@ -15,6 +15,7 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos;
 
+import java.util.Collection;
 import java.util.LinkedList;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
@@ -24,8 +25,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreat
 public class VkImageDrmFormatModifierExplicitCreateInfoEXT extends VulkanCreateInfoStructure
 {
     private long                            drmFormatModifier;
-    private int                             drmFormatModifierPlaneCount;
-    private LinkedList<VkSubresourceLayout> planeLayouts = new LinkedList<VkSubresourceLayout>();
+    private Collection<VkSubresourceLayout> planeLayouts = new LinkedList<VkSubresourceLayout>();
     
     public VkImageDrmFormatModifierExplicitCreateInfoEXT()
     {
@@ -42,17 +42,7 @@ public class VkImageDrmFormatModifierExplicitCreateInfoEXT extends VulkanCreateI
         this.drmFormatModifier = drmFormatModifier;
     }
 
-    public int getDrmFormatModifierPlaneCount()
-    {
-        return drmFormatModifierPlaneCount;
-    }
-
-    public void setDrmFormatModifierPlaneCount(int drmFormatModifierPlaneCount)
-    {
-        this.drmFormatModifierPlaneCount = drmFormatModifierPlaneCount;
-    }
-
-    public LinkedList<VkSubresourceLayout> getPlaneLayouts()
+    public Collection<VkSubresourceLayout> getPlaneLayouts()
     {
         return planeLayouts;
     }

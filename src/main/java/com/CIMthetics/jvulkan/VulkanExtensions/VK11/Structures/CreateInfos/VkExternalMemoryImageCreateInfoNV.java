@@ -15,26 +15,30 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos;
 
+import java.util.EnumSet;
+
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkExternalMemoryHandleTypeFlagBitsNV;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkImageDrmFormatModifierListCreateInfoEXT extends VulkanCreateInfoStructure
+public class VkExternalMemoryImageCreateInfoNV extends VulkanCreateInfoStructure
 {
-    private long[]  drmFormatModifiers;
-    
-    public VkImageDrmFormatModifierListCreateInfoEXT()
+    private EnumSet<VkExternalMemoryHandleTypeFlagBitsNV> handleTypes;
+
+    public VkExternalMemoryImageCreateInfoNV(VkStructureType sType)
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT);
+        super(VkStructureType.VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV);
     }
 
-    public long[] getDrmFormatModifiers()
+    public EnumSet<VkExternalMemoryHandleTypeFlagBitsNV> getHandleTypes()
     {
-        return drmFormatModifiers;
+        return handleTypes;
     }
 
-    public void setDrmFormatModifiers(long[] drmFormatModifiers)
+    public void setHandleTypes(
+            EnumSet<VkExternalMemoryHandleTypeFlagBitsNV> handleTypes)
     {
-        this.drmFormatModifiers = drmFormatModifiers;
+        this.handleTypes = handleTypes;
     }
 
 }

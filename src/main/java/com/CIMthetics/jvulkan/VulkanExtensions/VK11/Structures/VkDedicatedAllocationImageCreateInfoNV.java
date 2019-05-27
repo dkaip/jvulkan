@@ -13,28 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos;
+package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkImageDrmFormatModifierListCreateInfoEXT extends VulkanCreateInfoStructure
+public class VkDedicatedAllocationImageCreateInfoNV extends VulkanCreateInfoStructure
 {
-    private long[]  drmFormatModifiers;
-    
-    public VkImageDrmFormatModifierListCreateInfoEXT()
+    private boolean dedicatedAllocation;
+
+    public VkDedicatedAllocationImageCreateInfoNV(VkStructureType sType)
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT);
+        super(VkStructureType.VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV);
     }
 
-    public long[] getDrmFormatModifiers()
+    public boolean isDedicatedAllocation()
     {
-        return drmFormatModifiers;
+        return dedicatedAllocation;
     }
 
-    public void setDrmFormatModifiers(long[] drmFormatModifiers)
+    public void setDedicatedAllocation(boolean dedicatedAllocation)
     {
-        this.drmFormatModifiers = drmFormatModifiers;
+        this.dedicatedAllocation = dedicatedAllocation;
     }
 
 }

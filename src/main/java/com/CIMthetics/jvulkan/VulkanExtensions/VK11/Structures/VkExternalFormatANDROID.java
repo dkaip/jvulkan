@@ -13,28 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos;
+package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkImageDrmFormatModifierListCreateInfoEXT extends VulkanCreateInfoStructure
+public class VkExternalFormatANDROID extends VulkanCreateInfoStructure
 {
-    private long[]  drmFormatModifiers;
-    
-    public VkImageDrmFormatModifierListCreateInfoEXT()
+    private long externalFormat;
+
+    public VkExternalFormatANDROID(VkStructureType sType)
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT);
+        super(VkStructureType.VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID);
     }
 
-    public long[] getDrmFormatModifiers()
+    public long getExternalFormat()
     {
-        return drmFormatModifiers;
+        return externalFormat;
     }
 
-    public void setDrmFormatModifiers(long[] drmFormatModifiers)
+    public void setExternalFormat(long externalFormat)
     {
-        this.drmFormatModifiers = drmFormatModifiers;
+        this.externalFormat = externalFormat;
     }
 
 }

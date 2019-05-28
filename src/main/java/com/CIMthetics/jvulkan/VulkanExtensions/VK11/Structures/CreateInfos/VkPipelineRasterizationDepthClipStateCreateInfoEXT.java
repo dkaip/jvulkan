@@ -19,11 +19,11 @@ import java.util.EnumSet;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkPipelineRasterizationDepthClipStateCreateFlagsEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkPipelineRasterizationDepthClipStateCreateFlagBitsEXT;
 
 public class VkPipelineRasterizationDepthClipStateCreateInfoEXT extends VulkanCreateInfoStructure
 {
-    private EnumSet<VkPipelineRasterizationDepthClipStateCreateFlagsEXT>    flags;
+    private EnumSet<VkPipelineRasterizationDepthClipStateCreateFlagBitsEXT>    flags;
     private boolean                                                         depthClipEnable;
     
     public VkPipelineRasterizationDepthClipStateCreateInfoEXT()
@@ -31,13 +31,13 @@ public class VkPipelineRasterizationDepthClipStateCreateInfoEXT extends VulkanCr
         super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT);
     }
 
-    public EnumSet<VkPipelineRasterizationDepthClipStateCreateFlagsEXT> getFlags()
+    public EnumSet<VkPipelineRasterizationDepthClipStateCreateFlagBitsEXT> getFlags()
     {
         return flags;
     }
 
     public void setFlags(
-            EnumSet<VkPipelineRasterizationDepthClipStateCreateFlagsEXT> flags)
+            EnumSet<VkPipelineRasterizationDepthClipStateCreateFlagBitsEXT> flags)
     {
         this.flags = flags;
     }

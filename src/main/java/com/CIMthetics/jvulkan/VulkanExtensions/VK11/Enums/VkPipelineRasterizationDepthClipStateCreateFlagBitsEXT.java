@@ -15,13 +15,13 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums;
 
-public enum VkPipelineRasterizationDepthClipStateCreateFlagsEXT
+public enum VkPipelineRasterizationDepthClipStateCreateFlagBitsEXT
 {
     RESERVED_FOR_FUTURE_USE(0);
     
     private int value;
     
-    private VkPipelineRasterizationDepthClipStateCreateFlagsEXT(int value) { this.value = value; }
+    private VkPipelineRasterizationDepthClipStateCreateFlagBitsEXT(int value) { this.value = value; }
     
     public int valueOf() { return value; }
 

@@ -24,7 +24,7 @@ class VkPipelineRasterizationDepthClipStateCreateFlagsEXTTest
     @Test
     void testNumberOfElements()
     {
-        VkPipelineRasterizationDepthClipStateCreateFlagsEXT[] values = VkPipelineRasterizationDepthClipStateCreateFlagsEXT.values();
+        VkPipelineRasterizationDepthClipStateCreateFlagBitsEXT[] values = VkPipelineRasterizationDepthClipStateCreateFlagBitsEXT.values();
         assertEquals(1, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
@@ -32,6 +32,6 @@ class VkPipelineRasterizationDepthClipStateCreateFlagsEXTTest
     @Test
     void testValues()
     {
-        assertEquals(0, VkPipelineRasterizationDepthClipStateCreateFlagsEXT.RESERVED_FOR_FUTURE_USE.valueOf(), VkPipelineRasterizationDepthClipStateCreateFlagsEXT.RESERVED_FOR_FUTURE_USE.toString() + " has an unexpected value.");
+        assertEquals(0, VkPipelineRasterizationDepthClipStateCreateFlagBitsEXT.RESERVED_FOR_FUTURE_USE.valueOf(), VkPipelineRasterizationDepthClipStateCreateFlagBitsEXT.RESERVED_FOR_FUTURE_USE.toString() + " has an unexpected value.");
     }
 }

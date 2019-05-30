@@ -133,7 +133,9 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsObjec
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsObjectTagInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkImageDrmFormatModifierPropertiesEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkMemoryRequirements2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPhysicalDeviceSurfaceInfo2KHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkShadingRatePaletteNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSurfaceCapabilities2KHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkAccelerationStructureCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDebugReportCallbackCreateInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDebugUtilsMessengerCreateInfoEXT;
@@ -853,6 +855,11 @@ class NativeProxies
             VkPhysicalDevice physicalDevice,
             VkSurfaceKHR     surface,
             VkSurfaceCapabilitiesKHR surfaceCapabilities);
+    
+    native VkResult vkGetPhysicalDeviceSurfaceCapabilities2KHR(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceSurfaceInfo2KHR     surfaceInfo,
+            VkSurfaceCapabilities2KHR surfaceCapabilities);
     
     native VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(
             VkPhysicalDevice physicalDevice,

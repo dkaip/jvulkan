@@ -141,4 +141,24 @@ public class VkSurfaceCapabilitiesKHR
     {
         return supportedUsageFlags;
     }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkSurfaceCapabilitiesKHR\n"));
+        sb.append(String.format("    minImageCount:%d\n", minImageCount));
+        sb.append(String.format("    maxImageCount:%d\n", maxImageCount));
+        sb.append(String.format("    currentImageExtent:%s\n", currentImageExtent == null ? "null" : currentImageExtent.toString()));
+        sb.append(String.format("    minImageExtent:%s\n", minImageExtent == null ? "null" : minImageExtent.toString()));
+        sb.append(String.format("    maxImageExtent:%s\n", maxImageExtent == null ? "null" : maxImageExtent.toString()));
+        sb.append(String.format("    maxImageArrayLayers:%d\n", maxImageArrayLayers));
+        sb.append(String.format("    supportedTransforms:%s\n", supportedTransforms == null ? "null" : supportedTransforms.toString()));
+        sb.append(String.format("    currentTransform:%s\n", currentTransform == null ? "null" : currentTransform.toString()));
+        sb.append(String.format("    supportedCompositeAlpha:%s\n", supportedCompositeAlpha == null ? "null" : supportedCompositeAlpha.toString()));
+        sb.append(String.format("    supportedUsageFlags:%s\n", supportedUsageFlags == null ? "null" : supportedUsageFlags.toString()));
+
+        
+        return sb.toString();
+    }
 }

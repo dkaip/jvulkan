@@ -23,7 +23,11 @@ import java.util.EnumSet;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkDependencyFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkFormat;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageCreateFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageLayout;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageTiling;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageType;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageUsageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkIndexType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkMemoryMapFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPipelineBindPoint;
@@ -73,6 +77,8 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferMemoryBarrier;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkCopyDescriptorSet;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkExtensionProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkFormatProperties;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageFormatProperties;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageFormatProperties2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageMemoryBarrier;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkMemoryBarrier;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkMemoryRequirements;
@@ -137,6 +143,7 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsObjec
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsObjectTagInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkImageDrmFormatModifierPropertiesEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkMemoryRequirements2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPhysicalDeviceImageFormatInfo2;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPhysicalDeviceSurfaceInfo2KHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkShadingRatePaletteNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSurfaceCapabilities2KHR;
@@ -2116,6 +2123,37 @@ public class VulkanFunctions
                 surfaceCapabilities);
     }
     
+    public static VkResult vkGetPhysicalDeviceImageFormatProperties(
+            VkPhysicalDevice physicalDevice,
+            VkFormat format,
+            VkImageType type,
+            VkImageTiling tiling,
+            EnumSet<VkImageUsageFlagBits> usage,
+            EnumSet<VkImageCreateFlagBits> flags,
+            VkImageFormatProperties imageFormatProperties)
+    {
+        return v11ProxyLibrary.vkGetPhysicalDeviceImageFormatProperties(
+                physicalDevice,
+                format,
+                type,
+                tiling,
+                usage,
+                flags,
+                imageFormatProperties);
+    }
+    
+    public static VkResult vkGetPhysicalDeviceImageFormatProperties2(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceImageFormatInfo2 imageFormatInfo,
+            VkImageFormatProperties2 imageFormatProperties)
+    {
+        return v11ProxyLibrary.vkGetPhysicalDeviceImageFormatProperties2(
+                physicalDevice,
+                imageFormatInfo,
+                imageFormatProperties);
+    }
+    
+
 
 
 

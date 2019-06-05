@@ -29,4 +29,30 @@ public enum VkSharingMode
     private VkSharingMode(int value) { this.value = value; }
     
     public int valueOf() { return value; }
+
+    static VkSharingMode fromValue(int inputValue)
+    {
+        VkSharingMode result = null;
+        
+        switch(inputValue)
+        {
+            case 0:
+                result = VK_SHARING_MODE_EXCLUSIVE;
+                break;
+            case 1:
+                result = VK_SHARING_MODE_CONCURRENT;
+                break;
+            case 0x7FFFFFFF:
+                result = VK_SHARING_MODE_MAX_ENUM;
+                break;
+        }
+
+        if (inputValue == (VK_SHARING_MODE_CONCURRENT.valueOf() - VK_SHARING_MODE_EXCLUSIVE.valueOf() + 1))
+            result = VK_SHARING_MODE_RANGE_SIZE;
+        
+        if (result == null)
+            throw new IllegalArgumentException("Illegal value specified for this Enum.");
+
+        return result;
+    }
 }

@@ -48,4 +48,14 @@ public class VkFilterCubicImageViewImageFormatPropertiesEXT extends VulkanCreate
         this.filterCubicMinmax = filterCubicMinmax;
     }
 
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkFilterCubicImageViewImageFormatPropertiesEXT\n"));
+        sb.append(String.format("    filterCubic:%b\n", filterCubic));
+        sb.append(String.format("    filterCubicMinmax:%b\n", filterCubicMinmax));
+        
+        return sb.toString();
+    }
 }

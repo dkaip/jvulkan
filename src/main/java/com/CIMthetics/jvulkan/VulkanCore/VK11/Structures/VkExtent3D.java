@@ -68,4 +68,15 @@ public class VkExtent3D
         this.depth = depth;
     }
     
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkExtent3D\n"));
+        sb.append(String.format("    width:%d\n", width));
+        sb.append(String.format("    height:%d\n", height));
+        sb.append(String.format("    depth:%d\n", depth));
+        
+        return sb.toString();
+    }
 }

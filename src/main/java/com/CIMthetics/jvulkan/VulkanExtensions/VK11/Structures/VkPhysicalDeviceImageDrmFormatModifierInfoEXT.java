@@ -23,7 +23,6 @@ public class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends VulkanCreateI
 {
     private long            drmFormatModifier;
     private VkSharingMode   sharingMode;
-    private int             queueFamilyIndexCount;
     private int[]           queueFamilyIndices;
 
     public VkPhysicalDeviceImageDrmFormatModifierInfoEXT()
@@ -49,16 +48,6 @@ public class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends VulkanCreateI
     public void setSharingMode(VkSharingMode sharingMode)
     {
         this.sharingMode = sharingMode;
-    }
-
-    public int getQueueFamilyIndexCount()
-    {
-        return queueFamilyIndexCount;
-    }
-
-    public void setQueueFamilyIndexCount(int queueFamilyIndexCount)
-    {
-        this.queueFamilyIndexCount = queueFamilyIndexCount;
     }
 
     public int[] getQueueFamilyIndices()

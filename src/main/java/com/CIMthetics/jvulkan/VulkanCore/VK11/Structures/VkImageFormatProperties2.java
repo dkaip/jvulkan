@@ -13,37 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
+package com.CIMthetics.jvulkan.VulkanCore.VK11.Structures;
 
-import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageViewType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkPhysicalDeviceImageViewImageFormatInfoEXT extends VulkanCreateInfoStructure
+public class VkImageFormatProperties2 extends VulkanCreateInfoStructure
 {
-    private VkImageViewType imageViewType;
+    private VkImageFormatProperties imageFormatProperties = new VkImageFormatProperties();
 
-    public VkPhysicalDeviceImageViewImageFormatInfoEXT()
+    public VkImageFormatProperties2()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT);
+        super(VkStructureType.VK_STRUCTURE_TYPE_IMAGE_FORMAT_PROPERTIES_2);
     }
 
-    public VkImageViewType getImageViewType()
+    public VkImageFormatProperties getImageFormatProperties()
     {
-        return imageViewType;
+        return imageFormatProperties;
     }
 
-    public void setImageViewType(VkImageViewType imageViewType)
+    public void setImageFormatProperties(
+            VkImageFormatProperties imageFormatProperties)
     {
-        this.imageViewType = imageViewType;
+        this.imageFormatProperties = imageFormatProperties;
     }
 
     @Override
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("\nVkPhysicalDeviceImageViewImageFormatInfoEXT\n"));
-        sb.append(String.format("    imageViewType:%s\n", imageViewType.toString()));
+        sb.append(String.format("\nVkImageFormatProperties2\n"));
+        sb.append(String.format("    imageFormatProperties:%s\n", imageFormatProperties == null ? "null" : imageFormatProperties.toString()));
         
         return sb.toString();
     }

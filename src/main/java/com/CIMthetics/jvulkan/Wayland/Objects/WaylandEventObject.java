@@ -13,17 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.Wayland.Handles;
+package com.CIMthetics.jvulkan.Wayland.Objects;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
 
-public class WlShell extends VulkanHandle
+public class WaylandEventObject
 {
-    public WlShell(VulkanHandle vulkanHandle)
+    private VulkanHandle vulkanHandle;
+    private boolean dieYaBastard = false;
+    
+    public WaylandEventObject(VulkanHandle vulkanHandle)
     {
-        if (vulkanHandle == null)
-            throw new NullPointerException("The VulkanHandle argument may not be null.");
-        
-        super.setHandle(vulkanHandle.getHandle());
+        this.vulkanHandle = vulkanHandle;
+    }
+    
+    void killEventHandler()
+    {
+        dieYaBastard = true;
+    }
+
+    boolean isTimeToDie()
+    {
+        return dieYaBastard;
+    }
+    
+    public VulkanHandle getHandle()
+    {
+        return vulkanHandle;
     }
 }

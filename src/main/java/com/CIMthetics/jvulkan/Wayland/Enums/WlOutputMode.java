@@ -13,21 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.Wayland;
+package com.CIMthetics.jvulkan.Wayland.Enums;
 
-import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistryHandle;
-
-public interface WlRegistryListener
+public enum WlOutputMode
 {
-    abstract public void registryAddEventHandler(
-            Object userData,
-            WlRegistryHandle registry,
-            int registryObjectId,
-            String interfaceTextId,
-            int version);
+    CURRENT(1),
+    PREFERRED(2);
     
-    abstract public void registryRemoveEventHandler(
-            Object userData,
-            WlRegistryHandle registry,
-            int registryObjectId);
+    private int value;
+    
+    private WlOutputMode(int value)
+    {
+        this.value = value;
+    }
+    
+    public int valueOf()
+    {
+        return value;
+    }
+
+    static public WlOutputMode fromValue(int value)
+    {
+        for(WlOutputMode listValue : WlOutputMode.values())
+        {
+            if (listValue.valueOf() == value)
+            {
+                return listValue;
+            }
+        }
+        
+        return null;
+    }
 }

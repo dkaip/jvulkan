@@ -20,6 +20,7 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.Collection;
 import java.util.EnumSet;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkDependencyFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkFormat;
@@ -162,12 +163,20 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayModeKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkSurfaceKHR;
 import com.CIMthetics.jvulkan.Wayland.WlRegistryListener;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlCompositor;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlDisplay;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistry;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlShell;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlShellSurface;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlSurface;
+import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceFullscreenMethod;
+import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceResize;
+import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceTransientBehavior;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlCallbackHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlCompositorHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlDisplayHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlOutputHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlRegionHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistryHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlShellHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlShellSurfaceHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlSurfaceHandle;
+import com.CIMthetics.jvulkan.Wayland.Objects.WaylandEventObject;
+import com.CIMthetics.jvulkan.Wayland.Objects.WlSeatHandle;
 
 public class VulkanFunctions
 {
@@ -485,7 +494,7 @@ public class VulkanFunctions
     public static boolean vkGetPhysicalDeviceWaylandPresentationSupportKHR(
             VkPhysicalDevice physicalDevice,
             int queueFamilyIndex,
-            WlDisplay waylandDisplay)
+            WlDisplayHandle waylandDisplay)
     {
         return v11ProxyLibrary.vkGetPhysicalDeviceWaylandPresentationSupportKHR(
                 physicalDevice,
@@ -2347,59 +2356,80 @@ public class VulkanFunctions
      * @param waylandDisplay - if this method is successful this will contain the
      * handle to the attached Wayland display server.
      */
-    public static WlDisplay wlConnectDisplay(
-            String    displayName)
+//    public static WlDisplayHandle wlConnectDisplay(
+//            String    displayName)
+//    {
+//        return v11ProxyLibrary.wlConnectDisplay(displayName);
+//    }
+//
+    public static void wlDisplayDisconnect(
+            WlDisplayHandle waylandDisplay)
     {
-        return v11ProxyLibrary.wlConnectDisplay(displayName);
-    }
-
-    public static void wlDisconnectDisplay(
-            WlDisplay waylandDisplay)
-    {
-        v11ProxyLibrary.wlDisconnectDisplay(waylandDisplay);
+        v11ProxyLibrary.wlDisplayDisconnect(waylandDisplay);
     }
     
-    public static WlRegistry wlDisplayGetRegistry(
-            WlDisplay waylandDisplay)
+    public static WlDisplayHandle wlDisplayConnect(
+            String    displayName,
+            LinkedBlockingQueue<WaylandEventObject> eventHandlerWorkQueue)
+    {
+        return v11ProxyLibrary.wlDisplayConnect(
+                displayName,
+                eventHandlerWorkQueue);
+    }
+    
+//    public static void wlDisconnectDisplay(
+//            WlDisplayHandle waylandDisplay)
+//    {
+//        v11ProxyLibrary.wlDisconnectDisplay(waylandDisplay);
+//    }
+//    
+    public static WlRegistryHandle wlDisplayGetRegistry(
+            WlDisplayHandle waylandDisplay)
     {
         return v11ProxyLibrary.wlDisplayGetRegistry(waylandDisplay);
     }
     
-    /**
-     * Add a listener to catch state changed (services added or removed) events
-     * from the registry.
-     * <p>
-     * Note:<br>
-     * The current implementaion of this assumes that this will only be called once
-     * for a given registry.  If this is called more than once the previous callback
-     * and user data will be replaced by the ones supplied to this method.
-     * 
-     * @param waylandRegistry
-     * @param registryListener
-     * @param userData
-     */
-    public static void wlRegistryAddListener(
-            WlRegistry waylandRegistry,
-            WlRegistryListener registryListener, 
-            Object userData)
+    public static void wlDisplaySync(
+            WlDisplayHandle waylandDisplay)
     {
-        v11ProxyLibrary.wlRegistryAddListener(waylandRegistry, registryListener, userData);
+        v11ProxyLibrary.wlDisplaySync(waylandDisplay);
     }
     
+//    /**
+//     * Add a listener to catch state changed (services added or removed) events
+//     * from the registry.
+//     * <p>
+//     * Note:<br>
+//     * The current implementaion of this assumes that this will only be called once
+//     * for a given registry.  If this is called more than once the previous callback
+//     * and user data will be replaced by the ones supplied to this method.
+//     * 
+//     * @param waylandRegistry
+//     * @param registryListener
+//     * @param userData
+//     */
+//    public static void wlRegistryAddListener(
+//            WlRegistryHandle waylandRegistry,
+//            WlRegistryListener registryListener, 
+//            Object userData)
+//    {
+//        v11ProxyLibrary.wlRegistryAddListener(waylandRegistry, registryListener, userData);
+//    }
+//    
     public static void wlDisplayDispatch(
-            WlDisplay waylandDisplay)
+            WlDisplayHandle waylandDisplay)
     {
         v11ProxyLibrary.wlDisplayDispatch(waylandDisplay);
     }
     
     public static void wlRoundTrip(
-            WlDisplay waylandDisplay)
+            WlDisplayHandle waylandDisplay)
     {
         v11ProxyLibrary.wlRoundTrip(waylandDisplay);
     }
     
     public static VulkanHandle wlRegistryBind(
-            WlRegistry waylandRegistry,
+            WlRegistryHandle waylandRegistry,
             int interfaceId,
             String textInterfaceName,
             int interfaceVersion)
@@ -2411,23 +2441,154 @@ public class VulkanFunctions
                 interfaceVersion);
     }
     
-    public static WlSurface wlCompositorCreateSurface(
-            WlCompositor waylandCompositor)
+    public static WlRegionHandle wlCompositorCreateRegion(
+            WlCompositorHandle waylandCompositor)
+    {
+        return v11ProxyLibrary.wlCompositorCreateRegion(waylandCompositor);
+    }
+    
+    public static WlSurfaceHandle wlCompositorCreateSurface(
+            WlCompositorHandle waylandCompositor)
     {
         return v11ProxyLibrary.wlCompositorCreateSurface(waylandCompositor);
     }
     
-    public static WlShellSurface wlShellGetShellSurface(
-            WlShell waylandShellInterface,
-            WlSurface waylandSurface)
+    public static WlShellSurfaceHandle wlShellGetShellSurface(
+            WlShellHandle waylandShellInterface,
+            WlSurfaceHandle waylandSurface)
     {
         return v11ProxyLibrary.wlShellGetShellSurface(waylandShellInterface, waylandSurface);
     }
 
-    public static void wlShellSetTopLevel(
-            WlShellSurface waylandshellSurface)
+    public static void wlShellSurfaceMove(
+            WlShellSurfaceHandle waylandshellSurface,
+            WlSeatHandle waylandSeat,
+            int serialNumber)
     {
-        v11ProxyLibrary.wlShellSetTopLevel(waylandshellSurface);
+        v11ProxyLibrary.wlShellSurfaceMove(waylandshellSurface, waylandSeat, serialNumber);
     }
     
+    public static void wlShellSurfacePong(
+            WlShellSurfaceHandle waylandshellSurface,
+            int serialNumber)
+    {
+        v11ProxyLibrary.wlShellSurfacePong(waylandshellSurface, serialNumber);
+    }
+    
+    public static void wlShellSurfaceResize(
+            WlShellSurfaceHandle waylandshellSurface,
+            WlSeatHandle waylandSeat,
+            int serialNumber,
+            WlShellSurfaceResize edges)
+    {
+        v11ProxyLibrary.wlShellSurfaceResize(
+                waylandshellSurface,
+                waylandSeat,
+                serialNumber,
+                edges);
+    }
+    
+    public static void wlShellSurfaceSetClass(
+            WlShellSurfaceHandle waylandshellSurface,
+            String className)
+    {
+        v11ProxyLibrary.wlShellSurfaceSetClass(waylandshellSurface, className);
+    }
+    
+    public static void wlShellSurfaceSetFullscreen(
+            WlShellSurfaceHandle waylandshellSurface,
+            WlShellSurfaceFullscreenMethod method,
+            int framerate,
+            WlOutputHandle waylandOutput)
+    {
+        v11ProxyLibrary.wlShellSurfaceSetFullscreen(
+                waylandshellSurface,
+                method,
+                framerate,
+                waylandOutput);
+    }
+    
+    public static void wlShellSurfaceSetMaximized(
+            WlShellSurfaceHandle waylandshellSurface,
+            WlOutputHandle waylandOutput)
+    {
+        v11ProxyLibrary.wlShellSurfaceSetMaximized(waylandshellSurface, waylandOutput);
+    }
+    
+    public static void wlShellSurfaceSetPopup(
+            WlShellSurfaceHandle waylandshellSurface,
+            WlSeatHandle waylandSeat,
+            int serialNumber,
+            WlSurfaceHandle parentSurface,
+            int x,
+            int y,
+            EnumSet<WlShellSurfaceTransientBehavior> flags)
+    {
+        v11ProxyLibrary.wlShellSurfaceSetPopup(
+                waylandshellSurface,
+                waylandSeat,
+                serialNumber,
+                parentSurface,
+                x,
+                y,
+                flags);
+    }
+    
+    public static void wlShellSurfaceSetTitle(
+            WlShellSurfaceHandle waylandshellSurface,
+            byte[] surfaceTitle)
+    {
+        v11ProxyLibrary.wlShellSurfaceSetTitle(waylandshellSurface, surfaceTitle);
+    }
+    
+    public static void wlShellSurfaceSetTopLevel(
+            WlShellSurfaceHandle waylandshellSurface)
+    {
+        v11ProxyLibrary.wlShellSurfaceSetTopLevel(waylandshellSurface);
+    }
+    
+    /**
+     * 
+     * @param waylandshellSurface
+     * @param parentSurface
+     * @param x
+     * @param y
+     * @param flags
+     */
+    public static void wlShellSurfaceSetTransient(
+            WlShellSurfaceHandle waylandshellSurface,
+            WlSurfaceHandle parentSurface,
+            int x,
+            int y,
+            EnumSet<WlShellSurfaceTransientBehavior> flags)
+    {
+        v11ProxyLibrary.wlShellSurfaceSetTransient(
+                waylandshellSurface,
+                parentSurface,
+                x,
+                y,
+                flags);
+    }
+    
+    public static void wlSurfaceCommit(
+            WlSurfaceHandle waylandSurfaceHandle)
+    {
+        v11ProxyLibrary.wlSurfaceCommit(
+                waylandSurfaceHandle);
+    }
+    
+    public static void wlSurfaceDamage(
+            WlSurfaceHandle waylandSurfaceHandle,
+            int x,
+            int y,
+            int width,
+            int height)
+    {
+        v11ProxyLibrary.wlSurfaceDamage(
+                waylandSurfaceHandle,
+                x,
+                y,
+                width,
+                height);
+    }
 }

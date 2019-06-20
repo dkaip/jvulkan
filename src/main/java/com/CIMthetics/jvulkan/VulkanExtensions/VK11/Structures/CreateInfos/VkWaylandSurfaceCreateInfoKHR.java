@@ -20,14 +20,14 @@ import java.util.EnumSet;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkWaylandSurfaceCreateFlagsKHR;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlDisplay;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlSurface;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlDisplayHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlSurfaceHandle;
 
 public class VkWaylandSurfaceCreateInfoKHR extends VulkanCreateInfoStructure
 {
     private EnumSet<VkWaylandSurfaceCreateFlagsKHR> flags = EnumSet.noneOf(VkWaylandSurfaceCreateFlagsKHR.class);
-    private WlDisplay                               wlDisplay; // pointer to a wl_display
-    private WlSurface                               wlSurface; // pointer to a wl_surface
+    private WlDisplayHandle                               wlDisplay; // pointer to a wl_display
+    private WlSurfaceHandle                               wlSurface; // pointer to a wl_surface
 
 
     public VkWaylandSurfaceCreateInfoKHR()
@@ -45,22 +45,22 @@ public class VkWaylandSurfaceCreateInfoKHR extends VulkanCreateInfoStructure
         this.flags = flags;
     }
 
-    public WlDisplay getWlDisplay()
+    public WlDisplayHandle getWlDisplay()
     {
         return wlDisplay;
     }
 
-    public void setWlDisplay(WlDisplay wlDisplay)
+    public void setWlDisplay(WlDisplayHandle wlDisplay)
     {
         this.wlDisplay = wlDisplay;
     }
 
-    public WlSurface getWlSurface()
+    public WlSurfaceHandle getWlSurface()
     {
         return wlSurface;
     }
 
-    public void setWlSurface(WlSurface wlSurface)
+    public void setWlSurface(WlSurfaceHandle wlSurface)
     {
         this.wlSurface = wlSurface;
     }

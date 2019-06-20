@@ -17,7 +17,7 @@ package com.CIMthetics.jvulkan.Wayland.Handles;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
 
-public class WlSurface extends VulkanHandle
+public class WlDisplayHandle extends VulkanHandle
 {
 
 }

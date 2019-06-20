@@ -13,21 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.Wayland;
+package com.CIMthetics.jvulkan.Wayland.Handles;
 
-import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistryHandle;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
 
-public interface WlRegistryListener
+public class WlOutputHandle extends VulkanHandle
 {
-    abstract public void registryAddEventHandler(
-            Object userData,
-            WlRegistryHandle registry,
-            int registryObjectId,
-            String interfaceTextId,
-            int version);
-    
-    abstract public void registryRemoveEventHandler(
-            Object userData,
-            WlRegistryHandle registry,
-            int registryObjectId);
 }

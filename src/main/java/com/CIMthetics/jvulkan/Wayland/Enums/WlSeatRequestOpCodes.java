@@ -13,21 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.Wayland;
+package com.CIMthetics.jvulkan.Wayland.Enums;
 
-import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistryHandle;
-
-public interface WlRegistryListener
+public enum WlSeatRequestOpCodes
 {
-    abstract public void registryAddEventHandler(
-            Object userData,
-            WlRegistryHandle registry,
-            int registryObjectId,
-            String interfaceTextId,
-            int version);
+    GET_POINTER((short)0),
+    GET_KEYBOARD((short)1),
+    GET_TOUCH((short)2),
+    RELEASE((short)3);
     
-    abstract public void registryRemoveEventHandler(
-            Object userData,
-            WlRegistryHandle registry,
-            int registryObjectId);
+    private short value;
+    
+    private WlSeatRequestOpCodes(short value)
+    {
+        this.value = value;
+    }
+    
+    public short valueOf()
+    {
+        return value;
+    }
 }

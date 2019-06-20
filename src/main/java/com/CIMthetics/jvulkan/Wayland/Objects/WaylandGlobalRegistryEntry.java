@@ -13,39 +13,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.Wayland;
+package com.CIMthetics.jvulkan.Wayland.Objects;
 
-public class WaylandRegistryEntry
+public class WaylandGlobalRegistryEntry
 {
-    private int     registryId;
-    private String  objectName;
-    private int     objectVersion;
+    private int     objectName;
+    private String  interfaceName;
+    private int     interfaceVersion;
 
     /**
      * 
-     * @param registryId
      * @param objectName
-     * @param objectVersion
+     * @param interfaceName
+     * @param interfaceVersion
      */
-    public WaylandRegistryEntry(int registryId, String objectName, int objectVersion)
+    public WaylandGlobalRegistryEntry(int objectName, String interfaceName, int interfaceVersion)
     {
-        this.registryId    = registryId;
-        this.objectName    = objectName;
-        this.objectVersion = objectVersion;
+        this.objectName         = objectName;
+        this.interfaceName      = interfaceName;
+        this.interfaceVersion   = interfaceVersion;
     }
 
-    public int getRegistryId()
-    {
-        return registryId;
-    }
-
-    public String getObjectName()
+    public int getObjectName()
     {
         return objectName;
     }
 
-    public int getObjectVersion()
+    public String getInterfaceName()
     {
-        return objectVersion;
+        return interfaceName;
     }
+
+    public int getInterfaceVersion()
+    {
+        return interfaceVersion;
+    }
+
 }

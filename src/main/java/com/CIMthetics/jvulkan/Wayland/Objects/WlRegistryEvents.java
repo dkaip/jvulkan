@@ -1,0 +1,60 @@
+/*
+ * Copyright 2019 Douglas Kaip
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.CIMthetics.jvulkan.Wayland.Objects;
+
+import com.CIMthetics.jvulkan.Wayland.Enums.WlRegistryEventOpCodes;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistryHandle;
+
+public class WlRegistryEvents extends WaylandEventObject
+{
+    private WlRegistryEventOpCodes  eventType;
+    private WaylandGlobalRegistryEntry globalRegistryEntry;
+    
+    WlRegistryEvents(
+            WlRegistryHandle handle,
+            int objectName)
+    {
+        super(handle);
+        this.eventType = WlRegistryEventOpCodes.ANNOUNCE_GLOBAL_OBJECT_REMOVAL;
+        globalRegistryEntry = new WaylandGlobalRegistryEntry(objectName, null, 0);
+    }
+    
+    WlRegistryEvents(
+            WlRegistryHandle handle,
+            int objectName,
+            String interfaceName,
+            int interfaceVersion)
+    {
+        super(handle);
+        this.eventType = WlRegistryEventOpCodes.ANNOUNCE_GLOBAL_OBJECT;
+        globalRegistryEntry = new WaylandGlobalRegistryEntry(objectName, interfaceName, interfaceVersion);
+    }
+
+    public WlRegistryHandle getHandle()
+    {
+        return (WlRegistryHandle)super.getHandle();
+    }
+
+    public WlRegistryEventOpCodes getEventType()
+    {
+        return eventType;
+    }
+
+    public WaylandGlobalRegistryEntry getGlobalRegistryEntry()
+    {
+        return globalRegistryEntry;
+    }
+}

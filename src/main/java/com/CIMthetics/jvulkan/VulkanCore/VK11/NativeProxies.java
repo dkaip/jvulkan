@@ -17,6 +17,7 @@ package com.CIMthetics.jvulkan.VulkanCore.VK11;
 
 import java.util.Collection;
 import java.util.EnumSet;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkDependencyFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkFormat;
@@ -158,12 +159,20 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayModeKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkSurfaceKHR;
 import com.CIMthetics.jvulkan.Wayland.WlRegistryListener;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlCompositor;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlDisplay;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistry;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlShell;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlShellSurface;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlSurface;
+import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceFullscreenMethod;
+import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceResize;
+import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceTransientBehavior;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlCallbackHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlCompositorHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlDisplayHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlOutputHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlRegionHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistryHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlShellHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlShellSurfaceHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlSurfaceHandle;
+import com.CIMthetics.jvulkan.Wayland.Objects.WaylandEventObject;
+import com.CIMthetics.jvulkan.Wayland.Objects.WlSeatHandle;
 
 class NativeProxies
 {
@@ -901,7 +910,7 @@ class NativeProxies
     native boolean vkGetPhysicalDeviceWaylandPresentationSupportKHR(
             VkPhysicalDevice physicalDevice,
             int queueFamilyIndex,
-            WlDisplay waylandDisplay);
+            WlDisplayHandle waylandDisplay);
     
     native void vkGetQueueCheckpointDataNV(
             VkQueue queue,
@@ -1021,40 +1030,113 @@ class NativeProxies
     
     
     
-    native WlDisplay wlConnectDisplay(
-            String    displayName);
-
-    native void wlDisconnectDisplay(
-            WlDisplay waylandDisplay);
+    native WlRegionHandle wlCompositorCreateRegion(
+            WlCompositorHandle waylandCompositor);
     
-    native WlRegistry wlDisplayGetRegistry(
-            WlDisplay waylandDisplay);
+    native WlSurfaceHandle wlCompositorCreateSurface(
+            WlCompositorHandle waylandCompositor);
+    
+//    native WlDisplayHandle wlConnectDisplay(
+//            String    displayName);
+//
+    native WlDisplayHandle wlDisplayConnect(
+            String    displayName,
+            LinkedBlockingQueue<WaylandEventObject> eventHandlerWorkQueue);
+    
+    native void wlDisplayDisconnect(
+            WlDisplayHandle waylandDisplay);
+    
+    native void wlDisplaySync(
+            WlDisplayHandle waylandDisplay);
+    
+//    native void wlDisconnectDisplay(
+//            WlDisplayHandle waylandDisplay);
+//    
+    native WlRegistryHandle wlDisplayGetRegistry(
+            WlDisplayHandle waylandDisplay);
 
     native void wlRegistryAddListener(
-            WlRegistry waylandRegistry,
+            WlRegistryHandle waylandRegistry,
             WlRegistryListener registryListener, 
             Object userData);
     
     native void wlDisplayDispatch(
-            WlDisplay waylandDisplay);
+            WlDisplayHandle waylandDisplay);
     
     native void wlRoundTrip(
-            WlDisplay waylandDisplay);
+            WlDisplayHandle waylandDisplay);
     
     native VulkanHandle wlRegistryBind(
-            WlRegistry waylandRegistry,
+            WlRegistryHandle waylandRegistry,
             int interfaceId,
             String textInterfaceName,
             int interfaceVersion);
     
-    native WlSurface wlCompositorCreateSurface(
-            WlCompositor waylandCompositor);
+    native WlShellSurfaceHandle wlShellGetShellSurface(
+            WlShellHandle waylandShellInterface,
+            WlSurfaceHandle waylandSurface);
     
-    native WlShellSurface wlShellGetShellSurface(
-            WlShell waylandShellInterface,
-            WlSurface waylandSurface);
+    native void wlShellSurfaceMove(
+            WlShellSurfaceHandle waylandshellSurface,
+            WlSeatHandle waylandSeat,
+            int serialNumber);
     
-    native void wlShellSetTopLevel(
-            WlShellSurface waylandshellSurface);
+    native void wlShellSurfacePong(
+            WlShellSurfaceHandle waylandshellSurface,
+            int serianNumber);
+    
+    native void wlShellSurfaceResize(
+            WlShellSurfaceHandle waylandshellSurface,
+            WlSeatHandle waylandSeat,
+            int serialNumber,
+            WlShellSurfaceResize edges);
+    
+    native void wlShellSurfaceSetClass(
+            WlShellSurfaceHandle waylandshellSurface,
+            String className);
+    
+    native void wlShellSurfaceSetFullscreen(
+            WlShellSurfaceHandle waylandshellSurface,
+            WlShellSurfaceFullscreenMethod method,
+            int framerate,
+            WlOutputHandle waylandOutput);
+    
+    native void wlShellSurfaceSetMaximized(
+            WlShellSurfaceHandle waylandshellSurface,
+            WlOutputHandle waylandOutput);
+    
+    native void wlShellSurfaceSetPopup(
+            WlShellSurfaceHandle waylandshellSurface,
+            WlSeatHandle waylandSeat,
+            int serialNumber,
+            WlSurfaceHandle parentSurface,
+            int x,
+            int y,
+            EnumSet<WlShellSurfaceTransientBehavior> flags);
+    
+    native void wlShellSurfaceSetTitle(
+            WlShellSurfaceHandle waylandshellSurface,
+            byte[] surfaceTitle);
+    
+    native void wlShellSurfaceSetTopLevel(
+            WlShellSurfaceHandle waylandshellSurface);
+    
+    native void wlShellSurfaceSetTransient(
+            WlShellSurfaceHandle waylandshellSurface,
+            WlSurfaceHandle parentSurface,
+            int x,
+            int y,
+            EnumSet<WlShellSurfaceTransientBehavior> flags);
+    
+    native void wlSurfaceCommit(
+            WlSurfaceHandle waylandSurfaceHandle);
+    
+    native void wlSurfaceDamage(
+            WlSurfaceHandle waylandSurfaceHandle,
+            int x,
+            int y,
+            int width,
+            int height);
+
 }
 

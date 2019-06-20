@@ -34,4 +34,30 @@ public class VulkanHandle
     {
         return String.format("%x", handle);
     }
+
+    @Override
+    public int hashCode()
+    {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + (int) (handle ^ (handle >>> 32));
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+//        if (getClass() != obj.getClass())
+//            return false;
+        if ((obj instanceof VulkanHandle) == false)
+            return false;
+        VulkanHandle other = (VulkanHandle) obj;
+        if (handle != other.handle)
+            return false;
+        return true;
+    }
 }

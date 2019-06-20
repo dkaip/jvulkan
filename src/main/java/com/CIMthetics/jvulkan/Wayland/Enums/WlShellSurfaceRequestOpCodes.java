@@ -13,11 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.Wayland.Handles;
+package com.CIMthetics.jvulkan.Wayland.Enums;
 
-import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
-
-public class WlDisplay extends VulkanHandle
+public enum WlShellSurfaceRequestOpCodes
 {
-
+    PONG((short)0),
+    MOVE((short)1),
+    RESIZE((short)2),
+    SET_TOP_LEVEL((short)3),
+    SET_TRANSIENT((short)4),
+    SET_FULLSCREEN((short)5),
+    SET_POPUP((short)6),
+    SET_MAXIMIZED((short)7),
+    SET_TITLE((short)8),
+    SET_CLASS((short)9);
+    
+    private short value;
+    
+    private WlShellSurfaceRequestOpCodes(short value)
+    {
+        this.value = value;
+    }
+    
+    public short valueOf()
+    {
+        return value;
+    }
 }

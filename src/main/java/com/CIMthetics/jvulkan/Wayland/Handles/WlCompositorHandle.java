@@ -17,7 +17,6 @@ package com.CIMthetics.jvulkan.Wayland.Handles;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
 
-public class WlRegistry extends VulkanHandle
+public class WlCompositorHandle extends VulkanHandle
 {
-
 }

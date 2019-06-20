@@ -13,21 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.Wayland;
+package com.CIMthetics.jvulkan.Wayland.Enums;
 
-import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistryHandle;
-
-public interface WlRegistryListener
+public enum WlSurfaceErrors
 {
-    abstract public void registryAddEventHandler(
-            Object userData,
-            WlRegistryHandle registry,
-            int registryObjectId,
-            String interfaceTextId,
-            int version);
+    INVALID_SCALE(0),
+    INVALID_TRANSFORM(1);
     
-    abstract public void registryRemoveEventHandler(
-            Object userData,
-            WlRegistryHandle registry,
-            int registryObjectId);
+    private int value;
+    
+    private WlSurfaceErrors(int value)
+    {
+        this.value = value;
+    }
+    
+    public int valueOf()
+    {
+        return value;
+    }
+
+    static public WlSurfaceErrors fromValue(int value)
+    {
+        for(WlSurfaceErrors listValue : WlSurfaceErrors.values())
+        {
+            if (listValue.valueOf() == value)
+            {
+                return listValue;
+            }
+        }
+        
+        return null;
+    }
 }

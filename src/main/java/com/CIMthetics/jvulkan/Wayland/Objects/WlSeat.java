@@ -13,11 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.Wayland.Handles;
+package com.CIMthetics.jvulkan.Wayland.Objects;
 
-import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class WlShellSurface extends VulkanHandle
+public class WlSeat extends WaylandInterfaceObject
 {
+    private Logger log = LoggerFactory.getLogger(WlSeat.class.getName());
+    private WlDisplaySingleton wlDisplay = WlDisplaySingleton.getInstance();
+
+    public WlSeat(WlSeatHandle handle)
+    {
+        setHandle(handle);
+
+        // Put myself on the proxy map
+        wlDisplay.addToProxyMap(this);
+    }
+    
+
+
+    @Override
+    void handleEvent(WaylandEventObject eventObject)
+    {
+        // TODO Auto-generated method stub
+
+    }
 
 }

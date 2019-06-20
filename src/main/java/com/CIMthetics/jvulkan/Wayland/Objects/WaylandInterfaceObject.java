@@ -13,21 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.Wayland;
+package com.CIMthetics.jvulkan.Wayland.Objects;
 
-import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistryHandle;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
 
-public interface WlRegistryListener
+public abstract class WaylandInterfaceObject
 {
-    abstract public void registryAddEventHandler(
-            Object userData,
-            WlRegistryHandle registry,
-            int registryObjectId,
-            String interfaceTextId,
-            int version);
+    private VulkanHandle handle;
     
-    abstract public void registryRemoveEventHandler(
-            Object userData,
-            WlRegistryHandle registry,
-            int registryObjectId);
+    public void setHandle(VulkanHandle handle)
+    {
+        this.handle = handle;
+    }
+    
+    public VulkanHandle getHandle()
+    {
+        return handle;
+    }
+    
+    abstract void handleEvent(WaylandEventObject eventObject);
 }

@@ -17,13 +17,6 @@ package com.CIMthetics.jvulkan.Wayland.Handles;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
 
-public class WlCompositor extends VulkanHandle
+public class WlShellHandle extends VulkanHandle
 {
-    public WlCompositor(VulkanHandle vulkanHandle)
-    {
-        if (vulkanHandle == null)
-            throw new NullPointerException("The VulkanHandle argument may not be null.");
-        
-        super.setHandle(vulkanHandle.getHandle());
-    }
 }

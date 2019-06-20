@@ -15,8 +15,8 @@
  */
 package com.CIMthetics.jvulkan.Wayland.Objects;
 
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlCompositorCreateSurface;
 import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlCompositorCreateRegion;
+import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlCompositorCreateSurface;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,4 +56,9 @@ public class WlCompositor extends WaylandInterfaceObject
         log.error("The compositor interface does not have any events.");
     }
 
+    @Override
+    public WlCompositorHandle getHandle()
+    {
+        return (WlCompositorHandle)handle;
+    }
 }

@@ -44,4 +44,10 @@ public class WlCallback extends WaylandInterfaceObject
         System.err.println("Setting isFired");
         setIsFired();
     }
+
+    @Override
+    public WlCallbackHandle getHandle()
+    {
+        return (WlCallbackHandle)getHandle();
+    }
 }

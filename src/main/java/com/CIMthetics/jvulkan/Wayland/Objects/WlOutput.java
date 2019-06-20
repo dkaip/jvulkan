@@ -173,4 +173,10 @@ public class WlOutput extends WaylandInterfaceObject
         
         return sb.toString();
     }
+    
+    @Override
+    public WlOutputHandle getHandle()
+    {
+        return (WlOutputHandle)handle;
+    }
 }

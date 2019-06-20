@@ -133,4 +133,10 @@ public class WlDisplaySingleton extends WaylandInterfaceObject
     {
         waylandEventHandler.moveDelayedQueueToWorkQueue();
     }
+    
+    @Override
+    public WlDisplayHandle getHandle()
+    {
+        return (WlDisplayHandle)handle;
+    }
 }

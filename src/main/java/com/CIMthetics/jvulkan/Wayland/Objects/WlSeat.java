@@ -39,5 +39,10 @@ public class WlSeat extends WaylandInterfaceObject
         // TODO Auto-generated method stub
 
     }
-
+    
+    @Override
+    public WlSeatHandle getHandle()
+    {
+        return (WlSeatHandle)handle;
+    }
 }

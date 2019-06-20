@@ -201,4 +201,10 @@ public class WlRegistry extends WaylandInterfaceObject
         
         return newObject;
     }
+    
+    @Override
+    public WlRegistryHandle getHandle()
+    {
+        return (WlRegistryHandle)handle;
+    }
 }

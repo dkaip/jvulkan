@@ -70,5 +70,10 @@ public class WlSurface extends WaylandInterfaceObject
                 break;
         }
     }
-
+    
+    @Override
+    public WlSurfaceHandle getHandle()
+    {
+        return (WlSurfaceHandle)handle;
+    }
 }

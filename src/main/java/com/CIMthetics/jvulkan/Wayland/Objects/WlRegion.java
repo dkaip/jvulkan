@@ -40,4 +40,9 @@ public class WlRegion extends WaylandInterfaceObject
 
     }
 
+    @Override
+    public WlRegionHandle getHandle()
+    {
+        return (WlRegionHandle)handle;
+    }
 }

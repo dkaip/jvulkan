@@ -2362,12 +2362,6 @@ public class VulkanFunctions
 //        return v11ProxyLibrary.wlConnectDisplay(displayName);
 //    }
 //
-    public static void wlDisplayDisconnect(
-            WlDisplayHandle waylandDisplay)
-    {
-        v11ProxyLibrary.wlDisplayDisconnect(waylandDisplay);
-    }
-    
     public static WlDisplayHandle wlDisplayConnect(
             String    displayName,
             LinkedBlockingQueue<WaylandEventObject> eventHandlerWorkQueue)
@@ -2375,6 +2369,12 @@ public class VulkanFunctions
         return v11ProxyLibrary.wlDisplayConnect(
                 displayName,
                 eventHandlerWorkQueue);
+    }
+    
+    public static void wlDisplayDisconnect(
+            WlDisplayHandle waylandDisplay)
+    {
+        v11ProxyLibrary.wlDisplayDisconnect(waylandDisplay);
     }
     
 //    public static void wlDisconnectDisplay(

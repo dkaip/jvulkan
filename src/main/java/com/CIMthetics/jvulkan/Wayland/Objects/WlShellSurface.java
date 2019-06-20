@@ -183,5 +183,10 @@ public class WlShellSurface extends WaylandInterfaceObject
                 break;
         }
     }
-
+    
+    @Override
+    public WlShellSurfaceHandle getHandle()
+    {
+        return (WlShellSurfaceHandle)handle;
+    }
 }

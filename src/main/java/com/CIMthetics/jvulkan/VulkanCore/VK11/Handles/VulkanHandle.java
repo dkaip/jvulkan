@@ -17,22 +17,22 @@ package com.CIMthetics.jvulkan.VulkanCore.VK11.Handles;
 
 public class VulkanHandle
 {
-    private long handle;
+    private long handleValue;
     
-    public void setHandle(long handle)
+    public void setHandleValue(long handleValue)
     {
-        this.handle = handle;
+        this.handleValue = handleValue;
     }
     
-    public long getHandle()
+    public long getHandleValue()
     {
-        return handle;
+        return handleValue;
     }
     
     @Override
     public String toString()
     {
-        return String.format("%x", handle);
+        return String.format("%x", handleValue);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class VulkanHandle
     {
         final int prime = 31;
         int result = 1;
-        result = prime * result + (int) (handle ^ (handle >>> 32));
+        result = prime * result + (int) (handleValue ^ (handleValue >>> 32));
         return result;
     }
 
@@ -56,7 +56,7 @@ public class VulkanHandle
         if ((obj instanceof VulkanHandle) == false)
             return false;
         VulkanHandle other = (VulkanHandle) obj;
-        if (handle != other.handle)
+        if (handleValue != other.handleValue)
             return false;
         return true;
     }

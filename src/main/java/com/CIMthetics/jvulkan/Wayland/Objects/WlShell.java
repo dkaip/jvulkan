@@ -49,5 +49,10 @@ public class WlShell extends WaylandInterfaceObject
     {
         log.error("The compositor interface does not have any events.");
     }
-
+    
+    @Override
+    public WlShellHandle getHandle()
+    {
+        return (WlShellHandle)handle;
+    }
 }

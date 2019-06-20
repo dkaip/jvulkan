@@ -19,17 +19,14 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
 
 public abstract class WaylandInterfaceObject
 {
-    private VulkanHandle handle;
+    VulkanHandle handle;
     
     public void setHandle(VulkanHandle handle)
     {
         this.handle = handle;
     }
     
-    public VulkanHandle getHandle()
-    {
-        return handle;
-    }
+    abstract VulkanHandle getHandle();
     
     abstract void handleEvent(WaylandEventObject eventObject);
 }

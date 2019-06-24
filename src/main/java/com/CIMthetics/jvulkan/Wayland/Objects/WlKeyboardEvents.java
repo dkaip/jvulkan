@@ -15,6 +15,8 @@
  */
 package com.CIMthetics.jvulkan.Wayland.Objects;
 
+import java.io.UnsupportedEncodingException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,6 +34,7 @@ public class WlKeyboardEvents extends WaylandEventObject
     private WlSurfaceHandle surfaceHandle;
     private byte[] keys;
     private WlKeyboardKeymapFormat keymapFormat;
+    private byte[] keymap;
     private int fileDescriptor;
     private int size;
     private long time;
@@ -47,14 +50,30 @@ public class WlKeyboardEvents extends WaylandEventObject
     WlKeyboardEvents(
             WlKeyboardHandle handle,
             WlKeyboardKeymapFormat keymapFormat,
-            int fileDescriptor,
-            int size)
+            byte[] keymap)
     {
         super(handle);
         this.eventType = WlKeyboardEventOpCodes.KEYMAP;
         this.keymapFormat = keymapFormat;
-        this.fileDescriptor = fileDescriptor;
-        this.size = size;
+        this.keymap = keymap;
+        log.debug("Keymap size is {}", keymap.length);
+        try
+        {
+            String tempString = new String(keymap, "ISO-8859-1");
+            log.debug(tempString);
+        }
+        catch (UnsupportedEncodingException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < 64; i++)
+        {
+            sb.append(String.format("%x", keymap[i]));
+            sb.append(" ");
+        }
+        log.debug(sb.toString());
     }
 
     WlKeyboardEvents(
@@ -202,6 +221,11 @@ public class WlKeyboardEvents extends WaylandEventObject
     public int getGroup()
     {
         return group;
+    }
+
+    public byte[] getKeymap()
+    {
+        return keymap;
     }
 
 }

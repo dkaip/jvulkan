@@ -27,6 +27,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlCompositorHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlOutputHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistryHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlSeatHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlShellHandle;
 
 public class WlRegistry extends WaylandInterfaceObject
@@ -163,19 +164,19 @@ public class WlRegistry extends WaylandInterfaceObject
         }
         else if (interfaceName.equals("wl_seat_interface") == true)
         {
-            log.warn("Not implemented yet.");
+            newObject = new WlSeat((WlSeatHandle)handle);
         }
         else if (interfaceName.equals("wl_pointer_interface") == true)
         {
-            log.warn("Not implemented yet.");
+            log.error("This should never happen.  The pointer interface is created a different way.");
         }
         else if (interfaceName.equals("wl_keyboard_interface") == true)
         {
-            log.warn("Not implemented yet.");
+            log.error("This should never happen.  The keyboard interface is created a different way.");
         }
         else if (interfaceName.equals("wl_touch_interface") == true)
         {
-            log.warn("Not implemented yet.");
+            log.error("This should never happen.  The touch interface is created a different way.");
         }
         else if (interfaceName.equals("wl_output_interface") == true)
         {

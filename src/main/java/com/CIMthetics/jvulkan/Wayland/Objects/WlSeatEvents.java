@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import com.CIMthetics.jvulkan.Wayland.Enums.WlSeatCapability;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlSeatEventOpCodes;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlSeatHandle;
 
 public class WlSeatEvents extends WaylandEventObject
 {

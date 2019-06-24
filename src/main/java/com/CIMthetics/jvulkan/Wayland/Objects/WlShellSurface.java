@@ -37,6 +37,7 @@ import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceFullscreenMethod;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceResize;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceTransientBehavior;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlOutputHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlSeatHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlShellSurfaceHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlSurfaceHandle;
 

@@ -124,6 +124,13 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkCopyAccelerationStru
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessageSeverityFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessageTypeFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkTimeDomainEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.CheckpointMarker;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkAccelerationStructureNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDebugReportCallbackEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDeviceAddress;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayModeKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkSurfaceKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStructureInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStructureMemoryRequirementsInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkBindAccelerationStructureMemoryInfoNV;
@@ -151,28 +158,23 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDis
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDisplaySurfaceCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkRayTracingPipelineCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkWaylandSurfaceCreateInfoKHR;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.CheckpointMarker;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkAccelerationStructureNV;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDebugReportCallbackEXT;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDeviceAddress;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayKHR;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayModeKHR;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkSurfaceKHR;
 import com.CIMthetics.jvulkan.Wayland.WlRegistryListener;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceFullscreenMethod;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceResize;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceTransientBehavior;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlCallbackHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlCompositorHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlDisplayHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlKeyboardHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlOutputHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlPointerHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlRegionHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistryHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlSeatHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlShellHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlShellSurfaceHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlSurfaceHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlTouchHandle;
 import com.CIMthetics.jvulkan.Wayland.Objects.WaylandEventObject;
-import com.CIMthetics.jvulkan.Wayland.Objects.WlSeatHandle;
 
 class NativeProxies
 {
@@ -1036,9 +1038,6 @@ class NativeProxies
     native WlSurfaceHandle wlCompositorCreateSurface(
             WlCompositorHandle waylandCompositor);
     
-//    native WlDisplayHandle wlConnectDisplay(
-//            String    displayName);
-//
     native WlDisplayHandle wlDisplayConnect(
             String    displayName,
             LinkedBlockingQueue<WaylandEventObject> eventHandlerWorkQueue);
@@ -1046,25 +1045,59 @@ class NativeProxies
     native void wlDisplayDisconnect(
             WlDisplayHandle waylandDisplay);
     
-    native void wlDisplaySync(
+    native void wlDisplayDispatch(
             WlDisplayHandle waylandDisplay);
     
-//    native void wlDisconnectDisplay(
-//            WlDisplayHandle waylandDisplay);
-//    
+    native int wlDisplayDispatchPending(
+            WlDisplayHandle waylandDisplay);
+
+    native int wlDisplayFlush(
+            WlDisplayHandle waylandDisplay);
+    
     native WlRegistryHandle wlDisplayGetRegistry(
             WlDisplayHandle waylandDisplay);
 
+    native int wlDisplayReadEvents(
+            WlDisplayHandle waylandDisplay);
+
+    native int wlDisplayPrepareRead(
+            WlDisplayHandle waylandDisplay);
+
+    native void wlDisplaySync(
+            WlDisplayHandle waylandDisplay);
+    
+    native void wlDisplayRoundTrip(
+            WlDisplayHandle waylandDisplay);
+    
+    native void wlKeyboardRelease(
+            WlKeyboardHandle waylandKeyboard);
+    
+    native void wlPointerRelease(
+            WlPointerHandle waylandPointer);
+    
+    native void wlPointerSetCursor(
+            WlPointerHandle waylandPointer,
+            int serialNumber,
+            WlSurfaceHandle waylandSurface,
+            int x,
+            int y);
+    
+    native WlKeyboardHandle wlSeatGetKeyboard(
+            WlSeatHandle waylandSeat);
+    
+    native WlPointerHandle wlSeatGetPointer(
+            WlSeatHandle waylandSeat);
+    
+    native WlTouchHandle wlSeatGetTouch(
+            WlSeatHandle waylandSeat);
+    
+    native void wlSeatRelease(
+            WlSeatHandle waylandSeat);
+    
     native void wlRegistryAddListener(
             WlRegistryHandle waylandRegistry,
             WlRegistryListener registryListener, 
             Object userData);
-    
-    native void wlDisplayDispatch(
-            WlDisplayHandle waylandDisplay);
-    
-    native void wlRoundTrip(
-            WlDisplayHandle waylandDisplay);
     
     native VulkanHandle wlRegistryBind(
             WlRegistryHandle waylandRegistry,

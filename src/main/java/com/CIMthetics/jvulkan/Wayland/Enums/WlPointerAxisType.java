@@ -1,13 +1,13 @@
 package com.CIMthetics.jvulkan.Wayland.Enums;
 
-public enum WlPointerAxisTypeEnum
+public enum WlPointerAxisType
 {
     VERTICAL_SCROLL(0),
     HORIZONTAL_SCROLL(1);
     
     private int value;
     
-    private WlPointerAxisTypeEnum(int value)
+    private WlPointerAxisType(int value)
     {
         this.value = value;
     }
@@ -17,9 +17,9 @@ public enum WlPointerAxisTypeEnum
         return value;
     }
 
-    static public WlPointerAxisTypeEnum fromValue(int value)
+    static public WlPointerAxisType fromValue(int value)
     {
-        for(WlPointerAxisTypeEnum listValue : WlPointerAxisTypeEnum.values())
+        for(WlPointerAxisType listValue : WlPointerAxisType.values())
         {
             if (listValue.valueOf() == value)
             {

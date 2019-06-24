@@ -128,6 +128,13 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkCopyAccelerationStru
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessageSeverityFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessageTypeFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkTimeDomainEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.CheckpointMarker;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkAccelerationStructureNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDebugReportCallbackEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDeviceAddress;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayModeKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkSurfaceKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStructureInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStructureMemoryRequirementsInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkBindAccelerationStructureMemoryInfoNV;
@@ -155,28 +162,22 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDis
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDisplaySurfaceCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkRayTracingPipelineCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkWaylandSurfaceCreateInfoKHR;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.CheckpointMarker;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkAccelerationStructureNV;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDebugReportCallbackEXT;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDeviceAddress;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayKHR;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayModeKHR;
-import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkSurfaceKHR;
-import com.CIMthetics.jvulkan.Wayland.WlRegistryListener;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceFullscreenMethod;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceResize;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceTransientBehavior;
-import com.CIMthetics.jvulkan.Wayland.Handles.WlCallbackHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlCompositorHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlDisplayHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlKeyboardHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlOutputHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlPointerHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlRegionHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistryHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlSeatHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlShellHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlShellSurfaceHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlSurfaceHandle;
+import com.CIMthetics.jvulkan.Wayland.Handles.WlTouchHandle;
 import com.CIMthetics.jvulkan.Wayland.Objects.WaylandEventObject;
-import com.CIMthetics.jvulkan.Wayland.Objects.WlSeatHandle;
 
 public class VulkanFunctions
 {
@@ -2377,55 +2378,53 @@ public class VulkanFunctions
         v11ProxyLibrary.wlDisplayDisconnect(waylandDisplay);
     }
     
-//    public static void wlDisconnectDisplay(
-//            WlDisplayHandle waylandDisplay)
-//    {
-//        v11ProxyLibrary.wlDisconnectDisplay(waylandDisplay);
-//    }
-//    
-    public static WlRegistryHandle wlDisplayGetRegistry(
-            WlDisplayHandle waylandDisplay)
-    {
-        return v11ProxyLibrary.wlDisplayGetRegistry(waylandDisplay);
-    }
-    
-    public static void wlDisplaySync(
-            WlDisplayHandle waylandDisplay)
-    {
-        v11ProxyLibrary.wlDisplaySync(waylandDisplay);
-    }
-    
-//    /**
-//     * Add a listener to catch state changed (services added or removed) events
-//     * from the registry.
-//     * <p>
-//     * Note:<br>
-//     * The current implementaion of this assumes that this will only be called once
-//     * for a given registry.  If this is called more than once the previous callback
-//     * and user data will be replaced by the ones supplied to this method.
-//     * 
-//     * @param waylandRegistry
-//     * @param registryListener
-//     * @param userData
-//     */
-//    public static void wlRegistryAddListener(
-//            WlRegistryHandle waylandRegistry,
-//            WlRegistryListener registryListener, 
-//            Object userData)
-//    {
-//        v11ProxyLibrary.wlRegistryAddListener(waylandRegistry, registryListener, userData);
-//    }
-//    
     public static void wlDisplayDispatch(
             WlDisplayHandle waylandDisplay)
     {
         v11ProxyLibrary.wlDisplayDispatch(waylandDisplay);
     }
     
-    public static void wlRoundTrip(
+    public static int wlDisplayDispatchPending(
             WlDisplayHandle waylandDisplay)
     {
-        v11ProxyLibrary.wlRoundTrip(waylandDisplay);
+        return v11ProxyLibrary.wlDisplayDispatchPending(waylandDisplay);
+    }
+    
+    public static int wlDisplayFlush(
+            WlDisplayHandle waylandDisplay)
+    {
+        return v11ProxyLibrary.wlDisplayFlush(waylandDisplay);
+    }
+    
+    public static WlRegistryHandle wlDisplayGetRegistry(
+            WlDisplayHandle waylandDisplay)
+    {
+        return v11ProxyLibrary.wlDisplayGetRegistry(waylandDisplay);
+    }
+    
+    public static int wlDisplayPrepareRead(
+            WlDisplayHandle waylandDisplay)
+    {
+        return v11ProxyLibrary.wlDisplayPrepareRead(waylandDisplay);
+    }
+    
+    public static int wlDisplayReadEvents(
+            WlDisplayHandle waylandDisplay)
+    {
+        return v11ProxyLibrary.wlDisplayReadEvents(waylandDisplay);
+    }
+    
+
+    public static void wlDisplayRoundTrip(
+            WlDisplayHandle waylandDisplay)
+    {
+        v11ProxyLibrary.wlDisplayRoundTrip(waylandDisplay);
+    }
+    
+    public static void wlDisplaySync(
+            WlDisplayHandle waylandDisplay)
+    {
+        v11ProxyLibrary.wlDisplaySync(waylandDisplay);
     }
     
     public static VulkanHandle wlRegistryBind(
@@ -2451,6 +2450,52 @@ public class VulkanFunctions
             WlCompositorHandle waylandCompositor)
     {
         return v11ProxyLibrary.wlCompositorCreateSurface(waylandCompositor);
+    }
+    
+    public static void wlKeyboardRelease(
+            WlKeyboardHandle waylandKeyboard)
+    {
+        v11ProxyLibrary.wlKeyboardRelease(waylandKeyboard);
+    }
+    
+    public static void wlPointerRelease(
+            WlPointerHandle waylandPointer)
+    {
+        v11ProxyLibrary.wlPointerRelease(waylandPointer);
+    }
+    
+    public static void wlPointerSetCursor(
+            WlPointerHandle waylandPointer,
+            int serialNumber,
+            WlSurfaceHandle waylandSurface,
+            int x,
+            int y)
+    {
+        v11ProxyLibrary.wlPointerSetCursor(waylandPointer, serialNumber, waylandSurface, x, y);
+    }
+    
+    public static WlKeyboardHandle wlSeatGetKeyboard(
+            WlSeatHandle waylandSeat)
+    {
+        return v11ProxyLibrary.wlSeatGetKeyboard(waylandSeat);
+    }
+    
+    public static WlPointerHandle wlSeatGetPointer(
+            WlSeatHandle waylandSeat)
+    {
+        return v11ProxyLibrary.wlSeatGetPointer(waylandSeat);
+    }
+    
+    public static WlTouchHandle wlSeatGetTouch(
+            WlSeatHandle waylandSeat)
+    {
+        return v11ProxyLibrary.wlSeatGetTouch(waylandSeat);
+    }
+    
+    public static void wlSeatRelease(
+            WlSeatHandle waylandSeat)
+    {
+        v11ProxyLibrary.wlSeatRelease(waylandSeat);
     }
     
     public static WlShellSurfaceHandle wlShellGetShellSurface(

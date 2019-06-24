@@ -15,7 +15,6 @@
  */
 package com.CIMthetics.jvulkan.Wayland.Objects;
 
-import java.util.Enumeration;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -60,8 +59,8 @@ class WaylandEventHandler implements Runnable
                 break;
             }
             
-            for (Enumeration<VulkanHandle> e = objectProxyMap.keys(); e.hasMoreElements();)
-                System.out.println(e.nextElement().getClass().getName());
+//            for (Enumeration<VulkanHandle> e = objectProxyMap.keys(); e.hasMoreElements();)
+//                System.out.println(e.nextElement().getClass().getName());
             
             log.debug("Got a message {} {}.", inboundEvent.getClass().getName(), inboundEvent.getHandle() == null ? "null" : inboundEvent.getHandle().toString());
             WaylandInterfaceObject waylandObject = objectProxyMap.get(inboundEvent.getHandle());
@@ -99,7 +98,7 @@ class WaylandEventHandler implements Runnable
     void moveDelayedQueueToWorkQueue()
     {
         int count = delayedCompletionQueue.size();
-        log.debug("Attempting to move {} delayed event(s) to work queue.", count);
+        log.trace("Attempting to move {} delayed event(s) to work queue.", count);
         WaylandEventObject queueEntry = null;
         
         /*

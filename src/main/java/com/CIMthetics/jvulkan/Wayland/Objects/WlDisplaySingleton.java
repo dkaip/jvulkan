@@ -17,7 +17,12 @@ package com.CIMthetics.jvulkan.Wayland.Objects;
 
 import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayConnect;
 import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayDisconnect;
+import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayDispatch;
+import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayDispatchPending;
+import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayFlush;
 import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayGetRegistry;
+import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayPrepareRead;
+import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayReadEvents;
 import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplaySync;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -96,6 +101,31 @@ public class WlDisplaySingleton extends WaylandInterfaceObject
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+    
+    public int readEvents()
+    {
+        return wlDisplayReadEvents((WlDisplayHandle)getHandle());
+    }
+    
+    public int dispatchPending()
+    {
+        return wlDisplayDispatchPending((WlDisplayHandle)getHandle());
+    }
+    
+    public int flush()
+    {
+        return wlDisplayFlush((WlDisplayHandle)getHandle());
+    }
+    
+    public int prepareRead()
+    {
+        return wlDisplayPrepareRead((WlDisplayHandle)getHandle());
+    }
+    
+    public void dispatch()
+    {
+        wlDisplayDispatch((WlDisplayHandle)getHandle());
     }
     
     public void sync()

@@ -57,4 +57,15 @@ public class VkMemoryType
     {
         this.heapIndex = heapIndex;
     }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkMemoryType\n"));
+        sb.append(String.format("    propertyFlags:%s\n", propertyFlags.toString()));
+        sb.append(String.format("    heapIndex:%d\n", heapIndex));
+        
+        return sb.toString();
+    }
 }

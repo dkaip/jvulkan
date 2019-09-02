@@ -33,7 +33,7 @@ public class VkMemoryHeap
         this.size = size;
         
         if (flags == null)
-            flags = EnumSet.noneOf(VkMemoryHeapFlagBits.class);
+            this.flags = EnumSet.noneOf(VkMemoryHeapFlagBits.class);
         else
             this.flags = flags;
     }
@@ -58,4 +58,14 @@ public class VkMemoryHeap
         this.flags = flags;
     }
     
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkMemoryHeap\n"));
+        sb.append(String.format("    size:%d\n", size));
+        sb.append(String.format("    flags:%s\n", flags.toString()));
+        
+        return sb.toString();
+    }
 }

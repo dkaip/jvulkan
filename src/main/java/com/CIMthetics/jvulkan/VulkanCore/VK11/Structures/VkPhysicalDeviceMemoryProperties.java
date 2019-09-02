@@ -49,4 +49,23 @@ public class VkPhysicalDeviceMemoryProperties
         this.memoryHeaps = memoryHeaps;
     }
     
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkPhysicalDeviceMemoryProperties\n"));
+        sb.append("    VkMemoryTypes:\n");
+
+        for(VkMemoryType temp : memoryTypes)
+        {
+            sb.append(String.format("    %s", temp.toString()));
+        }
+
+        for(VkMemoryHeap temp : memoryHeaps)
+        {
+            sb.append(String.format("    %s", temp.toString()));
+        }
+        
+        return sb.toString();
+    }
 }

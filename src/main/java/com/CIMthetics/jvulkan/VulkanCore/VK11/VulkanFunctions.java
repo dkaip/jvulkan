@@ -20,7 +20,11 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.Collection;
 import java.util.EnumSet;
+import java.util.LinkedList;
 import java.util.concurrent.LinkedBlockingQueue;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkDependencyFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkFormat;
@@ -181,6 +185,8 @@ import com.CIMthetics.jvulkan.Wayland.Objects.WaylandEventObject;
 
 public class VulkanFunctions
 {
+    private Logger log = LoggerFactory.getLogger(VulkanFunctions.class.getName());
+
     private static NativeProxies v11ProxyLibrary;
     private static String pathToNativeLibrary;
     private static String nativeLibraryName;
@@ -194,7 +200,8 @@ public class VulkanFunctions
         
         VulkanFunctions.nativeLibraryName = nativeLibraryName;
 
-        System.load(VulkanFunctions.pathToNativeLibrary + VulkanFunctions.nativeLibraryName );
+        log.trace("Attempting to load native library:{}{}", VulkanFunctions.pathToNativeLibrary, VulkanFunctions.nativeLibraryName);
+        System.load(VulkanFunctions.pathToNativeLibrary + VulkanFunctions.nativeLibraryName);
 
         v11ProxyLibrary = new NativeProxies();
     }
@@ -1118,6 +1125,30 @@ public class VulkanFunctions
         return v11ProxyLibrary.vkQueueSubmit(
                 queue,
                 submits,
+                fence);
+    }
+    
+    /**
+     * This is a convenience function for <code>vkQueueSubmit</code> so that
+     * you do not need to create a Java <code>Collection</code> for just one 
+     * <code>VkSubmitInfo</code> element.
+     * 
+     * @param queue the queue on the graphics device
+     * @param submitInfo the <code>VkSubmitInfo</code> information
+     * @param fence a Fence for completion synchronization
+     * @return a <code>VkResult</code> indicating the completion status
+     */
+    public static VkResult vkQueueSubmit(
+            VkQueue queue,
+            VkSubmitInfo submitInfo,
+            VkFence fence)
+    {
+        Collection<VkSubmitInfo> submitInfoCollection = new LinkedList<VkSubmitInfo>();
+        submitInfoCollection.add(submitInfo);
+
+        return v11ProxyLibrary.vkQueueSubmit(
+                queue,
+                submitInfoCollection,
                 fence);
     }
     

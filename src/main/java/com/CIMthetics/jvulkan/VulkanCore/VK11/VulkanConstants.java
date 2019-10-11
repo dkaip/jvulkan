@@ -21,7 +21,7 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugReportObjectTyp
 
 public class VulkanConstants
 {
-    public static final int     VK_HEADER_VERSION = 106;
+    public static final int     VK_HEADER_VERSION = 121;
     public static final float   VK_LOD_CLAMP_NONE               = 1000.0f;
     public static final int     VK_REMAINING_MIP_LEVELS         = -1;
     public static final int     VK_REMAINING_ARRAY_LAYERS       = -1;
@@ -57,15 +57,15 @@ public class VulkanConstants
     public static final String  VK_KHR_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_swapchain";
     
     public static final boolean VK_KHR_display = true;
-    public static final int     VK_KHR_DISPLAY_SPEC_VERSION     = 21;
+    public static final int     VK_KHR_DISPLAY_SPEC_VERSION     = 23;
     public static final String  VK_KHR_DISPLAY_EXTENSION_NAME   = "VK_KHR_display";
 
     public static final boolean VK_KHR_display_swapchain        = true;
-    public static final int     VK_KHR_DISPLAY_SWAPCHAIN_SPEC_VERSION = 9;
+    public static final int     VK_KHR_DISPLAY_SWAPCHAIN_SPEC_VERSION = 10;
     public static final String  VK_KHR_DISPLAY_SWAPCHAIN_EXTENSION_NAME = "VK_KHR_display_swapchain";
 
     public static final boolean VK_KHR_sampler_mirror_clamp_to_edge = true;
-    public static final int     VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_SPEC_VERSION = 1;
+    public static final int     VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_SPEC_VERSION = 3;
     public static final String  VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_EXTENSION_NAME = "VK_KHR_sampler_mirror_clamp_to_edge";
 
     public static final boolean VK_KHR_multiview = true;
@@ -73,11 +73,11 @@ public class VulkanConstants
     public static final String  VK_KHR_MULTIVIEW_EXTENSION_NAME = "VK_KHR_multiview";
 
     public static final boolean VK_KHR_get_physical_device_properties2 = true;
-    public static final int     VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_SPEC_VERSION    = 1;
+    public static final int     VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_SPEC_VERSION    = 2;
     public static final String  VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME  = "VK_KHR_get_physical_device_properties2";
     
     public static final boolean VK_KHR_device_group = true;
-    public static final int     VK_KHR_DEVICE_GROUP_SPEC_VERSION    = 3;
+    public static final int     VK_KHR_DEVICE_GROUP_SPEC_VERSION    = 4;
     public static final String  VK_KHR_DEVICE_GROUP_EXTENSION_NAME = "VK_KHR_device_group";
 
     public static final boolean VK_KHR_shader_draw_parameters = true;
@@ -191,7 +191,7 @@ public class VulkanConstants
     public static final String  VK_KHR_IMAGE_FORMAT_LIST_EXTENSION_NAME = "VK_KHR_image_format_list";
 
     public static final boolean VK_KHR_sampler_ycbcr_conversion = true;
-    public static final int     VK_KHR_SAMPLER_YCBCR_CONVERSION_SPEC_VERSION    = 1;
+    public static final int     VK_KHR_SAMPLER_YCBCR_CONVERSION_SPEC_VERSION    = 14;
     public static final String  VK_KHR_SAMPLER_YCBCR_CONVERSION_EXTENSION_NAME  = "VK_KHR_sampler_ycbcr_conversion";
 
     public static final boolean VK_KHR_bind_memory2 = true;
@@ -247,7 +247,7 @@ public class VulkanConstants
     public static final String  VK_NV_DEDICATED_ALLOCATION_EXTENSION_NAME   = "VK_NV_dedicated_allocation";
 
     public static final boolean VK_AMD_draw_indirect_count  = true;
-    public static final int     VK_AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION = 1;
+    public static final int     VK_AMD_DRAW_INDIRECT_COUNT_SPEC_VERSION = 2;
     public static final String  VK_AMD_DRAW_INDIRECT_COUNT_EXTENSION_NAME   = "VK_AMD_draw_indirect_count";
 
     public static final boolean VK_AMD_negative_viewport_height = true;
@@ -255,7 +255,7 @@ public class VulkanConstants
     public static final String  VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_EXTENSION_NAME  = "VK_AMD_negative_viewport_height";
 
     public static final boolean VK_AMD_gpu_shader_half_float    = true;
-    public static final int     VK_AMD_GPU_SHADER_HALF_FLOAT_SPEC_VERSION   = 1;
+    public static final int     VK_AMD_GPU_SHADER_HALF_FLOAT_SPEC_VERSION   = 2;
     public static final String  VK_AMD_GPU_SHADER_HALF_FLOAT_EXTENSION_NAME = "VK_AMD_gpu_shader_half_float";
 
     public static final boolean VK_AMD_shader_ballot    = true;
@@ -354,11 +354,11 @@ public class VulkanConstants
     public static final String  VK_EXT_CONSERVATIVE_RASTERIZATION_EXTENSION_NAME    = "VK_EXT_conservative_rasterization";
 
     public static final boolean VK_EXT_swapchain_colorspace = true;
-    public static final int     VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION   = 3;
+    public static final int     VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION   = 4;
     public static final String  VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME = "VK_EXT_swapchain_colorspace";
 
     public static final boolean VK_EXT_hdr_metadata = true;
-    public static final int     VK_EXT_HDR_METADATA_SPEC_VERSION    = 1;
+    public static final int     VK_EXT_HDR_METADATA_SPEC_VERSION    = 2;
     public static final String  VK_EXT_HDR_METADATA_EXTENSION_NAME  = "VK_EXT_hdr_metadata";
 
     public static final boolean VK_EXT_external_memory_dma_buf  = true;
@@ -375,11 +375,11 @@ public class VulkanConstants
     public static final String  VK_EXT_DEBUG_UTILS_EXTENSION_NAME   = "VK_EXT_debug_utils";
 
     public static final boolean VK_EXT_sampler_filter_minmax    = true;
-    public static final int     VK_EXT_SAMPLER_FILTER_MINMAX_SPEC_VERSION   = 1;
+    public static final int     VK_EXT_SAMPLER_FILTER_MINMAX_SPEC_VERSION   = 2;
     public static final String  VK_EXT_SAMPLER_FILTER_MINMAX_EXTENSION_NAME = "VK_EXT_sampler_filter_minmax";
 
     public static final boolean VK_AMD_gpu_shader_int16 = true;
-    public static final int     VK_AMD_GPU_SHADER_INT16_SPEC_VERSION    = 1;
+    public static final int     VK_AMD_GPU_SHADER_INT16_SPEC_VERSION    = 2;
     public static final String  VK_AMD_GPU_SHADER_INT16_EXTENSION_NAME  = "VK_AMD_gpu_shader_int16";
 
     public static final boolean VK_AMD_mixed_attachment_samples = true;
@@ -444,7 +444,7 @@ public class VulkanConstants
     public static final String  VK_AMD_BUFFER_MARKER_EXTENSION_NAME = "VK_AMD_buffer_marker";
 
     public static final boolean VK_AMD_shader_core_properties   = true;
-    public static final int     VK_AMD_SHADER_CORE_PROPERTIES_SPEC_VERSION      = 1;
+    public static final int     VK_AMD_SHADER_CORE_PROPERTIES_SPEC_VERSION      = 2;
     public static final String  VK_AMD_SHADER_CORE_PROPERTIES_EXTENSION_NAME    = "VK_AMD_shader_core_properties";
 
     public static final boolean VK_EXT_vertex_attribute_divisor  = true;
@@ -476,7 +476,7 @@ public class VulkanConstants
     public static final String  VK_EXT_ASTC_DECODE_MODE_EXTENSION_NAME      = "VK_EXT_astc_decode_mode";
 
     public static final boolean VK_EXT_conditional_rendering                = true;
-    public static final int     VK_EXT_CONDITIONAL_RENDERING_SPEC_VERSION   = 1;
+    public static final int     VK_EXT_CONDITIONAL_RENDERING_SPEC_VERSION   = 2;
     public static final String  VK_EXT_CONDITIONAL_RENDERING_EXTENSION_NAME = "VK_EXT_conditional_rendering";
 
     public static final boolean VK_EXT_inline_uniform_block                 = true;
@@ -504,7 +504,7 @@ public class VulkanConstants
     public static final String  VK_NV_FRAGMENT_SHADER_BARYCENTRIC_EXTENSION_NAME    = "VK_NV_fragment_shader_barycentric";
 
     public static final boolean VK_NV_shader_image_footprint                = true;
-    public static final int     VK_NV_SHADER_IMAGE_FOOTPRINT_SPEC_VERSION   = 1;
+    public static final int     VK_NV_SHADER_IMAGE_FOOTPRINT_SPEC_VERSION   = 2;
     public static final String  VK_NV_SHADER_IMAGE_FOOTPRINT_EXTENSION_NAME = "VK_NV_shader_image_footprint";
 
     public static final boolean VK_NV_scissor_exclusive                     = true;
@@ -530,7 +530,7 @@ public class VulkanConstants
     public static final String  VK_KHR_DRIVER_PROPERTIES_EXTENSION_NAME     = "VK_KHR_driver_properties";
 
     public static final boolean VK_KHR_shader_float_controls                 = true;
-    public static final int     VK_KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION    = 1;
+    public static final int     VK_KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION    = 4;
     public static final String  VK_KHR_SHADER_FLOAT_CONTROLS_EXTENSION_NAME  = "VK_KHR_shader_float_controls";
 
     public static final boolean VK_KHR_depth_stencil_resolve                 = true;
@@ -554,7 +554,7 @@ public class VulkanConstants
     public static final String  VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_EXTENSION_NAME  = "VK_EXT_image_drm_format_modifier";
 
     public static final boolean VK_EXT_filter_cubic                 = true;
-    public static final int     VK_EXT_FILTER_CUBIC_SPEC_VERSION    = 1;
+    public static final int     VK_EXT_FILTER_CUBIC_SPEC_VERSION    = 2;
     public static final String  VK_EXT_FILTER_CUBIC_EXTENSION_NAME  = "VK_EXT_filter_cubic";
 
     public static final boolean VK_EXT_calibrated_timestamps                 = true;
@@ -606,7 +606,7 @@ public class VulkanConstants
     public static final String  VK_EXT_SEPARATE_STENCIL_USAGE_EXTENSION_NAME = "VK_EXT_separate_stencil_usage";
 
     public static final boolean VK_EXT_validation_features                = true;
-    public static final int     VK_EXT_VALIDATION_FEATURES_SPEC_VERSION   = 1;
+    public static final int     VK_EXT_VALIDATION_FEATURES_SPEC_VERSION   = 2;
     public static final String  VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME = "VK_EXT_validation_features";
 
     public static final boolean VK_NV_cooperative_matrix                = true;
@@ -636,4 +636,76 @@ public class VulkanConstants
     public static final boolean VK_EXT_host_query_reset                = true;
     public static final int     VK_EXT_HOST_QUERY_RESET_SPEC_VERSION   = 1;
     public static final String  VK_EXT_HOST_QUERY_RESET_EXTENSION_NAME = "VK_EXT_host_query_reset";
+
+    public static final boolean VK_KHR_imageless_framebuffer                = true;
+    public static final int     VK_KHR_IMAGELESS_FRAMEBUFFER_SPEC_VERSION   = 1;
+    public static final String  VK_KHR_IMAGELESS_FRAMEBUFFER_EXTENSION_NAME = "VK_KHR_imageless_framebuffer";
+
+    public static final boolean VK_KHR_uniform_buffer_standard_layout                = true;
+    public static final int     VK_KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_SPEC_VERSION   = 1;
+    public static final String  VK_KHR_UNIFORM_BUFFER_STANDARD_LAYOUT_EXTENSION_NAME = "VK_KHR_uniform_buffer_standard_layout";
+
+    public static final boolean VK_EXT_texture_compression_astc_hdr                = true;
+    public static final int     VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_TEXTURE_COMPRESSION_ASTC_HDR_EXTENSION_NAME = "VK_EXT_texture_compression_astc_hdr";
+
+    public static final boolean VK_NV_shader_sm_builtins                = true;
+    public static final int     VK_NV_SHADER_SM_BUILTINS_SPEC_VERSION   = 1;
+    public static final String  VK_NV_SHADER_SM_BUILTINS_EXTENSION_NAME = "VK_NV_shader_sm_builtins";
+
+    public static final boolean VK_NV_representative_fragment_test                = true;
+    public static final int     VK_NV_REPRESENTATIVE_FRAGMENT_TEST_SPEC_VERSION   = 2;
+    public static final String  VK_NV_REPRESENTATIVE_FRAGMENT_TEST_EXTENSION_NAME = "VK_NV_representative_fragment_test";
+
+    public static final boolean VK_AMD_pipeline_compiler_control                = true;
+    public static final int     VK_AMD_PIPELINE_COMPILER_CONTROL_SPEC_VERSION   = 1;
+    public static final String  VK_AMD_PIPELINE_COMPILER_CONTROL_EXTENSION_NAME = "VK_AMD_pipeline_compiler_control";
+
+    public static final boolean VK_INTEL_shader_integer_functions2                = true;
+    public static final int     VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_SPEC_VERSION   = 1;
+    public static final String  VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_EXTENSION_NAME = "VK_INTEL_shader_integer_functions2";
+
+    public static final boolean VK_INTEL_performance_query                = true;
+    public static final int     VK_INTEL_PERFORMANCE_QUERY_SPEC_VERSION   = 1;
+    public static final String  VK_INTEL_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_INTEL_performance_query";
+
+    public static final boolean VK_EXT_subgroup_size_control                = true;
+    public static final int     VK_EXT_SUBGROUP_SIZE_CONTROL_SPEC_VERSION   = 2;
+    public static final String  VK_EXT_SUBGROUP_SIZE_CONTROL_EXTENSION_NAME = "VK_EXT_subgroup_size_control";
+
+    public static final boolean VK_AMD_shader_core_properties2                = true;
+    public static final int     VK_AMD_SHADER_CORE_PROPERTIES_2_SPEC_VERSION   = 1;
+    public static final String  VK_AMD_SHADER_CORE_PROPERTIES_2_EXTENSION_NAME = "VK_AMD_shader_core_properties2";
+
+    public static final boolean VK_AMD_device_coherent_memory                = true;
+    public static final int     VK_AMD_DEVICE_COHERENT_MEMORY_SPEC_VERSION   = 1;
+    public static final String  VK_AMD_DEVICE_COHERENT_MEMORY_EXTENSION_NAME = "VK_AMD_device_coherent_memory";
+
+    public static final boolean VK_NV_coverage_reduction_mode                = true;
+    public static final int     VK_NV_COVERAGE_REDUCTION_MODE_SPEC_VERSION   = 1;
+    public static final String  VK_NV_COVERAGE_REDUCTION_MODE_EXTENSION_NAME = "VK_NV_coverage_reduction_mode";
+
+    public static final boolean VK_EXT_fragment_shader_interlock                = true;
+    public static final int     VK_EXT_FRAGMENT_SHADER_INTERLOCK_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_FRAGMENT_SHADER_INTERLOCK_EXTENSION_NAME = "VK_EXT_fragment_shader_interlock";
+
+    public static final boolean VK_EXT_headless_surface                = true;
+    public static final int     VK_EXT_HEADLESS_SURFACE_SPEC_VERSION   = 0;
+    public static final String  VK_EXT_HEADLESS_SURFACE_EXTENSION_NAME = "VK_EXT_headless_surface";
+
+    public static final boolean VK_EXT_line_rasterization                = true;
+    public static final int     VK_EXT_LINE_RASTERIZATION_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_LINE_RASTERIZATION_EXTENSION_NAME = "VK_EXT_line_rasterization";
+
+    public static final boolean VK_EXT_index_type_uint8                = true;
+    public static final int     VK_EXT_INDEX_TYPE_UINT8_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_INDEX_TYPE_UINT8_EXTENSION_NAME = "VK_EXT_index_type_uint8";
+
+    public static final boolean VK_EXT_shader_demote_to_helper_invocation                = true;
+    public static final int     VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_EXTENSION_NAME = "VK_EXT_shader_demote_to_helper_invocation";
+
+    public static final boolean VK_EXT_texel_buffer_alignment                = true;
+    public static final int     VK_EXT_TEXEL_BUFFER_ALIGNMENT_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_TEXEL_BUFFER_ALIGNMENT_EXTENSION_NAME = "VK_EXT_texel_buffer_alignment";
 }

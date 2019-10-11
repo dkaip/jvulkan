@@ -13,39 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
+package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos;
+
+import java.util.EnumSet;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkHeadlessSurfaceCreateFlagBitsEXT;
 
-public class VkPhysicalDeviceFloat16Int8FeaturesKHR extends VulkanCreateInfoStructure
+public class VkHeadlessSurfaceCreateInfoEXT extends VulkanCreateInfoStructure
 {
-    private boolean shaderFloat16;
-    private boolean shaderInt8;
+    private EnumSet<VkHeadlessSurfaceCreateFlagBitsEXT> flags = EnumSet.noneOf(VkHeadlessSurfaceCreateFlagBitsEXT.class);
     
-    public VkPhysicalDeviceFloat16Int8FeaturesKHR()
+    public VkHeadlessSurfaceCreateInfoEXT()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT16_INT8_FEATURES_KHR);
+        super(VkStructureType.VK_STRUCTURE_TYPE_HEADLESS_SURFACE_CREATE_INFO_EXT);
     }
 
-    public boolean isShaderFloat16()
+    public EnumSet<VkHeadlessSurfaceCreateFlagBitsEXT> getFlags()
     {
-        return shaderFloat16;
+        return flags;
     }
 
-    public void setShaderFloat16(boolean shaderFloat16)
+    public void setFlags(EnumSet<VkHeadlessSurfaceCreateFlagBitsEXT> flags)
     {
-        this.shaderFloat16 = shaderFloat16;
-    }
-
-    public boolean isShaderInt8()
-    {
-        return shaderInt8;
-    }
-
-    public void setShaderInt8(boolean shaderInt8)
-    {
-        this.shaderInt8 = shaderInt8;
+        this.flags = flags;
     }
 
 }

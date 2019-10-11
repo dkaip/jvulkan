@@ -131,6 +131,7 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkCoarseSampleOrderTyp
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkCopyAccelerationStructureModeNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessageSeverityFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessageTypeFlagBitsEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDeviceGroupPresentModeFlagBitsKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkTimeDomainEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.CheckpointMarker;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkAccelerationStructureNV;
@@ -138,6 +139,7 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDebugReportCallbac
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDeviceAddress;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayModeKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkPerformanceConfigurationINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkSurfaceKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStructureInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStructureMemoryRequirementsInfoNV;
@@ -153,10 +155,23 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsLabel
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsMessengerCallbackDataEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsObjectNameInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsObjectTagInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDeviceGroupPresentCapabilitiesKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkFramebufferMixedSamplesCombinationNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkImageDrmFormatModifierPropertiesEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkInitializePerformanceApiInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkMemoryRequirements2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPerformanceConfigurationAcquireInfoINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPerformanceMarkerInfoINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPerformanceOverrideInfoINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPerformanceParameterTypeINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPerformanceStreamMarkerInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPhysicalDeviceImageFormatInfo2;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPhysicalDeviceSurfaceInfo2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineExecutableInfoKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineExecutableInternalRepresentationKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineExecutablePropertiesKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineExecutableStatisticKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkShadingRatePaletteNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSurfaceCapabilities2KHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkAccelerationStructureCreateInfoNV;
@@ -164,6 +179,8 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDeb
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDebugUtilsMessengerCreateInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDisplayModeCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDisplaySurfaceCreateInfoKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkHeadlessSurfaceCreateInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkPerformanceValueINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkRayTracingPipelineCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkWaylandSurfaceCreateInfoKHR;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceFullscreenMethod;
@@ -2194,21 +2211,197 @@ public class VulkanFunctions
                 imageFormatProperties);
     }
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public static VkResult vkGetPipelineExecutablePropertiesKHR(
+            VkDevice device,
+            VkPipelineInfoKHR pipelineInfo,
+            Collection<VkPipelineExecutablePropertiesKHR> properties)
+    {
+        if (properties == null)
+        {
+            throw new IllegalArgumentException("The properties argument may not be null.  I should probably be an empty Collection.");
+        }
+        
+        return v11ProxyLibrary.vkGetPipelineExecutablePropertiesKHR(
+                device,
+                pipelineInfo,
+                properties);
+    }
+    
+    public static VkResult vkGetPipelineExecutableStatisticsKHR(
+            VkDevice device,
+            VkPipelineExecutableInfoKHR executableInfo,
+            Collection<VkPipelineExecutableStatisticKHR> statistics)
+    {
+        if (statistics == null)
+        {
+            throw new IllegalArgumentException("The statistics argument may not be null.  I should probably be an empty Collection.");
+        }
+        
+        return v11ProxyLibrary.vkGetPipelineExecutableStatisticsKHR(
+                device,
+                executableInfo,
+                statistics);
+    }
+    
+    public static VkResult vkGetPipelineExecutableInternalRepresentationsKHR(
+            VkDevice device,
+            VkPipelineExecutableInfoKHR executableInfo,
+            Collection<VkPipelineExecutableInternalRepresentationKHR> internalRepresentations)
+    {
+        return v11ProxyLibrary.vkGetPipelineExecutableInternalRepresentationsKHR(
+                device,
+                executableInfo,
+                internalRepresentations);
+    }
+    
+    public static VkResult vkGetDeviceGroupPresentCapabilitiesKHR(
+            VkDevice device,
+            VkDeviceGroupPresentCapabilitiesKHR deviceGroupPresentCapabilities)
+    {
+        return v11ProxyLibrary.vkGetDeviceGroupPresentCapabilitiesKHR(
+                device,
+                deviceGroupPresentCapabilities);
+    }
+    
+    public static VkResult vkGetDeviceGroupSurfacePresentModes2EXT(
+            VkDevice device,
+            VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo,
+            EnumSet<VkDeviceGroupPresentModeFlagBitsKHR> modes)
+    {
+        return v11ProxyLibrary.vkGetDeviceGroupSurfacePresentModes2EXT(
+                device,
+                surfaceInfo,
+                modes);
+    }
+    
+    /**
+     * Set the stipple factor and pattern.
+     * <p>
+     * Note: The bound graphics pipeline <b>must</b> have been created with the 
+     * <code>VK_DYNAMIC_STATE_LINE_STIPPLE_EXT</code> dynamic state enabled in 
+     * order to use this method.
+     * 
+     * @param commandBuffer
+     * @param lineStippleFactor must be in the range of 1-256.
+     * @param lineStipplePattern
+     */
+    public static void vkCmdSetLineStippleEXT(
+            VkCommandBuffer commandBuffer,
+            int lineStippleFactor,
+            short lineStipplePattern)
+    {
+        v11ProxyLibrary.vkCmdSetLineStippleEXT(
+                commandBuffer,
+                lineStippleFactor,
+                lineStipplePattern);
+    }
+    
+    public static VkResult vkCreateHeadlessSurfaceEXT(
+            VkInstance instance,
+            VkHeadlessSurfaceCreateInfoEXT createInfo,
+            VkAllocationCallbacks allocator,
+            VkSurfaceKHR surface)
+    {
+        return v11ProxyLibrary.vkCreateHeadlessSurfaceEXT(
+                instance,
+                createInfo,
+                allocator,
+                surface);
+    }
+    
+    public static VkResult vkInitializePerformanceApiINTEL(
+            VkDevice device,
+            VkInitializePerformanceApiInfoINTEL initializeInfo)
+    {
+        return v11ProxyLibrary.vkInitializePerformanceApiINTEL(
+                device,
+                initializeInfo);
+    }
+    
+    public static void vkUninitializePerformanceApiINTEL(
+            VkDevice device)
+    {
+        v11ProxyLibrary.vkUninitializePerformanceApiINTEL(
+                device);
+    }
+    
+    public static VkResult vkCmdSetPerformanceMarkerINTEL(
+            VkCommandBuffer commandBuffer,
+            VkPerformanceMarkerInfoINTEL markerInfo)
+    {
+        return v11ProxyLibrary.vkCmdSetPerformanceMarkerINTEL(
+                commandBuffer,
+                markerInfo);
+    }
+    
+    public static VkResult vkCmdSetPerformanceOverrideINTEL(
+            VkCommandBuffer commandBuffer,
+            VkPerformanceOverrideInfoINTEL overrideInfo)
+    {
+        return v11ProxyLibrary.vkCmdSetPerformanceOverrideINTEL(
+                commandBuffer,
+                overrideInfo);
+    }
+    
+    public static VkResult vkCmdSetPerformanceStreamMarkerINTEL(
+            VkCommandBuffer commandBuffer,
+            VkPerformanceStreamMarkerInfoINTEL markerInfo)
+    {
+        return v11ProxyLibrary.vkCmdSetPerformanceStreamMarkerINTEL(
+                commandBuffer,
+                markerInfo);
+    }
+    
+    public static VkResult vkAcquirePerformanceConfigurationINTEL(
+            VkDevice device,
+            VkPerformanceConfigurationAcquireInfoINTEL acquireInfo,
+            VkPerformanceConfigurationINTEL configuration)
+    {
+        return v11ProxyLibrary.vkAcquirePerformanceConfigurationINTEL(
+                device,
+                acquireInfo,
+                configuration);
+    }
+    
+    public static VkResult vkReleasePerformanceConfigurationINTEL(
+            VkDevice device,
+            VkPerformanceConfigurationINTEL configuration)
+    {
+        return v11ProxyLibrary.vkReleasePerformanceConfigurationINTEL(
+                device,
+                configuration);
+    }
+    
+    public static VkResult vkQueueSetPerformanceConfigurationINTEL(
+            VkQueue                                     queue,
+            VkPerformanceConfigurationINTEL             configuration)
+    {
+        return v11ProxyLibrary.vkQueueSetPerformanceConfigurationINTEL(
+                queue,
+                configuration);
+    }
+    
+    public static VkResult vkGetPerformanceParameterINTEL(
+            VkDevice device,
+            VkPerformanceParameterTypeINTEL parameter,
+            VkPerformanceValueINTEL value)
+    {
+        return v11ProxyLibrary.vkGetPerformanceParameterINTEL(
+                device,
+                parameter,
+                value);
+    }
+    
+    public static VkResult vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(
+            VkPhysicalDevice physicalDevice,
+            Collection<VkFramebufferMixedSamplesCombinationNV> combinations)
+    {
+        return v11ProxyLibrary.vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(
+                physicalDevice,
+                combinations);
+    }
+    
+    
     
     
     
@@ -2254,7 +2447,7 @@ public class VulkanFunctions
         {
             throw new IllegalArgumentException("byteBuffer is not array backed.");
         }
-        else
+
         v11ProxyLibrary.pushDataToVirtualMemory(byteBuffer.array(), pointerToMappedMemory);
     }
 

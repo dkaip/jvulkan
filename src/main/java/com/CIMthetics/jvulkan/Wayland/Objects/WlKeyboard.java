@@ -17,9 +17,13 @@ package com.CIMthetics.jvulkan.Wayland.Objects;
 
 import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlKeyboardRelease;
 
+import java.util.EnumSet;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.CIMthetics.jvulkan.Wayland.Enums.KeyboardModifiers;
+import com.CIMthetics.jvulkan.Wayland.Enums.WlKey;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlKeyboardKeyState;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlKeyboardKeymapFormat;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlKeyboardHandle;
@@ -31,18 +35,19 @@ public class WlKeyboard extends WaylandInterfaceObject
     private WlDisplaySingleton wlDisplay = WlDisplaySingleton.getInstance();
     private int serialNumber = -1;
     private WlSurfaceHandle surfaceHandle;
-    private byte[] keys;
+    private int[] keys;
     private WlKeyboardKeymapFormat keymapFormat;
     private int fileDescriptor;
     private int size;
     private long time;
-    private int key;
+    private WlKey key;
     private WlKeyboardKeyState keyState;
     private int rate;
     private int delay;
     private int modsDepressed;
     private int modsLatched;
     private int modsLocked;
+    private EnumSet<KeyboardModifiers> currentKeyboardMods = EnumSet.noneOf(KeyboardModifiers.class);
     private int group;
 
     public WlKeyboard(WlKeyboardHandle handle)
@@ -82,7 +87,7 @@ public class WlKeyboard extends WaylandInterfaceObject
                 serialNumber = event.getSerialNumber();
                 surfaceHandle = event.getSurfaceHandle();
                 keys = event.getKeys();
-                log.debug("ENTER serialNumber:{} surfaceHandle:{} keys:{}", serialNumber, surfaceHandle.toString(), keys.toString());
+                log.debug("ENTER serialNumber:{} surfaceHandle:{} keys size:{}", serialNumber, surfaceHandle.toString(), keys.length);
                 break;
             case LEAVE:
                 serialNumber = event.getSerialNumber();
@@ -94,7 +99,48 @@ public class WlKeyboard extends WaylandInterfaceObject
                 time = event.getTime();
                 key = event.getKey();
                 keyState = event.getKeyState();
-                log.debug("KEY serialNumber:{} time:{} key:{} keyState:{}", serialNumber, time, key, keyState.toString());
+                
+                if ((key == WlKey.KEY_LEFTCTRL ||
+                        key == WlKey.KEY_RIGHTCTRL) &&
+                       keyState == WlKeyboardKeyState.PRESSED)
+                   {
+                          currentKeyboardMods.add(KeyboardModifiers.CONTROL);
+                   }
+                   else if ((key == WlKey.KEY_LEFTCTRL ||
+                             key == WlKey.KEY_RIGHTCTRL) &&
+                            keyState == WlKeyboardKeyState.RELEASED)
+                   {
+                       currentKeyboardMods.remove(KeyboardModifiers.CONTROL);
+                   }
+                   
+                if ((key == WlKey.KEY_LEFTSHIFT ||
+                     key == WlKey.KEY_RIGHTSHIFT) &&
+                    keyState == WlKeyboardKeyState.PRESSED)
+                  {
+                         currentKeyboardMods.add(KeyboardModifiers.SHIFT);
+                  }
+                  else if ((key == WlKey.KEY_LEFTSHIFT ||
+                            key == WlKey.KEY_RIGHTSHIFT) &&
+                           keyState == WlKeyboardKeyState.RELEASED)
+                  {
+                      currentKeyboardMods.remove(KeyboardModifiers.SHIFT);
+                  }
+                      
+                if ((key == WlKey.KEY_LEFTALT ||
+                     key == WlKey.KEY_RIGHTALT) &&
+                    keyState == WlKeyboardKeyState.PRESSED)
+                  {
+                         currentKeyboardMods.add(KeyboardModifiers.ALT);
+                  }
+                  else if ((key == WlKey.KEY_LEFTSHIFT ||
+                            key == WlKey.KEY_RIGHTSHIFT) &&
+                           keyState == WlKeyboardKeyState.RELEASED)
+                  {
+                      currentKeyboardMods.remove(KeyboardModifiers.ALT);
+                  }
+                      
+                
+                log.debug("KEY serialNumber:{} time:{} key:{} keyState:{} currentMods:{}", serialNumber, time, key.toString(), keyState.toString(), currentKeyboardMods.toString());
                 break;
             case MODIFIERS:
                 serialNumber = event.getSerialNumber();
@@ -102,8 +148,45 @@ public class WlKeyboard extends WaylandInterfaceObject
                 modsLatched = event.getModsLatched();
                 modsLocked = event.getModsLocked();
                 group = event.getGroup();
-                log.debug("MODIFIERS serialNumber:{} modsDepressed:{} modsLatched:{} modsLocked:{} group:{}",
-                        serialNumber, modsDepressed, modsLatched, modsLocked, group);
+                
+                if ((modsLocked & 0x2) != 0)
+                {
+                    currentKeyboardMods.add(KeyboardModifiers.CAPS_LOCK);
+                }
+                else
+                {
+                    currentKeyboardMods.remove(KeyboardModifiers.CAPS_LOCK);
+                }
+                
+                if ((modsLocked & 0x10) != 0)
+                {
+                    currentKeyboardMods.add(KeyboardModifiers.NUM_LOCK);
+                }
+                else
+                {
+                    currentKeyboardMods.remove(KeyboardModifiers.NUM_LOCK);
+                }
+                
+                if ((modsDepressed & 0x1) != 0)
+                {
+                    currentKeyboardMods.add(KeyboardModifiers.SHIFT);
+                }
+                else
+                {
+                    currentKeyboardMods.remove(KeyboardModifiers.SHIFT);
+                }
+                
+                if ((modsDepressed & 0x40008) != 0)
+                {
+                    currentKeyboardMods.add(KeyboardModifiers.ALT);
+                }
+                else
+                {
+                    currentKeyboardMods.remove(KeyboardModifiers.ALT);
+                }
+                
+                log.debug("MODIFIERS serialNumber:{} modsDepressed:{} modsLatched:{} modsLocked:{} group:{} currentMods:{}",
+                        serialNumber, modsDepressed, modsLatched, modsLocked, group, currentKeyboardMods.toString());
                 break;
             case REPEAT_INFO:
                 rate = event.getRate();

@@ -56,11 +56,25 @@ public class WlSurface extends WaylandInterfaceObject
         {
             case ENTER:
                 // TODO we need to implement a java callback to be fired here
-                log.debug("Surface {} has just ENTERED output device {}.", getHandle().toString(), event.getOutputHandle().toString());
+                WlOutput outputDevice = (WlOutput) wlDisplay.getObjectProxyMap().get(event.getOutputHandle());
+                String outputDescription = "Unknown";
+                if (outputDevice == null)
+                {
+                    log.warn("WlOutput device %s is not in the proxy map", event.getOutputHandle().toString());
+                }
+                outputDescription = outputDevice.getMake() + " " + outputDevice.getModel();
+                log.debug("Surface {} has just ENTERED output device {}.", getHandle().toString(), outputDescription);
                 break;
             case LEAVE:
                 // TODO we need to implement a java callback to be fired here
-                log.debug("Surface {} has just LEFT output device {}.", getHandle().toString(), event.getOutputHandle().toString());
+                outputDevice = (WlOutput) wlDisplay.getObjectProxyMap().get(event.getOutputHandle());
+                outputDescription = "Unknown";
+                if (outputDevice == null)
+                {
+                    log.warn("WlOutput device %s is not in the proxy map", event.getOutputHandle().toString());
+                }
+                outputDescription = outputDevice.getMake() + " " + outputDevice.getModel();
+                log.debug("Surface {} has just LEFT output device {}.", getHandle().toString(), outputDescription);
                 break;
             case ERROR:
                 log.error("Error case.");

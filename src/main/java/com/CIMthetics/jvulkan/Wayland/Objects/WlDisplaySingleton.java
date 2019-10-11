@@ -169,4 +169,9 @@ public class WlDisplaySingleton extends WaylandInterfaceObject
     {
         return (WlDisplayHandle)handle;
     }
+
+    public ConcurrentHashMap<VulkanHandle, WaylandInterfaceObject> getObjectProxyMap()
+    {
+        return objectProxyMap;
+    }
 }

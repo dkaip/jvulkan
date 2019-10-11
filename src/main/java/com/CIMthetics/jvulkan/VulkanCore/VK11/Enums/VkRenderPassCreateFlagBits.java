@@ -17,7 +17,7 @@ package com.CIMthetics.jvulkan.VulkanCore.VK11.Enums;
 
 public enum VkRenderPassCreateFlagBits
 {
-    RESERVED_FOR_FUTURE_USE(0);
+    VK_RENDER_PASS_CREATE_FLAG_BITS_MAX_ENUM(0x7FFFFFFF);
     
     private int value;
     

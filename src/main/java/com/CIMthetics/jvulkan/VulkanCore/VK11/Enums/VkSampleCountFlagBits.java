@@ -31,4 +31,39 @@ public enum VkSampleCountFlagBits
     private VkSampleCountFlagBits(int value) { this.value = value; }
     
     public int valueOf() { return value; }
+
+    static VkSampleCountFlagBits fromValue(int inputValue)
+    {
+        VkSampleCountFlagBits result = null;
+        
+        switch(inputValue)
+        {
+            case 0x00000001:
+                result = VK_SAMPLE_COUNT_1_BIT;
+                break;
+            case 0x00000002:
+                result = VK_SAMPLE_COUNT_2_BIT;
+                break;
+            case 0x00000004:
+                result = VK_SAMPLE_COUNT_4_BIT;
+                break;
+            case 0x00000008:
+                result =  VK_SAMPLE_COUNT_8_BIT;
+                break;
+            case 0x00000010:
+                result = VK_SAMPLE_COUNT_16_BIT;
+                break;
+            case 0x00000020:
+                result = VK_SAMPLE_COUNT_32_BIT;
+                break;
+            case 0x00000040:
+                result = VK_SAMPLE_COUNT_64_BIT;
+                break;
+        }
+
+        if (result == null)
+            throw new IllegalArgumentException("Illegal value specified for this Enum.");
+
+        return result;
+    }
 }

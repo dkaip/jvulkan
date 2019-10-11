@@ -17,7 +17,7 @@ package com.CIMthetics.jvulkan.VulkanCore.VK11.Enums;
 
 public enum VkShaderModuleCreateFlagBits
 {
-    RESERVED_FOR_FUTURE_USE(0);
+    VK_SHADER_MODULE_CREATE_FLAG_BITS_MAX_ENUM(0x7FFFFFFF);
     
     private int value;
     

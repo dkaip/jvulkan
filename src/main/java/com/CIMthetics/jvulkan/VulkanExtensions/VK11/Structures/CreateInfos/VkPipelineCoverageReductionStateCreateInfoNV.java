@@ -16,17 +16,42 @@
 package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos;
 
 
-// I could not find a definition for this in the c header file(s)
+import java.util.EnumSet;
 
-//import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
-//import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
-//
-//public class VkPipelineCoverageReductionStateCreateInfoNV extends VulkanCreateInfoStructure
-//{
-//
-//    public VkPipelineCoverageReductionStateCreateInfoNV()
-//    {
-//        super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV);
-//    }
-//
-//}
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkCoverageReductionModeNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkPipelineCoverageReductionStateCreateFlagBitsNV;
+
+public class VkPipelineCoverageReductionStateCreateInfoNV extends VulkanCreateInfoStructure
+{
+    private EnumSet<VkPipelineCoverageReductionStateCreateFlagBitsNV>   flags = EnumSet.noneOf(VkPipelineCoverageReductionStateCreateFlagBitsNV.class);
+    private VkCoverageReductionModeNV                                   coverageReductionMode;
+    
+    public VkPipelineCoverageReductionStateCreateInfoNV()
+    {
+        super(VkStructureType.VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV);
+    }
+
+    public EnumSet<VkPipelineCoverageReductionStateCreateFlagBitsNV> getFlags()
+    {
+        return flags;
+    }
+
+    public void setFlags(
+            EnumSet<VkPipelineCoverageReductionStateCreateFlagBitsNV> flags)
+    {
+        this.flags = flags;
+    }
+
+    public VkCoverageReductionModeNV getCoverageReductionMode()
+    {
+        return coverageReductionMode;
+    }
+
+    public void setCoverageReductionMode(
+            VkCoverageReductionModeNV coverageReductionMode)
+    {
+        this.coverageReductionMode = coverageReductionMode;
+    }
+}

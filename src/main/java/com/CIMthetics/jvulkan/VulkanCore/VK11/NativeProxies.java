@@ -123,6 +123,7 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkCoarseSampleOrderTyp
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkCopyAccelerationStructureModeNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessageSeverityFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessageTypeFlagBitsEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDeviceGroupPresentModeFlagBitsKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkTimeDomainEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.CheckpointMarker;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkAccelerationStructureNV;
@@ -130,6 +131,7 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDebugReportCallbac
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDeviceAddress;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayModeKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkPerformanceConfigurationINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkSurfaceKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStructureInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStructureMemoryRequirementsInfoNV;
@@ -145,10 +147,23 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsLabel
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsMessengerCallbackDataEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsObjectNameInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsObjectTagInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDeviceGroupPresentCapabilitiesKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkFramebufferMixedSamplesCombinationNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkImageDrmFormatModifierPropertiesEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkInitializePerformanceApiInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkMemoryRequirements2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPerformanceConfigurationAcquireInfoINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPerformanceMarkerInfoINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPerformanceOverrideInfoINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPerformanceParameterTypeINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPerformanceStreamMarkerInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPhysicalDeviceImageFormatInfo2;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPhysicalDeviceSurfaceInfo2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineExecutableInfoKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineExecutableInternalRepresentationKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineExecutablePropertiesKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineExecutableStatisticKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkShadingRatePaletteNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSurfaceCapabilities2KHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkAccelerationStructureCreateInfoNV;
@@ -156,6 +171,8 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDeb
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDebugUtilsMessengerCreateInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDisplayModeCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDisplaySurfaceCreateInfoKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkHeadlessSurfaceCreateInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkPerformanceValueINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkRayTracingPipelineCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkWaylandSurfaceCreateInfoKHR;
 import com.CIMthetics.jvulkan.Wayland.WlRegistryListener;
@@ -190,6 +207,11 @@ class NativeProxies
             VkSemaphore semaphore,
             VkFence fence,
             IntReturnValue imageIndex);
+    
+    native VkResult vkAcquirePerformanceConfigurationINTEL(
+            VkDevice device,
+            VkPerformanceConfigurationAcquireInfoINTEL acquireInfo,
+            VkPerformanceConfigurationINTEL configuration);
     
     native VkResult vkAllocateCommandBuffers(
             VkDevice vulkanLogicalDevice,
@@ -446,6 +468,23 @@ class NativeProxies
             int firstExclusiveScissor,
             Collection<VkRect2D> exclusiveScissors);
     
+    native void vkCmdSetLineStippleEXT(
+            VkCommandBuffer commandBuffer,
+            int lineStippleFactor,
+            short lineStipplePattern);
+    
+    native VkResult vkCmdSetPerformanceMarkerINTEL(
+            VkCommandBuffer commandBuffer,
+            VkPerformanceMarkerInfoINTEL markerInfo);
+    
+    native VkResult vkCmdSetPerformanceOverrideINTEL(
+            VkCommandBuffer commandBuffer,
+            VkPerformanceOverrideInfoINTEL overrideInfo);
+    
+    native VkResult vkCmdSetPerformanceStreamMarkerINTEL(
+            VkCommandBuffer commandBuffer,
+            VkPerformanceStreamMarkerInfoINTEL markerInfo);
+    
     native void vkCmdSetViewportShadingRatePaletteNV(
             VkCommandBuffer vkCommandBuffer,
             int firstViewport,
@@ -585,6 +624,12 @@ class NativeProxies
             Collection<VkGraphicsPipelineCreateInfo> graphicsPipelineCreateInfo,
             VkAllocationCallbacks alternateAllocator,
             Collection<VkPipeline> pipeline);
+    
+    native VkResult vkCreateHeadlessSurfaceEXT(
+            VkInstance instance,
+            VkHeadlessSurfaceCreateInfoEXT createInfo,
+            VkAllocationCallbacks allocator,
+            VkSurfaceKHR surface);
     
     native VkResult vkCreateImage(
             VkDevice vulkanLogicalDevice,
@@ -816,6 +861,15 @@ class NativeProxies
             long[] timestamps,
             long[] maxDeviation);
     
+    native VkResult vkGetDeviceGroupPresentCapabilitiesKHR(
+            VkDevice device,
+            VkDeviceGroupPresentCapabilitiesKHR deviceGroupPresentCapabilities);
+    
+    native VkResult vkGetDeviceGroupSurfacePresentModes2EXT(
+            VkDevice device,
+            VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo,
+            EnumSet<VkDeviceGroupPresentModeFlagBitsKHR> modes);
+    
     native void vkGetDeviceQueue(
             VkDevice logicalDevice,
             int queueFamilyIndex,
@@ -831,6 +885,11 @@ class NativeProxies
             VkDevice vulkanLogicalDevice,
             VkImage vkImage,
             VkMemoryRequirements vkMemoryRequirements);
+    
+    native VkResult vkGetPerformanceParameterINTEL(
+            VkDevice device,
+            VkPerformanceParameterTypeINTEL parameter,
+            VkPerformanceValueINTEL value);
     
     native VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
             VkPhysicalDevice physicalDevice,
@@ -883,6 +942,10 @@ class NativeProxies
             VkPhysicalDevice physicalDevice,
             Collection<VkQueueFamilyProperties> collectionOfExtensionProperties);
     
+    native VkResult vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(
+            VkPhysicalDevice physicalDevice,
+            Collection<VkFramebufferMixedSamplesCombinationNV> combinations);
+    
     native VkResult vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
             VkPhysicalDevice physicalDevice,
             VkSurfaceKHR     surface,
@@ -914,6 +977,21 @@ class NativeProxies
             int queueFamilyIndex,
             WlDisplayHandle waylandDisplay);
     
+    native VkResult vkGetPipelineExecutableInternalRepresentationsKHR(
+            VkDevice device,
+            VkPipelineExecutableInfoKHR executableInfo,
+            Collection<VkPipelineExecutableInternalRepresentationKHR> internalRepresentations);
+    
+    native VkResult vkGetPipelineExecutablePropertiesKHR(
+            VkDevice device,
+            VkPipelineInfoKHR pipelineInfo,
+            Collection<VkPipelineExecutablePropertiesKHR> properties);
+    
+    native VkResult vkGetPipelineExecutableStatisticsKHR(
+            VkDevice device,
+            VkPipelineExecutableInfoKHR executableInfo,
+            Collection<VkPipelineExecutableStatisticKHR> statistics);
+    
     native void vkGetQueueCheckpointDataNV(
             VkQueue queue,
             Collection<VkCheckpointDataNV> checkpointData);
@@ -938,6 +1016,10 @@ class NativeProxies
             VkSwapchainKHR swapchain,
             Collection<VkImage> swapchainImages);
     
+    native VkResult vkInitializePerformanceApiINTEL(
+            VkDevice device,
+            VkInitializePerformanceApiInfoINTEL initializeInfo);
+    
     native VkResult vkMapMemory(
             VkDevice vulkanLogicalDevice,
             VkDeviceMemory vkDeviceMemory,
@@ -961,6 +1043,10 @@ class NativeProxies
             VkQueue queue,
             VkPresentInfoKHR vkPresentInfoKHR);
     
+    native VkResult vkQueueSetPerformanceConfigurationINTEL(
+            VkQueue                                     queue,
+            VkPerformanceConfigurationINTEL             configuration);
+    
     native VkResult vkQueueSubmit(
             VkQueue queue,
             Collection<VkSubmitInfo> submits,
@@ -968,6 +1054,10 @@ class NativeProxies
     
     native VkResult vkQueueWaitIdle(
             VkQueue vkQueue);
+    
+    native VkResult vkReleasePerformanceConfigurationINTEL(
+            VkDevice device,
+            VkPerformanceConfigurationINTEL configuration);
     
     native void vkResetFences(
             VkDevice vulkanLogicalDevice,
@@ -986,6 +1076,9 @@ class NativeProxies
             VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
             EnumSet<VkDebugUtilsMessageTypeFlagBitsEXT> messageTypes,
             VkDebugUtilsMessengerCallbackDataEXT callbackData);
+    
+    native void vkUninitializePerformanceApiINTEL(
+            VkDevice device);
     
     native void vkUnmapMemory(
             VkDevice vulkanLogicalDevice,

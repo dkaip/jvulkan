@@ -20,6 +20,7 @@ import java.io.UnsupportedEncodingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.CIMthetics.jvulkan.Wayland.Enums.WlKey;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlKeyboardEventOpCodes;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlKeyboardKeyState;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlKeyboardKeymapFormat;
@@ -32,13 +33,13 @@ public class WlKeyboardEvents extends WaylandEventObject
     private WlKeyboardEventOpCodes    eventType;
     private int serialNumber = -1;
     private WlSurfaceHandle surfaceHandle;
-    private byte[] keys;
+    private int[] keys;
     private WlKeyboardKeymapFormat keymapFormat;
     private byte[] keymap;
     private int fileDescriptor;
     private int size;
     private long time;
-    private int key;
+    private WlKey key;
     private WlKeyboardKeyState keyState;
     private int rate;
     private int delay;
@@ -56,31 +57,31 @@ public class WlKeyboardEvents extends WaylandEventObject
         this.eventType = WlKeyboardEventOpCodes.KEYMAP;
         this.keymapFormat = keymapFormat;
         this.keymap = keymap;
-        log.debug("Keymap size is {}", keymap.length);
-        try
-        {
-            String tempString = new String(keymap, "ISO-8859-1");
-            log.debug(tempString);
-        }
-        catch (UnsupportedEncodingException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < 64; i++)
-        {
-            sb.append(String.format("%x", keymap[i]));
-            sb.append(" ");
-        }
-        log.debug(sb.toString());
+//        log.debug("Keymap size is {}", keymap.length);
+//        try
+//        {
+//            String tempString = new String(keymap, "ISO-8859-1");
+//            log.debug(tempString);
+//        }
+//        catch (UnsupportedEncodingException e)
+//        {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//        StringBuilder sb = new StringBuilder();
+//        for(int i = 0; i < 64; i++)
+//        {
+//            sb.append(String.format("%x", keymap[i]));
+//            sb.append(" ");
+//        }
+//        log.debug(sb.toString());
     }
 
     WlKeyboardEvents(
             WlKeyboardHandle handle,
             int serialNumber,
             WlSurfaceHandle surfaceHandle,
-            byte[] keys)
+            int[] keys)
     {
         super(handle);
         this.eventType = WlKeyboardEventOpCodes.ENTER;
@@ -111,7 +112,7 @@ public class WlKeyboardEvents extends WaylandEventObject
         this.eventType = WlKeyboardEventOpCodes.KEY;
         this.serialNumber = serialNumber;
         this.time = time;
-        this.key = key;
+        this.key = WlKey.fromValue(key);
         this.keyState = keyState;
     }
 
@@ -158,7 +159,7 @@ public class WlKeyboardEvents extends WaylandEventObject
         return surfaceHandle;
     }
 
-    public byte[] getKeys()
+    public int[] getKeys()
     {
         return keys;
     }
@@ -183,7 +184,7 @@ public class WlKeyboardEvents extends WaylandEventObject
         return time;
     }
 
-    public int getKey()
+    public WlKey getKey()
     {
         return key;
     }

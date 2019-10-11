@@ -17,9 +17,12 @@ package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkShaderFloatControlsIndependenceKHR;
 
 public class VkPhysicalDeviceFloatControlsPropertiesKHR extends VulkanCreateInfoStructure
 {
+    private VkShaderFloatControlsIndependenceKHR denormBehaviorIndependence;
+    private VkShaderFloatControlsIndependenceKHR roundingModeIndependence;
     private boolean separateDenormSettings;
     private boolean separateRoundingModeSettings;
     private boolean shaderSignedZeroInfNanPreserveFloat16;
@@ -41,6 +44,28 @@ public class VkPhysicalDeviceFloatControlsPropertiesKHR extends VulkanCreateInfo
     public VkPhysicalDeviceFloatControlsPropertiesKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR);
+    }
+
+    public VkShaderFloatControlsIndependenceKHR getDenormBehaviorIndependence()
+    {
+        return denormBehaviorIndependence;
+    }
+
+    public void setDenormBehaviorIndependence(
+            VkShaderFloatControlsIndependenceKHR denormBehaviorIndependence)
+    {
+        this.denormBehaviorIndependence = denormBehaviorIndependence;
+    }
+
+    public VkShaderFloatControlsIndependenceKHR getRoundingModeIndependence()
+    {
+        return roundingModeIndependence;
+    }
+
+    public void setRoundingModeIndependence(
+            VkShaderFloatControlsIndependenceKHR roundingModeIndependence)
+    {
+        this.roundingModeIndependence = roundingModeIndependence;
     }
 
     public boolean isSeparateDenormSettings()
@@ -225,12 +250,14 @@ public class VkPhysicalDeviceFloatControlsPropertiesKHR extends VulkanCreateInfo
     {
         this.shaderRoundingModeRTZFloat64 = shaderRoundingModeRTZFloat64;
     }
-
+    
     @Override
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("\nVkPhysicalDeviceFloatControlsPropertiesKHR\n"));
+        sb.append(String.format("    denormBehaviorIndependence:%s\n", denormBehaviorIndependence.toString()));
+        sb.append(String.format("    roundingModeIndependence:%s\n", roundingModeIndependence.toString()));
         sb.append(String.format("    separateDenormSettings:%b\n", separateDenormSettings));
         sb.append(String.format("    separateRoundingModeSettings:%b\n", separateRoundingModeSettings));
         sb.append(String.format("    shaderSignedZeroInfNanPreserveFloat16:%b\n", shaderSignedZeroInfNanPreserveFloat16));

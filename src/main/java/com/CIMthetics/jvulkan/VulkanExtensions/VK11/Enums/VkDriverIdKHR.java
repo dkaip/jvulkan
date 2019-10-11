@@ -26,11 +26,12 @@ public enum VkDriverIdKHR
     VK_DRIVER_ID_IMAGINATION_PROPRIETARY_KHR(7),
     VK_DRIVER_ID_QUALCOMM_PROPRIETARY_KHR(8),
     VK_DRIVER_ID_ARM_PROPRIETARY_KHR(9),
-    VK_DRIVER_ID_GOOGLE_PASTEL_KHR(10),
+    VK_DRIVER_ID_GOOGLE_SWIFTSHADER_KHR(10),
     VK_DRIVER_ID_GGP_PROPRIETARY_KHR(11),
+    VK_DRIVER_ID_BROADCOM_PROPRIETARY_KHR(12),
     VK_DRIVER_ID_BEGIN_RANGE_KHR(VK_DRIVER_ID_AMD_PROPRIETARY_KHR.valueOf()),
-    VK_DRIVER_ID_END_RANGE_KHR(VK_DRIVER_ID_GGP_PROPRIETARY_KHR.valueOf()),
-    VK_DRIVER_ID_RANGE_SIZE_KHR(VK_DRIVER_ID_GGP_PROPRIETARY_KHR.valueOf() - VK_DRIVER_ID_AMD_PROPRIETARY_KHR.valueOf() + 1),
+    VK_DRIVER_ID_END_RANGE_KHR(VK_DRIVER_ID_BROADCOM_PROPRIETARY_KHR.valueOf()),
+    VK_DRIVER_ID_RANGE_SIZE_KHR(VK_DRIVER_ID_BROADCOM_PROPRIETARY_KHR.valueOf() - VK_DRIVER_ID_AMD_PROPRIETARY_KHR.valueOf() + 1),
     VK_DRIVER_ID_MAX_ENUM_KHR(0x7FFFFFFF);
 
     private int value;
@@ -73,12 +74,18 @@ public enum VkDriverIdKHR
                 result = VK_DRIVER_ID_ARM_PROPRIETARY_KHR;
                 break;
             case 10:
-                result = VK_DRIVER_ID_GOOGLE_PASTEL_KHR;
+                result = VK_DRIVER_ID_GOOGLE_SWIFTSHADER_KHR;
+                break;
+            case 11:
+                result = VK_DRIVER_ID_GGP_PROPRIETARY_KHR;
+                break;
+            case 12:
+                result = VK_DRIVER_ID_BROADCOM_PROPRIETARY_KHR;
                 break;
         }
 
-        if (inputValue == (VK_DRIVER_ID_GOOGLE_PASTEL_KHR.valueOf() - VK_DRIVER_ID_AMD_PROPRIETARY_KHR.valueOf() + 1))
-            result = VK_DRIVER_ID_GOOGLE_PASTEL_KHR;
+        if (inputValue == (VK_DRIVER_ID_BROADCOM_PROPRIETARY_KHR.valueOf() - VK_DRIVER_ID_AMD_PROPRIETARY_KHR.valueOf() + 1))
+            result = VK_DRIVER_ID_BROADCOM_PROPRIETARY_KHR;
         
         if (result == null)
             throw new IllegalArgumentException("Illegal value specified for this Enum.");

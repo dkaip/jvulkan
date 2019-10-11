@@ -27,6 +27,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkDependencyFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkFilter;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkFormat;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageCreateFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageLayout;
@@ -39,8 +40,10 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPipelineBindPoint;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPipelineStageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPresentModeKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkQueryControlFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkQueryResultFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkQueryType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkResult;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkShaderStageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkSubpassContents;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.MappedMemoryPointer;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkBuffer;
@@ -54,6 +57,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDescriptorSetLayout;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDescriptorUpdateTemplate;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDevice;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDeviceMemory;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkEvent;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkFence;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkFramebuffer;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkImage;
@@ -79,12 +83,22 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBindImageMemoryInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferImageCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferMemoryBarrier;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearAttachment;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearColorValue;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearDepthStencilValue;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearRect;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkCopyDescriptorSet;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkDescriptorBufferInfo;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkDescriptorImageInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkExtensionProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkFormatProperties;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageBlit;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageFormatProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageFormatProperties2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageMemoryBarrier;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageResolve;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageSubresourceRange;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkMemoryBarrier;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkMemoryRequirements;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceFeatures;
@@ -147,9 +161,12 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkBindAcceleratio
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkBufferDeviceAddressInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCalibratedTimestampInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCheckpointDataNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCmdProcessCommandsInfoNVX;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCmdReserveSpaceForCommandsInfoNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCoarseSampleOrderCustomNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkConditionalRenderingBeginInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCooperativeMatrixPropertiesNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugMarkerMarkerInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsLabelEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsLabelEXTlabelInfo;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsMessengerCallbackDataEXT;
@@ -1833,14 +1850,12 @@ public class VulkanFunctions
     public static void vkCmdBeginTransformFeedbackEXT(
             VkCommandBuffer commandBuffer,
             int firstCounterBuffer,
-            int counterBufferCount,
             Collection<VkBuffer> counterBuffers,
             long[] counterBufferOffsets)
     {
         v11ProxyLibrary.vkCmdBeginTransformFeedbackEXT(
                 commandBuffer,
                 firstCounterBuffer,
-                counterBufferCount,
                 counterBuffers,
                 counterBufferOffsets);
     }
@@ -2401,11 +2416,569 @@ public class VulkanFunctions
                 combinations);
     }
     
+    public static void vkCmdBeginQuery(
+            VkCommandBuffer commandBuffer,
+            VkQueryPool queryPool,
+            int query,
+            EnumSet<VkQueryControlFlagBits> flags)
+    {
+        v11ProxyLibrary.vkCmdBeginQuery(
+                commandBuffer,
+                queryPool,
+                query,
+                flags);
+    }
     
+    public static void vkCmdBlitImage(
+            VkCommandBuffer                             commandBuffer,
+            VkImage                                     srcImage,
+            VkImageLayout                               srcImageLayout,
+            VkImage                                     dstImage,
+            VkImageLayout                               dstImageLayout,
+            Collection<VkImageBlit>                     regions,
+            VkFilter                                    filter)
+    {
+        v11ProxyLibrary.vkCmdBlitImage(
+                commandBuffer,
+                srcImage,
+                srcImageLayout,
+                dstImage,
+                dstImageLayout,
+                regions,
+                filter);
+    }
     
+    public static void vkCmdClearAttachments(
+            VkCommandBuffer commandBuffer,
+            Collection<VkClearAttachment> attachments,
+            Collection<VkClearRect> rects)
+    {
+        v11ProxyLibrary.vkCmdClearAttachments(
+                commandBuffer,
+                attachments,
+                rects);
+    }
     
+    public static void vkCmdClearColorImage(
+            VkCommandBuffer commandBuffer,
+            VkImage image,
+            VkImageLayout imageLayout,
+            VkClearColorValue color,
+            Collection<VkImageSubresourceRange> ranges)
+    {
+        v11ProxyLibrary.vkCmdClearColorImage(
+                commandBuffer,
+                image,
+                imageLayout,
+                color,
+                ranges);
+    }
     
+    public static void vkCmdClearDepthStencilImage(
+            VkCommandBuffer                             commandBuffer,
+            VkImage                                     image,
+            VkImageLayout                               imageLayout,
+            VkClearDepthStencilValue depthStencil,
+            Collection<VkImageSubresourceRange> ranges)
+    {
+        v11ProxyLibrary.vkCmdClearDepthStencilImage(
+                commandBuffer,
+                image,
+                imageLayout,
+                depthStencil,
+                ranges);
+    }
     
+    public static void vkCmdCopyImage(
+            VkCommandBuffer commandBuffer,
+            VkImage srcImage,
+            VkImageLayout srcImageLayout,
+            VkImage dstImage,
+            VkImageLayout dstImageLayout,
+            Collection<VkImageCopy> regions)
+    {
+        v11ProxyLibrary.vkCmdCopyImage(
+                commandBuffer,
+                srcImage,
+                srcImageLayout,
+                dstImage,
+                dstImageLayout,
+                regions);
+    }
+    
+    public static void vkCmdCopyImageToBuffer(
+            VkCommandBuffer commandBuffer,
+            VkImage srcImage,
+            VkImageLayout srcImageLayout,
+            VkBuffer dstBuffer,
+            Collection<VkBufferImageCopy> regions)
+    {
+        v11ProxyLibrary.vkCmdCopyImageToBuffer(
+                commandBuffer,
+                srcImage,
+                srcImageLayout,
+                dstBuffer,
+                regions);
+    }
+    
+    public static void vkCmdCopyQueryPoolResults(
+            VkCommandBuffer commandBuffer,
+            VkQueryPool queryPool,
+            int firstQuery,
+            int queryCount,
+            VkBuffer dstBuffer,
+            long dstOffset,
+            long stride,
+            EnumSet<VkQueryResultFlagBits> flags)
+    {
+        v11ProxyLibrary.vkCmdCopyQueryPoolResults(
+                commandBuffer,
+                queryPool,
+                firstQuery,
+                queryCount,
+                dstBuffer,
+                dstOffset,
+                stride,
+                flags);
+    }
+    
+    public static void vkCmdDebugMarkerBeginEXT(
+            VkCommandBuffer commandBuffer,
+            VkDebugMarkerMarkerInfoEXT markerInfo)
+    {
+        v11ProxyLibrary.vkCmdDebugMarkerBeginEXT(
+                commandBuffer,
+                markerInfo);
+    }
+    
+    public static void vkCmdDebugMarkerEndEXT(
+            VkCommandBuffer commandBuffer)
+    {
+        v11ProxyLibrary.vkCmdDebugMarkerEndEXT(
+                commandBuffer);
+    }
+    
+    public static void vkCmdDebugMarkerInsertEXT(
+            VkCommandBuffer commandBuffer,
+            VkDebugMarkerMarkerInfoEXT markerInfo)
+    {
+        v11ProxyLibrary.vkCmdDebugMarkerInsertEXT(
+                commandBuffer,
+                markerInfo);
+    }
+    
+    public static void vkCmdDispatch(
+            VkCommandBuffer commandBuffer,
+            int groupCountX,
+            int groupCountY,
+            int groupCountZ)
+    {
+        v11ProxyLibrary.vkCmdDispatch(
+                commandBuffer,
+                groupCountX,
+                groupCountY,
+                groupCountZ);
+    }
+    
+    public static void vkCmdDispatchBase(
+            VkCommandBuffer commandBuffer,
+            int baseGroupX,
+            int baseGroupY,
+            int baseGroupZ,
+            int groupCountX,
+            int groupCountY,
+            int groupCountZ)
+    {
+        v11ProxyLibrary.vkCmdDispatchBase(
+                commandBuffer,
+                baseGroupX,
+                baseGroupY,
+                baseGroupZ,
+                groupCountX,
+                groupCountY,
+                groupCountZ);
+    }
+
+    public static void vkCmdDispatchBaseKHR(
+            VkCommandBuffer commandBuffer,
+            int baseGroupX,
+            int baseGroupY,
+            int baseGroupZ,
+            int groupCountX,
+            int groupCountY,
+            int groupCountZ)
+    {
+        v11ProxyLibrary.vkCmdDispatchBase(
+                commandBuffer,
+                baseGroupX,
+                baseGroupY,
+                baseGroupZ,
+                groupCountX,
+                groupCountY,
+                groupCountZ);
+    }
+    
+    public static void vkCmdDispatchIndirect(
+            VkCommandBuffer commandBuffer,
+            VkBuffer buffer,
+            long offset)
+    {
+        v11ProxyLibrary.vkCmdDispatchIndirect(
+                commandBuffer,
+                buffer,
+                offset);
+    }
+    
+    public static void vkCmdDrawIndexedIndirect(
+            VkCommandBuffer commandBuffer,
+            VkBuffer buffer,
+            long offset,
+            int drawCount,
+            int stride)
+    {
+        v11ProxyLibrary.vkCmdDrawIndexedIndirect(
+                commandBuffer,
+                buffer,
+                offset,
+                drawCount,
+                stride);
+    }
+    
+    public static void vkCmdDrawIndexedIndirectCountAMD(
+            VkCommandBuffer commandBuffer,
+            VkBuffer buffer,
+            long offset,
+            VkBuffer countBuffer,
+            long countBufferOffset,
+            int maxDrawCount,
+            int stride)
+    {
+        v11ProxyLibrary.vkCmdDrawIndexedIndirectCountKHR(
+                commandBuffer,
+                buffer,
+                offset,
+                countBuffer,
+                countBufferOffset,
+                maxDrawCount,
+                stride);
+    }
+    
+    public static void vkCmdDrawIndexedIndirectCountKHR(
+            VkCommandBuffer commandBuffer,
+            VkBuffer buffer,
+            long offset,
+            VkBuffer countBuffer,
+            long countBufferOffset,
+            int maxDrawCount,
+            int stride)
+    {
+        v11ProxyLibrary.vkCmdDrawIndexedIndirectCountKHR(
+                commandBuffer,
+                buffer,
+                offset,
+                countBuffer,
+                countBufferOffset,
+                maxDrawCount,
+                stride);
+    }
+    
+    public static void vkCmdDrawIndirect(
+            VkCommandBuffer commandBuffer,
+            VkBuffer buffer,
+            long offset,
+            int drawCount,
+            int stride)
+    {
+        v11ProxyLibrary.vkCmdDrawIndirect(
+                commandBuffer,
+                buffer,
+                offset,
+                drawCount,
+                stride);
+    }
+    
+    public static void vkCmdDrawIndirectCountKHR(
+            VkCommandBuffer commandBuffer,
+            VkBuffer buffer,
+            long offset,
+            VkBuffer countBuffer,
+            long countBufferOffset,
+            int maxDrawCount,
+            int stride)
+    {
+        v11ProxyLibrary.vkCmdDrawIndirectCountKHR(
+                commandBuffer,
+                buffer,
+                offset,
+                countBuffer,
+                countBufferOffset,
+                maxDrawCount,
+                stride);
+    }
+    
+    public static void vkCmdDrawIndirectCountAMD(
+            VkCommandBuffer commandBuffer,
+            VkBuffer buffer,
+            long offset,
+            VkBuffer countBuffer,
+            long countBufferOffset,
+            int maxDrawCount,
+            int stride)
+    {
+        v11ProxyLibrary.vkCmdDrawIndirectCountKHR(
+                commandBuffer,
+                buffer,
+                offset,
+                countBuffer,
+                countBufferOffset,
+                maxDrawCount,
+                stride);
+    }
+    
+    public static void vkCmdEndQuery(
+            VkCommandBuffer commandBuffer,
+            VkQueryPool queryPool,
+            int query)
+    {
+        v11ProxyLibrary.vkCmdEndQuery(
+                commandBuffer,
+                queryPool,
+                query);
+    }
+    
+    public static void vkCmdExecuteCommands(
+            VkCommandBuffer commandBuffer,
+            Collection<VkCommandBuffer> commandBuffers)
+    {
+        v11ProxyLibrary.vkCmdExecuteCommands(
+                commandBuffer,
+                commandBuffers);
+    }
+    
+    public static void vkCmdFillBuffer(
+            VkCommandBuffer commandBuffer,
+            VkBuffer dstBuffer,
+            long dstOffset,
+            long size,
+            int data)
+    {
+        v11ProxyLibrary.vkCmdFillBuffer(
+                commandBuffer,
+                dstBuffer,
+                dstOffset,
+                size,
+                data);
+    }
+    
+    public static void vkCmdNextSubpass(
+            VkCommandBuffer commandBuffer,
+            VkSubpassContents contents)
+    {
+        v11ProxyLibrary.vkCmdNextSubpass(
+                commandBuffer,
+                contents);
+    }
+    
+    public static void vkCmdProcessCommandsNVX(
+            VkCommandBuffer commandBuffer,
+            VkCmdProcessCommandsInfoNVX processCommandsInfo)
+    {
+        v11ProxyLibrary.vkCmdProcessCommandsNVX(
+                commandBuffer,
+                processCommandsInfo);
+    }
+    
+    public static void vkCmdPushConstants(
+            VkCommandBuffer commandBuffer,
+            VkPipelineLayout layout,
+            EnumSet<VkShaderStageFlagBits> stageFlags,
+            int offset,
+            byte[] values)
+    {
+        v11ProxyLibrary.vkCmdPushConstants(
+                commandBuffer,
+                layout,
+                stageFlags,
+                offset,
+                values);
+    }
+    
+    public static void vkCmdPushDescriptorSetKHR(
+            VkCommandBuffer commandBuffer,
+            VkPipelineBindPoint pipelineBindPoint,
+            VkPipelineLayout layout,
+            int set,
+            Collection<VkWriteDescriptorSet> descriptorWrites)
+    {
+        v11ProxyLibrary.vkCmdPushDescriptorSetKHR(
+                commandBuffer,
+                pipelineBindPoint,
+                layout,
+                set,
+                descriptorWrites);
+    }
+    
+    public static void vkCmdPushDescriptorSetWithTemplateKHR(
+            VkCommandBuffer commandBuffer,
+            VkDescriptorUpdateTemplate descriptorUpdateTemplate,
+            VkPipelineLayout layout,
+            int set,
+            Collection<Object> data)
+    {
+        for(Object item : data)
+        {
+            if (item instanceof VkDescriptorImageInfo == false &&
+                item instanceof VkDescriptorBufferInfo == false &&
+                item instanceof VkBufferView == false)
+            {
+                throw new IllegalArgumentException("data must only contain VkDescriptorImageInfo, VkDescriptorBufferInfo, or VkBufferView objects.");
+            }
+        }
+        
+        v11ProxyLibrary.vkCmdPushDescriptorSetWithTemplateKHR(
+                commandBuffer,
+                descriptorUpdateTemplate,
+                layout,
+                set,
+                data);
+    }
+    
+    public static void vkCmdReserveSpaceForCommandsNVX(
+            VkCommandBuffer commandBuffer,
+            VkCmdReserveSpaceForCommandsInfoNVX reserveSpaceInfo)
+    {
+        v11ProxyLibrary.vkCmdReserveSpaceForCommandsNVX(
+                commandBuffer,
+                reserveSpaceInfo);
+    }
+    
+    public static void vkCmdResetEvent(
+            VkCommandBuffer commandBuffer,
+            VkEvent event,
+            EnumSet<VkPipelineStageFlagBits> stageMask)
+    {
+        v11ProxyLibrary.vkCmdResetEvent(
+                commandBuffer,
+                event,
+                stageMask);
+    }
+    
+    public static void vkCmdResetQueryPool(
+            VkCommandBuffer commandBuffer,
+            VkQueryPool queryPool,
+            int firstQuery,
+            int queryCount)
+    {
+        v11ProxyLibrary.vkCmdResetQueryPool(
+                commandBuffer,
+                queryPool,
+                firstQuery,
+                queryCount);
+    }
+    
+    public static void vkCmdResolveImage(
+            VkCommandBuffer commandBuffer,
+            VkImage srcImage,
+            VkImageLayout srcImageLayout,
+            VkImage dstImage,
+            VkImageLayout dstImageLayout,
+            Collection<VkImageResolve> regions)
+    {
+        v11ProxyLibrary.vkCmdResolveImage(
+                commandBuffer,
+                srcImage,
+                srcImageLayout,
+                dstImage,
+                dstImageLayout,
+                regions);
+    }
+    
+    public static void vkCmdSetBlendConstants(
+            VkCommandBuffer commandBuffer,
+            float[] blendConstants)
+    {
+        if (blendConstants.length != 4)
+        {
+            throw new IllegalArgumentException("blendConstants must have a length of 4");
+        }
+        
+        v11ProxyLibrary.vkCmdSetBlendConstants(
+                commandBuffer,
+                blendConstants);
+    }
+    
+    public static void vkCmdSetDepthBias(
+            VkCommandBuffer commandBuffer,
+            float depthBiasConstantFactor,
+            float depthBiasClamp,
+            float depthBiasSlopeFactor)
+    {
+        v11ProxyLibrary.vkCmdSetDepthBias(
+                commandBuffer,
+                depthBiasConstantFactor,
+                depthBiasClamp,
+                depthBiasSlopeFactor);
+    }
+    
+    public static void vkCmdSetDepthBounds(
+            VkCommandBuffer commandBuffer,
+            float minDepthBounds,
+            float maxDepthBounds)
+    {
+        v11ProxyLibrary.vkCmdSetDepthBounds(
+                commandBuffer,
+                minDepthBounds,
+                maxDepthBounds);
+    }
+    
+    public static void vkCmdSetDeviceMask(
+            VkCommandBuffer commandBuffer,
+            int deviceMask)
+    {
+        v11ProxyLibrary.vkCmdSetDeviceMask(
+                commandBuffer,
+                deviceMask);
+    }
+    
+    public static void vkCmdSetDeviceMaskKHR(
+            VkCommandBuffer commandBuffer,
+            int deviceMask)
+    {
+        v11ProxyLibrary.vkCmdSetDeviceMask(
+                commandBuffer,
+                deviceMask);
+    }
+    
+    public static void vkCmdSetDiscardRectangleEXT(
+            VkCommandBuffer commandBuffer,
+            int firstDiscardRectangle,
+            Collection<VkRect2D> discardRectangles)
+    {
+        v11ProxyLibrary.vkCmdSetDiscardRectangleEXT(
+                commandBuffer,
+                firstDiscardRectangle,
+                discardRectangles);
+    }
+    
+    public static void vkCmdSetEvent(
+            VkCommandBuffer commandBuffer,
+            VkEvent event,
+            EnumSet<VkPipelineStageFlagBits> stageMask)
+    {
+        v11ProxyLibrary.vkCmdSetEvent(
+                commandBuffer,
+                event,
+                stageMask);
+    }
+    
+    public static void vkCmdSetLineWidth(
+            VkCommandBuffer commandBuffer,
+            float lineWidth)
+    {
+        v11ProxyLibrary.vkCmdSetLineWidth(
+                commandBuffer,
+                lineWidth);
+    }
     
     
     

@@ -20,6 +20,7 @@ import java.util.EnumSet;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkDependencyFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkFilter;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkFormat;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageCreateFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageLayout;
@@ -32,8 +33,10 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPipelineBindPoint;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPipelineStageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPresentModeKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkQueryControlFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkQueryResultFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkQueryType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkResult;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkShaderStageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkSubpassContents;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.MappedMemoryPointer;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkBuffer;
@@ -47,6 +50,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDescriptorSetLayout;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDescriptorUpdateTemplate;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDevice;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkDeviceMemory;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkEvent;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkFence;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkFramebuffer;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkImage;
@@ -72,12 +76,20 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBindImageMemoryInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferImageCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferMemoryBarrier;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearAttachment;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearColorValue;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearDepthStencilValue;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearRect;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkCopyDescriptorSet;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkExtensionProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkFormatProperties;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageBlit;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageFormatProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageFormatProperties2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageMemoryBarrier;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageResolve;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageSubresourceRange;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkMemoryBarrier;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkMemoryRequirements;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceFeatures;
@@ -139,9 +151,12 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkBindAcceleratio
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkBufferDeviceAddressInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCalibratedTimestampInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCheckpointDataNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCmdProcessCommandsInfoNVX;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCmdReserveSpaceForCommandsInfoNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCoarseSampleOrderCustomNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkConditionalRenderingBeginInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCooperativeMatrixPropertiesNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugMarkerMarkerInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsLabelEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsLabelEXTlabelInfo;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsMessengerCallbackDataEXT;
@@ -273,6 +288,12 @@ class NativeProxies
             VkCommandBuffer commandBuffer,
             VkDebugUtilsLabelEXT labelInfo);
     
+    native void vkCmdBeginQuery(
+            VkCommandBuffer commandBuffer,
+            VkQueryPool queryPool,
+            int query,
+            EnumSet<VkQueryControlFlagBits> flags);
+    
     native void vkCmdBeginQueryIndexedEXT(
             VkCommandBuffer commandBuffer,
             VkQueryPool queryPool,
@@ -293,7 +314,6 @@ class NativeProxies
     native void vkCmdBeginTransformFeedbackEXT(
             VkCommandBuffer commandBuffer,
             int firstCounterBuffer,
-            int counterBufferCount,
             Collection<VkBuffer> counterBuffers,
             long[] counterBufferOffsets);
     
@@ -335,6 +355,15 @@ class NativeProxies
             Collection<VkBuffer> vkBufferCollection,
             long[] offsets);
     
+    native void vkCmdBlitImage(
+            VkCommandBuffer                             commandBuffer,
+            VkImage                                     srcImage,
+            VkImageLayout                               srcImageLayout,
+            VkImage                                     dstImage,
+            VkImageLayout                               dstImageLayout,
+            Collection<VkImageBlit>                     regions,
+            VkFilter                                    filter);
+    
     native void vkCmdBuildAccelerationStructureNV(
             VkCommandBuffer vkCommandBuffer,
             VkAccelerationStructureInfoNV info,
@@ -346,11 +375,23 @@ class NativeProxies
             VkBuffer scratch,
             long scratchOffset);
     
+    native void vkCmdClearAttachments(
+            VkCommandBuffer commandBuffer,
+            Collection<VkClearAttachment> attachments,
+            Collection<VkClearRect> rects);
+    
     native void vkCmdCopyAccelerationStructureNV(
             VkCommandBuffer vkCommandBuffer,
             VkAccelerationStructureNV dst,
             VkAccelerationStructureNV src,
             VkCopyAccelerationStructureModeNV mode);
+    
+    native void vkCmdClearColorImage(
+            VkCommandBuffer commandBuffer,
+            VkImage image,
+            VkImageLayout imageLayout,
+            VkClearColorValue color,
+            Collection<VkImageSubresourceRange> ranges);
     
     native void vkCmdCopyBuffer(
             VkCommandBuffer vkCommandBuffer,
@@ -372,6 +413,100 @@ class NativeProxies
             int firstVertex,
             int firstInstance);
     
+    native void vkCmdClearDepthStencilImage(
+            VkCommandBuffer                             commandBuffer,
+            VkImage                                     image,
+            VkImageLayout                               imageLayout,
+            VkClearDepthStencilValue depthStencil,
+            Collection<VkImageSubresourceRange> ranges);
+    
+    native void vkCmdCopyImage(
+            VkCommandBuffer commandBuffer,
+            VkImage srcImage,
+            VkImageLayout srcImageLayout,
+            VkImage dstImage,
+            VkImageLayout dstImageLayout,
+            Collection<VkImageCopy> regions);
+    
+    native void vkCmdCopyImageToBuffer(
+            VkCommandBuffer commandBuffer,
+            VkImage srcImage,
+            VkImageLayout srcImageLayout,
+            VkBuffer dstBuffer,
+            Collection<VkBufferImageCopy> regions);
+    
+    native void vkCmdCopyQueryPoolResults(
+            VkCommandBuffer commandBuffer,
+            VkQueryPool queryPool,
+            int firstQuery,
+            int queryCount,
+            VkBuffer dstBuffer,
+            long dstOffset,
+            long stride,
+            EnumSet<VkQueryResultFlagBits> flags);
+    
+    native void vkCmdDebugMarkerBeginEXT(
+            VkCommandBuffer commandBuffer,
+            VkDebugMarkerMarkerInfoEXT markerInfo);
+    
+    native void vkCmdDebugMarkerEndEXT(
+            VkCommandBuffer commandBuffer);
+    
+    native void vkCmdDebugMarkerInsertEXT(
+            VkCommandBuffer commandBuffer,
+            VkDebugMarkerMarkerInfoEXT markerInfo);
+    
+    native void vkCmdDispatch(
+            VkCommandBuffer commandBuffer,
+            int groupCountX,
+            int groupCountY,
+            int groupCountZ);
+    
+    native void vkCmdDispatchBase(
+            VkCommandBuffer commandBuffer,
+            int baseGroupX,
+            int baseGroupY,
+            int baseGroupZ,
+            int groupCountX,
+            int groupCountY,
+            int groupCountZ);
+    
+    native void vkCmdDispatchIndirect(
+            VkCommandBuffer commandBuffer,
+            VkBuffer buffer,
+            long offset);
+    
+    native void vkCmdDrawIndexed(
+            VkCommandBuffer vkCommandBuffer,
+            int indexCount,
+            int instanceCount,
+            int firstIndex,
+            int vertexOffset,
+            int firstInstance);
+    
+    native void vkCmdDrawIndexedIndirect(
+            VkCommandBuffer commandBuffer,
+            VkBuffer buffer,
+            long offset,
+            int drawCount,
+            int stride);
+    
+    native void vkCmdDrawIndexedIndirectCountKHR(
+            VkCommandBuffer commandBuffer,
+            VkBuffer buffer,
+            long offset,
+            VkBuffer countBuffer,
+            long countBufferOffset,
+            int maxDrawCount,
+            int stride);
+    
+    native void vkCmdDrawIndirect(
+            VkCommandBuffer commandBuffer,
+            VkBuffer buffer,
+            long offset,
+            int drawCount,
+            int stride);
+    
     native void vkCmdDrawIndirectByteCountEXT(
             VkCommandBuffer commandBuffer,
             int instanceCount,
@@ -381,13 +516,14 @@ class NativeProxies
             int counterOffset,
             int vertexStride);
     
-    native void vkCmdDrawIndexed(
-            VkCommandBuffer vkCommandBuffer,
-            int indexCount,
-            int instanceCount,
-            int firstIndex,
-            int vertexOffset,
-            int firstInstance);
+    native void vkCmdDrawIndirectCountKHR(
+            VkCommandBuffer commandBuffer,
+            VkBuffer buffer,
+            long offset,
+            VkBuffer countBuffer,
+            long countBufferOffset,
+            int maxDrawCount,
+            int stride);
     
     native void vkCmdDrawMeshTasksNV(
             VkCommandBuffer vkCommandBuffer,
@@ -416,6 +552,11 @@ class NativeProxies
     native void vkCmdEndDebugUtilsLabelEXT(
             VkCommandBuffer commandBuffer);
     
+    native void vkCmdEndQuery(
+            VkCommandBuffer commandBuffer,
+            VkQueryPool queryPool,
+            int query);
+    
     native void vkCmdEndQueryIndexedEXT(
             VkCommandBuffer commandBuffer,
             VkQueryPool queryPool,
@@ -436,9 +577,24 @@ class NativeProxies
             Collection<VkBuffer> counterBuffers,
             long[] counterBufferOffsets);
     
+    native void vkCmdExecuteCommands(
+            VkCommandBuffer commandBuffer,
+            Collection<VkCommandBuffer> commandBuffers);
+    
+    native void vkCmdFillBuffer(
+            VkCommandBuffer commandBuffer,
+            VkBuffer dstBuffer,
+            long dstOffset,
+            long size,
+            int data);
+    
     native void vkCmdInsertDebugUtilsLabelEXT(
             VkCommandBuffer commandBuffer,
             VkDebugUtilsLabelEXT labelInfo);
+    
+    native void vkCmdNextSubpass(
+            VkCommandBuffer commandBuffer,
+            VkSubpassContents contents);
     
     native void vkCmdNextSubpass2KHR(
             VkCommandBuffer vkCommandBuffer,
@@ -454,6 +610,58 @@ class NativeProxies
             Collection<VkBufferMemoryBarrier> bufferMemoryBarriers,
             Collection<VkImageMemoryBarrier> imageMemoryBarriers);
     
+    native void vkCmdProcessCommandsNVX(
+            VkCommandBuffer commandBuffer,
+            VkCmdProcessCommandsInfoNVX processCommandsInfo);
+    
+    native void vkCmdPushConstants(
+            VkCommandBuffer commandBuffer,
+            VkPipelineLayout layout,
+            EnumSet<VkShaderStageFlagBits> stageFlags,
+            int offset,
+            byte[] values);
+    
+    native void vkCmdPushDescriptorSetKHR(
+            VkCommandBuffer commandBuffer,
+            VkPipelineBindPoint pipelineBindPoint,
+            VkPipelineLayout layout,
+            int set,
+            Collection<VkWriteDescriptorSet> descriptorWrites);
+    
+    native void vkCmdPushDescriptorSetWithTemplateKHR(
+            VkCommandBuffer commandBuffer,
+            VkDescriptorUpdateTemplate descriptorUpdateTemplate,
+            VkPipelineLayout layout,
+            int set,
+            Collection<Object> data);
+    
+    native void vkCmdReserveSpaceForCommandsNVX(
+            VkCommandBuffer commandBuffer,
+            VkCmdReserveSpaceForCommandsInfoNVX reserveSpaceInfo);
+    
+    native void vkCmdResetEvent(
+            VkCommandBuffer commandBuffer,
+            VkEvent event,
+            EnumSet<VkPipelineStageFlagBits> stageMask);
+    
+    native void vkCmdResetQueryPool(
+            VkCommandBuffer commandBuffer,
+            VkQueryPool queryPool,
+            int firstQuery,
+            int queryCount);
+    
+    native void vkCmdResolveImage(
+            VkCommandBuffer commandBuffer,
+            VkImage srcImage,
+            VkImageLayout srcImageLayout,
+            VkImage dstImage,
+            VkImageLayout dstImageLayout,
+            Collection<VkImageResolve> regions);
+    
+    native void vkCmdSetBlendConstants(
+            VkCommandBuffer commandBuffer,
+            float[] blendConstants);
+    
     native void vkCmdSetCheckpointNV(
             VkCommandBuffer vkCommandBuffer,
             CheckpointMarker checkpointMarker);
@@ -463,10 +671,39 @@ class NativeProxies
             VkCoarseSampleOrderTypeNV sampleOrderType,
             Collection<VkCoarseSampleOrderCustomNV> customSampleOrders);
     
+    native void vkCmdSetDepthBias(
+            VkCommandBuffer commandBuffer,
+            float depthBiasConstantFactor,
+            float depthBiasClamp,
+            float depthBiasSlopeFactor);
+    
+    native void vkCmdSetDepthBounds(
+            VkCommandBuffer commandBuffer,
+            float minDepthBounds,
+            float maxDepthBounds);
+    
+    native void vkCmdSetDeviceMask(
+            VkCommandBuffer commandBuffer,
+            int deviceMask);
+    
+    native void vkCmdSetDiscardRectangleEXT(
+            VkCommandBuffer commandBuffer,
+            int firstDiscardRectangle,
+            Collection<VkRect2D> discardRectangles);
+    
+    native void vkCmdSetEvent(
+            VkCommandBuffer commandBuffer,
+            VkEvent event,
+            EnumSet<VkPipelineStageFlagBits> stageMask);
+    
     native void vkCmdSetExclusiveScissorNV(
             VkCommandBuffer vkCommandBuffer,
             int firstExclusiveScissor,
             Collection<VkRect2D> exclusiveScissors);
+    
+    native void vkCmdSetLineWidth(
+            VkCommandBuffer commandBuffer,
+            float lineWidth);
     
     native void vkCmdSetLineStippleEXT(
             VkCommandBuffer commandBuffer,

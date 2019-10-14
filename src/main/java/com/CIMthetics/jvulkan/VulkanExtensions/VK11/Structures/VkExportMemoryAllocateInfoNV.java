@@ -17,9 +17,9 @@ package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
 import java.util.EnumSet;
 
-import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkExternalMemoryHandleTypeFlagBitsNV;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkExternalMemoryHandleTypeFlagBitsNV;
 
 public class VkExportMemoryAllocateInfoNV extends VulkanCreateInfoStructure
 {

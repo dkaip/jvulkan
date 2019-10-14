@@ -17,15 +17,15 @@ package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos;
 
 import java.util.EnumSet;
 
-import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkExternalMemoryHandleTypeFlagBitsNV;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkExternalMemoryHandleTypeFlagBitsNV;
 
 public class VkExternalMemoryImageCreateInfoNV extends VulkanCreateInfoStructure
 {
     private EnumSet<VkExternalMemoryHandleTypeFlagBitsNV> handleTypes;
 
-    public VkExternalMemoryImageCreateInfoNV(VkStructureType sType)
+    public VkExternalMemoryImageCreateInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV);
     }

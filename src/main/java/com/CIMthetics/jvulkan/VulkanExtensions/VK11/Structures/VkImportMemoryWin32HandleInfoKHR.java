@@ -26,7 +26,7 @@ public class VkImportMemoryWin32HandleInfoKHR extends VulkanCreateInfoStructure
     private VulkanHandle                        handle;
     private String                              name;
 
-    public VkImportMemoryWin32HandleInfoKHR(VkStructureType sType)
+    public VkImportMemoryWin32HandleInfoKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR);
     }

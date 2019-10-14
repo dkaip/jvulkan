@@ -15,8 +15,8 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
-import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkIndirectCommandsTokenTypeNVX;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkBuffer;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkIndirectCommandsTokenTypeNVX;
 
 public class VkIndirectCommandsTokenNVX
 {

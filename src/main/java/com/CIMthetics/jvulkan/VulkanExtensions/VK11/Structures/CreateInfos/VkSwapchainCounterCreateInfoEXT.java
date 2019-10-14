@@ -25,7 +25,7 @@ public class VkSwapchainCounterCreateInfoEXT extends VulkanCreateInfoStructure
 {
     private EnumSet<VkSurfaceCounterFlagBitsEXT>    surfaceCounters;
 
-    public VkSwapchainCounterCreateInfoEXT(VkStructureType sType)
+    public VkSwapchainCounterCreateInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT);
     }

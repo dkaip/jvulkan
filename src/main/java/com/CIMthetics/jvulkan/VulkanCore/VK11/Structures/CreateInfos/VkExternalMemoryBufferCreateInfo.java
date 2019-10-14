@@ -24,7 +24,7 @@ public class VkExternalMemoryBufferCreateInfo extends VulkanCreateInfoStructure
 {
     private EnumSet<VkExternalMemoryHandleTypeFlagBits>    handleTypes;
 
-    public VkExternalMemoryBufferCreateInfo(VkStructureType sType)
+    public VkExternalMemoryBufferCreateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO);
     }

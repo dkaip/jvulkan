@@ -24,7 +24,7 @@ public class VkBindImageMemorySwapchainInfoKHR extends VulkanCreateInfoStructure
     private VkSwapchainKHR  swapchain;
     private int             imageIndex;
 
-    public VkBindImageMemorySwapchainInfoKHR(VkStructureType sType)
+    public VkBindImageMemorySwapchainInfoKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR);
     }

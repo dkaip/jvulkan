@@ -25,7 +25,7 @@ public class VkExportMemoryWin32HandleInfoKHR extends VulkanCreateInfoStructure
     private int                         dwAccess;
     private String                      name;
 
-    public VkExportMemoryWin32HandleInfoKHR(VkStructureType sType)
+    public VkExportMemoryWin32HandleInfoKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR);
     }

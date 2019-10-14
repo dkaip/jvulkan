@@ -13,17 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.VulkanCore.VK11.Enums;
+package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
-public enum VkObjectEntryUsageFlagBitsNVX
+public class VkRefreshCycleDurationGOOGLE
 {
-    VK_OBJECT_ENTRY_USAGE_GRAPHICS_BIT_NVX(0x00000001),
-    VK_OBJECT_ENTRY_USAGE_COMPUTE_BIT_NVX(0x00000002),
-    VK_OBJECT_ENTRY_USAGE_FLAG_BITS_MAX_ENUM_NVX(0x7FFFFFFF);
+    private long refreshDuration;
 
-    private int value;
-    
-    private VkObjectEntryUsageFlagBitsNVX(int value) { this.value = value; }
-    
-    public int valueOf() { return value; }
+    public long getRefreshDuration()
+    {
+        return refreshDuration;
+    }
+
+    public void setRefreshDuration(long refreshDuration)
+    {
+        this.refreshDuration = refreshDuration;
+    }
 }

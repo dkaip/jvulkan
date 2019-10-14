@@ -22,7 +22,7 @@ public class VkDedicatedAllocationBufferCreateInfoNV extends VulkanCreateInfoStr
 {
     private boolean dedicatedAllocation;
 
-    public VkDedicatedAllocationBufferCreateInfoNV(VkStructureType sType)
+    public VkDedicatedAllocationBufferCreateInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV);
     }

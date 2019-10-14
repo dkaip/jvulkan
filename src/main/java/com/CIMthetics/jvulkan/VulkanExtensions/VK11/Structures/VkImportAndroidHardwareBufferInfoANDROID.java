@@ -22,7 +22,7 @@ public class VkImportAndroidHardwareBufferInfoANDROID extends VulkanCreateInfoSt
 {
     private AndroidHardwareBuffer   buffer;
 
-    public VkImportAndroidHardwareBufferInfoANDROID(VkStructureType sType)
+    public VkImportAndroidHardwareBufferInfoANDROID()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID);
     }

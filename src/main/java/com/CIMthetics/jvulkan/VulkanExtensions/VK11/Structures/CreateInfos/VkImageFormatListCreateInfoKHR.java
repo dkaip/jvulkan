@@ -25,7 +25,7 @@ public class VkImageFormatListCreateInfoKHR extends VulkanCreateInfoStructure
 {
     private Collection<VkFormat>    viewFormats;
 
-    public VkImageFormatListCreateInfoKHR(VkStructureType sType)
+    public VkImageFormatListCreateInfoKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR);
     }

@@ -19,6 +19,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkViewportCoordinateSwizzleNV;
+
 class VkViewportCoordinateSwizzleNVTest
 {
     @Test

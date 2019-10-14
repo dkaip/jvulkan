@@ -15,7 +15,7 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
-import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkViewportCoordinateSwizzleNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkViewportCoordinateSwizzleNV;
 
 public class VkViewportSwizzleNV
 {

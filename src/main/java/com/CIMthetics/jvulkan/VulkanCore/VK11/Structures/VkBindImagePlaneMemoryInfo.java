@@ -23,7 +23,7 @@ public class VkBindImagePlaneMemoryInfo extends VulkanCreateInfoStructure
 {
     private VkImageAspectFlagBits   planeAspect;
 
-    public VkBindImagePlaneMemoryInfo(VkStructureType sType)
+    public VkBindImagePlaneMemoryInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO);
     }

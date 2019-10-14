@@ -15,17 +15,17 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures;
 
-import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkExternalMemoryHandleTypeFlagBitsNV;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VulkanCreateInfoStructure;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkExternalMemoryHandleTypeFlagBitsNV;
 
 public class VkImportMemoryWin32HandleInfoNV extends VulkanCreateInfoStructure
 {
     private VkExternalMemoryHandleTypeFlagBitsNV    handleType;
     private VulkanHandle                            handle;
 
-    public VkImportMemoryWin32HandleInfoNV(VkStructureType sType)
+    public VkImportMemoryWin32HandleInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV);
     }

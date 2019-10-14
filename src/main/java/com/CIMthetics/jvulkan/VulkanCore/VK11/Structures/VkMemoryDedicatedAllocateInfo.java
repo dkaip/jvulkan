@@ -25,7 +25,7 @@ public class VkMemoryDedicatedAllocateInfo extends VulkanCreateInfoStructure
     private VkImage     image;
     private VkBuffer    buffer;
 
-    public VkMemoryDedicatedAllocateInfo(VkStructureType sType)
+    public VkMemoryDedicatedAllocateInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO);
     }

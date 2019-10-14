@@ -13,18 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.VulkanCore.VK11.Enums;
+package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles;
 
-public enum VkExternalMemoryFeatureFlagBitsNV
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
+
+public class VkValidationCacheEXT extends VulkanHandle
 {
-    VK_EXTERNAL_MEMORY_FEATURE_DEDICATED_ONLY_BIT_NV(0x00000001),
-    VK_EXTERNAL_MEMORY_FEATURE_EXPORTABLE_BIT_NV(0x00000002),
-    VK_EXTERNAL_MEMORY_FEATURE_IMPORTABLE_BIT_NV(0x00000004),
-    VK_EXTERNAL_MEMORY_FEATURE_FLAG_BITS_MAX_ENUM_NV(0x7FFFFFFF);
 
-    private int value;
-    
-    private VkExternalMemoryFeatureFlagBitsNV(int value) { this.value = value; }
-    
-    public int valueOf() { return value; }
 }

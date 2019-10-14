@@ -22,7 +22,7 @@ public class VkExternalFormatANDROID extends VulkanCreateInfoStructure
 {
     private long externalFormat;
 
-    public VkExternalFormatANDROID(VkStructureType sType)
+    public VkExternalFormatANDROID()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID);
     }

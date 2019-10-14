@@ -25,7 +25,7 @@ public class VkExportSemaphoreWin32HandleInfoKHR extends VulkanCreateInfoStructu
     private int                         dwAccess;
     private String                      name;
     
-    public VkExportSemaphoreWin32HandleInfoKHR(VkStructureType sType)
+    public VkExportSemaphoreWin32HandleInfoKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR);
     }

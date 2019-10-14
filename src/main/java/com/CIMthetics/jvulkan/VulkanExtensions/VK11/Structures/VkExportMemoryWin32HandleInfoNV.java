@@ -24,7 +24,7 @@ public class VkExportMemoryWin32HandleInfoNV extends VulkanCreateInfoStructure
     private WindowsSecurityAttributes   attributes;
     private int                         dwAccess;
     
-    public VkExportMemoryWin32HandleInfoNV(VkStructureType sType)
+    public VkExportMemoryWin32HandleInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV);
     }

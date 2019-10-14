@@ -26,7 +26,12 @@ import java.util.concurrent.LinkedBlockingQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkCommandBufferResetFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkCommandPoolResetFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkCommandPoolTrimFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkDependencyFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkDescriptorPoolResetFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkExternalMemoryHandleTypeFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkFilter;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkFormat;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageCreateFlagBits;
@@ -43,7 +48,10 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkQueryControlFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkQueryResultFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkQueryType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkResult;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkSampleCountFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkShaderInfoTypeAMD;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkShaderStageFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkStencilFaceFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkSubpassContents;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.MappedMemoryPointer;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkBuffer;
@@ -71,18 +79,22 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkQueryPool;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkQueue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkRenderPass;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkSampler;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkSamplerYcbcrConversion;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkSemaphore;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkShaderModule;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkSwapchainKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.IntReturnValue;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.LongReturnValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkAcquireNextImageInfoKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkAllocationCallbacks;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBindBufferMemoryInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBindImageMemoryInfo;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBindSparseInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferImageCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferMemoryBarrier;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkBufferMemoryRequirementsInfo2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearAttachment;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearColorValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearDepthStencilValue;
@@ -90,25 +102,49 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearRect;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkCopyDescriptorSet;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkDescriptorBufferInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkDescriptorImageInfo;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkDeviceQueueInfo2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkExtensionProperties;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkExtent2D;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkExternalBufferProperties;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkExternalFenceProperties;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkExternalSemaphoreProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkFormatProperties;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkFormatProperties2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageBlit;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageCopy;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageFormatProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageFormatProperties2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageMemoryBarrier;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageMemoryRequirementsInfo2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageResolve;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageSparseMemoryRequirementsInfo2;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageSubresource;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkImageSubresourceRange;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkLayerProperties;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkMappedMemoryRange;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkMemoryBarrier;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkMemoryRequirements;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceExternalBufferInfo;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceExternalFenceInfo;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceExternalSemaphoreInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceFeatures;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceFeatures2;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceGroupProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceMemoryProperties;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceMemoryProperties2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceProperties2;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkPhysicalDeviceSparseImageFormatInfo2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkQueueFamilyProperties;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkQueueFamilyProperties2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkRect2D;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSparseImageFormatProperties;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSparseImageFormatProperties2;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSparseImageMemoryRequirements;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSubresourceLayout;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSurfaceCapabilitiesKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSurfaceFormatKHR;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkViewport;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkWriteDescriptorSet;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkApplicationInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkBufferCreateInfo;
@@ -122,6 +158,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDescripto
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDescriptorSetLayoutCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDescriptorUpdateTemplateCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkDeviceCreateInfo;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkEventCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkFenceCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkFramebufferCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkGraphicsPipelineCreateInfo;
@@ -129,12 +166,15 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkImageCrea
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkImageViewCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkInstanceCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkMemoryAllocateInfo;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkPipelineCacheCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkPipelineLayoutCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkPresentInfoKHR;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkQueryPoolCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkRenderPassBeginInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkRenderPassCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkRenderPassCreateInfo2KHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkSamplerCreateInfo;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkSamplerYcbcrConversionCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkSemaphoreCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkShaderModuleCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkSubmitInfo;
@@ -143,9 +183,14 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkSubpassEn
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.CreateInfos.VkSwapchainCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkCoarseSampleOrderTypeNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkCopyAccelerationStructureModeNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugReportFlagBitsEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugReportObjectTypeEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessageSeverityFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugUtilsMessageTypeFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDeviceGroupPresentModeFlagBitsKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkExternalMemoryHandleTypeFlagBitsNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkObjectEntryTypeNVX;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkSurfaceCounterFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkTimeDomainEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.CheckpointMarker;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkAccelerationStructureNV;
@@ -153,8 +198,11 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDebugReportCallbac
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDeviceAddress;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkDisplayModeKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkIndirectCommandsLayoutNVX;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkObjectTableNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkPerformanceConfigurationINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkSurfaceKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Handles.VkValidationCacheEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStructureInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkAccelerationStructureMemoryRequirementsInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkBindAccelerationStructureMemoryInfoNV;
@@ -167,16 +215,45 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCoarseSampleOrd
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkConditionalRenderingBeginInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkCooperativeMatrixPropertiesNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugMarkerMarkerInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugMarkerObjectNameInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugMarkerObjectTagInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsLabelEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsLabelEXTlabelInfo;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsMessengerCallbackDataEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsObjectNameInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDebugUtilsObjectTagInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDeviceEventInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDeviceGeneratedCommandsFeaturesNVX;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDeviceGeneratedCommandsLimitsNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDeviceGroupPresentCapabilitiesKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDisplayEventInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDisplayModeProperties2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDisplayModePropertiesKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDisplayPlaneCapabilities2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDisplayPlaneCapabilitiesKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDisplayPlaneInfo2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDisplayPlaneProperties2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDisplayPlanePropertiesKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDisplayPowerInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDisplayProperties2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkDisplayPropertiesKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkExternalImageFormatPropertiesNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkFenceGetFdInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkFramebufferMixedSamplesCombinationNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkHdrMetadataEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkImageDrmFormatModifierPropertiesEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkImageViewHandleInfoNVX;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkImportFenceFdInfoKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkImportSemaphoreFdInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkInitializePerformanceApiInfoINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkMemoryFdPropertiesKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkMemoryGetFdInfoKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkMemoryHostPointerPropertiesEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkMemoryRequirements2;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkMemoryRequirements2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkMultisamplePropertiesEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkObjectTableEntryNVX;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPastPresentationTimingGOOGLE;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPerformanceConfigurationAcquireInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPerformanceMarkerInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPerformanceOverrideInfoINTEL;
@@ -189,16 +266,25 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineExecuta
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineExecutablePropertiesKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineExecutableStatisticKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineInfoKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkRefreshCycleDurationGOOGLE;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSampleLocationsInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSemaphoreGetFdInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkShadingRatePaletteNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSurfaceCapabilities2EXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSurfaceCapabilities2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSurfaceFormat2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkViewportWScalingNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkAccelerationStructureCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDebugReportCallbackCreateInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDebugUtilsMessengerCreateInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDisplayModeCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkDisplaySurfaceCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkHeadlessSurfaceCreateInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkIndirectCommandsLayoutCreateInfoNVX;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkObjectTableCreateInfoNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkPerformanceValueINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkRayTracingPipelineCreateInfoNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkValidationCacheCreateInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.CreateInfos.VkWaylandSurfaceCreateInfoKHR;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceFullscreenMethod;
 import com.CIMthetics.jvulkan.Wayland.Enums.WlShellSurfaceResize;
@@ -1959,19 +2045,6 @@ public class VulkanFunctions
                 timeDomains);
     }
     
-    public static VkResult vkGetCalibratedTimestampsEXT(
-            VkDevice device,
-            Collection<VkCalibratedTimestampInfoEXT> timestampInfos,
-            long[] timestamps,
-            long[] maxDeviation)
-    {
-        return v11ProxyLibrary.vkGetCalibratedTimestampsEXT(
-                device,
-                timestampInfos,
-                timestamps,
-                maxDeviation);
-    }
-    
     public static VkDeviceAddress vkGetBufferDeviceAddressEXT(
             VkDevice vulkanLogicalDevice,
             VkBufferDeviceAddressInfoEXT info)
@@ -2216,6 +2289,17 @@ public class VulkanFunctions
     }
     
     public static VkResult vkGetPhysicalDeviceImageFormatProperties2(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceImageFormatInfo2 imageFormatInfo,
+            VkImageFormatProperties2 imageFormatProperties)
+    {
+        return v11ProxyLibrary.vkGetPhysicalDeviceImageFormatProperties2(
+                physicalDevice,
+                imageFormatInfo,
+                imageFormatProperties);
+    }
+    
+    public static VkResult vkGetPhysicalDeviceImageFormatProperties2KHR(
             VkPhysicalDevice physicalDevice,
             VkPhysicalDeviceImageFormatInfo2 imageFormatInfo,
             VkImageFormatProperties2 imageFormatProperties)
@@ -2980,10 +3064,1435 @@ public class VulkanFunctions
                 lineWidth);
     }
     
+    public static void vkCmdSetSampleLocationsEXT(
+            VkCommandBuffer commandBuffer,
+            VkSampleLocationsInfoEXT sampleLocationsInfo)
+    {
+        v11ProxyLibrary.vkCmdSetSampleLocationsEXT(
+                commandBuffer,
+                sampleLocationsInfo);
+    }
     
+    public static void vkCmdSetScissor(
+            VkCommandBuffer commandBuffer,
+            int firstScissor,
+            Collection<VkRect2D> scissors)
+    {
+        v11ProxyLibrary.vkCmdSetScissor(
+                commandBuffer,
+                firstScissor,
+                scissors);
+    }
     
+    public static void vkCmdSetStencilCompareMask(
+            VkCommandBuffer commandBuffer,
+            EnumSet<VkStencilFaceFlagBits> faceMask,
+            int compareMask)
+    {
+        v11ProxyLibrary.vkCmdSetStencilCompareMask(
+                commandBuffer,
+                faceMask,
+                compareMask);
+    }
     
+    public static void vkCmdSetStencilReference(
+            VkCommandBuffer commandBuffer,
+            EnumSet<VkStencilFaceFlagBits> faceMask,
+            int reference)
+    {
+        v11ProxyLibrary.vkCmdSetStencilReference(
+                commandBuffer,
+                faceMask,
+                reference);
+    }
     
+    public static void vkCmdSetStencilWriteMask(
+            VkCommandBuffer commandBuffer,
+            EnumSet<VkStencilFaceFlagBits> faceMask,
+            int writeMask)
+    {
+        v11ProxyLibrary.vkCmdSetStencilWriteMask(
+                commandBuffer,
+                faceMask,
+                writeMask);
+    }
+    
+    public static void vkCmdSetViewport(
+            VkCommandBuffer commandBuffer,
+            int firstViewport,
+            Collection<VkViewport> viewports)
+    {
+        v11ProxyLibrary.vkCmdSetViewport(
+                commandBuffer,
+                firstViewport,
+                viewports);
+    }
+    
+    public static void vkCmdSetViewportWScalingNV(
+            VkCommandBuffer commandBuffer,
+            int firstViewport,
+            Collection<VkViewportWScalingNV> viewportWScalings)
+    {
+        v11ProxyLibrary.vkCmdSetViewportWScalingNV(
+                commandBuffer,
+                firstViewport,
+                viewportWScalings);
+    }
+    
+    public static void vkCmdUpdateBuffer(
+            VkCommandBuffer commandBuffer,
+            VkBuffer dstBuffer,
+            long dstOffset,
+            byte[] data)
+    {
+        if(data.length > 65536)
+        {
+            throw new IllegalArgumentException("data must have a length of 65536 or less.");
+        }
+        
+        v11ProxyLibrary.vkCmdUpdateBuffer(
+                commandBuffer,
+                dstBuffer,
+                dstOffset,
+                data);
+    }
+    
+    public static void vkCmdWaitEvents(
+            VkCommandBuffer commandBuffer,
+            Collection<VkEvent> events,
+            EnumSet<VkPipelineStageFlagBits> srcStageMask,
+            EnumSet<VkPipelineStageFlagBits> dstStageMask,
+            Collection<VkMemoryBarrier> memoryBarriers,
+            Collection<VkBufferMemoryBarrier> bufferMemoryBarriers,
+            Collection<VkImageMemoryBarrier> imageMemoryBarriers)
+    {
+        v11ProxyLibrary.vkCmdWaitEvents(
+                commandBuffer,
+                events,
+                srcStageMask,
+                dstStageMask,
+                memoryBarriers,
+                bufferMemoryBarriers,
+                imageMemoryBarriers);
+    }
+    
+    public static void vkCmdWriteBufferMarkerAMD(
+            VkCommandBuffer commandBuffer,
+            VkPipelineStageFlagBits pipelineStage,
+            VkBuffer dstBuffer,
+            long dstOffset,
+            int marker)
+    {
+        v11ProxyLibrary.vkCmdWriteBufferMarkerAMD(
+                commandBuffer,
+                pipelineStage,
+                dstBuffer,
+                dstOffset,
+                marker);
+    }
+    
+    public static void vkCmdWriteTimestamp(
+            VkCommandBuffer commandBuffer,
+            VkPipelineStageFlagBits pipelineStage,
+            VkQueryPool queryPool,
+            int query)
+    {
+        v11ProxyLibrary.vkCmdWriteTimestamp(
+                commandBuffer,
+                pipelineStage,
+                queryPool,
+                query);
+    }
+    
+    public static VkResult vkCreateEvent(
+            VkDevice device,
+            VkEventCreateInfo createInfo,
+            VkAllocationCallbacks allocator,
+            VkEvent event)
+    {
+        return v11ProxyLibrary.vkCreateEvent(
+                device,
+                createInfo,
+                allocator,
+                event);
+    }
+    
+    public static VkResult vkCreateIndirectCommandsLayoutNVX(
+            VkDevice device,
+            VkIndirectCommandsLayoutCreateInfoNVX createInfo,
+            VkAllocationCallbacks allocator,
+            VkIndirectCommandsLayoutNVX indirectCommandsLayout)
+    {
+        return v11ProxyLibrary.vkCreateIndirectCommandsLayoutNVX(
+                device,
+                createInfo,
+                allocator,
+                indirectCommandsLayout);
+    }
+    
+    public static VkResult vkCreateObjectTableNVX(
+            VkDevice device,
+            VkObjectTableCreateInfoNVX createInfo,
+            VkAllocationCallbacks allocator,
+            VkObjectTableNVX objectTable)
+    {
+        return v11ProxyLibrary.vkCreateObjectTableNVX(
+                device,
+                createInfo,
+                allocator,
+                objectTable);
+    }
+    
+    public static VkResult vkCreatePipelineCache(
+            VkDevice device,
+            VkPipelineCacheCreateInfo createInfo,
+            VkAllocationCallbacks allocator,
+            VkPipelineCache pipelineCache)
+    {
+        return v11ProxyLibrary.vkCreatePipelineCache(
+                device,
+                createInfo,
+                allocator,
+                pipelineCache);
+    }
+    
+    public static VkResult vkCreateQueryPool(
+            VkDevice device,
+            VkQueryPoolCreateInfo createInfo,
+            VkAllocationCallbacks allocator,
+            VkQueryPool queryPool)
+    {
+        return v11ProxyLibrary.vkCreateQueryPool(
+                device,
+                createInfo,
+                allocator,
+                queryPool);
+    }
+    
+    public static VkResult vkCreateSamplerYcbcrConversion(
+            VkDevice device,
+            VkSamplerYcbcrConversionCreateInfo createInfo,
+            VkAllocationCallbacks allocator,
+            VkSamplerYcbcrConversion ycbcrConversion)
+    {
+        return v11ProxyLibrary.vkCreateSamplerYcbcrConversion(
+                device,
+                createInfo,
+                allocator,
+                ycbcrConversion);
+    }
+    
+    public static VkResult vkCreateSamplerYcbcrConversionKHR(
+            VkDevice device,
+            VkSamplerYcbcrConversionCreateInfo createInfo,
+            VkAllocationCallbacks allocator,
+            VkSamplerYcbcrConversion ycbcrConversion)
+    {
+        return v11ProxyLibrary.vkCreateSamplerYcbcrConversion(
+                device,
+                createInfo,
+                allocator,
+                ycbcrConversion);
+    }
+    
+    public static VkResult vkCreateSharedSwapchainsKHR(
+            VkDevice device,
+            Collection<VkSwapchainCreateInfoKHR> createInfos,
+            VkAllocationCallbacks allocator,
+            Collection<VkSwapchainKHR> swapchains)
+    {
+        return v11ProxyLibrary.vkCreateSharedSwapchainsKHR(
+                device,
+                createInfos,
+                allocator,
+                swapchains);
+    }
+    
+    public static VkResult vkCreateValidationCacheEXT(
+            VkDevice device,
+            VkValidationCacheCreateInfoEXT createInfo,
+            VkAllocationCallbacks allocator,
+            VkValidationCacheEXT validationCache)
+    {
+        return v11ProxyLibrary.vkCreateValidationCacheEXT(
+                device,
+                createInfo,
+                allocator,
+                validationCache);
+    }
+    
+    public static VkResult vkDebugMarkerSetObjectNameEXT(
+            VkDevice device,
+            VkDebugMarkerObjectNameInfoEXT nameInfo)
+    {
+        return v11ProxyLibrary.vkDebugMarkerSetObjectNameEXT(
+                device,
+                nameInfo);
+    }
+    
+    public static VkResult vkDebugMarkerSetObjectTagEXT(
+            VkDevice device,
+            VkDebugMarkerObjectTagInfoEXT tagInfo)
+    {
+        return v11ProxyLibrary.vkDebugMarkerSetObjectTagEXT(
+                device,
+                tagInfo);
+    }
+    
+    public static void vkDebugReportMessageEXT(
+            VkInstance instance,
+            EnumSet<VkDebugReportFlagBitsEXT> flags,
+            VkDebugReportObjectTypeEXT objectType,
+            VulkanHandle object,
+            long location,
+            int messageCode,
+            String layerPrefix,
+            String message)
+    {
+        v11ProxyLibrary.vkDebugReportMessageEXT(
+                instance,
+                flags,
+                objectType,
+                object,
+                location,
+                messageCode,
+                layerPrefix,
+                message);
+    }
+    
+    public static void vkDestroyBufferView(
+            VkDevice device,
+            VkBufferView bufferView,
+            VkAllocationCallbacks allocator)
+    {
+        v11ProxyLibrary.vkDestroyBufferView(
+                device,
+                bufferView,
+                allocator);
+    }
+    
+    public static void vkDestroyDescriptorUpdateTemplate(
+            VkDevice device,
+            VkDescriptorUpdateTemplate descriptorUpdateTemplate,
+            VkAllocationCallbacks allocator)
+    {
+        v11ProxyLibrary.vkDestroyDescriptorUpdateTemplate(
+                device,
+                descriptorUpdateTemplate,
+                allocator);
+    }
+    
+    public static void vkDestroyDescriptorUpdateTemplateKHR(
+            VkDevice device,
+            VkDescriptorUpdateTemplate descriptorUpdateTemplate,
+            VkAllocationCallbacks allocator)
+    {
+        v11ProxyLibrary.vkDestroyDescriptorUpdateTemplate(
+                device,
+                descriptorUpdateTemplate,
+                allocator);
+    }
+    
+    public static void vkDestroyEvent(
+            VkDevice device,
+            VkEvent event,
+            VkAllocationCallbacks allocator)
+    {
+        v11ProxyLibrary.vkDestroyEvent(
+                device,
+                event,
+                allocator);
+    }
+    
+    public static void vkDestroyIndirectCommandsLayoutNVX(
+            VkDevice device,
+            VkIndirectCommandsLayoutNVX indirectCommandsLayout,
+            VkAllocationCallbacks allocator)
+    {
+        v11ProxyLibrary.vkDestroyIndirectCommandsLayoutNVX(
+                device,
+                indirectCommandsLayout,
+                allocator);
+    }
+    
+    public static void vkDestroyObjectTableNVX(
+            VkDevice device,
+            VkObjectTableNVX objectTable,
+            VkAllocationCallbacks allocator)
+    {
+        v11ProxyLibrary.vkDestroyObjectTableNVX(
+                device,
+                objectTable,
+                allocator);
+    }
+    
+    public static void vkDestroyPipelineCache(
+            VkDevice device,
+            VkPipelineCache pipelineCache,
+            VkAllocationCallbacks allocator)
+    {
+        v11ProxyLibrary.vkDestroyPipelineCache(
+                device,
+                pipelineCache,
+                allocator);
+    }
+    
+    public static void vkDestroyQueryPool(
+            VkDevice device,
+            VkQueryPool queryPool,
+            VkAllocationCallbacks allocator)
+    {
+        v11ProxyLibrary.vkDestroyQueryPool(
+                device,
+                queryPool,
+                allocator);
+    }
+    
+    public static void vkDestroySamplerYcbcrConversion(
+            VkDevice device,
+            VkSamplerYcbcrConversion ycbcrConversion,
+            VkAllocationCallbacks allocator)
+    {
+        v11ProxyLibrary.vkDestroySamplerYcbcrConversion(
+                device,
+                ycbcrConversion,
+                allocator);
+    }
+    
+    public static void vkDestroySamplerYcbcrConversionKHR(
+            VkDevice device,
+            VkSamplerYcbcrConversion ycbcrConversion,
+            VkAllocationCallbacks allocator)
+    {
+        v11ProxyLibrary.vkDestroySamplerYcbcrConversion(
+                device,
+                ycbcrConversion,
+                allocator);
+    }
+    
+    public static void vkDestroyValidationCacheEXT(
+            VkDevice device,
+            VkValidationCacheEXT validationCache,
+            VkAllocationCallbacks allocator)
+    {
+        v11ProxyLibrary.vkDestroyValidationCacheEXT(
+                device,
+                validationCache,
+                allocator);
+    }
+    
+    public static VkResult vkDisplayPowerControlEXT(
+            VkDevice device,
+            VkDisplayKHR display,
+            VkDisplayPowerInfoEXT displayPowerInfo)
+    {
+        return v11ProxyLibrary.vkDisplayPowerControlEXT(
+                device,
+                display,
+                displayPowerInfo);
+    }
+    
+    public static VkResult vkEnumerateDeviceLayerProperties(
+            VkPhysicalDevice physicalDevice,
+            Collection<VkLayerProperties> properties)
+    {
+        return v11ProxyLibrary.vkEnumerateDeviceLayerProperties(
+                physicalDevice,
+                properties);
+    }
+    
+    public static VkResult vkEnumerateInstanceExtensionProperties(
+            String LayerName,
+            Collection<VkExtensionProperties> properties)
+    {
+        return v11ProxyLibrary.vkEnumerateInstanceExtensionProperties(
+                LayerName,
+                properties);
+    }
+    
+    public static VkResult vkEnumerateInstanceLayerProperties(
+            Collection<VkLayerProperties> properties)
+    {
+        return v11ProxyLibrary.vkEnumerateInstanceLayerProperties(
+                properties);
+    }
+    
+    public static VkResult vkEnumerateInstanceVersion(
+            IntReturnValue apiVersion)
+    {
+        return v11ProxyLibrary.vkEnumerateInstanceVersion(
+                apiVersion);
+    }
+    
+    public static VkResult vkEnumeratePhysicalDeviceGroups(
+            VkInstance instance,
+            Collection<VkPhysicalDeviceGroupProperties> physicalDeviceGroupProperties)
+    {
+        return v11ProxyLibrary.vkEnumeratePhysicalDeviceGroups(
+                instance,
+                physicalDeviceGroupProperties);
+    }
+    
+    public static VkResult vkEnumeratePhysicalDeviceGroupsKHR(
+            VkInstance instance,
+            Collection<VkPhysicalDeviceGroupProperties> physicalDeviceGroupProperties)
+    {
+        return v11ProxyLibrary.vkEnumeratePhysicalDeviceGroups(
+                instance,
+                physicalDeviceGroupProperties);
+    }
+    
+    public static VkResult vkFlushMappedMemoryRanges(
+            VkDevice device,
+            Collection<VkMappedMemoryRange> memoryRanges)
+    {
+        return v11ProxyLibrary.vkFlushMappedMemoryRanges(
+                 device,
+                memoryRanges);
+    }
+    
+    public static VkResult vkFreeDescriptorSets(
+            VkDevice device,
+            VkDescriptorPool descriptorPool,
+            Collection<VkDescriptorSet> descriptorSets)
+    {
+        return v11ProxyLibrary.vkFreeDescriptorSets(
+                device,
+                descriptorPool,
+                descriptorSets);
+    }
+    
+    public static void vkGetBufferMemoryRequirements2(
+            VkDevice device,
+            VkBufferMemoryRequirementsInfo2 info,
+            VkMemoryRequirements2 memoryRequirements)
+    {
+        v11ProxyLibrary.vkGetBufferMemoryRequirements2(
+                device,
+                info,
+                memoryRequirements);
+    }
+    
+    public static void vkGetBufferMemoryRequirements2KHR(
+            VkDevice device,
+            VkBufferMemoryRequirementsInfo2 info,
+            VkMemoryRequirements2 memoryRequirements)
+    {
+        v11ProxyLibrary.vkGetBufferMemoryRequirements2(
+                device,
+                info,
+                memoryRequirements);
+    }
+    
+    public static VkResult vkGetCalibratedTimestampsEXT(
+            VkDevice device,
+            Collection<VkCalibratedTimestampInfoEXT> timestampInfos,
+            long[] timestamps,
+            LongReturnValue maxDeviation)
+    {
+        return v11ProxyLibrary.vkGetCalibratedTimestampsEXT(
+                device,
+                timestampInfos,
+                timestamps,
+                maxDeviation);
+    }
+    
+    public static void vkGetDeviceMemoryCommitment(
+            VkDevice device,
+            VkDeviceMemory memory,
+            LongReturnValue committedMemoryInBytes)
+    {
+        v11ProxyLibrary.vkGetDeviceMemoryCommitment(
+                device,
+                memory,
+                committedMemoryInBytes);
+    }
+    
+    public static void vkGetDeviceQueue2(
+            VkDevice device,
+            VkDeviceQueueInfo2 queueInfo,
+            VkQueue queue)
+    {
+        v11ProxyLibrary.vkGetDeviceQueue2(
+                device,
+                queueInfo,
+                queue);
+    }
+    
+    public static VkResult vkGetDisplayModeProperties2KHR(
+            VkPhysicalDevice physicalDevice,
+            VkDisplayKHR display,
+            Collection<VkDisplayModeProperties2KHR> properties)
+    {
+        return v11ProxyLibrary.vkGetDisplayModeProperties2KHR(
+                physicalDevice,
+                display,
+                properties);
+    }
+    
+    public static VkResult vkGetDisplayModePropertiesKHR(
+            VkPhysicalDevice physicalDevice,
+            VkDisplayKHR display,
+            Collection<VkDisplayModePropertiesKHR> properties)
+    {
+        return v11ProxyLibrary.vkGetDisplayModePropertiesKHR(
+                physicalDevice,
+                display,
+                properties);
+    }
+    
+    public static VkResult vkGetDisplayPlaneCapabilities2KHR(
+            VkPhysicalDevice physicalDevice,
+            VkDisplayPlaneInfo2KHR pisplayPlaneInfo,
+            VkDisplayPlaneCapabilities2KHR capabilities)
+    {
+        return v11ProxyLibrary.vkGetDisplayPlaneCapabilities2KHR(
+                physicalDevice,
+                pisplayPlaneInfo,
+                capabilities);
+    }
+    
+    public static VkResult vkGetDisplayPlaneCapabilitiesKHR(
+            VkPhysicalDevice physicalDevice,
+            VkDisplayModeKHR mode,
+            int planeIndex,
+            VkDisplayPlaneCapabilitiesKHR capabilities)
+    {
+        return v11ProxyLibrary.vkGetDisplayPlaneCapabilitiesKHR(
+                physicalDevice,
+                mode,
+                planeIndex,
+                capabilities);
+    }
+    
+    public static VkResult vkGetDisplayPlaneSupportedDisplaysKHR(
+            VkPhysicalDevice physicalDevice,
+            int planeIndex,
+            Collection<VkDisplayKHR> displays)
+    {
+        return v11ProxyLibrary.vkGetDisplayPlaneSupportedDisplaysKHR(
+                physicalDevice,
+                planeIndex,
+                displays);
+    }
+    
+    public static VkResult vkGetEventStatus(
+            VkDevice device,
+            VkEvent event)
+    {
+        return v11ProxyLibrary.vkGetEventStatus(
+                device,
+                event);
+    }
+    
+    public static VkResult vkGetFenceFdKHR(
+            VkDevice device,
+            VkFenceGetFdInfoKHR getFdInfo,
+            IntReturnValue fd)
+    {
+        return v11ProxyLibrary.vkGetFenceFdKHR(
+                device,
+                getFdInfo,
+                fd);
+    }
+    
+    public static VkResult vkGetFenceStatus(
+            VkDevice device,
+            VkFence fence)
+    {
+        return v11ProxyLibrary.vkGetFenceStatus(
+                device,
+                fence);
+    }
+
+    public static void vkGetImageMemoryRequirements2(
+            VkDevice device,
+            VkImageMemoryRequirementsInfo2 info,
+            VkMemoryRequirements2 memoryRequirements)
+    {
+        v11ProxyLibrary.vkGetImageMemoryRequirements2(
+                device,
+                info,
+                memoryRequirements);
+    }
+    
+    public static void vkGetImageMemoryRequirements2KHR(
+            VkDevice device,
+            VkImageMemoryRequirementsInfo2 info,
+            VkMemoryRequirements2 memoryRequirements)
+    {
+        v11ProxyLibrary.vkGetImageMemoryRequirements2(
+                device,
+                info,
+                memoryRequirements);
+    }
+    
+    public static void vkGetImageSparseMemoryRequirements(
+            VkDevice device,
+            VkImage image,
+            Collection<VkSparseImageMemoryRequirements> sparseMemoryRequirements)
+    {
+        v11ProxyLibrary.vkGetImageSparseMemoryRequirements(
+                device,
+                image,
+                sparseMemoryRequirements);
+    }
+    
+    public static void vkGetImageSparseMemoryRequirements2(
+            VkDevice device,
+            VkImageSparseMemoryRequirementsInfo2 info,
+            Collection<VkSparseImageMemoryRequirements> sparseMemoryRequirements)
+    {
+        v11ProxyLibrary.vkGetImageSparseMemoryRequirements2(
+                device,
+                info,
+                sparseMemoryRequirements);
+    }
+    
+    public static void vkGetImageSparseMemoryRequirements2KHR(
+            VkDevice device,
+            VkImageSparseMemoryRequirementsInfo2 info,
+            Collection<VkSparseImageMemoryRequirements> sparseMemoryRequirements)
+    {
+        v11ProxyLibrary.vkGetImageSparseMemoryRequirements2(
+                device,
+                info,
+                sparseMemoryRequirements);
+    }
+    
+    public static void vkGetImageSubresourceLayout(
+            VkDevice device,
+            VkImage image,
+            VkImageSubresource subresource,
+            VkSubresourceLayout layout)
+    {
+        v11ProxyLibrary.vkGetImageSubresourceLayout(
+                device,
+                image,
+                subresource,
+                layout);
+    }
+    
+    public static int vkGetImageViewHandleNVX(
+            VkDevice device,
+            VkImageViewHandleInfoNVX info)
+    {
+        return v11ProxyLibrary.vkGetImageViewHandleNVX(
+                device,
+                info);
+    }
+    
+    public static VkResult vkGetMemoryFdKHR(
+            VkDevice device,
+            VkMemoryGetFdInfoKHR getFdInfo,
+            IntReturnValue fd)
+    {
+        return v11ProxyLibrary.vkGetMemoryFdKHR(
+                device,
+                getFdInfo,
+                fd);
+    }
+    
+    public static VkResult vkGetMemoryFdPropertiesKHR(
+            VkDevice device,
+            VkExternalMemoryHandleTypeFlagBits handleType,
+            int fd,
+            VkMemoryFdPropertiesKHR memoryFdProperties)
+    {
+        return v11ProxyLibrary.vkGetMemoryFdPropertiesKHR(
+                device,
+                handleType,
+                fd,
+                memoryFdProperties);
+    }
+    
+    public static VkResult vkGetMemoryHostPointerPropertiesEXT(
+            VkDevice device,
+            VkExternalMemoryHandleTypeFlagBits handleType,
+            VulkanHandle hostPointer,
+            VkMemoryHostPointerPropertiesEXT memoryHostPointerProperties)
+    {
+        return v11ProxyLibrary.vkGetMemoryHostPointerPropertiesEXT(
+                device,
+                handleType,
+                hostPointer,
+                memoryHostPointerProperties);
+    }
+    
+    public static VkResult vkGetPastPresentationTimingGOOGLE(
+            VkDevice device,
+            VkSwapchainKHR swapchain,
+            Collection<VkPastPresentationTimingGOOGLE> presentationTimings)
+    {
+        return v11ProxyLibrary.vkGetPastPresentationTimingGOOGLE(
+                device,
+                swapchain,
+                presentationTimings);
+    }
+    
+    public static VkResult vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
+            VkPhysicalDevice                            physicalDevice,
+            Collection<VkDisplayPlaneProperties2KHR> properties)
+    {
+        return v11ProxyLibrary.vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
+                physicalDevice,
+                properties);
+    }
+    
+    public static VkResult vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
+            VkPhysicalDevice physicalDevice,
+            Collection<VkDisplayPlanePropertiesKHR> properties)
+    {
+        return v11ProxyLibrary.vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
+                physicalDevice,
+                properties);
+    }
+    
+    public static VkResult vkGetPhysicalDeviceDisplayProperties2KHR(
+            VkPhysicalDevice physicalDevice,
+            Collection<VkDisplayProperties2KHR> properties)
+    {
+        return v11ProxyLibrary.vkGetPhysicalDeviceDisplayProperties2KHR(
+                physicalDevice,
+                properties);
+    }
+    
+    public static VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
+            VkPhysicalDevice physicalDevice,
+            VkDisplayPropertiesKHR properties)
+    {
+        return v11ProxyLibrary.vkGetPhysicalDeviceDisplayPropertiesKHR(
+                physicalDevice,
+                properties);
+    }
+    
+    public static void vkGetPhysicalDeviceExternalBufferProperties(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceExternalBufferInfo externalBufferInfo,
+            VkExternalBufferProperties externalBufferProperties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceExternalBufferProperties(
+                physicalDevice,
+                externalBufferInfo,
+                externalBufferProperties);
+    }
+    
+    public static void vkGetPhysicalDeviceExternalBufferPropertiesKHR(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceExternalBufferInfo externalBufferInfo,
+            VkExternalBufferProperties externalBufferProperties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceExternalBufferProperties(
+                physicalDevice,
+                externalBufferInfo,
+                externalBufferProperties);
+    }
+    
+    public static void vkGetPhysicalDeviceExternalFenceProperties(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceExternalFenceInfo externalFenceInfo,
+            VkExternalFenceProperties externalFenceProperties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceExternalFenceProperties(
+                physicalDevice,
+                externalFenceInfo,
+                externalFenceProperties);
+    }
+    
+    public static void vkGetPhysicalDeviceExternalFencePropertiesKHR(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceExternalFenceInfo externalFenceInfo,
+            VkExternalFenceProperties externalFenceProperties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceExternalFenceProperties(
+                physicalDevice,
+                externalFenceInfo,
+                externalFenceProperties);
+    }
+    
+    public static VkResult vkGetPhysicalDeviceExternalImageFormatPropertiesNV(
+            VkPhysicalDevice physicalDevice,
+            VkFormat format,
+            VkImageType type,
+            VkImageTiling tiling,
+            EnumSet<VkImageUsageFlagBits> usage,
+            EnumSet<VkImageCreateFlagBits> flags,
+            EnumSet<VkExternalMemoryHandleTypeFlagBitsNV> externalHandleType,
+            VkExternalImageFormatPropertiesNV externalImageFormatProperties)
+    {
+        return v11ProxyLibrary.vkGetPhysicalDeviceExternalImageFormatPropertiesNV(
+                physicalDevice,
+                format,
+                type,
+                tiling,
+                usage,
+                flags,
+                externalHandleType,
+                externalImageFormatProperties);
+    }
+    
+    public static void vkGetPhysicalDeviceExternalSemaphoreProperties(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceExternalSemaphoreInfo externalSemaphoreInfo,
+            VkExternalSemaphoreProperties externalSemaphoreProperties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceExternalSemaphoreProperties(
+                physicalDevice,
+                externalSemaphoreInfo,
+                externalSemaphoreProperties);
+    }
+    
+    public static void vkGetPhysicalDeviceExternalSemaphorePropertiesKHR(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceExternalSemaphoreInfo externalSemaphoreInfo,
+            VkExternalSemaphoreProperties externalSemaphoreProperties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceExternalSemaphoreProperties(
+                physicalDevice,
+                externalSemaphoreInfo,
+                externalSemaphoreProperties);
+    }
+    
+    public static void vkGetPhysicalDeviceFeatures2(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceFeatures2 features)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceFeatures2(
+                physicalDevice,
+                features);
+    }
+    
+    public static void vkGetPhysicalDeviceFeatures2KHR(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceFeatures2 features)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceFeatures2(
+                physicalDevice,
+                features);
+    }
+    
+    public static void vkGetPhysicalDeviceFormatProperties2(
+            VkPhysicalDevice physicalDevice,
+            VkFormat format,
+            VkFormatProperties2 formatProperties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceFormatProperties2(
+                physicalDevice,
+                format,
+                formatProperties);
+    }
+    
+    public static void vkGetPhysicalDeviceFormatProperties2KHR(
+            VkPhysicalDevice physicalDevice,
+            VkFormat format,
+            VkFormatProperties2 formatProperties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceFormatProperties2(
+                physicalDevice,
+                format,
+                formatProperties);
+    }
+    
+    public static void vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(
+            VkPhysicalDevice physicalDevice,
+            VkDeviceGeneratedCommandsFeaturesNVX features,
+            VkDeviceGeneratedCommandsLimitsNVX limits)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(
+                physicalDevice,
+                features,
+                limits);
+    }
+    
+    public static void vkGetPhysicalDeviceMemoryProperties2(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceMemoryProperties2 memoryProperties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceMemoryProperties2(
+                physicalDevice,
+                memoryProperties);
+    }
+    
+    public static void vkGetPhysicalDeviceMultisamplePropertiesEXT(
+            VkPhysicalDevice physicalDevice,
+            VkSampleCountFlagBits samples,
+            VkMultisamplePropertiesEXT multisampleProperties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceMultisamplePropertiesEXT(
+                physicalDevice,
+                samples,
+                multisampleProperties);
+    }
+    
+    public static VkResult vkGetPhysicalDevicePresentRectanglesKHR(
+            VkPhysicalDevice physicalDevice,
+            VkSurfaceKHR surface,
+            Collection<VkRect2D> rects)
+    {
+        return v11ProxyLibrary.vkGetPhysicalDevicePresentRectanglesKHR(
+                physicalDevice,
+                surface,
+                rects);
+    }
+    
+    public static void vkGetPhysicalDeviceQueueFamilyProperties2(
+            VkPhysicalDevice physicalDevice,
+            Collection<VkQueueFamilyProperties2> queueFamilyProperties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceQueueFamilyProperties2(
+                physicalDevice,
+                queueFamilyProperties);
+    }
+    
+    public static void vkGetPhysicalDeviceQueueFamilyProperties2KHR(
+            VkPhysicalDevice physicalDevice,
+            Collection<VkQueueFamilyProperties2> queueFamilyProperties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceQueueFamilyProperties2(
+                physicalDevice,
+                queueFamilyProperties);
+    }
+    
+    public static void vkGetPhysicalDeviceSparseImageFormatProperties(
+            VkPhysicalDevice physicalDevice,
+            VkFormat format,
+            VkImageType type,
+            VkSampleCountFlagBits samples,
+            EnumSet<VkImageUsageFlagBits> usage,
+            VkImageTiling tiling,
+            Collection<VkSparseImageFormatProperties> properties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceSparseImageFormatProperties(
+                physicalDevice,
+                format,
+                type,
+                samples,
+                usage,
+                tiling,
+                properties);
+    }
+    
+    public static void vkGetPhysicalDeviceSparseImageFormatProperties2(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceSparseImageFormatInfo2 formatInfo,
+            Collection<VkSparseImageFormatProperties2> properties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceSparseImageFormatProperties2(
+                physicalDevice,
+                formatInfo,
+                properties);
+    }
+    
+    public static void vkGetPhysicalDeviceSparseImageFormatProperties2KHR(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceSparseImageFormatInfo2 formatInfo,
+            Collection<VkSparseImageFormatProperties2> properties)
+    {
+        v11ProxyLibrary.vkGetPhysicalDeviceSparseImageFormatProperties2(
+                physicalDevice,
+                formatInfo,
+                properties);
+    }
+    
+    public static VkResult vkGetPhysicalDeviceSurfaceCapabilities2EXT(
+            VkPhysicalDevice physicalDevice,
+            VkSurfaceKHR surface,
+            VkSurfaceCapabilities2EXT surfaceCapabilities)
+    {
+        return v11ProxyLibrary.vkGetPhysicalDeviceSurfaceCapabilities2EXT(
+                physicalDevice,
+                surface,
+                surfaceCapabilities);
+    }
+    
+    public static VkResult vkGetPhysicalDeviceSurfaceFormats2KHR(
+            VkPhysicalDevice physicalDevice,
+            VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo,
+            Collection<VkSurfaceFormat2KHR> surfaceFormats)
+    {
+        return v11ProxyLibrary.vkGetPhysicalDeviceSurfaceFormats2KHR(
+                physicalDevice,
+                surfaceInfo,
+                surfaceFormats);
+    }
+    
+    public static VkResult vkGetPipelineCacheData(
+            VkDevice device,
+            VkPipelineCache pipelineCache,
+            byte[] data)
+    {
+        return v11ProxyLibrary.vkGetPipelineCacheData(
+                device,
+                pipelineCache,
+                data);
+    }
+    
+    public static VkResult vkGetQueryPoolResults(
+            VkDevice device,
+            VkQueryPool queryPool,
+            int firstQuery,
+            int queryCount,
+            byte[] data,
+            long stride,
+            EnumSet<VkQueryResultFlagBits> flags)
+    {
+        return v11ProxyLibrary.vkGetQueryPoolResults(
+                device,
+                queryPool,
+                firstQuery,
+                queryCount,
+                data,
+                stride,
+                flags);
+    }
+    
+    public static VkResult vkGetRefreshCycleDurationGOOGLE(
+            VkDevice device,
+            VkSwapchainKHR swapchain,
+            VkRefreshCycleDurationGOOGLE displayTimingProperties)
+    {
+        return v11ProxyLibrary.vkGetRefreshCycleDurationGOOGLE(
+                device,
+                swapchain,
+                displayTimingProperties);
+    }
+    
+    public static void vkGetRenderAreaGranularity(
+            VkDevice device,
+            VkRenderPass renderPass,
+            VkExtent2D granularity)
+    {
+        v11ProxyLibrary.vkGetRenderAreaGranularity(
+                device,
+                renderPass,
+                granularity);
+    }
+    
+    public static VkResult vkGetSemaphoreFdKHR(
+            VkDevice device,
+            VkSemaphoreGetFdInfoKHR getFdInfo,
+            IntReturnValue fd)
+    {
+        return v11ProxyLibrary.vkGetSemaphoreFdKHR(
+                device,
+                getFdInfo,
+                fd);
+    }
+    
+    public static VkResult vkGetShaderInfoAMD(
+            VkDevice device,
+            VkPipeline pipeline,
+            VkShaderStageFlagBits shaderStage,
+            VkShaderInfoTypeAMD infoType,
+            byte[] info)
+    {
+        return v11ProxyLibrary.vkGetShaderInfoAMD(
+                device,
+                pipeline,
+                shaderStage,
+                infoType,
+                info);
+    }
+    
+    public static VkResult vkGetSwapchainCounterEXT(
+            VkDevice device,
+            VkSwapchainKHR swapchain,
+            VkSurfaceCounterFlagBitsEXT counter,
+            LongReturnValue counterValue)
+    {
+        return v11ProxyLibrary.vkGetSwapchainCounterEXT(
+                device,
+                swapchain,
+                counter,
+                counterValue);
+    }
+    
+    public static VkResult vkGetSwapchainStatusKHR(
+            VkDevice device,
+            VkSwapchainKHR swapchain)
+    {
+        return v11ProxyLibrary.vkGetSwapchainStatusKHR(
+                device,
+                swapchain);
+    }
+    
+    public static VkResult vkGetValidationCacheDataEXT(
+            VkDevice device,
+            VkValidationCacheEXT validationCache,
+            byte[] data)
+    {
+        return v11ProxyLibrary.vkGetValidationCacheDataEXT(
+                device,
+                validationCache,
+                data);
+    }
+    
+    public static VkResult vkImportFenceFdKHR(
+            VkDevice device,
+            VkImportFenceFdInfoKHR importFenceFdInfo)
+    {
+        return v11ProxyLibrary.vkImportFenceFdKHR(
+                device,
+                importFenceFdInfo);
+    }
+    
+    public static VkResult vkImportSemaphoreFdKHR(
+            VkDevice device,
+            VkImportSemaphoreFdInfoKHR importSemaphoreFdInfo)
+    {
+        return v11ProxyLibrary.vkImportSemaphoreFdKHR(
+                device,
+                importSemaphoreFdInfo);
+    }
+    
+    public static VkResult vkInvalidateMappedMemoryRanges(
+            VkDevice device,
+            Collection<VkMappedMemoryRange> memoryRanges)
+    {
+        return v11ProxyLibrary.vkInvalidateMappedMemoryRanges(
+                device,
+                memoryRanges);
+    }
+    
+    public static VkResult vkMergePipelineCaches(
+            VkDevice device,
+            VkPipelineCache dstCache,
+            Collection<VkPipelineCache> srcCaches)
+    {
+        return v11ProxyLibrary.vkMergePipelineCaches(
+                device,
+                dstCache,
+                srcCaches);
+    }
+    
+    public static VkResult vkMergeValidationCachesEXT(
+            VkDevice device,
+            VkValidationCacheEXT dstCache,
+            Collection<VkValidationCacheEXT> srcCaches)
+    {
+        return v11ProxyLibrary.vkMergeValidationCachesEXT(
+                device,
+                dstCache,
+                srcCaches);
+    }
+    
+    public static VkResult vkQueueBindSparse(
+            VkQueue queue,
+            Collection<VkBindSparseInfo> bindInfo,
+            VkFence fence)
+    {
+        return v11ProxyLibrary.vkQueueBindSparse(
+                queue,
+                bindInfo,
+                fence);
+    }
+    
+    public static VkResult vkRegisterDeviceEventEXT(
+            VkDevice device,
+            VkDeviceEventInfoEXT deviceEventInfo,
+            VkAllocationCallbacks allocator,
+            VkFence fence)
+    {
+        return v11ProxyLibrary.vkRegisterDeviceEventEXT(
+                device,
+                deviceEventInfo,
+                allocator,
+                fence);
+    }
+    
+    public static VkResult vkRegisterDisplayEventEXT(
+            VkDevice device,
+            VkDisplayKHR display,
+            VkDisplayEventInfoEXT displayEventInfo,
+            VkAllocationCallbacks allocator,
+            VkFence fence)
+    {
+        return v11ProxyLibrary.vkRegisterDisplayEventEXT(
+                device,
+                display,
+                displayEventInfo,
+                allocator,
+                fence);
+    }
+    
+    public static VkResult vkRegisterObjectsNVX(
+            VkDevice device,
+            VkObjectTableNVX objectTable,
+            Collection<VkObjectTableEntryNVX> objectTableEntries,
+            int[] objectIndices)
+    {
+        return v11ProxyLibrary.vkRegisterObjectsNVX(
+                device,
+                objectTable,
+                objectTableEntries,
+                objectIndices);
+    }
+    
+    public static VkResult vkReleaseDisplayEXT(
+            VkPhysicalDevice physicalDevice,
+            VkDisplayKHR display)
+    {
+        return v11ProxyLibrary.vkReleaseDisplayEXT(
+                physicalDevice,
+                display);
+    }
+    
+    public static VkResult vkResetCommandBuffer(
+            VkCommandBuffer commandBuffer,
+            EnumSet<VkCommandBufferResetFlagBits> flags)
+    {
+        return v11ProxyLibrary.vkResetCommandBuffer(
+                commandBuffer,
+                flags);
+    }
+    
+    public static VkResult vkResetCommandPool(
+            VkDevice device,
+            VkCommandPool commandPool,
+            EnumSet<VkCommandPoolResetFlagBits> flags)
+    {
+        return v11ProxyLibrary.vkResetCommandPool(
+                device,
+                commandPool,
+                flags);
+    }
+    
+    public static VkResult vkResetDescriptorPool(
+            VkDevice device,
+            VkDescriptorPool descriptorPool,
+            EnumSet<VkDescriptorPoolResetFlagBits> flags)
+    {
+        return v11ProxyLibrary.vkResetDescriptorPool(
+                device,
+                descriptorPool,
+                flags);
+    }
+    
+    public static VkResult vkResetEvent(
+            VkDevice device,
+            VkEvent event)
+    {
+        return v11ProxyLibrary.vkResetEvent(
+                device,
+                event);
+    }
+    
+    public static void vkResetQueryPoolEXT(
+            VkDevice device,
+            VkQueryPool queryPool,
+            int firstQuery,
+            int queryCount)
+    {
+        v11ProxyLibrary.vkResetQueryPoolEXT(
+                device,
+                queryPool,
+                firstQuery,
+                queryCount);
+    }
+    
+    public static VkResult vkSetEvent(
+            VkDevice device,
+            VkEvent event)
+    {
+        return v11ProxyLibrary.vkSetEvent(
+                device,
+                event);
+    }
+    
+    public static void vkSetHdrMetadataEXT(
+            VkDevice device,
+            Collection<VkSwapchainKHR> swapchains,
+            Collection<VkHdrMetadataEXT> metadata)
+    {
+        if (swapchains.size() != metadata.size())
+        {
+            throw new IllegalArgumentException("swapchains and metadata MUST have the same number of elements.");
+        }
+        
+        v11ProxyLibrary.vkSetHdrMetadataEXT(
+                device,
+                swapchains,
+                metadata);
+    }
+    
+    public static void vkSetLocalDimmingAMD(
+            VkDevice device,
+            VkSwapchainKHR swapChain,
+            boolean localDimmingEnable)
+    {
+        v11ProxyLibrary.vkSetLocalDimmingAMD(
+                device,
+                swapChain,
+                localDimmingEnable);
+    }
+    
+    public static void vkTrimCommandPool(
+            VkDevice device,
+            VkCommandPool commandPool,
+            EnumSet<VkCommandPoolTrimFlagBits> flags)
+    {
+        v11ProxyLibrary.vkTrimCommandPool(
+                device,
+                commandPool,
+                flags);
+    }
+    
+    public static void vkTrimCommandPoolKHR(
+            VkDevice device,
+            VkCommandPool commandPool,
+            EnumSet<VkCommandPoolTrimFlagBits> flags)
+    {
+        v11ProxyLibrary.vkTrimCommandPool(
+                device,
+                commandPool,
+                flags);
+    }
+    
+    public static VkResult vkUnregisterObjectsNVX(
+            VkDevice device,
+            VkObjectTableNVX objectTable,
+            Collection<VkObjectEntryTypeNVX> objectEntryTypes,
+            int[] objectIndices)
+    {
+        if (objectEntryTypes.size() != objectIndices.length)
+        {
+            throw new IllegalArgumentException("objectEntryTypes and objectIndices MUST have the same number of elements.");
+        }
+        
+        return v11ProxyLibrary.vkUnregisterObjectsNVX(
+                device,
+                objectTable,
+                objectEntryTypes,
+                objectIndices);
+    }
+    
+    //TODO Fix this
+    public static void vkUpdateDescriptorSetWithTemplate(
+            VkDevice device,
+            VkDescriptorSet descriptorSet,
+            VkDescriptorUpdateTemplate descriptorUpdateTemplate,
+            Collection<Object> data)
+    {
+        v11ProxyLibrary.vkUpdateDescriptorSetWithTemplate(
+                device,
+                descriptorSet,
+                descriptorUpdateTemplate,
+                data);
+    }
+    
+    //TODO Fix this
+    public static void vkUpdateDescriptorSetWithTemplateKHR(
+            VkDevice device,
+            VkDescriptorSet descriptorSet,
+            VkDescriptorUpdateTemplate descriptorUpdateTemplate,
+            Collection<Object> data)
+    {
+        v11ProxyLibrary.vkUpdateDescriptorSetWithTemplate(
+                device,
+                descriptorSet,
+                descriptorUpdateTemplate,
+                data);
+    }
     
     
     

@@ -23,7 +23,7 @@ public class VkSamplerReductionModeCreateInfoEXT extends VulkanCreateInfoStructu
 {
     private VkSamplerReductionModeEXT   reductionMode;
 
-    public VkSamplerReductionModeCreateInfoEXT(VkStructureType sType)
+    public VkSamplerReductionModeCreateInfoEXT()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO_EXT);
     }

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.VulkanCore.VK11.Enums;
+package com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums;
 
 public enum VkIndirectCommandsTokenTypeNVX
 {

@@ -25,7 +25,7 @@ public class VkBindImageMemoryDeviceGroupInfo extends VulkanCreateInfoStructure
     private int[]                   deviceIndices;
     private Collection<VkRect2D>    splitInstanceBindRegions;
 
-    public VkBindImageMemoryDeviceGroupInfo(VkStructureType sType)
+    public VkBindImageMemoryDeviceGroupInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO);
     }

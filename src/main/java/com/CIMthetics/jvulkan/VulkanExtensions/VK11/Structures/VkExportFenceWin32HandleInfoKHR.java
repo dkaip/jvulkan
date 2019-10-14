@@ -25,7 +25,7 @@ public class VkExportFenceWin32HandleInfoKHR extends VulkanCreateInfoStructure
     private int                         dwAccess;
     private String                      name;
     
-    public VkExportFenceWin32HandleInfoKHR(VkStructureType sType)
+    public VkExportFenceWin32HandleInfoKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR);
     }

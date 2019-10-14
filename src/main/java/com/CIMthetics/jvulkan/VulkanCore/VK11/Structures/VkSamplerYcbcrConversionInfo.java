@@ -23,7 +23,7 @@ public class VkSamplerYcbcrConversionInfo extends VulkanCreateInfoStructure
 {
     private VkSamplerYcbcrConversion    conversion;
 
-    public VkSamplerYcbcrConversionInfo(VkStructureType sType)
+    public VkSamplerYcbcrConversionInfo()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO);
     }

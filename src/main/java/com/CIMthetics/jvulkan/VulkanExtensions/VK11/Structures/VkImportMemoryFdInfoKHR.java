@@ -24,7 +24,7 @@ public class VkImportMemoryFdInfoKHR extends VulkanCreateInfoStructure
     private VkExternalMemoryHandleTypeFlagBits  handleType;
     private int                                 fd;
 
-    public VkImportMemoryFdInfoKHR(VkStructureType sType)
+    public VkImportMemoryFdInfoKHR()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR);
     }

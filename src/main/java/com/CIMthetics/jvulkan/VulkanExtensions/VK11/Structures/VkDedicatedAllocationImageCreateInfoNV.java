@@ -22,7 +22,7 @@ public class VkDedicatedAllocationImageCreateInfoNV extends VulkanCreateInfoStru
 {
     private boolean dedicatedAllocation;
 
-    public VkDedicatedAllocationImageCreateInfoNV(VkStructureType sType)
+    public VkDedicatedAllocationImageCreateInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV);
     }

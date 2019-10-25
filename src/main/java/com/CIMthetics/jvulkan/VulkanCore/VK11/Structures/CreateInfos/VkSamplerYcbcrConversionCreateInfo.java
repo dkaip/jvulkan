@@ -25,13 +25,13 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkComponentMapping;
 
 public class VkSamplerYcbcrConversionCreateInfo extends VulkanCreateInfoStructure
 {
-    private VkFormat                         format;
-    private VkSamplerYcbcrModelConversion    ycbcrModel;
-    private VkSamplerYcbcrRange              ycbcrRange;
-    private VkComponentMapping               components;
-    private VkChromaLocation                 xChromaOffset;
-    private VkChromaLocation                 yChromaOffset;
-    private VkFilter                         chromaFilter;
+    private VkFormat                        format;
+    private VkSamplerYcbcrModelConversion   ycbcrModel;
+    private VkSamplerYcbcrRange             ycbcrRange;
+    private VkComponentMapping              components;
+    private VkChromaLocation                xChromaOffset;
+    private VkChromaLocation                yChromaOffset;
+    private VkFilter                        chromaFilter;
     private boolean                         forceExplicitReconstruction;
 
     public VkSamplerYcbcrConversionCreateInfo()

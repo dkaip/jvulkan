@@ -430,7 +430,6 @@ class NativeProxies
     native void vkCmdBindTransformFeedbackBuffersEXT(
             VkCommandBuffer commandBuffer,
             int firstBinding,
-            int bindingCount,
             Collection<VkBuffer> buffers,
             long[] offsets,
             long[] sizes);
@@ -659,7 +658,6 @@ class NativeProxies
     native void vkCmdEndTransformFeedbackEXT(
             VkCommandBuffer commandBuffer,
             int firstCounterBuffer,
-            int counterBufferCount,
             Collection<VkBuffer> counterBuffers,
             long[] counterBufferOffsets);
     
@@ -718,7 +716,6 @@ class NativeProxies
             VkCommandBuffer commandBuffer,
             VkDescriptorUpdateTemplate descriptorUpdateTemplate,
             VkPipelineLayout layout,
-            int set,
             Collection<Object> data);
     
     native void vkCmdReserveSpaceForCommandsNVX(
@@ -1148,7 +1145,7 @@ class NativeProxies
             VkInstance instance,
             EnumSet<VkDebugReportFlagBitsEXT> flags,
             VkDebugReportObjectTypeEXT objectType,
-            VulkanHandle object,
+            long object,
             long location,
             int messageCode,
             String layerPrefix,

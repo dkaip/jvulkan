@@ -1919,15 +1919,24 @@ public class VulkanFunctions
     public static void vkCmdBindTransformFeedbackBuffersEXT(
             VkCommandBuffer commandBuffer,
             int firstBinding,
-            int bindingCount,
             Collection<VkBuffer> buffers,
             long[] offsets,
             long[] sizes)
     {
+        if (buffers.size() != offsets.length)
+        {
+            throw new IllegalArgumentException("buffers and offsets must have the same number of elements.");
+        }
+        
+        if (sizes != null &&
+            sizes.length != offsets.length)
+        {
+            throw new IllegalArgumentException("buffers, offsets, and sizes must have the same number of elements.");
+        }
+        
         v11ProxyLibrary.vkCmdBindTransformFeedbackBuffersEXT(
                 commandBuffer,
                 firstBinding,
-                bindingCount,
                 buffers,
                 offsets,
                 sizes);
@@ -1949,14 +1958,17 @@ public class VulkanFunctions
     public static void vkCmdEndTransformFeedbackEXT(
             VkCommandBuffer commandBuffer,
             int firstCounterBuffer,
-            int counterBufferCount,
             Collection<VkBuffer> counterBuffers,
             long[] counterBufferOffsets)
     {
+        if (counterBuffers.size() != counterBufferOffsets.length)
+        {
+            throw new IllegalArgumentException("counterBuffers and counterBufferOffsets MUST have the same number of elements.");
+        }
+        
         v11ProxyLibrary.vkCmdEndTransformFeedbackEXT(
                 commandBuffer,
                 firstCounterBuffer,
-                counterBufferCount,
                 counterBuffers,
                 counterBufferOffsets);
     }
@@ -2550,6 +2562,13 @@ public class VulkanFunctions
             VkClearColorValue color,
             Collection<VkImageSubresourceRange> ranges)
     {
+        if (imageLayout != VkImageLayout.VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR &&
+            imageLayout != VkImageLayout.VK_IMAGE_LAYOUT_GENERAL &&
+            imageLayout != VkImageLayout.VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL)
+        {
+            throw new IllegalArgumentException("imageLayout argument must be VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR, VK_IMAGE_LAYOUT_GENERAL, or VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL.");
+        }
+        
         v11ProxyLibrary.vkCmdClearColorImage(
                 commandBuffer,
                 image,
@@ -2906,7 +2925,6 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             VkDescriptorUpdateTemplate descriptorUpdateTemplate,
             VkPipelineLayout layout,
-            int set,
             Collection<Object> data)
     {
         for(Object item : data)
@@ -2923,7 +2941,6 @@ public class VulkanFunctions
                 commandBuffer,
                 descriptorUpdateTemplate,
                 layout,
-                set,
                 data);
     }
     
@@ -3295,12 +3312,26 @@ public class VulkanFunctions
                 ycbcrConversion);
     }
     
+    /**
+     * For now at least swapchains must be pre-created with the same number
+     * of elements as createInfos.
+     * @param device
+     * @param createInfos
+     * @param allocator
+     * @param swapchains
+     * @return
+     */
     public static VkResult vkCreateSharedSwapchainsKHR(
             VkDevice device,
             Collection<VkSwapchainCreateInfoKHR> createInfos,
             VkAllocationCallbacks allocator,
             Collection<VkSwapchainKHR> swapchains)
     {
+        if (createInfos.size() != swapchains.size())
+        {
+            throw new IllegalArgumentException();
+        }
+        
         return v11ProxyLibrary.vkCreateSharedSwapchainsKHR(
                 device,
                 createInfos,
@@ -3343,7 +3374,7 @@ public class VulkanFunctions
             VkInstance instance,
             EnumSet<VkDebugReportFlagBitsEXT> flags,
             VkDebugReportObjectTypeEXT objectType,
-            VulkanHandle object,
+            long object,
             long location,
             int messageCode,
             String layerPrefix,
@@ -3492,10 +3523,21 @@ public class VulkanFunctions
                 displayPowerInfo);
     }
     
+    /**
+     * 
+     * @param physicalDevice
+     * @param properties
+     * @return
+     */
     public static VkResult vkEnumerateDeviceLayerProperties(
             VkPhysicalDevice physicalDevice,
             Collection<VkLayerProperties> properties)
     {
+        if (properties == null)
+        {
+            throw new IllegalArgumentException("properties must not be null...it should most likely be an empty Collection.");
+        }
+
         return v11ProxyLibrary.vkEnumerateDeviceLayerProperties(
                 physicalDevice,
                 properties);
@@ -3505,6 +3547,11 @@ public class VulkanFunctions
             String LayerName,
             Collection<VkExtensionProperties> properties)
     {
+        if (properties == null)
+        {
+            throw new IllegalArgumentException("properties must not be null...it should most likely be an empty Collection.");
+        }
+
         return v11ProxyLibrary.vkEnumerateInstanceExtensionProperties(
                 LayerName,
                 properties);

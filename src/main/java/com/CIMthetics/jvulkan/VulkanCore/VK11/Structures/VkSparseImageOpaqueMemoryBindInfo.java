@@ -21,7 +21,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkImage;
 
 public class VkSparseImageOpaqueMemoryBindInfo
 {
-    private VkImage                      image;
+    private VkImage                         image;
     private Collection<VkSparseMemoryBind>  binds;
     
     public VkImage getImage()

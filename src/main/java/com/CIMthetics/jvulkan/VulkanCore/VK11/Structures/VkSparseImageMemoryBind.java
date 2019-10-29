@@ -28,53 +28,64 @@ public class VkSparseImageMemoryBind
     private VkDeviceMemory                      memory;
     private long                                memoryOffset;
     private EnumSet<VkSparseMemoryBindFlagBits> flags = EnumSet.noneOf(VkSparseMemoryBindFlagBits.class);
+    
     public VkImageSubresource getSubresource()
     {
         return subresource;
     }
+    
     public void setSubresource(VkImageSubresource subresource)
     {
         this.subresource = subresource;
     }
+    
     public VkOffset3D getOffset()
     {
         return offset;
     }
+    
     public void setOffset(VkOffset3D offset)
     {
         this.offset = offset;
     }
+    
     public VkExtent3D getExtent()
     {
         return extent;
     }
+    
     public void setExtent(VkExtent3D extent)
     {
         this.extent = extent;
     }
+    
     public VkDeviceMemory getMemory()
     {
         return memory;
     }
+    
     public void setMemory(VkDeviceMemory memory)
     {
         this.memory = memory;
     }
+    
     public long getMemoryOffset()
     {
         return memoryOffset;
     }
+    
     public void setMemoryOffset(long memoryOffset)
     {
         this.memoryOffset = memoryOffset;
     }
+    
     public EnumSet<VkSparseMemoryBindFlagBits> getFlags()
     {
         return flags;
     }
+    
     public void setFlags(EnumSet<VkSparseMemoryBindFlagBits> flags)
     {
         this.flags = flags;
     }
-
 }

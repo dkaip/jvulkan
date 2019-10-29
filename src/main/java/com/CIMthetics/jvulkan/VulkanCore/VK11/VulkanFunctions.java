@@ -2023,7 +2023,7 @@ public class VulkanFunctions
     public static VkResult vkGetImageDrmFormatModifierPropertiesEXT(
             VkDevice device,
             VkImage image,
-            Collection<VkImageDrmFormatModifierPropertiesEXT> properties)
+            VkImageDrmFormatModifierPropertiesEXT properties)
     {
         return v11ProxyLibrary.vkGetImageDrmFormatModifierPropertiesEXT(
                 device,

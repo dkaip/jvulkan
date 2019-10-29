@@ -1458,7 +1458,7 @@ class NativeProxies
     native VkResult vkGetImageDrmFormatModifierPropertiesEXT(
             VkDevice device,
             VkImage image,
-            Collection<VkImageDrmFormatModifierPropertiesEXT> properties);
+            VkImageDrmFormatModifierPropertiesEXT properties);
 
     native void vkGetImageMemoryRequirements(
             VkDevice vulkanLogicalDevice,

@@ -1364,12 +1364,12 @@ public class VulkanFunctions
      * @param data
      * @return
      */
-    public static VkResult vkGetAccelerationStructureHandleNVX(
+    public static VkResult vkGetAccelerationStructureHandleNV(
             VkDevice vulkanLogicalDevice,
             VkAccelerationStructureNV accelerationStructure,
             Collection<VkAccelerationStructureNV> data)
     {
-        return v11ProxyLibrary.vkGetAccelerationStructureHandleNVX(
+        return v11ProxyLibrary.vkGetAccelerationStructureHandleNV(
                 vulkanLogicalDevice,
                 accelerationStructure,
                 data);

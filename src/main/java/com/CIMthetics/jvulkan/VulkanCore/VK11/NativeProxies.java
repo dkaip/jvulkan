@@ -1356,7 +1356,7 @@ class NativeProxies
             VkDeviceMemory vkDeviceMemory,
             VkAllocationCallbacks alternateAllocator);
     
-    native VkResult vkGetAccelerationStructureHandleNVX(
+    native VkResult vkGetAccelerationStructureHandleNV(
             VkDevice vulkanLogicalDevice,
             VkAccelerationStructureNV accelerationStructure,
             Collection<VkAccelerationStructureNV> data);

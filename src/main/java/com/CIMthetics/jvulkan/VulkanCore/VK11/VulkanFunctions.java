@@ -4563,6 +4563,17 @@ public class VulkanFunctions
                 support);
     }
     
+    public static void vkGetDescriptorSetLayoutSupportKHR(
+            VkDevice device,
+            VkDescriptorSetLayoutCreateInfo createInfo,
+            VkDescriptorSetLayoutSupport support)
+    {
+        v11ProxyLibrary.vkGetDescriptorSetLayoutSupport(
+                device,
+                createInfo,
+                support);
+    }
+    
     
     
     

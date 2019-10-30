@@ -93,6 +93,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearColorValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearDepthStencilValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearRect;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkCopyDescriptorSet;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkDescriptorSetLayoutSupport;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkDeviceQueueInfo2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkExtensionProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkExtent2D;
@@ -1390,6 +1391,11 @@ class NativeProxies
             Collection<VkCalibratedTimestampInfoEXT> timestampInfos,
             long[] timestamps,
             LongReturnValue maxDeviation);
+    
+    native void vkGetDescriptorSetLayoutSupport(
+            VkDevice device,
+            VkDescriptorSetLayoutCreateInfo createInfo,
+            VkDescriptorSetLayoutSupport support);
     
     native VkResult vkGetDeviceGroupPresentCapabilitiesKHR(
             VkDevice device,

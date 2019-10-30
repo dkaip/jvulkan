@@ -102,6 +102,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkClearRect;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkCopyDescriptorSet;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkDescriptorBufferInfo;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkDescriptorImageInfo;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkDescriptorSetLayoutSupport;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkDeviceQueueInfo2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkExtensionProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkExtent2D;
@@ -3614,6 +3615,11 @@ public class VulkanFunctions
             VkBufferMemoryRequirementsInfo2 info,
             VkMemoryRequirements2 memoryRequirements)
     {
+        if (memoryRequirements == null)
+        {
+            throw new IllegalArgumentException("memoryRequirements must not be null");
+        }
+        
         v11ProxyLibrary.vkGetBufferMemoryRequirements2(
                 device,
                 info,
@@ -3637,6 +3643,11 @@ public class VulkanFunctions
             long[] timestamps,
             LongReturnValue maxDeviation)
     {
+        if (timestampInfos.size() != timestamps.length)
+        {
+            throw new IllegalArgumentException("timestampInfos and timestamps must have the same number of elements");
+        }
+        
         return v11ProxyLibrary.vkGetCalibratedTimestampsEXT(
                 device,
                 timestampInfos,
@@ -4539,6 +4550,17 @@ public class VulkanFunctions
                 descriptorSet,
                 descriptorUpdateTemplate,
                 data);
+    }
+    
+    public static void vkGetDescriptorSetLayoutSupport(
+            VkDevice device,
+            VkDescriptorSetLayoutCreateInfo createInfo,
+            VkDescriptorSetLayoutSupport support)
+    {
+        v11ProxyLibrary.vkGetDescriptorSetLayoutSupport(
+                device,
+                createInfo,
+                support);
     }
     
     

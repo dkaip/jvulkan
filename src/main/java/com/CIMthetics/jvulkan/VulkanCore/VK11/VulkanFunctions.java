@@ -41,6 +41,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageUsageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkIndexType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkMemoryMapFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPeerMemoryFeatureFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPipelineBindPoint;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPipelineStageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPresentModeKHR;
@@ -4572,6 +4573,52 @@ public class VulkanFunctions
                 device,
                 createInfo,
                 support);
+    }
+    
+    /**
+     * 
+     * @param device
+     * @param heapIndex
+     * @param localDeviceIndex
+     * @param remoteDeviceIndex
+     * @param peerMemoryFeatures should be set to EnumSet.noneOf(VkPeerMemoryFeatureFlagBits.class) before calling
+     */
+    public static void vkGetDeviceGroupPeerMemoryFeatures(
+            VkDevice device,
+            int heapIndex,
+            int localDeviceIndex,
+            int remoteDeviceIndex,
+            EnumSet<VkPeerMemoryFeatureFlagBits> peerMemoryFeatures)
+    {
+        v11ProxyLibrary.vkGetDeviceGroupPeerMemoryFeatures(
+                device,
+                heapIndex,
+                localDeviceIndex,
+                remoteDeviceIndex,
+                peerMemoryFeatures);
+    }
+    
+    /**
+     * 
+     * @param device
+     * @param heapIndex
+     * @param localDeviceIndex
+     * @param remoteDeviceIndex
+     * @param peerMemoryFeatures should be set to EnumSet.noneOf(VkPeerMemoryFeatureFlagBits.class) before calling
+     */
+    public static void vkGetDeviceGroupPeerMemoryFeaturesKHR(
+            VkDevice device,
+            int heapIndex,
+            int localDeviceIndex,
+            int remoteDeviceIndex,
+            EnumSet<VkPeerMemoryFeatureFlagBits> peerMemoryFeatures)
+    {
+        v11ProxyLibrary.vkGetDeviceGroupPeerMemoryFeatures(
+                device,
+                heapIndex,
+                localDeviceIndex,
+                remoteDeviceIndex,
+                peerMemoryFeatures);
     }
     
     

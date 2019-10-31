@@ -34,6 +34,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkImageUsageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkIndexType;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkMemoryMapFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPeerMemoryFeatureFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPipelineBindPoint;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPipelineStageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkPresentModeKHR;
@@ -1396,6 +1397,13 @@ class NativeProxies
             VkDevice device,
             VkDescriptorSetLayoutCreateInfo createInfo,
             VkDescriptorSetLayoutSupport support);
+    
+    native void vkGetDeviceGroupPeerMemoryFeatures(
+            VkDevice device,
+            int heapIndex,
+            int localDeviceIndex,
+            int remoteDeviceIndex,
+            EnumSet<VkPeerMemoryFeatureFlagBits>peerMemoryFeatures);
     
     native VkResult vkGetDeviceGroupPresentCapabilitiesKHR(
             VkDevice device,

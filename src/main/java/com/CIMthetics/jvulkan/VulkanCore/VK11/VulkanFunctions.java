@@ -143,6 +143,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkRect2D;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSparseImageFormatProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSparseImageFormatProperties2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSparseImageMemoryRequirements;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSparseImageMemoryRequirements2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSubresourceLayout;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSurfaceCapabilitiesKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSurfaceFormatKHR;
@@ -3791,6 +3792,11 @@ public class VulkanFunctions
             VkImage image,
             Collection<VkSparseImageMemoryRequirements> sparseMemoryRequirements)
     {
+        if (sparseMemoryRequirements == null)
+        {
+            throw new IllegalArgumentException("sparseMemoryRequirements must not be null");
+        }
+        
         v11ProxyLibrary.vkGetImageSparseMemoryRequirements(
                 device,
                 image,
@@ -3800,8 +3806,13 @@ public class VulkanFunctions
     public static void vkGetImageSparseMemoryRequirements2(
             VkDevice device,
             VkImageSparseMemoryRequirementsInfo2 info,
-            Collection<VkSparseImageMemoryRequirements> sparseMemoryRequirements)
+            Collection<VkSparseImageMemoryRequirements2> sparseMemoryRequirements)
     {
+        if (sparseMemoryRequirements == null)
+        {
+            throw new IllegalArgumentException("sparseMemoryRequirements must not be null");
+        }
+        
         v11ProxyLibrary.vkGetImageSparseMemoryRequirements2(
                 device,
                 info,
@@ -3811,8 +3822,13 @@ public class VulkanFunctions
     public static void vkGetImageSparseMemoryRequirements2KHR(
             VkDevice device,
             VkImageSparseMemoryRequirementsInfo2 info,
-            Collection<VkSparseImageMemoryRequirements> sparseMemoryRequirements)
+            Collection<VkSparseImageMemoryRequirements2> sparseMemoryRequirements)
     {
+        if (sparseMemoryRequirements == null)
+        {
+            throw new IllegalArgumentException("sparseMemoryRequirements must not be null");
+        }
+        
         v11ProxyLibrary.vkGetImageSparseMemoryRequirements2(
                 device,
                 info,

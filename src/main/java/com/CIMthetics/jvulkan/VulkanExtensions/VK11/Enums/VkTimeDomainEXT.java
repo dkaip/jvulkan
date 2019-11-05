@@ -31,4 +31,36 @@ public enum VkTimeDomainEXT
     private VkTimeDomainEXT(int value) { this.value = value; }
     
     public int valueOf() { return value; }
+
+    static VkTimeDomainEXT fromValue(int inputValue)
+    {
+        VkTimeDomainEXT result = null;
+        
+        switch(inputValue)
+        {
+            case 0:
+                result = VK_TIME_DOMAIN_DEVICE_EXT;
+                break;
+            case 1:
+                result = VK_TIME_DOMAIN_CLOCK_MONOTONIC_EXT;
+                break;
+            case 2:
+                result = VK_TIME_DOMAIN_CLOCK_MONOTONIC_RAW_EXT;
+                break;
+            case 3:
+                result =  VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT;
+                break;
+            case 0x7FFFFFFF:
+                result = VK_TIME_DOMAIN_MAX_ENUM_EXT;
+                break;
+        }
+
+        if (inputValue == (VK_TIME_DOMAIN_QUERY_PERFORMANCE_COUNTER_EXT.valueOf() - VK_TIME_DOMAIN_DEVICE_EXT.valueOf() + 1))
+            result = VK_TIME_DOMAIN_RANGE_SIZE_EXT;
+        
+        if (result == null)
+            throw new IllegalArgumentException("Illegal value specified for this Enum.");
+
+        return result;
+    }
 }

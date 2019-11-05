@@ -134,6 +134,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkRect2D;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSparseImageFormatProperties;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSparseImageFormatProperties2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSparseImageMemoryRequirements;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSparseImageMemoryRequirements2;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSubresourceLayout;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSurfaceCapabilitiesKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkSurfaceFormatKHR;
@@ -1492,7 +1493,7 @@ class NativeProxies
     native void vkGetImageSparseMemoryRequirements2(
             VkDevice device,
             VkImageSparseMemoryRequirementsInfo2 info,
-            Collection<VkSparseImageMemoryRequirements> sparseMemoryRequirements);
+            Collection<VkSparseImageMemoryRequirements2> sparseMemoryRequirements);
     
     native void vkGetImageSubresourceLayout(
             VkDevice device,

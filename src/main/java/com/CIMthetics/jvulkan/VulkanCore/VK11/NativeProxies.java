@@ -78,6 +78,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkSemaphore;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkShaderModule;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkSwapchainKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.ByteArrayReturnValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.IntReturnValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.LongReturnValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkAcquireNextImageInfoKHR;
@@ -1415,6 +1416,11 @@ class NativeProxies
             VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo,
             EnumSet<VkDeviceGroupPresentModeFlagBitsKHR> modes);
     
+    native VkResult vkGetDeviceGroupSurfacePresentModesKHR(
+            VkDevice device,
+            VkSurfaceKHR surface,
+            EnumSet<VkDeviceGroupPresentModeFlagBitsKHR> modes);
+    
     native void vkGetDeviceMemoryCommitment(
             VkDevice device,
             VkDeviceMemory memory,
@@ -1718,7 +1724,7 @@ class NativeProxies
     native VkResult vkGetPipelineCacheData(
             VkDevice device,
             VkPipelineCache pipelineCache,
-            byte[] data);
+            ByteArrayReturnValue data);
     
     native VkResult vkGetPipelineExecutableInternalRepresentationsKHR(
             VkDevice device,
@@ -1783,7 +1789,7 @@ class NativeProxies
             VkPipeline pipeline,
             VkShaderStageFlagBits shaderStage,
             VkShaderInfoTypeAMD infoType,
-            byte[] info);
+            ByteArrayReturnValue info);
     
     native VkResult vkGetSwapchainCounterEXT(
             VkDevice device,
@@ -1803,7 +1809,7 @@ class NativeProxies
     native VkResult vkGetValidationCacheDataEXT(
             VkDevice device,
             VkValidationCacheEXT validationCache,
-            byte[] data);
+            ByteArrayReturnValue data);
     
     native VkResult vkImportFenceFdKHR(
             VkDevice device,

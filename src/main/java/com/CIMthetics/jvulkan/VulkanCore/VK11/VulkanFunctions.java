@@ -85,6 +85,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkSemaphore;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkShaderModule;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkSwapchainKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.ByteArrayReturnValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.IntReturnValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.LongReturnValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.VkAcquireNextImageInfoKHR;
@@ -2388,6 +2389,17 @@ public class VulkanFunctions
                 modes);
     }
     
+    public static VkResult vkGetDeviceGroupSurfacePresentModesKHR(
+            VkDevice device,
+            VkSurfaceKHR surface,
+            EnumSet<VkDeviceGroupPresentModeFlagBitsKHR> modes)
+    {
+        return v11ProxyLibrary.vkGetDeviceGroupSurfacePresentModesKHR(
+                device,
+                surface,
+                modes);
+    }
+    
     /**
      * Set the stipple factor and pattern.
      * <p>
@@ -4194,7 +4206,7 @@ public class VulkanFunctions
     public static VkResult vkGetPipelineCacheData(
             VkDevice device,
             VkPipelineCache pipelineCache,
-            byte[] data)
+            ByteArrayReturnValue data)
     {
         return v11ProxyLibrary.vkGetPipelineCacheData(
                 device,
@@ -4202,6 +4214,17 @@ public class VulkanFunctions
                 data);
     }
     
+    /**
+     * 
+     * @param device
+     * @param queryPool
+     * @param firstQuery
+     * @param queryCount
+     * @param data this needs to be pre-allocated
+     * @param stride
+     * @param flags
+     * @return
+     */
     public static VkResult vkGetQueryPoolResults(
             VkDevice device,
             VkQueryPool queryPool,
@@ -4259,7 +4282,7 @@ public class VulkanFunctions
             VkPipeline pipeline,
             VkShaderStageFlagBits shaderStage,
             VkShaderInfoTypeAMD infoType,
-            byte[] info)
+            ByteArrayReturnValue info)
     {
         return v11ProxyLibrary.vkGetShaderInfoAMD(
                 device,
@@ -4294,7 +4317,7 @@ public class VulkanFunctions
     public static VkResult vkGetValidationCacheDataEXT(
             VkDevice device,
             VkValidationCacheEXT validationCache,
-            byte[] data)
+            ByteArrayReturnValue data)
     {
         return v11ProxyLibrary.vkGetValidationCacheDataEXT(
                 device,

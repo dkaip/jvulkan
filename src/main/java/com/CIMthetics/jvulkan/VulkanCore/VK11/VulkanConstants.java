@@ -21,7 +21,7 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Enums.VkDebugReportObjectTyp
 
 public class VulkanConstants
 {
-    public static final int     VK_HEADER_VERSION = 121;
+    public static final int     VK_HEADER_VERSION = 126;
     public static final float   VK_LOD_CLAMP_NONE               = 1000.0f;
     public static final int     VK_REMAINING_MIP_LEVELS         = -1;
     public static final int     VK_REMAINING_ARRAY_LAYERS       = -1;
@@ -289,7 +289,7 @@ public class VulkanConstants
     public static final String  VK_NV_EXTERNAL_MEMORY_EXTENSION_NAME    = "VK_NV_external_memory";
 
     public static final boolean VK_EXT_validation_flags = true;
-    public static final int     VK_EXT_VALIDATION_FLAGS_SPEC_VERSION    = 1;
+    public static final int     VK_EXT_VALIDATION_FLAGS_SPEC_VERSION    = 2;
     public static final String  VK_EXT_VALIDATION_FLAGS_EXTENSION_NAME  = "VK_EXT_validation_flags";
 
     public static final boolean VK_EXT_shader_subgroup_ballot   = true;
@@ -690,7 +690,7 @@ public class VulkanConstants
     public static final String  VK_EXT_FRAGMENT_SHADER_INTERLOCK_EXTENSION_NAME = "VK_EXT_fragment_shader_interlock";
 
     public static final boolean VK_EXT_headless_surface                = true;
-    public static final int     VK_EXT_HEADLESS_SURFACE_SPEC_VERSION   = 0;
+    public static final int     VK_EXT_HEADLESS_SURFACE_SPEC_VERSION   = 1;
     public static final String  VK_EXT_HEADLESS_SURFACE_EXTENSION_NAME = "VK_EXT_headless_surface";
 
     public static final boolean VK_EXT_line_rasterization                = true;
@@ -708,4 +708,24 @@ public class VulkanConstants
     public static final boolean VK_EXT_texel_buffer_alignment                = true;
     public static final int     VK_EXT_TEXEL_BUFFER_ALIGNMENT_SPEC_VERSION   = 1;
     public static final String  VK_EXT_TEXEL_BUFFER_ALIGNMENT_EXTENSION_NAME = "VK_EXT_texel_buffer_alignment";
+
+    public static final boolean VK_KHR_shader_subgroup_extended_types                = true;
+    public static final int     VK_KHR_SHADER_SUBGROUP_EXTENDED_TYPES_SPEC_VERSION   = 1;
+    public static final String  VK_KHR_SHADER_SUBGROUP_EXTENDED_TYPES_EXTENSION_NAME = "VK_KHR_shader_subgroup_extended_types";
+
+    public static final boolean VK_KHR_shader_clock                = true;
+    public static final int     VK_KHR_SHADER_CLOCK_SPEC_VERSION   = 1;
+    public static final String  VK_KHR_SHADER_CLOCK_EXTENSION_NAME = "VK_KHR_shader_clock";
+
+    public static final boolean VK_KHR_timeline_semaphore                = true;
+    public static final int     VK_KHR_TIMELINE_SEMAPHORE_SPEC_VERSION   = 2;
+    public static final String  VK_KHR_TIMELINE_SEMAPHORE_EXTENSION_NAME = "VK_KHR_timeline_semaphore";
+
+    public static final boolean VK_KHR_spirv_1_4                = true;
+    public static final int     VK_KHR_SPIRV_1_4_SPEC_VERSION   = 1;
+    public static final String  VK_KHR_SPIRV_1_4_EXTENSION_NAME = "VK_KHR_spirv_1_4";
+
+    public static final boolean VK_GOOGLE_user_type                = true;
+    public static final int     VK_GOOGLE_USER_TYPE_SPEC_VERSION   = 1;
+    public static final String  VK_GOOGLE_USER_TYPE_EXTENSION_NAME = "VK_GOOGLE_user_type";
 }

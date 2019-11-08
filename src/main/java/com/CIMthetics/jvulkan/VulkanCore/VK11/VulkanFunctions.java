@@ -273,6 +273,8 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineInfoKHR
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkRefreshCycleDurationGOOGLE;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSampleLocationsInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSemaphoreGetFdInfoKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSemaphoreSignalInfoKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSemaphoreWaitInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkShadingRatePaletteNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSurfaceCapabilities2EXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSurfaceCapabilities2KHR;
@@ -4658,6 +4660,37 @@ public class VulkanFunctions
                 localDeviceIndex,
                 remoteDeviceIndex,
                 peerMemoryFeatures);
+    }
+    
+    public static VkResult vkGetSemaphoreCounterValueKHR(
+            VkDevice device,
+            VkSemaphore semaphore,
+            LongReturnValue value)
+    {
+        return v11ProxyLibrary.vkGetSemaphoreCounterValueKHR(
+                device,
+                semaphore,
+                value);
+    }
+    
+    public static VkResult vkWaitSemaphoresKHR(
+            VkDevice device,
+            VkSemaphoreWaitInfoKHR waitInfo,
+            long timeout)
+    {
+        return v11ProxyLibrary.vkWaitSemaphoresKHR(
+                device,
+                waitInfo,
+                timeout);
+    }
+    
+    public static VkResult vkSignalSemaphoreKHR(
+            VkDevice device,
+            VkSemaphoreSignalInfoKHR signalInfo)
+    {
+        return v11ProxyLibrary.vkSignalSemaphoreKHR(
+                device,
+                signalInfo);
     }
     
     

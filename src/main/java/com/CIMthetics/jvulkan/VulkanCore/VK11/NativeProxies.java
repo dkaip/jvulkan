@@ -263,6 +263,8 @@ import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkPipelineInfoKHR
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkRefreshCycleDurationGOOGLE;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSampleLocationsInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSemaphoreGetFdInfoKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSemaphoreSignalInfoKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSemaphoreWaitInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkShadingRatePaletteNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSurfaceCapabilities2EXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.VK11.Structures.VkSurfaceCapabilities2KHR;
@@ -1491,6 +1493,11 @@ class NativeProxies
             VkImageMemoryRequirementsInfo2 info,
             VkMemoryRequirements2 memoryRequirements);
     
+    native VkResult vkGetSemaphoreCounterValueKHR(
+            VkDevice device,
+            VkSemaphore semaphore,
+            LongReturnValue value);
+    
     native void vkGetImageSparseMemoryRequirements(
             VkDevice device,
             VkImage image,
@@ -1954,6 +1961,10 @@ class NativeProxies
             VkSwapchainKHR swapChain,
             boolean localDimmingEnable);
     
+    native VkResult vkSignalSemaphoreKHR(
+            VkDevice device,
+            VkSemaphoreSignalInfoKHR signalInfo);
+    
     native void vkSubmitDebugUtilsMessageEXT(
             VkInstance instance,
             VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
@@ -1993,6 +2004,11 @@ class NativeProxies
             VkDevice vulkanLogicalDevice,
             Collection<VkFence> vkFences,
             boolean waitAll,
+            long timeout);
+    
+    native VkResult vkWaitSemaphoresKHR(
+            VkDevice device,
+            VkSemaphoreWaitInfoKHR waitInfo,
             long timeout);
     
     

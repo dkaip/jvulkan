@@ -10,10 +10,10 @@ The fine folks at JogAmp have created Java bindings that allow you to use the Vu
 Java, however, in my opinion it works fine, but, is not friendly to the Java way of doing things
 and is certainly not Java programmer friendly to the normal Java programmer.
 
-This current release is an attempt at providing access to the Vulkan Specification 1.1.106.0 
+This current release is an attempt at providing access to the Vulkan Specification 1.1.126.0 
 functionality ultimately via the [Vulkan® SDK](https://www.lunarg.com/vulkan-sdk/) from LUNARG.
 
-It is not, at this moment, complete in implementing all of the 1.1.106.0 functionality, however, it should 
+It is not, at this moment, complete in implementing all of the 1.1.126.0 functionality, however, it should 
 be able to run all of the example programs in the **jvulkan-examples** project.  
 
 Also, do not expect this software to work if you do not have Vulkan drivers available on your 

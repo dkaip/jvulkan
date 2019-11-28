@@ -328,6 +328,7 @@ public class VulkanFunctions
 
         log.trace("Attempting to load native library:{}{}", VulkanFunctions.pathToNativeLibrary, VulkanFunctions.nativeLibraryName);
         System.load(VulkanFunctions.pathToNativeLibrary + VulkanFunctions.nativeLibraryName);
+        log.trace("Loaded native library:{}{}", VulkanFunctions.pathToNativeLibrary, VulkanFunctions.nativeLibraryName);
 
         v11ProxyLibrary = new NativeProxies();
     }

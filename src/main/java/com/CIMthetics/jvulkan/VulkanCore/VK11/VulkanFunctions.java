@@ -85,6 +85,7 @@ import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkSemaphore;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkShaderModule;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VkSwapchainKHR;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
+import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.BooleanReturnValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.ByteArrayReturnValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.IntReturnValue;
 import com.CIMthetics.jvulkan.VulkanCore.VK11.Structures.LongReturnValue;
@@ -695,7 +696,7 @@ public class VulkanFunctions
             VkPhysicalDevice physicalDevice,
             int queueFamilyIndex,
             VkSurfaceKHR surface,
-            boolean[] isSupported)
+            BooleanReturnValue isSupported)
     {
         return v11ProxyLibrary.vkGetPhysicalDeviceSurfaceSupportKHR(
                 physicalDevice,

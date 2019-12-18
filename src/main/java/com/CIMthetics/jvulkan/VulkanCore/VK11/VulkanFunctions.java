@@ -3285,6 +3285,12 @@ public class VulkanFunctions
             VkAllocationCallbacks allocator,
             VkPipelineCache pipelineCache)
     {
+        if (createInfo.getInitialDataSize() != 0 &&
+            createInfo.getInitialData() == null)
+        {
+            throw new IllegalArgumentException("Initial data must not be null if initial data size is != 0.");
+        }
+        
         return v11ProxyLibrary.vkCreatePipelineCache(
                 device,
                 createInfo,

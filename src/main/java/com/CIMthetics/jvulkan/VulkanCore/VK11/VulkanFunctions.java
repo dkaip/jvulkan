@@ -1606,6 +1606,31 @@ public class VulkanFunctions
                 vkBufferCopyCollection);
     }
     
+    /**
+     * This is a convenience method for <code>vkCmdCopyBuffer</code>
+     * that allows it to be called without having to create a
+     * <code>Collection</code> of <code>VkBufferCopy</code>s.
+     * @param vkCommandBuffer
+     * @param srcBuffer
+     * @param dstBuffer
+     * @param copyRegion
+     */
+    public static void vkCmdCopyBuffer(
+            VkCommandBuffer vkCommandBuffer,
+            VkBuffer srcBuffer,
+            VkBuffer dstBuffer,
+            VkBufferCopy copyRegion)
+    {
+        Collection<VkBufferCopy> copyRegionCollection = new LinkedList<VkBufferCopy>();
+        copyRegionCollection.add(copyRegion);
+
+        v11ProxyLibrary.vkCmdCopyBuffer(
+                vkCommandBuffer,
+                srcBuffer,
+                dstBuffer,
+                copyRegionCollection);
+    }
+    
     public static void vkCmdCopyBufferToImage(
             VkCommandBuffer vkCommandBuffer,
             VkBuffer srcBuffer,

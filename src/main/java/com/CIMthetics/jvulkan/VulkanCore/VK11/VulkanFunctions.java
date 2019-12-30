@@ -3145,6 +3145,29 @@ public class VulkanFunctions
                 scissors);
     }
     
+    /**
+     * A convenience function for <code>vkCmdSetScissor</code> that does not 
+     * require a <code>Collection</code> of scissors in the case where there is
+     * just one.
+     * 
+     * @param commandBuffer
+     * @param firstScissor
+     * @param scissor
+     */
+    public static void vkCmdSetScissor(
+            VkCommandBuffer commandBuffer,
+            int firstScissor,
+            VkRect2D scissor)
+    {
+        Collection<VkRect2D> scissors = new LinkedList<VkRect2D>();
+        scissors.add(scissor);
+        
+        v11ProxyLibrary.vkCmdSetScissor(
+                commandBuffer,
+                firstScissor,
+                scissors);
+    }
+    
     public static void vkCmdSetStencilCompareMask(
             VkCommandBuffer commandBuffer,
             EnumSet<VkStencilFaceFlagBits> faceMask,
@@ -3183,6 +3206,29 @@ public class VulkanFunctions
             int firstViewport,
             Collection<VkViewport> viewports)
     {
+        v11ProxyLibrary.vkCmdSetViewport(
+                commandBuffer,
+                firstViewport,
+                viewports);
+    }
+    
+    /**
+     * A convenience function for <code>vkCmdSetViewport</code> that does not
+     * require a <code>Collection</code> of viewports in the case of there being
+     * just one.
+     * 
+     * @param commandBuffer
+     * @param firstViewport
+     * @param viewport
+     */
+    public static void vkCmdSetViewport(
+            VkCommandBuffer commandBuffer,
+            int firstViewport,
+            VkViewport viewport)
+    {
+        Collection<VkViewport> viewports = new LinkedList<VkViewport>();
+        viewports.add(viewport);
+        
         v11ProxyLibrary.vkCmdSetViewport(
                 commandBuffer,
                 firstViewport,

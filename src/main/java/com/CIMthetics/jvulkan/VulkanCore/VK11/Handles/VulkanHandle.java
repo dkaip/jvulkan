@@ -49,15 +49,24 @@ public class VulkanHandle
     {
         if (this == obj)
             return true;
+
         if (obj == null)
             return false;
-//        if (getClass() != obj.getClass())
-//            return false;
-        if ((obj instanceof VulkanHandle) == false)
+
+        /*
+         * We are enforcing that in order to be equal the objects must also be
+         * of the same class.  i.e. Even though VkQueue and VkImage are just
+         * VkHandles they are not of the same class and are as such not considered
+         * to be equal.
+         */
+        if (getClass() != obj.getClass())
             return false;
-        VulkanHandle other = (VulkanHandle) obj;
+
+        VulkanHandle other = (VulkanHandle)obj;
+
         if (handleValue != other.handleValue)
             return false;
+
         return true;
     }
 }

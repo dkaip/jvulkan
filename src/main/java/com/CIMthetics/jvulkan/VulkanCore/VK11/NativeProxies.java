@@ -712,6 +712,20 @@ class NativeProxies
             int offset,
             byte[] values);
     
+    native void vkCmdPushConstants(
+            VkCommandBuffer commandBuffer,
+            VkPipelineLayout layout,
+            EnumSet<VkShaderStageFlagBits> stageFlags,
+            int offset,
+            float[] values);
+    
+    native void vkCmdPushConstants(
+            VkCommandBuffer commandBuffer,
+            VkPipelineLayout layout,
+            EnumSet<VkShaderStageFlagBits> stageFlags,
+            int offset,
+            int[] values);
+    
     native void vkCmdPushDescriptorSetKHR(
             VkCommandBuffer commandBuffer,
             VkPipelineBindPoint pipelineBindPoint,

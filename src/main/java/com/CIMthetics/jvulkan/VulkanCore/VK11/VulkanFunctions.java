@@ -2950,6 +2950,60 @@ public class VulkanFunctions
                 values);
     }
     
+    /**
+     * This is a convenience function for <code>vkCmdPushConstants</code> so that
+     * if you just want to send some <code>float</code>s as push constants you 
+     * may do so without the hassle of converting them into a <code>byte[]</code> 
+     * first.
+     * 
+     * @param commandBuffer
+     * @param layout
+     * @param stageFlags
+     * @param offset
+     * @param values
+     */
+    public static void vkCmdPushConstants(
+            VkCommandBuffer commandBuffer,
+            VkPipelineLayout layout,
+            EnumSet<VkShaderStageFlagBits> stageFlags,
+            int offset,
+            float[] values)
+    {
+        v11ProxyLibrary.vkCmdPushConstants(
+                commandBuffer,
+                layout,
+                stageFlags,
+                offset,
+                values);
+    }
+    
+    /**
+     * This is a convenience function for <code>vkCmdPushConstants</code> so that
+     * if you just want to send some <code>int</code>s as push constants you 
+     * may do so without the hassle of converting them into a <code>byte[]</code> 
+     * first.
+     * 
+     * @param commandBuffer
+     * @param layout
+     * @param stageFlags
+     * @param offset
+     * @param values
+     */
+    public static void vkCmdPushConstants(
+            VkCommandBuffer commandBuffer,
+            VkPipelineLayout layout,
+            EnumSet<VkShaderStageFlagBits> stageFlags,
+            int offset,
+            int[] values)
+    {
+        v11ProxyLibrary.vkCmdPushConstants(
+                commandBuffer,
+                layout,
+                stageFlags,
+                offset,
+                values);
+    }
+    
     public static void vkCmdPushDescriptorSetKHR(
             VkCommandBuffer commandBuffer,
             VkPipelineBindPoint pipelineBindPoint,

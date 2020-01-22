@@ -3205,12 +3205,10 @@ public class VulkanFunctions
      * just one.
      * 
      * @param commandBuffer
-     * @param firstScissor
      * @param scissor
      */
     public static void vkCmdSetScissor(
             VkCommandBuffer commandBuffer,
-            int firstScissor,
             VkRect2D scissor)
     {
         Collection<VkRect2D> scissors = new LinkedList<VkRect2D>();
@@ -3218,7 +3216,7 @@ public class VulkanFunctions
         
         v11ProxyLibrary.vkCmdSetScissor(
                 commandBuffer,
-                firstScissor,
+                0,
                 scissors);
     }
     
@@ -3272,12 +3270,10 @@ public class VulkanFunctions
      * just one.
      * 
      * @param commandBuffer
-     * @param firstViewport
      * @param viewport
      */
     public static void vkCmdSetViewport(
             VkCommandBuffer commandBuffer,
-            int firstViewport,
             VkViewport viewport)
     {
         Collection<VkViewport> viewports = new LinkedList<VkViewport>();
@@ -3285,7 +3281,7 @@ public class VulkanFunctions
         
         v11ProxyLibrary.vkCmdSetViewport(
                 commandBuffer,
-                firstViewport,
+                0,
                 viewports);
     }
     

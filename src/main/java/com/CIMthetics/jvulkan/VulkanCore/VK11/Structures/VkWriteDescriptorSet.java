@@ -85,6 +85,12 @@ public class VkWriteDescriptorSet extends VulkanCreateInfoStructure
 
     public void setImageInfo(Collection<VkDescriptorImageInfo> imageInfo)
     {
+        if (bufferInfo != null ||
+            texelBufferView != null)
+        {
+            throw new IllegalArgumentException("Only one of imageInfo, bufferInfo, or texelBufferView may be used at a time in a single VkWriteDescriptorSet object.");
+        }
+        
         this.imageInfo = imageInfo;
     }
 
@@ -95,6 +101,12 @@ public class VkWriteDescriptorSet extends VulkanCreateInfoStructure
 
     public void setBufferInfo(Collection<VkDescriptorBufferInfo> bufferInfo)
     {
+        if (imageInfo != null ||
+            texelBufferView != null)
+        {
+            throw new IllegalArgumentException("Only one of imageInfo, bufferInfo, or texelBufferView may be used at a time in a single VkWriteDescriptorSet object.");
+        }
+
         this.bufferInfo = bufferInfo;
     }
 
@@ -105,6 +117,12 @@ public class VkWriteDescriptorSet extends VulkanCreateInfoStructure
 
     public void setTexelBufferView(Collection<VkBufferView> texelBufferView)
     {
+        if (imageInfo != null ||
+            bufferInfo != null)
+        {
+            throw new IllegalArgumentException("Only one of imageInfo, bufferInfo, or texelBufferView may be used at a time in a single VkWriteDescriptorSet object.");
+        }
+
         this.texelBufferView = texelBufferView;
     }
     

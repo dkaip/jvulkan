@@ -15,7 +15,7 @@
  */
 package com.CIMthetics.jvulkan.Wayland.Objects;
 
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlKeyboardRelease;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlKeyboardRelease;
 
 import java.util.EnumSet;
 

@@ -15,8 +15,8 @@
  */
 package com.CIMthetics.jvulkan.Wayland.Objects;
 
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlSurfaceCommit;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlSurfaceDamage;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlSurfaceCommit;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlSurfaceDamage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

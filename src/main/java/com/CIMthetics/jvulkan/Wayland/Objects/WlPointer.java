@@ -30,8 +30,8 @@
  */
 package com.CIMthetics.jvulkan.Wayland.Objects;
 
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlPointerRelease;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlPointerSetCursor;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlPointerRelease;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlPointerSetCursor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

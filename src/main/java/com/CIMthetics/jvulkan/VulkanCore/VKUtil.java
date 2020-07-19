@@ -15,7 +15,7 @@
  */
 package com.CIMthetics.jvulkan.VulkanCore;
 
-import com.CIMthetics.jvulkan.VulkanCore.VK11.Enums.VkResult;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkResult;
 /**
  * 
  * @author Douglas Kaip

@@ -15,7 +15,7 @@
  */
 package com.CIMthetics.jvulkan.Wayland.Objects;
 
-import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
+import com.CIMthetics.jvulkan.VulkanCore.Handles.VulkanHandle;
 
 public class WaylandEventObject
 {

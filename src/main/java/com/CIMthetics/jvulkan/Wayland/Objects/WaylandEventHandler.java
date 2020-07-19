@@ -21,7 +21,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
+import com.CIMthetics.jvulkan.VulkanCore.Handles.VulkanHandle;
 
 class WaylandEventHandler implements Runnable
 {

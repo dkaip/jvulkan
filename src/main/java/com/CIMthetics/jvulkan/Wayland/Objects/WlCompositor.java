@@ -15,8 +15,8 @@
  */
 package com.CIMthetics.jvulkan.Wayland.Objects;
 
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlCompositorCreateRegion;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlCompositorCreateSurface;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlCompositorCreateRegion;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlCompositorCreateSurface;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

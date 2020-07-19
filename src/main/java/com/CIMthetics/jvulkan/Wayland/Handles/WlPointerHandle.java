@@ -15,7 +15,7 @@
  */
 package com.CIMthetics.jvulkan.Wayland.Handles;
 
-import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
+import com.CIMthetics.jvulkan.VulkanCore.Handles.VulkanHandle;
 
 public class WlPointerHandle extends VulkanHandle
 {

@@ -15,7 +15,7 @@
  */
 package com.CIMthetics.jvulkan.Wayland.Objects;
 
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlRegistryBind;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlRegistryBind;
 
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,7 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
+import com.CIMthetics.jvulkan.VulkanCore.Handles.VulkanHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlCompositorHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlOutputHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistryHandle;

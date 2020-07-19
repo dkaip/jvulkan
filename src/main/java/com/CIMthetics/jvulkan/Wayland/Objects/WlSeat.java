@@ -15,10 +15,10 @@
  */
 package com.CIMthetics.jvulkan.Wayland.Objects;
 
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlSeatGetKeyboard;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlSeatGetPointer;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlSeatGetTouch;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlSeatRelease;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlSeatGetKeyboard;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlSeatGetPointer;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlSeatGetTouch;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlSeatRelease;
 
 import java.util.EnumSet;
 

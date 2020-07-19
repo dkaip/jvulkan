@@ -15,15 +15,15 @@
  */
 package com.CIMthetics.jvulkan.Wayland.Objects;
 
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayConnect;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayDisconnect;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayDispatch;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayDispatchPending;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayFlush;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayGetRegistry;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayPrepareRead;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplayReadEvents;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlDisplaySync;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlDisplayConnect;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlDisplayDisconnect;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlDisplayDispatch;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlDisplayDispatchPending;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlDisplayFlush;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlDisplayGetRegistry;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlDisplayPrepareRead;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlDisplayReadEvents;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlDisplaySync;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -31,7 +31,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.CIMthetics.jvulkan.VulkanCore.VK11.Handles.VulkanHandle;
+import com.CIMthetics.jvulkan.VulkanCore.Handles.VulkanHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlDisplayHandle;
 import com.CIMthetics.jvulkan.Wayland.Handles.WlRegistryHandle;
 

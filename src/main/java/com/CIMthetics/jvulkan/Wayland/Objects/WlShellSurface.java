@@ -15,16 +15,16 @@
  */
 package com.CIMthetics.jvulkan.Wayland.Objects;
 
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlShellSurfaceMove;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlShellSurfacePong;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlShellSurfaceResize;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlShellSurfaceSetClass;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlShellSurfaceSetFullscreen;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlShellSurfaceSetMaximized;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlShellSurfaceSetPopup;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlShellSurfaceSetTitle;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlShellSurfaceSetTopLevel;
-import static com.CIMthetics.jvulkan.VulkanCore.VK11.VulkanFunctions.wlShellSurfaceSetTransient;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlShellSurfaceMove;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlShellSurfacePong;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlShellSurfaceResize;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlShellSurfaceSetClass;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlShellSurfaceSetFullscreen;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlShellSurfaceSetMaximized;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlShellSurfaceSetPopup;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlShellSurfaceSetTitle;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlShellSurfaceSetTopLevel;
+import static com.CIMthetics.jvulkan.VulkanCore.VulkanFunctions.wlShellSurfaceSetTransient;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;

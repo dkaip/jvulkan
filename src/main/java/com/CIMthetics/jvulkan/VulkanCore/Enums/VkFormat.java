@@ -297,9 +297,6 @@ public enum VkFormat
     VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM_KHR(VK_FORMAT_G16_B16_R16_3PLANE_422_UNORM.valueOf()),
     VK_FORMAT_G16_B16R16_2PLANE_422_UNORM_KHR(VK_FORMAT_G16_B16R16_2PLANE_422_UNORM.valueOf()),
     VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM_KHR(VK_FORMAT_G16_B16_R16_3PLANE_444_UNORM.valueOf()),
-    VK_FORMAT_BEGIN_RANGE(VK_FORMAT_UNDEFINED.valueOf()),
-    VK_FORMAT_END_RANGE(VK_FORMAT_ASTC_12x12_SRGB_BLOCK.valueOf()),
-    VK_FORMAT_RANGE_SIZE((VK_FORMAT_ASTC_12x12_SRGB_BLOCK.valueOf() - VK_FORMAT_UNDEFINED.valueOf() + 1)),
     VK_FORMAT_MAX_ENUM(0x7FFFFFFF);
     
     private int value;
@@ -997,9 +994,6 @@ public enum VkFormat
                 break;
         }
 
-        if (inputValue == (VK_FORMAT_ASTC_12x12_SRGB_BLOCK.valueOf() - VK_FORMAT_UNDEFINED.valueOf() + 1))
-            result = VK_FORMAT_RANGE_SIZE;
-        
         if (result == null)
             throw new IllegalArgumentException("Illegal value specified for this Enum.");
 

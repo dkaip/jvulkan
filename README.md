@@ -130,9 +130,9 @@ Please make sure to update tests as appropriate.
 In the event you are upgrading or adding to this software the command to recreate the 
 JNI header file for the native functions is:
 
-<code>javah -classpath my-jvulkan-project-path/src/main/java com.CIMthetics.jvulkan.VulkanCore.VK11.NativeProxies</code> 
+<code>javah -classpath my-jvulkan-project-path/src/main/java com.CIMthetics.jvulkan.VulkanCore.NativeProxies</code> 
 
-This will create the file <code>com&lowbar;CIMthetics&lowbar;jvulkan&lowbar;VulkanCore&lowbar;VK11&lowbar;NativeProxies.h</code> that will need to be placed in the <code>headers</code> directory of 
+This will create the file <code>com&lowbar;CIMthetics&lowbar;jvulkan&lowbar;VulkanCore&lowbar;NativeProxies.h</code> that will need to be placed in the <code>headers</code> directory of 
 the **jvulkan-natives-Linux-x86_64** project on your machine.  You will then need to implement 
 any new functions you have added here in that project as well.
 

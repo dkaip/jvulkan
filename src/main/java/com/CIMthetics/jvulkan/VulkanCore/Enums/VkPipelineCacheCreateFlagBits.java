@@ -17,7 +17,8 @@ package com.CIMthetics.jvulkan.VulkanCore.Enums;
 
 public enum VkPipelineCacheCreateFlagBits
 {
-    RESERVED_FOR_FUTURE_USE(0);
+    VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT(0x00000001),
+    VK_PIPELINE_CACHE_CREATE_FLAG_BITS_MAX_ENUM(0x7FFFFFFF);
     
     private int value;
     

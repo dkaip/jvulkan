@@ -33,9 +33,6 @@ public enum VkLogicOp
     VK_LOGIC_OP_OR_INVERTED(13),
     VK_LOGIC_OP_NAND(14),
     VK_LOGIC_OP_SET(15),
-    VK_LOGIC_OP_BEGIN_RANGE(VK_LOGIC_OP_CLEAR.valueOf()),
-    VK_LOGIC_OP_END_RANGE(VK_LOGIC_OP_SET.valueOf()),
-    VK_LOGIC_OP_RANGE_SIZE((VK_LOGIC_OP_SET.valueOf() - VK_LOGIC_OP_CLEAR.valueOf() + 1)),
     VK_LOGIC_OP_MAX_ENUM(0x7FFFFFFF);
 
     private int value;

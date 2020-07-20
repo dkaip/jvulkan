@@ -21,7 +21,7 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDebugReportObjectTypeEXT;
 
 public class VulkanConstants
 {
-    public static final int     VK_HEADER_VERSION = 126;
+    public static final int     VK_HEADER_VERSION = 141;
     public static final float   VK_LOD_CLAMP_NONE               = 1000.0f;
     public static final int     VK_REMAINING_MIP_LEVELS         = -1;
     public static final int     VK_REMAINING_ARRAY_LAYERS       = -1;

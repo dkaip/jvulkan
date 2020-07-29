@@ -19,14 +19,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkCopyAccelerationStructureModeNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkCopyAccelerationStructureModeKHR;
 
 class VkCopyAccelerationStructureModeNVTest
 {
     @Test
     void testNumberOfElements()
     {
-        VkCopyAccelerationStructureModeNV[] values = VkCopyAccelerationStructureModeNV.values();
+        VkCopyAccelerationStructureModeKHR[] values = VkCopyAccelerationStructureModeKHR.values();
         assertEquals(6, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
@@ -34,11 +34,11 @@ class VkCopyAccelerationStructureModeNVTest
     @Test
     void testValues()
     {
-        assertEquals(0, VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV.valueOf(), VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV.toString() + " has an unexpected value.");
-        assertEquals(1, VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV.valueOf(), VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV.toString() + " has an unexpected value.");
-        assertEquals(VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV.valueOf(), VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_BEGIN_RANGE_NV.valueOf(), VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_BEGIN_RANGE_NV.toString() + " has an unexpected value.");
-        assertEquals(VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV.valueOf(), VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_END_RANGE_NV.valueOf(), VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_END_RANGE_NV.toString() + " has an unexpected value.");
-        assertEquals((VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV.valueOf() - VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV.valueOf() + 1), VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_RANGE_SIZE_NV.valueOf(), VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_RANGE_SIZE_NV.toString() + " has an unexpected value.");
-        assertEquals(0x7FFFFFFF, VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_MAX_ENUM_NV.valueOf(), VkCopyAccelerationStructureModeNV.VK_COPY_ACCELERATION_STRUCTURE_MODE_MAX_ENUM_NV.toString() + " has an unexpected value.");
+        assertEquals(0, VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV.valueOf(), VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV.toString() + " has an unexpected value.");
+        assertEquals(1, VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV.valueOf(), VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV.toString() + " has an unexpected value.");
+        assertEquals(VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV.valueOf(), VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_BEGIN_RANGE_NV.valueOf(), VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_BEGIN_RANGE_NV.toString() + " has an unexpected value.");
+        assertEquals(VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV.valueOf(), VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_END_RANGE_NV.valueOf(), VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_END_RANGE_NV.toString() + " has an unexpected value.");
+        assertEquals((VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_NV.valueOf() - VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_NV.valueOf() + 1), VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_RANGE_SIZE_NV.valueOf(), VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_RANGE_SIZE_NV.toString() + " has an unexpected value.");
+        assertEquals(0x7FFFFFFF, VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_MAX_ENUM_NV.valueOf(), VkCopyAccelerationStructureModeKHR.VK_COPY_ACCELERATION_STRUCTURE_MODE_MAX_ENUM_NV.toString() + " has an unexpected value.");
     }
 }

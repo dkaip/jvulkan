@@ -17,36 +17,36 @@ package com.CIMthetics.jvulkan.VulkanExtensions.Structures;
 
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkAccelerationStructureMemoryRequirementsTypeNV;
-import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkAccelerationStructureNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkAccelerationStructureMemoryRequirementsTypeKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkAccelerationStructureKHR;
 
 public class VkAccelerationStructureMemoryRequirementsInfoNV extends VulkanCreateInfoStructure
 {
-    private VkAccelerationStructureMemoryRequirementsTypeNV type;
-    private VkAccelerationStructureNV                       accelerationStructure;
+    private VkAccelerationStructureMemoryRequirementsTypeKHR type;
+    private VkAccelerationStructureKHR                       accelerationStructure;
     
     public VkAccelerationStructureMemoryRequirementsInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_MEMORY_REQUIREMENTS_INFO_NV);
     }
 
-    public VkAccelerationStructureMemoryRequirementsTypeNV getType()
+    public VkAccelerationStructureMemoryRequirementsTypeKHR getType()
     {
         return type;
     }
 
-    public void setType(VkAccelerationStructureMemoryRequirementsTypeNV type)
+    public void setType(VkAccelerationStructureMemoryRequirementsTypeKHR type)
     {
         this.type = type;
     }
 
-    public VkAccelerationStructureNV getAccelerationStructure()
+    public VkAccelerationStructureKHR getAccelerationStructure()
     {
         return accelerationStructure;
     }
 
     public void setAccelerationStructure(
-            VkAccelerationStructureNV accelerationStructure)
+            VkAccelerationStructureKHR accelerationStructure)
     {
         this.accelerationStructure = accelerationStructure;
     }

@@ -19,14 +19,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDescriptorBindingFlagBitsEXT;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkDescriptorBindingFlagBits;
 
 class VkDescriptorBindingFlagBitsEXTTest
 {
     @Test
     void testNumberOfElements()
     {
-        VkDescriptorBindingFlagBitsEXT[] values = VkDescriptorBindingFlagBitsEXT.values();
+        VkDescriptorBindingFlagBits[] values = VkDescriptorBindingFlagBits.values();
         assertEquals(5, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
@@ -34,10 +34,10 @@ class VkDescriptorBindingFlagBitsEXTTest
     @Test
     void testValues()
     {
-        assertEquals(0x00000001, VkDescriptorBindingFlagBitsEXT.VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT_EXT.valueOf(), VkDescriptorBindingFlagBitsEXT.VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT_EXT.toString() + " has an unexpected value.");
-        assertEquals(0x00000002, VkDescriptorBindingFlagBitsEXT.VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT_EXT.valueOf(), VkDescriptorBindingFlagBitsEXT.VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT_EXT.toString() + " has an unexpected value.");
-        assertEquals(0x00000004, VkDescriptorBindingFlagBitsEXT.VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT_EXT.valueOf(), VkDescriptorBindingFlagBitsEXT.VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT_EXT.toString() + " has an unexpected value.");
-        assertEquals(0x00000008, VkDescriptorBindingFlagBitsEXT.VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT_EXT.valueOf(), VkDescriptorBindingFlagBitsEXT.VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT_EXT.toString() + " has an unexpected value.");
-        assertEquals(0x7FFFFFFF, VkDescriptorBindingFlagBitsEXT.VK_DESCRIPTOR_BINDING_FLAG_BITS_MAX_ENUM_EXT.valueOf(), VkDescriptorBindingFlagBitsEXT.VK_DESCRIPTOR_BINDING_FLAG_BITS_MAX_ENUM_EXT.toString() + " has an unexpected value.");
+        assertEquals(0x00000001, VkDescriptorBindingFlagBits.VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT_EXT.valueOf(), VkDescriptorBindingFlagBits.VK_DESCRIPTOR_BINDING_UPDATE_AFTER_BIND_BIT_EXT.toString() + " has an unexpected value.");
+        assertEquals(0x00000002, VkDescriptorBindingFlagBits.VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT_EXT.valueOf(), VkDescriptorBindingFlagBits.VK_DESCRIPTOR_BINDING_UPDATE_UNUSED_WHILE_PENDING_BIT_EXT.toString() + " has an unexpected value.");
+        assertEquals(0x00000004, VkDescriptorBindingFlagBits.VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT_EXT.valueOf(), VkDescriptorBindingFlagBits.VK_DESCRIPTOR_BINDING_PARTIALLY_BOUND_BIT_EXT.toString() + " has an unexpected value.");
+        assertEquals(0x00000008, VkDescriptorBindingFlagBits.VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT_EXT.valueOf(), VkDescriptorBindingFlagBits.VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT_EXT.toString() + " has an unexpected value.");
+        assertEquals(0x7FFFFFFF, VkDescriptorBindingFlagBits.VK_DESCRIPTOR_BINDING_FLAG_BITS_MAX_ENUM_EXT.valueOf(), VkDescriptorBindingFlagBits.VK_DESCRIPTOR_BINDING_FLAG_BITS_MAX_ENUM_EXT.toString() + " has an unexpected value.");
     }
 }

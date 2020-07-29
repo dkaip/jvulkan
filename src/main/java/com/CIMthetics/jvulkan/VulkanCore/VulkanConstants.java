@@ -40,7 +40,8 @@ public class VulkanConstants
     public static final int     VK_MAX_DEVICE_GROUP_SIZE        = 32;
     public static final int     VK_LUID_SIZE                    = 8;
     public static final int     VK_QUEUE_FAMILY_EXTERNAL        = -2;
-    public static final int     VK_SHADER_UNUSED_NV             = -1;
+    public static final int     VK_SHADER_UNUSED_KHR            = -1;
+    public static final int     VK_SHADER_UNUSED_NV             = VK_SHADER_UNUSED_KHR;
     
 
     public static final boolean K_KHR_wayland_surface           = true;
@@ -371,7 +372,7 @@ public class VulkanConstants
     public static final int     VK_QUEUE_FAMILY_FOREIGN_EXT = -3;
 
     public static final boolean VK_EXT_debug_utils  = true;
-    public static final int     VK_EXT_DEBUG_UTILS_SPEC_VERSION = 1;
+    public static final int     VK_EXT_DEBUG_UTILS_SPEC_VERSION = 2;
     public static final String  VK_EXT_DEBUG_UTILS_EXTENSION_NAME   = "VK_EXT_debug_utils";
 
     public static final boolean VK_EXT_sampler_filter_minmax    = true;
@@ -554,7 +555,7 @@ public class VulkanConstants
     public static final String  VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_EXTENSION_NAME  = "VK_EXT_image_drm_format_modifier";
 
     public static final boolean VK_EXT_filter_cubic                 = true;
-    public static final int     VK_EXT_FILTER_CUBIC_SPEC_VERSION    = 2;
+    public static final int     VK_EXT_FILTER_CUBIC_SPEC_VERSION    = 3;
     public static final String  VK_EXT_FILTER_CUBIC_EXTENSION_NAME  = "VK_EXT_filter_cubic";
 
     public static final boolean VK_EXT_calibrated_timestamps                 = true;
@@ -606,7 +607,7 @@ public class VulkanConstants
     public static final String  VK_EXT_SEPARATE_STENCIL_USAGE_EXTENSION_NAME = "VK_EXT_separate_stencil_usage";
 
     public static final boolean VK_EXT_validation_features                = true;
-    public static final int     VK_EXT_VALIDATION_FEATURES_SPEC_VERSION   = 2;
+    public static final int     VK_EXT_VALIDATION_FEATURES_SPEC_VERSION   = 3;
     public static final String  VK_EXT_VALIDATION_FEATURES_EXTENSION_NAME = "VK_EXT_validation_features";
 
     public static final boolean VK_NV_cooperative_matrix                = true;
@@ -618,7 +619,7 @@ public class VulkanConstants
     public static final String  VK_KHR_SURFACE_PROTECTED_CAPABILITIES_EXTENSION_NAME = "VK_KHR_surface_protected_capabilities";
 
     public static final boolean VK_NVX_image_view_handle                = true;
-    public static final int     VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION   = 1;
+    public static final int     VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION   = 2;
     public static final String  VK_NVX_IMAGE_VIEW_HANDLE_EXTENSION_NAME = "VK_NVX_image_view_handle";
 
     public static final boolean VK_EXT_pipeline_creation_feedback                = true;
@@ -666,7 +667,7 @@ public class VulkanConstants
     public static final String  VK_INTEL_SHADER_INTEGER_FUNCTIONS_2_EXTENSION_NAME = "VK_INTEL_shader_integer_functions2";
 
     public static final boolean VK_INTEL_performance_query                = true;
-    public static final int     VK_INTEL_PERFORMANCE_QUERY_SPEC_VERSION   = 1;
+    public static final int     VK_INTEL_PERFORMANCE_QUERY_SPEC_VERSION   = 2;
     public static final String  VK_INTEL_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_INTEL_performance_query";
 
     public static final boolean VK_EXT_subgroup_size_control                = true;
@@ -728,4 +729,28 @@ public class VulkanConstants
     public static final boolean VK_GOOGLE_user_type                = true;
     public static final int     VK_GOOGLE_USER_TYPE_SPEC_VERSION   = 1;
     public static final String  VK_GOOGLE_USER_TYPE_EXTENSION_NAME = "VK_GOOGLE_user_type";
+
+    public static final boolean VK_KHR_performance_query                = true;
+    public static final int     VK_KHR_PERFORMANCE_QUERY_SPEC_VERSION   = 1;
+    public static final String  VK_KHR_PERFORMANCE_QUERY_EXTENSION_NAME = "VK_KHR_performance_query";
+
+    public static final boolean VK_KHR_separate_depth_stencil_layouts                = true;
+    public static final int     VK_KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_SPEC_VERSION   = 1;
+    public static final String  VK_KHR_SEPARATE_DEPTH_STENCIL_LAYOUTS_EXTENSION_NAME = "VK_KHR_separate_depth_stencil_layouts";
+
+    public static final boolean VK_KHR_buffer_device_address                = true;
+    public static final int     VK_KHR_BUFFER_DEVICE_ADDRESS_SPEC_VERSION   = 1;
+    public static final String  VK_KHR_BUFFER_DEVICE_ADDRESS_EXTENSION_NAME = "VK_KHR_buffer_device_address";
+
+    public static final boolean VK_KHR_shader_non_semantic_info                = true;
+    public static final int     VK_KHR_SHADER_NON_SEMANTIC_INFO_SPEC_VERSION   = 1;
+    public static final String  VK_KHR_SHADER_NON_SEMANTIC_INFO_EXTENSION_NAME = "VK_KHR_shader_non_semantic_info";
+
+    public static final boolean VK_QCOM_render_pass_shader_resolve                = true;
+    public static final int     VK_QCOM_RENDER_PASS_SHADER_RESOLVE_SPEC_VERSION   = 4;
+    public static final String  VK_QCOM_RENDER_PASS_SHADER_RESOLVE_EXTENSION_NAME = "VK_QCOM_render_pass_shader_resolve";
+
+    public static final boolean VK_EXT_tooling_info                = true;
+    public static final int     VK_EXT_TOOLING_INFO_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_TOOLING_INFO_EXTENSION_NAME = "VK_EXT_tooling_info";
 }

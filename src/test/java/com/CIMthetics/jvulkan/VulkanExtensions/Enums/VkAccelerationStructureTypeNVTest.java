@@ -19,14 +19,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkAccelerationStructureTypeNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkAccelerationStructureTypeKHR;
 
 class VkAccelerationStructureTypeNVTest
 {
     @Test
     void testNumberOfElements()
     {
-        VkAccelerationStructureTypeNV[] values = VkAccelerationStructureTypeNV.values();
+        VkAccelerationStructureTypeKHR[] values = VkAccelerationStructureTypeKHR.values();
         assertEquals(6, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
@@ -34,11 +34,11 @@ class VkAccelerationStructureTypeNVTest
     @Test
     void testValues()
     {
-        assertEquals(0, VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV.valueOf(), VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV.toString() + " has an unexpected value.");
-        assertEquals(1, VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV.valueOf(), VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV.toString() + " has an unexpected value.");
-        assertEquals(VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV.valueOf(), VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_BEGIN_RANGE_NV.valueOf(), VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_BEGIN_RANGE_NV.toString() + " has an unexpected value.");
-        assertEquals(VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV.valueOf(), VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_END_RANGE_NV.valueOf(), VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_END_RANGE_NV.toString() + " has an unexpected value.");
-        assertEquals((VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV.valueOf() - VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV.valueOf() + 1), VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_RANGE_SIZE_NV.valueOf(), VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_RANGE_SIZE_NV.toString() + " has an unexpected value.");
-        assertEquals(0x7FFFFFFF, VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_MAX_ENUM_NV.valueOf(), VkAccelerationStructureTypeNV.VK_ACCELERATION_STRUCTURE_TYPE_MAX_ENUM_NV.toString() + " has an unexpected value.");
+        assertEquals(0, VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV.valueOf(), VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV.toString() + " has an unexpected value.");
+        assertEquals(1, VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV.valueOf(), VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV.toString() + " has an unexpected value.");
+        assertEquals(VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV.valueOf(), VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_BEGIN_RANGE_NV.valueOf(), VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_BEGIN_RANGE_NV.toString() + " has an unexpected value.");
+        assertEquals(VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV.valueOf(), VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_END_RANGE_NV.valueOf(), VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_END_RANGE_NV.toString() + " has an unexpected value.");
+        assertEquals((VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_NV.valueOf() - VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_NV.valueOf() + 1), VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_RANGE_SIZE_NV.valueOf(), VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_RANGE_SIZE_NV.toString() + " has an unexpected value.");
+        assertEquals(0x7FFFFFFF, VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_MAX_ENUM_NV.valueOf(), VkAccelerationStructureTypeKHR.VK_ACCELERATION_STRUCTURE_TYPE_MAX_ENUM_NV.toString() + " has an unexpected value.");
     }
 }

@@ -19,9 +19,6 @@ public enum VkCoverageReductionModeNV
 {
     VK_COVERAGE_REDUCTION_MODE_MERGE_NV(0),
     VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV(1),
-    VK_COVERAGE_REDUCTION_MODE_BEGIN_RANGE_NV(VK_COVERAGE_REDUCTION_MODE_MERGE_NV.valueOf()),
-    VK_COVERAGE_REDUCTION_MODE_END_RANGE_NV(VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV.valueOf()),
-    VK_COVERAGE_REDUCTION_MODE_RANGE_SIZE_NV(VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV.valueOf() - VK_COVERAGE_REDUCTION_MODE_MERGE_NV.valueOf() + 1),
     VK_COVERAGE_REDUCTION_MODE_MAX_ENUM_NV(0x7FFFFFFF);
 
     private int value;
@@ -44,9 +41,6 @@ public enum VkCoverageReductionModeNV
                 break;
         }
 
-        if (inputValue == (VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV.valueOf() - VK_COVERAGE_REDUCTION_MODE_MERGE_NV.valueOf() + 1))
-            result = VK_COVERAGE_REDUCTION_MODE_RANGE_SIZE_NV;
-        
         if (result == null)
             throw new IllegalArgumentException("Illegal value specified for this Enum.");
 

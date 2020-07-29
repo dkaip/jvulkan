@@ -19,14 +19,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkGeometryTypeNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkGeometryTypeKHR;
 
 class VkGeometryTypeNVTest
 {
     @Test
     void testNumberOfElements()
     {
-        VkGeometryTypeNV[] values = VkGeometryTypeNV.values();
+        VkGeometryTypeKHR[] values = VkGeometryTypeKHR.values();
         assertEquals(6, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
@@ -34,11 +34,11 @@ class VkGeometryTypeNVTest
     @Test
     void testValues()
     {
-        assertEquals(0, VkGeometryTypeNV.VK_GEOMETRY_TYPE_TRIANGLES_NV.valueOf(), VkGeometryTypeNV.VK_GEOMETRY_TYPE_TRIANGLES_NV.toString() + " has an unexpected value.");
-        assertEquals(1, VkGeometryTypeNV.VK_GEOMETRY_TYPE_AABBS_NV.valueOf(), VkGeometryTypeNV.VK_GEOMETRY_TYPE_AABBS_NV.toString() + " has an unexpected value.");
-        assertEquals(VkGeometryTypeNV.VK_GEOMETRY_TYPE_TRIANGLES_NV.valueOf(), VkGeometryTypeNV.VK_GEOMETRY_TYPE_BEGIN_RANGE_NV.valueOf(), VkGeometryTypeNV.VK_GEOMETRY_TYPE_BEGIN_RANGE_NV.toString() + " has an unexpected value.");
-        assertEquals(VkGeometryTypeNV.VK_GEOMETRY_TYPE_AABBS_NV.valueOf(), VkGeometryTypeNV.VK_GEOMETRY_TYPE_END_RANGE_NV.valueOf(), VkGeometryTypeNV.VK_GEOMETRY_TYPE_END_RANGE_NV.toString() + " has an unexpected value.");
-        assertEquals((VkGeometryTypeNV.VK_GEOMETRY_TYPE_AABBS_NV.valueOf() - VkGeometryTypeNV.VK_GEOMETRY_TYPE_TRIANGLES_NV.valueOf() + 1), VkGeometryTypeNV.VK_GEOMETRY_TYPE_RANGE_SIZE_NV.valueOf(), VkGeometryTypeNV.VK_GEOMETRY_TYPE_RANGE_SIZE_NV.toString() + " has an unexpected value.");
-        assertEquals(0x7FFFFFFF, VkGeometryTypeNV.VK_GEOMETRY_TYPE_MAX_ENUM_NV.valueOf(), VkGeometryTypeNV.VK_GEOMETRY_TYPE_MAX_ENUM_NV.toString() + " has an unexpected value.");
+        assertEquals(0, VkGeometryTypeKHR.VK_GEOMETRY_TYPE_TRIANGLES_NV.valueOf(), VkGeometryTypeKHR.VK_GEOMETRY_TYPE_TRIANGLES_NV.toString() + " has an unexpected value.");
+        assertEquals(1, VkGeometryTypeKHR.VK_GEOMETRY_TYPE_AABBS_NV.valueOf(), VkGeometryTypeKHR.VK_GEOMETRY_TYPE_AABBS_NV.toString() + " has an unexpected value.");
+        assertEquals(VkGeometryTypeKHR.VK_GEOMETRY_TYPE_TRIANGLES_NV.valueOf(), VkGeometryTypeKHR.VK_GEOMETRY_TYPE_BEGIN_RANGE_NV.valueOf(), VkGeometryTypeKHR.VK_GEOMETRY_TYPE_BEGIN_RANGE_NV.toString() + " has an unexpected value.");
+        assertEquals(VkGeometryTypeKHR.VK_GEOMETRY_TYPE_AABBS_NV.valueOf(), VkGeometryTypeKHR.VK_GEOMETRY_TYPE_END_RANGE_NV.valueOf(), VkGeometryTypeKHR.VK_GEOMETRY_TYPE_END_RANGE_NV.toString() + " has an unexpected value.");
+        assertEquals((VkGeometryTypeKHR.VK_GEOMETRY_TYPE_AABBS_NV.valueOf() - VkGeometryTypeKHR.VK_GEOMETRY_TYPE_TRIANGLES_NV.valueOf() + 1), VkGeometryTypeKHR.VK_GEOMETRY_TYPE_RANGE_SIZE_NV.valueOf(), VkGeometryTypeKHR.VK_GEOMETRY_TYPE_RANGE_SIZE_NV.toString() + " has an unexpected value.");
+        assertEquals(0x7FFFFFFF, VkGeometryTypeKHR.VK_GEOMETRY_TYPE_MAX_ENUM_NV.valueOf(), VkGeometryTypeKHR.VK_GEOMETRY_TYPE_MAX_ENUM_NV.toString() + " has an unexpected value.");
     }
 }

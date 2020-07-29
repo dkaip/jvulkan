@@ -19,26 +19,26 @@ import java.util.EnumSet;
 
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkGeometryFlagBitsNV;
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkGeometryTypeNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkGeometryFlagBitsKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkGeometryTypeKHR;
 
 public class VkGeometryNV extends VulkanCreateInfoStructure
 {
-    private VkGeometryTypeNV               geometryType;
-    private VkGeometryDataNV               geometry;
-    private EnumSet<VkGeometryFlagBitsNV>  flags = EnumSet.noneOf(VkGeometryFlagBitsNV.class);
+    private VkGeometryTypeKHR               geometryType;
+    private VkGeometryDataNV                geometry;
+    private EnumSet<VkGeometryFlagBitsKHR>  flags = EnumSet.noneOf(VkGeometryFlagBitsKHR.class);
 
     public VkGeometryNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_GEOMETRY_NV);
     }
 
-    public VkGeometryTypeNV getGeometryType()
+    public VkGeometryTypeKHR getGeometryType()
     {
         return geometryType;
     }
 
-    public void setGeometryType(VkGeometryTypeNV geometryType)
+    public void setGeometryType(VkGeometryTypeKHR geometryType)
     {
         this.geometryType = geometryType;
     }
@@ -53,12 +53,12 @@ public class VkGeometryNV extends VulkanCreateInfoStructure
         this.geometry = geometry;
     }
 
-    public EnumSet<VkGeometryFlagBitsNV> getFlags()
+    public EnumSet<VkGeometryFlagBitsKHR> getFlags()
     {
         return flags;
     }
 
-    public void setFlags(EnumSet<VkGeometryFlagBitsNV> flags)
+    public void setFlags(EnumSet<VkGeometryFlagBitsKHR> flags)
     {
         this.flags = flags;
     }

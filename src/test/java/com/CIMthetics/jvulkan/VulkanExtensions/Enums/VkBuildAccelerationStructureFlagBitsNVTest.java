@@ -19,14 +19,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkBuildAccelerationStructureFlagBitsNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkBuildAccelerationStructureFlagBitsKHR;
 
 class VkBuildAccelerationStructureFlagBitsNVTest
 {
     @Test
     void testNumberOfElements()
     {
-        VkBuildAccelerationStructureFlagBitsNV[] values = VkBuildAccelerationStructureFlagBitsNV.values();
+        VkBuildAccelerationStructureFlagBitsKHR[] values = VkBuildAccelerationStructureFlagBitsKHR.values();
         assertEquals(6, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
@@ -34,11 +34,11 @@ class VkBuildAccelerationStructureFlagBitsNVTest
     @Test
     void testValues()
     {
-        assertEquals(0x00000001, VkBuildAccelerationStructureFlagBitsNV.VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_NV.valueOf(), VkBuildAccelerationStructureFlagBitsNV.VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_NV.toString() + " has an unexpected value.");
-        assertEquals(0x00000002, VkBuildAccelerationStructureFlagBitsNV.VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_NV.valueOf(), VkBuildAccelerationStructureFlagBitsNV.VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_NV.toString() + " has an unexpected value.");
-        assertEquals(0x00000004, VkBuildAccelerationStructureFlagBitsNV.VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV.valueOf(), VkBuildAccelerationStructureFlagBitsNV.VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV.toString() + " has an unexpected value.");
-        assertEquals(0x00000008, VkBuildAccelerationStructureFlagBitsNV.VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NV.valueOf(), VkBuildAccelerationStructureFlagBitsNV.VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NV.toString() + " has an unexpected value.");
-        assertEquals(0x00000010, VkBuildAccelerationStructureFlagBitsNV.VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_NV.valueOf(), VkBuildAccelerationStructureFlagBitsNV.VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_NV.toString() + " has an unexpected value.");
-        assertEquals(0x7FFFFFFF, VkBuildAccelerationStructureFlagBitsNV.VK_BUILD_ACCELERATION_STRUCTURE_FLAG_BITS_MAX_ENUM_NV.valueOf(), VkBuildAccelerationStructureFlagBitsNV.VK_BUILD_ACCELERATION_STRUCTURE_FLAG_BITS_MAX_ENUM_NV.toString() + " has an unexpected value.");
+        assertEquals(0x00000001, VkBuildAccelerationStructureFlagBitsKHR.VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_NV.valueOf(), VkBuildAccelerationStructureFlagBitsKHR.VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_UPDATE_BIT_NV.toString() + " has an unexpected value.");
+        assertEquals(0x00000002, VkBuildAccelerationStructureFlagBitsKHR.VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_NV.valueOf(), VkBuildAccelerationStructureFlagBitsKHR.VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_NV.toString() + " has an unexpected value.");
+        assertEquals(0x00000004, VkBuildAccelerationStructureFlagBitsKHR.VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV.valueOf(), VkBuildAccelerationStructureFlagBitsKHR.VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_TRACE_BIT_NV.toString() + " has an unexpected value.");
+        assertEquals(0x00000008, VkBuildAccelerationStructureFlagBitsKHR.VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NV.valueOf(), VkBuildAccelerationStructureFlagBitsKHR.VK_BUILD_ACCELERATION_STRUCTURE_PREFER_FAST_BUILD_BIT_NV.toString() + " has an unexpected value.");
+        assertEquals(0x00000010, VkBuildAccelerationStructureFlagBitsKHR.VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_NV.valueOf(), VkBuildAccelerationStructureFlagBitsKHR.VK_BUILD_ACCELERATION_STRUCTURE_LOW_MEMORY_BIT_NV.toString() + " has an unexpected value.");
+        assertEquals(0x7FFFFFFF, VkBuildAccelerationStructureFlagBitsKHR.VK_BUILD_ACCELERATION_STRUCTURE_FLAG_BITS_MAX_ENUM_NV.valueOf(), VkBuildAccelerationStructureFlagBitsKHR.VK_BUILD_ACCELERATION_STRUCTURE_FLAG_BITS_MAX_ENUM_NV.toString() + " has an unexpected value.");
     }
 }

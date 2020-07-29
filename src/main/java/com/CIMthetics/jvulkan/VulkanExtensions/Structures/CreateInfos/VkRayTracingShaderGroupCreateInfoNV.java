@@ -17,11 +17,11 @@ package com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos;
 
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkRayTracingShaderGroupTypeNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkRayTracingShaderGroupTypeKHR;
 
 public class VkRayTracingShaderGroupCreateInfoNV extends VulkanCreateInfoStructure
 {
-    private VkRayTracingShaderGroupTypeNV   type;
+    private VkRayTracingShaderGroupTypeKHR  type;
     private int                             generalShader;
     private int                             closestHitShader;
     private int                             anyHitShader;
@@ -32,12 +32,12 @@ public class VkRayTracingShaderGroupCreateInfoNV extends VulkanCreateInfoStructu
         super(VkStructureType.VK_STRUCTURE_TYPE_RAY_TRACING_SHADER_GROUP_CREATE_INFO_NV);
     }
 
-    public VkRayTracingShaderGroupTypeNV getType()
+    public VkRayTracingShaderGroupTypeKHR getType()
     {
         return type;
     }
 
-    public void setType(VkRayTracingShaderGroupTypeNV type)
+    public void setType(VkRayTracingShaderGroupTypeKHR type)
     {
         this.type = type;
     }

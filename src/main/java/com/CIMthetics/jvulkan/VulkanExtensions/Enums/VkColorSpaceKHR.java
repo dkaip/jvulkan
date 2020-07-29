@@ -35,9 +35,6 @@ public enum VkColorSpaceKHR
     VK_COLOR_SPACE_DISPLAY_NATIVE_AMD(1000213000),
     VK_COLORSPACE_SRGB_NONLINEAR_KHR(VK_COLOR_SPACE_SRGB_NONLINEAR_KHR.valueOf()),
     VK_COLOR_SPACE_DCI_P3_LINEAR_EXT(VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT.valueOf()),
-    VK_COLOR_SPACE_BEGIN_RANGE_KHR(VK_COLOR_SPACE_SRGB_NONLINEAR_KHR.valueOf()),
-    VK_COLOR_SPACE_END_RANGE_KHR(VK_COLOR_SPACE_SRGB_NONLINEAR_KHR.valueOf()),
-    VK_COLOR_SPACE_RANGE_SIZE_KHR((VK_COLOR_SPACE_SRGB_NONLINEAR_KHR.valueOf() - VK_COLOR_SPACE_SRGB_NONLINEAR_KHR.valueOf() + 1)),
     VK_COLOR_SPACE_MAX_ENUM_KHR(0x7FFFFFFF);
 
     private int value;
@@ -99,9 +96,6 @@ public enum VkColorSpaceKHR
                 break;
         }
 
-        if (inputValue == (VK_COLOR_SPACE_SRGB_NONLINEAR_KHR.valueOf() - VK_COLOR_SPACE_SRGB_NONLINEAR_KHR.valueOf() + 1))
-            result = VK_COLOR_SPACE_RANGE_SIZE_KHR;
-        
         if (result == null)
             throw new IllegalArgumentException("Illegal value specified for this Enum.");
 

@@ -28,7 +28,7 @@ public class VkBindBufferMemoryInfo extends VulkanCreateInfoStructure
 
     public VkBindBufferMemoryInfo()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO_KHR);
+        super(VkStructureType.VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_INFO);
     }
 
     public VkBuffer getBuffer()

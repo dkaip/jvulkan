@@ -95,6 +95,7 @@ import com.CIMthetics.jvulkan.VulkanCore.Structures.VkBindBufferMemoryInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkBindImageMemoryInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkBindSparseInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkBufferCopy;
+import com.CIMthetics.jvulkan.VulkanCore.Structures.VkBufferDeviceAddressInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkBufferImageCopy;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkBufferMemoryBarrier;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkBufferMemoryRequirementsInfo2;
@@ -142,6 +143,8 @@ import com.CIMthetics.jvulkan.VulkanCore.Structures.VkPhysicalDeviceSparseImageF
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkQueueFamilyProperties;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkQueueFamilyProperties2;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkRect2D;
+import com.CIMthetics.jvulkan.VulkanCore.Structures.VkSemaphoreSignalInfo;
+import com.CIMthetics.jvulkan.VulkanCore.Structures.VkSemaphoreWaitInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkSparseImageFormatProperties;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkSparseImageFormatProperties2;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkSparseImageMemoryRequirements;
@@ -177,17 +180,17 @@ import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkPresentInfoKHR
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkQueryPoolCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkRenderPassBeginInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkRenderPassCreateInfo;
-import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkRenderPassCreateInfo2KHR;
+import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkRenderPassCreateInfo2;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkSamplerCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkSamplerYcbcrConversionCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkSemaphoreCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkShaderModuleCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkSubmitInfo;
-import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkSubpassBeginInfoKHR;
-import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkSubpassEndInfoKHR;
+import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkSubpassBeginInfo;
+import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkSubpassEndInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkSwapchainCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkCoarseSampleOrderTypeNV;
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkCopyAccelerationStructureModeNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkCopyAccelerationStructureModeKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDebugReportFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDebugReportObjectTypeEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDebugUtilsMessageSeverityFlagBitsEXT;
@@ -195,27 +198,25 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDebugUtilsMessageTypeFlag
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDeviceGroupPresentModeFlagBitsKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkExternalMemoryHandleTypeFlagBitsNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkObjectEntryTypeNVX;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkPerformanceParameterTypeINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkSurfaceCounterFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkTimeDomainEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.CheckpointMarker;
-import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkAccelerationStructureNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkAccelerationStructureKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkDebugReportCallbackEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkDeviceAddress;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkDisplayKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkDisplayModeKHR;
-import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkIndirectCommandsLayoutNVX;
+import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkIndirectCommandsLayoutNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkObjectTableNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkPerformanceConfigurationINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkSurfaceKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkValidationCacheEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkAccelerationStructureInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkAccelerationStructureMemoryRequirementsInfoNV;
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkBindAccelerationStructureMemoryInfoNV;
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkBufferDeviceAddressInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkBindAccelerationStructureMemoryInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkCalibratedTimestampInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkCheckpointDataNV;
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkCmdProcessCommandsInfoNVX;
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkCmdReserveSpaceForCommandsInfoNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkCoarseSampleOrderCustomNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkConditionalRenderingBeginInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkCooperativeMatrixPropertiesNV;
@@ -228,8 +229,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkDebugUtilsMessengerC
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkDebugUtilsObjectNameInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkDebugUtilsObjectTagInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkDeviceEventInfoEXT;
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkDeviceGeneratedCommandsFeaturesNVX;
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkDeviceGeneratedCommandsLimitsNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkDeviceGroupPresentCapabilitiesKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkDisplayEventInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkDisplayModeProperties2KHR;
@@ -262,7 +261,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPastPresentationTimi
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceConfigurationAcquireInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceMarkerInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceOverrideInfoINTEL;
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceParameterTypeINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceStreamMarkerInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPhysicalDeviceImageFormatInfo2;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPhysicalDeviceSurfaceInfo2KHR;
@@ -274,8 +272,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPipelineInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkRefreshCycleDurationGOOGLE;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkSampleLocationsInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkSemaphoreGetFdInfoKHR;
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkSemaphoreSignalInfoKHR;
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkSemaphoreWaitInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkShadingRatePaletteNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkSurfaceCapabilities2EXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkSurfaceCapabilities2KHR;
@@ -287,8 +283,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkDebugUti
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkDisplayModeCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkDisplaySurfaceCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkHeadlessSurfaceCreateInfoEXT;
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkIndirectCommandsLayoutCreateInfoNVX;
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkObjectTableCreateInfoNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkPerformanceValueINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkRayTracingPipelineCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkValidationCacheCreateInfoEXT;
@@ -314,7 +308,7 @@ public class VulkanFunctions
 {
     private Logger log = LoggerFactory.getLogger(VulkanFunctions.class.getName());
 
-    private static NativeProxies v11ProxyLibrary;
+    private static NativeProxies nativeFunctionsProxyLibrary;
     private static String pathToNativeLibrary;
     private static String nativeLibraryName;
     
@@ -331,7 +325,7 @@ public class VulkanFunctions
         System.load(VulkanFunctions.pathToNativeLibrary + VulkanFunctions.nativeLibraryName);
         log.trace("Loaded native library:{}{}", VulkanFunctions.pathToNativeLibrary, VulkanFunctions.nativeLibraryName);
 
-        v11ProxyLibrary = new NativeProxies();
+        nativeFunctionsProxyLibrary = new NativeProxies();
     }
     
 //    static
@@ -406,12 +400,12 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkInstance vkInstance)
     {
-        return v11ProxyLibrary.vkCreateInstance(instanceCreateInfo, alternateAllocator, vkInstance);
+        return nativeFunctionsProxyLibrary.vkCreateInstance(instanceCreateInfo, alternateAllocator, vkInstance);
     }
     
     public static void vkDestroyInstance(VkInstance vkInstance, VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyInstance(vkInstance, alternateAllocator);
+        nativeFunctionsProxyLibrary.vkDestroyInstance(vkInstance, alternateAllocator);
     }
     
     /**
@@ -428,7 +422,7 @@ public class VulkanFunctions
         if (collectionOfPhysicalDevices == null)
             throw new NullPointerException("collectionOfPhysicalDevices must not be null.");
             
-        return v11ProxyLibrary.vkEnumeratePhysicalDevices(vkInstance, collectionOfPhysicalDevices);
+        return nativeFunctionsProxyLibrary.vkEnumeratePhysicalDevices(vkInstance, collectionOfPhysicalDevices);
     }
     
     /**
@@ -449,7 +443,7 @@ public class VulkanFunctions
         if (collectionOfExtensionProperties == null)
             throw new NullPointerException("collectionOfExtensionProperties must not be null.");
         
-        return v11ProxyLibrary.vkEnumerateDeviceExtensionProperties(
+        return nativeFunctionsProxyLibrary.vkEnumerateDeviceExtensionProperties(
                 physicalDevice,
                 layerName,
                 collectionOfExtensionProperties);
@@ -460,7 +454,7 @@ public class VulkanFunctions
             VkCommandBufferAllocateInfo commandBufferAllocateInfo,
             Collection<VkCommandBuffer> commandBufferCollection)
     {
-        return v11ProxyLibrary.vkAllocateCommandBuffers(
+        return nativeFunctionsProxyLibrary.vkAllocateCommandBuffers(
                 vulkanLogicalDevice,
                 commandBufferAllocateInfo,
                 commandBufferCollection);
@@ -471,7 +465,7 @@ public class VulkanFunctions
             VkDescriptorSetAllocateInfo vkDescriptorSetAllocateInfo,
             Collection<VkDescriptorSet> descriptorSets)
     {
-        return v11ProxyLibrary.vkAllocateDescriptorSets(
+        return nativeFunctionsProxyLibrary.vkAllocateDescriptorSets(
                 vulkanLogicalDevice,
                 vkDescriptorSetAllocateInfo,
                 descriptorSets);
@@ -483,7 +477,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkDeviceMemory vkDeviceMemory)
     {
-        return v11ProxyLibrary.vkAllocateMemory(
+        return nativeFunctionsProxyLibrary.vkAllocateMemory(
                 vulkanLogicalDevice,
                 vkMemoryAllocateInfo,
                 alternateAllocator,
@@ -500,7 +494,7 @@ public class VulkanFunctions
         if (collectionOfQueueFamilyProperties == null)
             throw new NullPointerException("collectionOfQueueFamilyProperties must not be null.");
             
-        v11ProxyLibrary.vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, collectionOfQueueFamilyProperties);
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, collectionOfQueueFamilyProperties);
     }
     
     
@@ -512,7 +506,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkDebugReportCallbackEXT callback)
     {
-        return v11ProxyLibrary.vkCreateDebugReportCallbackEXT(
+        return nativeFunctionsProxyLibrary.vkCreateDebugReportCallbackEXT(
                 vkInstance,
                 dbgCreateInfo,
                 alternateAllocator,
@@ -524,7 +518,7 @@ public class VulkanFunctions
             VkDebugReportCallbackEXT debugCallbackHandle,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyDebugReportCallbackEXT(vkInstance, debugCallbackHandle, alternateAllocator);
+        nativeFunctionsProxyLibrary.vkDestroyDebugReportCallbackEXT(vkInstance, debugCallbackHandle, alternateAllocator);
     }
 
     /**
@@ -551,35 +545,35 @@ public class VulkanFunctions
             int queueIndex,
             VkQueue queue)
     {
-        v11ProxyLibrary.vkGetDeviceQueue(logicalDevice, queueFamilyIndex, queueIndex, queue);
+        nativeFunctionsProxyLibrary.vkGetDeviceQueue(logicalDevice, queueFamilyIndex, queueIndex, queue);
     }
     
     public static void vkGetPhysicalDeviceProperties(
             VkPhysicalDevice physicalDevice,
             VkPhysicalDeviceProperties deviceProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceProperties(physicalDevice, deviceProperties);
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceProperties(physicalDevice, deviceProperties);
     }
     
     public static void vkGetPhysicalDeviceProperties2(
             VkPhysicalDevice physicalDevice,
             VkPhysicalDeviceProperties2 deviceProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceProperties2(physicalDevice, deviceProperties);
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceProperties2(physicalDevice, deviceProperties);
     }
     
     public static void vkGetPhysicalDeviceProperties2KHR(
             VkPhysicalDevice physicalDevice,
             VkPhysicalDeviceProperties2 deviceProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceProperties2KHR(physicalDevice, deviceProperties);
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceProperties2KHR(physicalDevice, deviceProperties);
     }
     
     public static void vkGetPhysicalDeviceFeatures(
             VkPhysicalDevice physicalDevice,
             VkPhysicalDeviceFeatures deviceFeatures)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceFeatures(physicalDevice, deviceFeatures);
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceFeatures(physicalDevice, deviceFeatures);
     }
     
     public static VkResult vkCreateDevice(
@@ -597,7 +591,7 @@ public class VulkanFunctions
         if (device == null)
             throw new NullPointerException("device must not be null.");
         
-        return v11ProxyLibrary.vkCreateDevice(
+        return nativeFunctionsProxyLibrary.vkCreateDevice(
                 physicalDevice,
                 deviceCreateInfo,
                 alternateAllocator,
@@ -611,7 +605,7 @@ public class VulkanFunctions
         if (device == null)
             throw new NullPointerException("device must not be null.");
         
-        v11ProxyLibrary.vkDestroyDevice(device, alternateAllocator);
+        nativeFunctionsProxyLibrary.vkDestroyDevice(device, alternateAllocator);
     }
     
     public static VkResult vkCreateWaylandSurfaceKHR(
@@ -620,7 +614,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkSurfaceKHR vkSurfaceVKR)
     {
-        return v11ProxyLibrary.vkCreateWaylandSurfaceKHR(
+        return nativeFunctionsProxyLibrary.vkCreateWaylandSurfaceKHR(
                 vkInstance,
                 vkWaylandSurfaceCreateInfoKHR,
                 alternateAllocator,
@@ -632,7 +626,7 @@ public class VulkanFunctions
             int queueFamilyIndex,
             WlDisplayHandle waylandDisplay)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceWaylandPresentationSupportKHR(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceWaylandPresentationSupportKHR(
                 physicalDevice,
                 queueFamilyIndex,
                 waylandDisplay);
@@ -644,7 +638,7 @@ public class VulkanFunctions
             VkSurfaceKHR windowSurfaceHandle,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroySurfaceKHR(
+        nativeFunctionsProxyLibrary.vkDestroySurfaceKHR(
                 vulkanInstance,
                 windowSurfaceHandle,
                 alternateAllocator);
@@ -655,7 +649,7 @@ public class VulkanFunctions
             VkSurfaceKHR     surface,
             VkSurfaceCapabilitiesKHR surfaceCapabilities)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
                 physicalDevice,
                 surface,
                 surfaceCapabilities);
@@ -666,7 +660,7 @@ public class VulkanFunctions
             VkSurfaceKHR     surface,
             Collection<VkSurfaceFormatKHR> surfaceFormats)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceSurfaceFormatsKHR(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceSurfaceFormatsKHR(
                 physicalDevice,
                 surface,
                 surfaceFormats);
@@ -677,7 +671,7 @@ public class VulkanFunctions
             VkSurfaceKHR     surface,
             Collection<VkPresentModeKHR> presentationModes)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceSurfacePresentModesKHR(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceSurfacePresentModesKHR(
                 physicalDevice,
                 surface,
                 presentationModes);
@@ -698,7 +692,7 @@ public class VulkanFunctions
             VkSurfaceKHR surface,
             BooleanReturnValue isSupported)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceSurfaceSupportKHR(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceSurfaceSupportKHR(
                 physicalDevice,
                 queueFamilyIndex,
                 surface,
@@ -711,7 +705,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkSwapchainKHR swapchainHandle)
     {
-        return v11ProxyLibrary.vkCreateSwapchainKHR(
+        return nativeFunctionsProxyLibrary.vkCreateSwapchainKHR(
                 vulkanLogicalDevice,
                 swapchainCreateInfo,
                 alternateAllocator,
@@ -723,7 +717,7 @@ public class VulkanFunctions
             VkSwapchainKHR swapchainHandle,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroySwapchainKHR(
+        nativeFunctionsProxyLibrary.vkDestroySwapchainKHR(
                 vulkanLogicalDevice,
                 swapchainHandle,
                 alternateAllocator);
@@ -734,7 +728,7 @@ public class VulkanFunctions
             VkImageView imageViewHandle,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyImageView(
+        nativeFunctionsProxyLibrary.vkDestroyImageView(
                 vulkanLogicalDevice,
                 imageViewHandle,
                 alternateAllocator);
@@ -745,7 +739,7 @@ public class VulkanFunctions
             VkFramebuffer frameBufferHandle,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyFramebuffer(
+        nativeFunctionsProxyLibrary.vkDestroyFramebuffer(
                 vulkanLogicalDevice,
                 frameBufferHandle,
                 alternateAllocator);
@@ -756,7 +750,7 @@ public class VulkanFunctions
             VkRenderPass renderPassHandle,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyRenderPass(
+        nativeFunctionsProxyLibrary.vkDestroyRenderPass(
                 vulkanLogicalDevice,
                 renderPassHandle,
                 alternateAllocator);
@@ -767,7 +761,7 @@ public class VulkanFunctions
             VkPipelineLayout pipelineLayoutHandle,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyPipelineLayout(
+        nativeFunctionsProxyLibrary.vkDestroyPipelineLayout(
                 vulkanLogicalDevice,
                 pipelineLayoutHandle,
                 alternateAllocator);
@@ -778,7 +772,7 @@ public class VulkanFunctions
             VkPipeline pipelineHandle,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyPipeline(
+        nativeFunctionsProxyLibrary.vkDestroyPipeline(
                 vulkanLogicalDevice,
                 pipelineHandle,
                 alternateAllocator);
@@ -789,7 +783,7 @@ public class VulkanFunctions
             VkCommandPool commandPoolHandle,
             Collection<VkCommandBuffer> commandBufferHandles)
     {
-        v11ProxyLibrary.vkFreeCommandBuffers(
+        nativeFunctionsProxyLibrary.vkFreeCommandBuffers(
                 vulkanLogicalDevice,
                 commandPoolHandle,
                 commandBufferHandles);
@@ -800,7 +794,7 @@ public class VulkanFunctions
             VkImage imageHandle,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyImage(
+        nativeFunctionsProxyLibrary.vkDestroyImage(
                 vulkanLogicalDevice,
                 imageHandle,
                 alternateAllocator);
@@ -811,7 +805,7 @@ public class VulkanFunctions
             VkSwapchainKHR swapchain,
             Collection<VkImage> swapchainImages)
     {
-        return v11ProxyLibrary.vkGetSwapchainImagesKHR(
+        return nativeFunctionsProxyLibrary.vkGetSwapchainImagesKHR(
                 vulkanLogicalDevice,
                 swapchain,
                 swapchainImages);
@@ -823,7 +817,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkImageView imageViewHandle)
     {
-        return v11ProxyLibrary.vkCreateImageView(
+        return nativeFunctionsProxyLibrary.vkCreateImageView(
                 vulkanLogicalDevice,
                 imageViewCreateInfo,
                 alternateAllocator,
@@ -849,22 +843,22 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkRenderPass renderPassHandle)
     {
-        return v11ProxyLibrary.vkCreateRenderPass(
+        return nativeFunctionsProxyLibrary.vkCreateRenderPass(
                 vulkanLogicalDevice,
                 renderPassCreateInfo,
                 alternateAllocator,
                 renderPassHandle);
     }
     
-    public static VkResult vkCreateRenderPass2KHR(
+    public static VkResult vkCreateRenderPass2(
             VkDevice vulkanLogicalDevice,
-            VkRenderPassCreateInfo2KHR renderPassCreateInfo2KHR,
+            VkRenderPassCreateInfo2 renderPassCreateInfo2,
             VkAllocationCallbacks alternateAllocator,
             VkRenderPass renderPassHandle)
     {
-        return v11ProxyLibrary.vkCreateRenderPass2KHR(
+        return nativeFunctionsProxyLibrary.vkCreateRenderPass2(
                 vulkanLogicalDevice,
-                renderPassCreateInfo2KHR,
+                renderPassCreateInfo2,
                 alternateAllocator,
                 renderPassHandle);
     }
@@ -875,7 +869,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkShaderModule shaderModule)
     {
-        return v11ProxyLibrary.vkCreateShaderModule(
+        return nativeFunctionsProxyLibrary.vkCreateShaderModule(
                 vulkanLogicalDevice,
                 shaderModuleCreateInfo,
                 alternateAllocator,
@@ -888,7 +882,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkPipelineLayout pipelineLayout)
     {
-        return v11ProxyLibrary.vkCreatePipelineLayout(
+        return nativeFunctionsProxyLibrary.vkCreatePipelineLayout(
                 vulkanLogicalDevice,
                 pipelineLayoutCreateInfo,
                 alternateAllocator,
@@ -917,7 +911,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("The size of the pipelines collection needs to be the same size as the graphicsPipelineCreateInfos collection.");
         }
         
-        return v11ProxyLibrary.vkCreateGraphicsPipelines(
+        return nativeFunctionsProxyLibrary.vkCreateGraphicsPipelines(
                 vulkanLogicalDevice,
                 pipelineCache,
                 graphicsPipelineCreateInfos,
@@ -931,7 +925,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkFramebuffer framebuffer)
     {
-        return v11ProxyLibrary.vkCreateFramebuffer(
+        return nativeFunctionsProxyLibrary.vkCreateFramebuffer(
                 vulkanLogicalDevice,
                 vkFramebufferCreateInfo,
                 alternateAllocator,
@@ -944,7 +938,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkCommandPool commandPool)
     {
-        return v11ProxyLibrary.vkCreateCommandPool(
+        return nativeFunctionsProxyLibrary.vkCreateCommandPool(
                 vulkanLogicalDevice,
                 vkCommandPoolCreateInfo,
                 alternateAllocator,
@@ -955,7 +949,7 @@ public class VulkanFunctions
             VkCommandBuffer vkCommandBuffer,
             VkCommandBufferBeginInfo vkCommandBufferBeginInfo)
     {
-        return v11ProxyLibrary.vkBeginCommandBuffer(
+        return nativeFunctionsProxyLibrary.vkBeginCommandBuffer(
                 vkCommandBuffer,
                 vkCommandBufferBeginInfo);
     }
@@ -964,7 +958,7 @@ public class VulkanFunctions
             VkCommandBuffer vkCommandBuffer,
             VkConditionalRenderingBeginInfoEXT vkConditionalRenderingBeginInfoEXT)
     {
-        v11ProxyLibrary.vkCmdBeginConditionalRenderingEXT(
+        nativeFunctionsProxyLibrary.vkCmdBeginConditionalRenderingEXT(
                 vkCommandBuffer,
                 vkConditionalRenderingBeginInfoEXT);
     }
@@ -974,18 +968,18 @@ public class VulkanFunctions
             VkRenderPassBeginInfo vkRenderPassBeginInfo,
             VkSubpassContents vkSubpassContents)
     {
-        v11ProxyLibrary.vkCmdBeginRenderPass(
+        nativeFunctionsProxyLibrary.vkCmdBeginRenderPass(
                 vkCommandBuffer,
                 vkRenderPassBeginInfo,
                 vkSubpassContents);
     }
     
-    public static void vkCmdBeginRenderPass2KHR(
+    public static void vkCmdBeginRenderPass2(
             VkCommandBuffer vkCommandBuffer,
             VkRenderPassBeginInfo vkRenderPassBeginInfo,
-            VkSubpassBeginInfoKHR vkSubpassContents)
+            VkSubpassBeginInfo vkSubpassContents)
     {
-        v11ProxyLibrary.vkCmdBeginRenderPass2KHR(
+        nativeFunctionsProxyLibrary.vkCmdBeginRenderPass2(
                 vkCommandBuffer,
                 vkRenderPassBeginInfo,
                 vkSubpassContents);
@@ -996,7 +990,7 @@ public class VulkanFunctions
             VkPipelineBindPoint vkPipelineBindPoint,
             VkPipeline vkPipeline)
     {
-        v11ProxyLibrary.vkCmdBindPipeline(
+        nativeFunctionsProxyLibrary.vkCmdBindPipeline(
                 vkCommandBuffer,
                 vkPipelineBindPoint,
                 vkPipeline);
@@ -1007,7 +1001,7 @@ public class VulkanFunctions
             VkImageView imageView,
             VkImageLayout imageLayout)
     {
-        v11ProxyLibrary.vkCmdBindShadingRateImageNV(
+        nativeFunctionsProxyLibrary.vkCmdBindShadingRateImageNV(
                 vkCommandBuffer,
                 imageView,
                 imageLayout);
@@ -1020,7 +1014,7 @@ public class VulkanFunctions
             int firstVertex,
             int firstInstance)
     {
-        v11ProxyLibrary.vkCmdDraw(
+        nativeFunctionsProxyLibrary.vkCmdDraw(
                 vkCommandBuffer,
                 vertexCount,
                 instanceCount,
@@ -1031,35 +1025,35 @@ public class VulkanFunctions
     public static void vkCmdEndConditionalRenderingEXT(
             VkCommandBuffer vkCommandBuffer)
     {
-        v11ProxyLibrary.vkCmdEndConditionalRenderingEXT(
+        nativeFunctionsProxyLibrary.vkCmdEndConditionalRenderingEXT(
                 vkCommandBuffer);
     }
     
     public static void vkCmdEndRenderPass(
             VkCommandBuffer vkCommandBuffer)
     {
-        v11ProxyLibrary.vkCmdEndRenderPass(
+        nativeFunctionsProxyLibrary.vkCmdEndRenderPass(
                 vkCommandBuffer);
     }
     
-    public static void vkCmdEndRenderPass2KHR(
+    public static void vkCmdEndRenderPass2(
             VkCommandBuffer vkCommandBuffer,
-            VkSubpassEndInfoKHR subpassEndInfoKHR)
+            VkSubpassEndInfo subpassEndInfo)
     {
-        v11ProxyLibrary.vkCmdEndRenderPass2KHR(
+        nativeFunctionsProxyLibrary.vkCmdEndRenderPass2(
                 vkCommandBuffer,
-                subpassEndInfoKHR);
+                subpassEndInfo);
     }
     
-    public static void vkCmdNextSubpass2KHR(
+    public static void vkCmdNextSubpass2(
             VkCommandBuffer vkCommandBuffer,
-            VkSubpassBeginInfoKHR subpassBeginInfoKHR,
-            VkSubpassEndInfoKHR subpassEndInfoKHR)
+            VkSubpassBeginInfo subpassBeginInfo,
+            VkSubpassEndInfo subpassEndInfo)
     {
-        v11ProxyLibrary.vkCmdNextSubpass2KHR(
+        nativeFunctionsProxyLibrary.vkCmdNextSubpass2(
                 vkCommandBuffer,
-                subpassBeginInfoKHR,
-                subpassEndInfoKHR);
+                subpassBeginInfo,
+                subpassEndInfo);
     }
     
     public static void vkCmdSetCoarseSampleOrderNV(
@@ -1067,7 +1061,7 @@ public class VulkanFunctions
             VkCoarseSampleOrderTypeNV sampleOrderType,
             Collection<VkCoarseSampleOrderCustomNV> customSampleOrders)
     {
-        v11ProxyLibrary.vkCmdSetCoarseSampleOrderNV(
+        nativeFunctionsProxyLibrary.vkCmdSetCoarseSampleOrderNV(
                 vkCommandBuffer,
                 sampleOrderType,
                 customSampleOrders);
@@ -1078,7 +1072,7 @@ public class VulkanFunctions
             int firstViewport,
             Collection<VkShadingRatePaletteNV> shadingRatePalettes)
     {
-        v11ProxyLibrary.vkCmdSetViewportShadingRatePaletteNV(
+        nativeFunctionsProxyLibrary.vkCmdSetViewportShadingRatePaletteNV(
                 vkCommandBuffer,
                 firstViewport,
                 shadingRatePalettes);
@@ -1086,12 +1080,12 @@ public class VulkanFunctions
     
     public static void vkCmdWriteAccelerationStructuresPropertiesNV(
             VkCommandBuffer vkCommandBuffer,
-            Collection<VkAccelerationStructureNV> accelerationStructures,
+            Collection<VkAccelerationStructureKHR> accelerationStructures,
             VkQueryType queryType,
             VkQueryPool queryPool,
             int queryPoolIndex)
     {
-        v11ProxyLibrary.vkCmdWriteAccelerationStructuresPropertiesNV(
+        nativeFunctionsProxyLibrary.vkCmdWriteAccelerationStructuresPropertiesNV(
                 vkCommandBuffer,
                 accelerationStructures,
                 queryType,
@@ -1104,7 +1098,7 @@ public class VulkanFunctions
             VkPipeline pipeline,
             int shader)
     {
-        return v11ProxyLibrary.vkCompileDeferredNV(
+        return nativeFunctionsProxyLibrary.vkCompileDeferredNV(
                 vulkanLogicalDevice,
                 pipeline,
                 shader);
@@ -1113,7 +1107,7 @@ public class VulkanFunctions
     public static VkResult vkEndCommandBuffer(
             VkCommandBuffer vkCommandBuffer)
     {
-        return v11ProxyLibrary.vkEndCommandBuffer(
+        return nativeFunctionsProxyLibrary.vkEndCommandBuffer(
                 vkCommandBuffer);
     }
     
@@ -1122,7 +1116,7 @@ public class VulkanFunctions
             VkCommandPool commandommandPoolHandle,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyCommandPool(
+        nativeFunctionsProxyLibrary.vkDestroyCommandPool(
                 vulkanLogicalDevice,
                 commandommandPoolHandle,
                 alternateAllocator);
@@ -1134,7 +1128,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkSemaphore vkSemaphore)
     {
-        return v11ProxyLibrary.vkCreateSemaphore(
+        return nativeFunctionsProxyLibrary.vkCreateSemaphore(
                 vulkanLogicalDevice,
                 vkSemaphoreCreateInfo,
                 alternateAllocator,
@@ -1146,7 +1140,7 @@ public class VulkanFunctions
             VkSemaphore vkSemaphore,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroySemaphore(
+        nativeFunctionsProxyLibrary.vkDestroySemaphore(
                 vulkanLogicalDevice,
                 vkSemaphore,
                 alternateAllocator);
@@ -1158,7 +1152,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkFence vkFence)
     {
-        return v11ProxyLibrary.vkCreateFence(
+        return nativeFunctionsProxyLibrary.vkCreateFence(
                 vulkanLogicalDevice,
                 vkFenceCreateInfo,
                 alternateAllocator,
@@ -1170,7 +1164,7 @@ public class VulkanFunctions
             VkFence vkFence,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyFence(
+        nativeFunctionsProxyLibrary.vkDestroyFence(
                 vulkanLogicalDevice,
                 vkFence,
                 alternateAllocator);
@@ -1179,7 +1173,7 @@ public class VulkanFunctions
     public static VkResult vkDeviceWaitIdle(
             VkDevice vulkanLogicalDevice)
     {
-        return v11ProxyLibrary.vkDeviceWaitIdle(
+        return nativeFunctionsProxyLibrary.vkDeviceWaitIdle(
                 vulkanLogicalDevice);
     }
     
@@ -1188,7 +1182,7 @@ public class VulkanFunctions
             VkShaderModule vkShaderModule,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyShaderModule(
+        nativeFunctionsProxyLibrary.vkDestroyShaderModule(
                 vulkanLogicalDevice,
                 vkShaderModule,
                 alternateAllocator);
@@ -1200,7 +1194,7 @@ public class VulkanFunctions
             boolean waitAll,
             long timeout)
     {
-        return v11ProxyLibrary.vkWaitForFences(
+        return nativeFunctionsProxyLibrary.vkWaitForFences(
                 vulkanLogicalDevice,
                 vkFences,
                 waitAll,
@@ -1211,7 +1205,7 @@ public class VulkanFunctions
             VkDevice vulkanLogicalDevice,
             Collection<VkFence> vkFences)
     {
-        v11ProxyLibrary.vkResetFences(
+        nativeFunctionsProxyLibrary.vkResetFences(
                 vulkanLogicalDevice,
                 vkFences);
     }
@@ -1222,7 +1216,7 @@ public class VulkanFunctions
             VkAcquireNextImageInfoKHR acquireInfo,
             int imageIndex)
     {
-        return v11ProxyLibrary.vkAcquireNextImage2KHR(
+        return nativeFunctionsProxyLibrary.vkAcquireNextImage2KHR(
                 vulkanLogicalDevice,
                 acquireInfo,
                 imageIndex);
@@ -1236,7 +1230,7 @@ public class VulkanFunctions
             VkFence fence,
             IntReturnValue imageIndex)
     {
-        return v11ProxyLibrary.vkAcquireNextImageKHR(
+        return nativeFunctionsProxyLibrary.vkAcquireNextImageKHR(
                 vulkanLogicalDevice,
                 swapchain,
                 timeout,
@@ -1250,7 +1244,7 @@ public class VulkanFunctions
             Collection<VkSubmitInfo> submits,
             VkFence fence)
     {
-        return v11ProxyLibrary.vkQueueSubmit(
+        return nativeFunctionsProxyLibrary.vkQueueSubmit(
                 queue,
                 submits,
                 fence);
@@ -1274,7 +1268,7 @@ public class VulkanFunctions
         Collection<VkSubmitInfo> submitInfoCollection = new LinkedList<VkSubmitInfo>();
         submitInfoCollection.add(submitInfo);
 
-        return v11ProxyLibrary.vkQueueSubmit(
+        return nativeFunctionsProxyLibrary.vkQueueSubmit(
                 queue,
                 submitInfoCollection,
                 fence);
@@ -1284,7 +1278,7 @@ public class VulkanFunctions
             VkQueue queue,
             VkPresentInfoKHR vkPresentInfoKHR)
     {
-        return v11ProxyLibrary.vkQueuePresentKHR(
+        return nativeFunctionsProxyLibrary.vkQueuePresentKHR(
                 queue,
                 vkPresentInfoKHR);
     }
@@ -1293,9 +1287,9 @@ public class VulkanFunctions
             VkDevice vkDevice,
             VkAccelerationStructureCreateInfoNV createInfo,
             VkAllocationCallbacks alternateAllocator,
-            VkAccelerationStructureNV accelerationStructure)
+            VkAccelerationStructureKHR accelerationStructure)
     {
-        return v11ProxyLibrary.vkCreateAccelerationStructureNV(
+        return nativeFunctionsProxyLibrary.vkCreateAccelerationStructureNV(
                 vkDevice,
                 createInfo,
                 alternateAllocator,
@@ -1308,7 +1302,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkBuffer vkBuffer)
     {
-        return v11ProxyLibrary.vkCreateBuffer(
+        return nativeFunctionsProxyLibrary.vkCreateBuffer(
                 vulkanLogicalDevice,
                 vkBufferCreateInfo,
                 alternateAllocator,
@@ -1321,7 +1315,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkBufferView vkBufferView)
     {
-        return v11ProxyLibrary.vkCreateBufferView(
+        return nativeFunctionsProxyLibrary.vkCreateBufferView(
                 vulkanLogicalDevice,
                 vkBufferViewCreateInfo,
                 alternateAllocator,
@@ -1340,7 +1334,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("Pipelines argument must not be null.  I should be an empty collection.");
         }
         
-        return v11ProxyLibrary.vkCreateComputePipelines(
+        return nativeFunctionsProxyLibrary.vkCreateComputePipelines(
                 vulkanLogicalDevice,
                 vkPipelineCache,
                 createInfos,
@@ -1355,7 +1349,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             Collection<VkPipeline> pipelines)
     {
-        return v11ProxyLibrary.vkCreateRayTracingPipelinesNV(
+        return nativeFunctionsProxyLibrary.vkCreateRayTracingPipelinesNV(
                 vulkanLogicalDevice,
                 pipelineCache,
                 createInfos,
@@ -1374,10 +1368,10 @@ public class VulkanFunctions
      */
     public static VkResult vkGetAccelerationStructureHandleNV(
             VkDevice vulkanLogicalDevice,
-            VkAccelerationStructureNV accelerationStructure,
-            Collection<VkAccelerationStructureNV> data)
+            VkAccelerationStructureKHR accelerationStructure,
+            Collection<VkAccelerationStructureKHR> data)
     {
-        return v11ProxyLibrary.vkGetAccelerationStructureHandleNV(
+        return nativeFunctionsProxyLibrary.vkGetAccelerationStructureHandleNV(
                 vulkanLogicalDevice,
                 accelerationStructure,
                 data);
@@ -1388,7 +1382,7 @@ public class VulkanFunctions
             VkAccelerationStructureMemoryRequirementsInfoNV vkAccelerationStructureMemoryRequirementsInfoNV,
             VkMemoryRequirements2KHR vkMemoryRequirements2KHR)
     {
-        v11ProxyLibrary.vkGetAccelerationStructureMemoryRequirementsNV(
+        nativeFunctionsProxyLibrary.vkGetAccelerationStructureMemoryRequirementsNV(
                 vulkanLogicalDevice,
                 vkAccelerationStructureMemoryRequirementsInfoNV,
                 vkMemoryRequirements2KHR);
@@ -1399,7 +1393,7 @@ public class VulkanFunctions
             VkAccelerationStructureMemoryRequirementsInfoNV vkAccelerationStructureMemoryRequirementsInfoNVX,
             VkMemoryRequirements2KHR vkMemoryRequirements2KHR)
     {
-        v11ProxyLibrary.vkGetAccelerationStructureScratchMemoryRequirementsNVX(
+        nativeFunctionsProxyLibrary.vkGetAccelerationStructureScratchMemoryRequirementsNVX(
                 vulkanLogicalDevice,
                 vkAccelerationStructureMemoryRequirementsInfoNVX,
                 vkMemoryRequirements2KHR);
@@ -1411,7 +1405,7 @@ public class VulkanFunctions
             VkBuffer vkBuffer,
             VkMemoryRequirements vkMemoryRequirements)
     {
-        v11ProxyLibrary.vkGetBufferMemoryRequirements(
+        nativeFunctionsProxyLibrary.vkGetBufferMemoryRequirements(
                 vulkanLogicalDevice,
                 vkBuffer,
                 vkMemoryRequirements);
@@ -1421,7 +1415,7 @@ public class VulkanFunctions
             VkPhysicalDevice vulkanPhysicalDevice,
             VkPhysicalDeviceMemoryProperties vkPhysicalDeviceMemoryProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceMemoryProperties(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceMemoryProperties(
                 vulkanPhysicalDevice,
                 vkPhysicalDeviceMemoryProperties);
     }
@@ -1442,7 +1436,7 @@ public class VulkanFunctions
             int shaderCount,
             Collection<VkShaderModule> data)
     {
-        return v11ProxyLibrary.vkGetRayTracingShaderHandlesNV(
+        return nativeFunctionsProxyLibrary.vkGetRayTracingShaderHandlesNV(
                 vulkanLogicalDevice,
                 pipeline,
                 firstGroup,
@@ -1452,9 +1446,9 @@ public class VulkanFunctions
     
     public static VkResult vkBindAccelerationStructureMemoryNV(
             VkDevice vulkanLogicalDevice,
-            Collection<VkBindAccelerationStructureMemoryInfoNV> bindInfos)
+            Collection<VkBindAccelerationStructureMemoryInfoKHR> bindInfos)
     {
-        return v11ProxyLibrary.vkBindAccelerationStructureMemoryNV(
+        return nativeFunctionsProxyLibrary.vkBindAccelerationStructureMemoryNV(
                 vulkanLogicalDevice,
                 bindInfos);
     }
@@ -1465,7 +1459,7 @@ public class VulkanFunctions
             VkDeviceMemory vkDeviceMemory,
             long memoryOffset)
     {
-        return v11ProxyLibrary.vkBindBufferMemory(
+        return nativeFunctionsProxyLibrary.vkBindBufferMemory(
                 vulkanLogicalDevice,
                 vkBuffer,
                 vkDeviceMemory,
@@ -1480,7 +1474,7 @@ public class VulkanFunctions
             EnumSet<VkMemoryMapFlagBits> flags,
             MappedMemoryPointer pData)
     {
-        return v11ProxyLibrary.vkMapMemory(
+        return nativeFunctionsProxyLibrary.vkMapMemory(
                 vulkanLogicalDevice,
                 vkDeviceMemory,
                 offset,
@@ -1493,7 +1487,7 @@ public class VulkanFunctions
             VkDevice vulkanLogicalDevice,
             VkDeviceMemory vkDeviceMemory)
     {
-        v11ProxyLibrary.vkUnmapMemory(
+        nativeFunctionsProxyLibrary.vkUnmapMemory(
                 vulkanLogicalDevice,
                 vkDeviceMemory);
     }
@@ -1504,7 +1498,7 @@ public class VulkanFunctions
             Collection<VkBuffer> vkBufferCollection,
             long[] offsets)
     {
-        v11ProxyLibrary.vkCmdBindVertexBuffers(
+        nativeFunctionsProxyLibrary.vkCmdBindVertexBuffers(
                 vkCommandBuffer,
                 firstBinding,
                 vkBufferCollection,
@@ -1513,10 +1507,10 @@ public class VulkanFunctions
     
     public static void vkDestroyAccelerationStructureNV(
             VkDevice vkDevice,
-            VkAccelerationStructureNV accelerationStructure,
+            VkAccelerationStructureKHR accelerationStructure,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyAccelerationStructureNV(
+        nativeFunctionsProxyLibrary.vkDestroyAccelerationStructureNV(
                 vkDevice,
                 accelerationStructure,
                 alternateAllocator);
@@ -1527,7 +1521,7 @@ public class VulkanFunctions
             VkBuffer vkBuffer,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyBuffer(
+        nativeFunctionsProxyLibrary.vkDestroyBuffer(
                 vkDevice,
                 vkBuffer,
                 alternateAllocator);
@@ -1538,7 +1532,7 @@ public class VulkanFunctions
             VkDeviceMemory vkDeviceMemory,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkFreeMemory(
+        nativeFunctionsProxyLibrary.vkFreeMemory(
                 vkDevice,
                 vkDeviceMemory,
                 alternateAllocator);
@@ -1550,7 +1544,7 @@ public class VulkanFunctions
             long offset,
             VkIndexType vkIndexType)
     {
-        v11ProxyLibrary.vkCmdBindIndexBuffer(
+        nativeFunctionsProxyLibrary.vkCmdBindIndexBuffer(
                 vkCommandBuffer,
                 vkBuffer,
                 offset,
@@ -1563,12 +1557,12 @@ public class VulkanFunctions
             VkBuffer instanceData,
             long instanceOffset,
             boolean update,
-            VkAccelerationStructureNV dst,
-            VkAccelerationStructureNV src,
+            VkAccelerationStructureKHR dst,
+            VkAccelerationStructureKHR src,
             VkBuffer scratch,
             long scratchOffset)
     {
-        v11ProxyLibrary.vkCmdBuildAccelerationStructureNV(
+        nativeFunctionsProxyLibrary.vkCmdBuildAccelerationStructureNV(
                 vkCommandBuffer,
                 info,
                 instanceData,
@@ -1582,11 +1576,11 @@ public class VulkanFunctions
     
     public static void vkCmdCopyAccelerationStructureNV(
             VkCommandBuffer vkCommandBuffer,
-            VkAccelerationStructureNV dst,
-            VkAccelerationStructureNV src,
-            VkCopyAccelerationStructureModeNV mode)
+            VkAccelerationStructureKHR dst,
+            VkAccelerationStructureKHR src,
+            VkCopyAccelerationStructureModeKHR mode)
     {
-        v11ProxyLibrary.vkCmdCopyAccelerationStructureNV(
+        nativeFunctionsProxyLibrary.vkCmdCopyAccelerationStructureNV(
                 vkCommandBuffer,
                 dst,
                 src,
@@ -1599,7 +1593,7 @@ public class VulkanFunctions
             VkBuffer dstBuffer,
             Collection<VkBufferCopy> vkBufferCopyCollection)
     {
-        v11ProxyLibrary.vkCmdCopyBuffer(
+        nativeFunctionsProxyLibrary.vkCmdCopyBuffer(
                 vkCommandBuffer,
                 srcBuffer,
                 dstBuffer,
@@ -1624,7 +1618,7 @@ public class VulkanFunctions
         Collection<VkBufferCopy> copyRegionCollection = new LinkedList<VkBufferCopy>();
         copyRegionCollection.add(copyRegion);
 
-        v11ProxyLibrary.vkCmdCopyBuffer(
+        nativeFunctionsProxyLibrary.vkCmdCopyBuffer(
                 vkCommandBuffer,
                 srcBuffer,
                 dstBuffer,
@@ -1638,7 +1632,7 @@ public class VulkanFunctions
             VkImageLayout dstImageLayout,
             Collection<VkBufferImageCopy> regions)
     {
-        v11ProxyLibrary.vkCmdCopyBufferToImage(
+        nativeFunctionsProxyLibrary.vkCmdCopyBufferToImage(
                 vkCommandBuffer,
                 srcBuffer,
                 dstImage,
@@ -1654,7 +1648,7 @@ public class VulkanFunctions
             int vertexOffset,
             int firstInstance)
     {
-        v11ProxyLibrary.vkCmdDrawIndexed(
+        nativeFunctionsProxyLibrary.vkCmdDrawIndexed(
                 vkCommandBuffer,
                 indexCount,
                 instanceCount,
@@ -1668,7 +1662,7 @@ public class VulkanFunctions
             int taskCount,
             int firstTask)
     {
-        v11ProxyLibrary.vkCmdDrawMeshTasksNV(
+        nativeFunctionsProxyLibrary.vkCmdDrawMeshTasksNV(
                 vkCommandBuffer,
                 taskCount,
                 firstTask);
@@ -1682,7 +1676,7 @@ public class VulkanFunctions
             int drawCount,
             int stride)
     {
-        v11ProxyLibrary.vkCmdDrawMeshTasksIndirectNV(
+        nativeFunctionsProxyLibrary.vkCmdDrawMeshTasksIndirectNV(
                 vkCommandBuffer,
                 buffer,
                 offset,
@@ -1700,7 +1694,7 @@ public class VulkanFunctions
             int maxDrawCount,
             int stride)
     {
-        v11ProxyLibrary.vkCmdDrawMeshTasksIndirectCountNV(
+        nativeFunctionsProxyLibrary.vkCmdDrawMeshTasksIndirectCountNV(
                 vkCommandBuffer,
                 buffer,
                 offset,
@@ -1714,7 +1708,7 @@ public class VulkanFunctions
             VkCommandBuffer vkCommandBuffer,
             CheckpointMarker checkpointMarker)
     {
-        v11ProxyLibrary.vkCmdSetCheckpointNV(
+        nativeFunctionsProxyLibrary.vkCmdSetCheckpointNV(
                 vkCommandBuffer,
                 checkpointMarker);
     }
@@ -1725,7 +1719,7 @@ public class VulkanFunctions
             int firstExclusiveScissor,
             Collection<VkRect2D> exclusiveScissors)
     {
-        v11ProxyLibrary.vkCmdSetExclusiveScissorNV(
+        nativeFunctionsProxyLibrary.vkCmdSetExclusiveScissorNV(
                 vkCommandBuffer,
                 firstExclusiveScissor,
                 exclusiveScissors);
@@ -1748,7 +1742,7 @@ public class VulkanFunctions
             int height,
             int depth)
     {
-        v11ProxyLibrary.vkCmdTraceRaysNV(
+        nativeFunctionsProxyLibrary.vkCmdTraceRaysNV(
                 vkCommandBuffer,
                 raygenShaderBindingTableBuffer,
                 raygenShaderBindingOffset,
@@ -1772,7 +1766,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkDescriptorSetLayout vkDescriptorSetLayout)
     {
-        return v11ProxyLibrary.vkCreateDescriptorSetLayout(
+        return nativeFunctionsProxyLibrary.vkCreateDescriptorSetLayout(
                 vulkanLogicalDevice,
                 vkDescriptorSetLayoutCreateInfo,
                 alternateAllocator,
@@ -1785,7 +1779,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkDescriptorPool vkDescriptorPool)
     {
-        return v11ProxyLibrary.vkCreateDescriptorPool(
+        return nativeFunctionsProxyLibrary.vkCreateDescriptorPool(
                 vulkanLogicalDevice,
                 vkDescriptorPoolCreateInfo,
                 alternateAllocator,
@@ -1797,7 +1791,7 @@ public class VulkanFunctions
             Collection<VkWriteDescriptorSet> descriptorWrites,
             Collection<VkCopyDescriptorSet> descriptorCopies)
     {
-        v11ProxyLibrary.vkUpdateDescriptorSets(
+        nativeFunctionsProxyLibrary.vkUpdateDescriptorSets(
                 vulkanLogicalDevice,
                 descriptorWrites,
                 descriptorCopies);
@@ -1811,7 +1805,7 @@ public class VulkanFunctions
             Collection<VkDescriptorSet> descriptorSets,
             int[] dynamicOffsets)
     {
-        v11ProxyLibrary.vkCmdBindDescriptorSets(
+        nativeFunctionsProxyLibrary.vkCmdBindDescriptorSets(
                 vkCommandBuffer,
                 vkPipelineBindPoint,
                 vkPipelineLayout,
@@ -1825,7 +1819,7 @@ public class VulkanFunctions
             VkDescriptorPool vkDescriptorPool,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyDescriptorPool(
+        nativeFunctionsProxyLibrary.vkDestroyDescriptorPool(
                 vkDevice,
                 vkDescriptorPool,
                 alternateAllocator);
@@ -1836,7 +1830,7 @@ public class VulkanFunctions
             VkDescriptorSetLayout vkDescriptorSetLayout,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyDescriptorSetLayout(
+        nativeFunctionsProxyLibrary.vkDestroyDescriptorSetLayout(
                 vkDevice,
                 vkDescriptorSetLayout,
                 alternateAllocator);
@@ -1848,7 +1842,7 @@ public class VulkanFunctions
             VkDeviceMemory vkDeviceMemory,
             long vkDeviceSize)
     {
-        return v11ProxyLibrary.vkBindImageMemory(
+        return nativeFunctionsProxyLibrary.vkBindImageMemory(
                 vkDevice,
                 vkImage,
                 vkDeviceMemory,
@@ -1861,7 +1855,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkImage vkImage)
     {
-        return v11ProxyLibrary.vkCreateImage(
+        return nativeFunctionsProxyLibrary.vkCreateImage(
                 vulkanLogicalDevice,
                 vkImageCreateInfo,
                 alternateAllocator,
@@ -1873,7 +1867,7 @@ public class VulkanFunctions
             VkImage vkImage,
             VkMemoryRequirements vkMemoryRequirements)
     {
-        v11ProxyLibrary.vkGetImageMemoryRequirements(
+        nativeFunctionsProxyLibrary.vkGetImageMemoryRequirements(
                 vulkanLogicalDevice,
                 vkImage,
                 vkMemoryRequirements);
@@ -1888,7 +1882,7 @@ public class VulkanFunctions
             Collection<VkBufferMemoryBarrier> bufferMemoryBarriers,
             Collection<VkImageMemoryBarrier> imageMemoryBarriers)
     {
-        v11ProxyLibrary.vkCmdPipelineBarrier(
+        nativeFunctionsProxyLibrary.vkCmdPipelineBarrier(
                 vkCommandBuffer,
                 srcStageMask,
                 dstStageMask,
@@ -1904,7 +1898,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkSampler vkSampler)
     {
-        return v11ProxyLibrary.vkCreateSampler(
+        return nativeFunctionsProxyLibrary.vkCreateSampler(
                 vulkanLogicalDevice,
                 vkSamplerCreateInfo,
                 alternateAllocator,
@@ -1916,7 +1910,7 @@ public class VulkanFunctions
             VkSampler samplerHandle,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroySampler(
+        nativeFunctionsProxyLibrary.vkDestroySampler(
                 vulkanLogicalDevice,
                 samplerHandle,
                 alternateAllocator);
@@ -1926,7 +1920,7 @@ public class VulkanFunctions
             VkQueue queue,
             Collection<VkCheckpointDataNV> checkpointData)
     {
-        v11ProxyLibrary.vkGetQueueCheckpointDataNV(
+        nativeFunctionsProxyLibrary.vkGetQueueCheckpointDataNV(
                 queue,
                 checkpointData);
     }
@@ -1936,7 +1930,7 @@ public class VulkanFunctions
             VkFormat format,
             VkFormatProperties formatProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceFormatProperties(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceFormatProperties(
                 vulkanPhysicalDevice,
                 format,
                 formatProperties);
@@ -1945,7 +1939,7 @@ public class VulkanFunctions
     public static VkResult vkQueueWaitIdle(
             VkQueue vkQueue)
     {
-        return v11ProxyLibrary.vkQueueWaitIdle(
+        return nativeFunctionsProxyLibrary.vkQueueWaitIdle(
                 vkQueue);
     }
     
@@ -1967,7 +1961,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("buffers, offsets, and sizes must have the same number of elements.");
         }
         
-        v11ProxyLibrary.vkCmdBindTransformFeedbackBuffersEXT(
+        nativeFunctionsProxyLibrary.vkCmdBindTransformFeedbackBuffersEXT(
                 commandBuffer,
                 firstBinding,
                 buffers,
@@ -1981,7 +1975,7 @@ public class VulkanFunctions
             Collection<VkBuffer> counterBuffers,
             long[] counterBufferOffsets)
     {
-        v11ProxyLibrary.vkCmdBeginTransformFeedbackEXT(
+        nativeFunctionsProxyLibrary.vkCmdBeginTransformFeedbackEXT(
                 commandBuffer,
                 firstCounterBuffer,
                 counterBuffers,
@@ -1999,7 +1993,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("counterBuffers and counterBufferOffsets MUST have the same number of elements.");
         }
         
-        v11ProxyLibrary.vkCmdEndTransformFeedbackEXT(
+        nativeFunctionsProxyLibrary.vkCmdEndTransformFeedbackEXT(
                 commandBuffer,
                 firstCounterBuffer,
                 counterBuffers,
@@ -2013,7 +2007,7 @@ public class VulkanFunctions
             EnumSet<VkQueryControlFlagBits> flags,
             int index)
     {
-        v11ProxyLibrary.vkCmdBeginQueryIndexedEXT(
+        nativeFunctionsProxyLibrary.vkCmdBeginQueryIndexedEXT(
                 commandBuffer,
                 queryPool,
                 query,
@@ -2027,7 +2021,7 @@ public class VulkanFunctions
             int query,
             int index)
     {
-        v11ProxyLibrary.vkCmdEndQueryIndexedEXT(
+        nativeFunctionsProxyLibrary.vkCmdEndQueryIndexedEXT(
                 commandBuffer,
                 queryPool,
                 query,
@@ -2043,7 +2037,7 @@ public class VulkanFunctions
             int counterOffset,
             int vertexStride)
     {
-        v11ProxyLibrary.vkCmdDrawIndirectByteCountEXT(
+        nativeFunctionsProxyLibrary.vkCmdDrawIndirectByteCountEXT(
                 commandBuffer,
                 instanceCount,
                 firstInstance,
@@ -2058,7 +2052,7 @@ public class VulkanFunctions
             VkImage image,
             VkImageDrmFormatModifierPropertiesEXT properties)
     {
-        return v11ProxyLibrary.vkGetImageDrmFormatModifierPropertiesEXT(
+        return nativeFunctionsProxyLibrary.vkGetImageDrmFormatModifierPropertiesEXT(
                 device,
                 image,
                 properties);
@@ -2072,7 +2066,7 @@ public class VulkanFunctions
             long dataSize,
             byte[] data)
     {
-        return v11ProxyLibrary.vkGetRayTracingShaderGroupHandlesNV(
+        return nativeFunctionsProxyLibrary.vkGetRayTracingShaderGroupHandlesNV(
                 device,
                 pipeline,
                 firstGroup,
@@ -2085,16 +2079,16 @@ public class VulkanFunctions
             VkPhysicalDevice physicalDevice,
             Collection<VkTimeDomainEXT> timeDomains)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
                 physicalDevice,
                 timeDomains);
     }
     
-    public static VkDeviceAddress vkGetBufferDeviceAddressEXT(
+    public static VkDeviceAddress vkGetBufferDeviceAddress(
             VkDevice vulkanLogicalDevice,
-            VkBufferDeviceAddressInfoEXT info)
+            VkBufferDeviceAddressInfo info)
     {
-        return v11ProxyLibrary.vkGetBufferDeviceAddressEXT(
+        return nativeFunctionsProxyLibrary.vkGetBufferDeviceAddress(
                 vulkanLogicalDevice,
                 info);
     }
@@ -2103,7 +2097,7 @@ public class VulkanFunctions
             VkPhysicalDevice                            physicalDevice,
             Collection<VkCooperativeMatrixPropertiesNV> properties)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(
                 physicalDevice,
                 properties);
     }
@@ -2112,7 +2106,7 @@ public class VulkanFunctions
             VkDevice vulkanLogicalDevice,
             Collection<VkBindBufferMemoryInfo> bindInfos)
     {
-        return v11ProxyLibrary.vkBindBufferMemory2(
+        return nativeFunctionsProxyLibrary.vkBindBufferMemory2(
                 vulkanLogicalDevice,
                 bindInfos);
     }
@@ -2121,7 +2115,7 @@ public class VulkanFunctions
             VkDevice vulkanLogicalDevice,
             Collection<VkBindBufferMemoryInfo> bindInfos)
     {
-        return v11ProxyLibrary.vkBindBufferMemory2KHR(
+        return nativeFunctionsProxyLibrary.vkBindBufferMemory2KHR(
                 vulkanLogicalDevice,
                 bindInfos);
     }
@@ -2130,7 +2124,7 @@ public class VulkanFunctions
             VkDevice vulkanLogicalDevice,
             Collection<VkBindImageMemoryInfo> bindInfos)
     {
-        return v11ProxyLibrary.vkBindImageMemory2(
+        return nativeFunctionsProxyLibrary.vkBindImageMemory2(
                 vulkanLogicalDevice,
                 bindInfos);
     }
@@ -2139,7 +2133,7 @@ public class VulkanFunctions
             VkDevice vulkanLogicalDevice,
             Collection<VkBindImageMemoryInfo> bindInfos)
     {
-        return v11ProxyLibrary.vkBindImageMemory2KHR(
+        return nativeFunctionsProxyLibrary.vkBindImageMemory2KHR(
                 vulkanLogicalDevice,
                 bindInfos);
     }
@@ -2150,7 +2144,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkDebugUtilsMessengerEXT messenger)
     {
-        return v11ProxyLibrary.vkCreateDebugUtilsMessengerEXT(
+        return nativeFunctionsProxyLibrary.vkCreateDebugUtilsMessengerEXT(
                 vkInstance,
                 createInfo,
                 alternateAllocator,
@@ -2161,7 +2155,7 @@ public class VulkanFunctions
             VkDevice device,
             VkDebugUtilsObjectNameInfoEXT nameInfo)
     {
-        return v11ProxyLibrary.vkSetDebugUtilsObjectNameEXT(
+        return nativeFunctionsProxyLibrary.vkSetDebugUtilsObjectNameEXT(
                 device,
                 nameInfo);
     }
@@ -2170,7 +2164,7 @@ public class VulkanFunctions
             VkDevice device,
             VkDebugUtilsObjectTagInfoEXT tagInfo)
     {
-        return v11ProxyLibrary.vkSetDebugUtilsObjectTagEXT(
+        return nativeFunctionsProxyLibrary.vkSetDebugUtilsObjectTagEXT(
                 device,
                 tagInfo);
     }
@@ -2179,7 +2173,7 @@ public class VulkanFunctions
             VkQueue queue,
             VkDebugUtilsLabelEXTlabelInfo labelInfo)
     {
-        v11ProxyLibrary.vkQueueBeginDebugUtilsLabelEXT(
+        nativeFunctionsProxyLibrary.vkQueueBeginDebugUtilsLabelEXT(
                 queue,
                 labelInfo);
     }
@@ -2187,7 +2181,7 @@ public class VulkanFunctions
     public static void vkQueueEndDebugUtilsLabelEXT(
             VkQueue                                     queue)
     {
-        v11ProxyLibrary.vkQueueEndDebugUtilsLabelEXT(
+        nativeFunctionsProxyLibrary.vkQueueEndDebugUtilsLabelEXT(
                 queue);
     }
     
@@ -2195,7 +2189,7 @@ public class VulkanFunctions
             VkQueue queue,
             VkDebugUtilsLabelEXT labelInfo)
     {
-        v11ProxyLibrary.vkQueueInsertDebugUtilsLabelEXT(
+        nativeFunctionsProxyLibrary.vkQueueInsertDebugUtilsLabelEXT(
                 queue,
                 labelInfo);
     }
@@ -2204,7 +2198,7 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             VkDebugUtilsLabelEXT labelInfo)
     {
-        v11ProxyLibrary.vkCmdBeginDebugUtilsLabelEXT(
+        nativeFunctionsProxyLibrary.vkCmdBeginDebugUtilsLabelEXT(
                 commandBuffer,
                 labelInfo);
     }
@@ -2212,7 +2206,7 @@ public class VulkanFunctions
     public static void vkCmdEndDebugUtilsLabelEXT(
             VkCommandBuffer commandBuffer)
     {
-        v11ProxyLibrary.vkCmdEndDebugUtilsLabelEXT(
+        nativeFunctionsProxyLibrary.vkCmdEndDebugUtilsLabelEXT(
                 commandBuffer);
     }
     
@@ -2220,7 +2214,7 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             VkDebugUtilsLabelEXT labelInfo)
     {
-        v11ProxyLibrary.vkCmdInsertDebugUtilsLabelEXT(
+        nativeFunctionsProxyLibrary.vkCmdInsertDebugUtilsLabelEXT(
                 commandBuffer,
                 labelInfo);
     }
@@ -2230,7 +2224,7 @@ public class VulkanFunctions
             VkDebugUtilsMessengerEXT messenger,
             VkAllocationCallbacks alternateAllocator)
     {
-        v11ProxyLibrary.vkDestroyDebugUtilsMessengerEXT(
+        nativeFunctionsProxyLibrary.vkDestroyDebugUtilsMessengerEXT(
                 instance,
                 messenger,
                 alternateAllocator);
@@ -2242,7 +2236,7 @@ public class VulkanFunctions
             EnumSet<VkDebugUtilsMessageTypeFlagBitsEXT> messageTypes,
             VkDebugUtilsMessengerCallbackDataEXT callbackData)
     {
-        v11ProxyLibrary.vkSubmitDebugUtilsMessageEXT(
+        nativeFunctionsProxyLibrary.vkSubmitDebugUtilsMessageEXT(
                 instance,
                 messageSeverity,
                 messageTypes,
@@ -2255,7 +2249,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkDescriptorUpdateTemplate vkDescriptorUpdateTemplateHandle)
     {
-        return v11ProxyLibrary.vkCreateDescriptorUpdateTemplate(
+        return nativeFunctionsProxyLibrary.vkCreateDescriptorUpdateTemplate(
                 device,
                 createInfo,
                 alternateAllocator,
@@ -2268,7 +2262,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkDescriptorUpdateTemplate vkDescriptorUpdateTemplateHandle)
     {
-        return v11ProxyLibrary.vkCreateDescriptorUpdateTemplateKHR(
+        return nativeFunctionsProxyLibrary.vkCreateDescriptorUpdateTemplateKHR(
                 device,
                 createInfo,
                 alternateAllocator,
@@ -2282,7 +2276,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkDisplayModeKHR vkDisplayModeKHRHandle)
     {
-        return v11ProxyLibrary.vkCreateDisplayModeKHR(
+        return nativeFunctionsProxyLibrary.vkCreateDisplayModeKHR(
                 physicalDevice,
                 display,
                 createInfo,
@@ -2296,7 +2290,7 @@ public class VulkanFunctions
             VkAllocationCallbacks alternateAllocator,
             VkSurfaceKHR surface)
     {
-        return v11ProxyLibrary.vkCreateDisplayPlaneSurfaceKHR(
+        return nativeFunctionsProxyLibrary.vkCreateDisplayPlaneSurfaceKHR(
                 instance,
                 createInfo,
                 alternateAllocator,
@@ -2308,7 +2302,7 @@ public class VulkanFunctions
             VkPhysicalDeviceSurfaceInfo2KHR     surfaceInfo,
             VkSurfaceCapabilities2KHR surfaceCapabilities)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceSurfaceCapabilities2KHR(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceSurfaceCapabilities2KHR(
                 physicalDevice,
                 surfaceInfo,
                 surfaceCapabilities);
@@ -2323,7 +2317,7 @@ public class VulkanFunctions
             EnumSet<VkImageCreateFlagBits> flags,
             VkImageFormatProperties imageFormatProperties)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceImageFormatProperties(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceImageFormatProperties(
                 physicalDevice,
                 format,
                 type,
@@ -2338,7 +2332,7 @@ public class VulkanFunctions
             VkPhysicalDeviceImageFormatInfo2 imageFormatInfo,
             VkImageFormatProperties2 imageFormatProperties)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceImageFormatProperties2(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceImageFormatProperties2(
                 physicalDevice,
                 imageFormatInfo,
                 imageFormatProperties);
@@ -2349,7 +2343,7 @@ public class VulkanFunctions
             VkPhysicalDeviceImageFormatInfo2 imageFormatInfo,
             VkImageFormatProperties2 imageFormatProperties)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceImageFormatProperties2(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceImageFormatProperties2(
                 physicalDevice,
                 imageFormatInfo,
                 imageFormatProperties);
@@ -2365,7 +2359,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("The properties argument may not be null.  I should probably be an empty Collection.");
         }
         
-        return v11ProxyLibrary.vkGetPipelineExecutablePropertiesKHR(
+        return nativeFunctionsProxyLibrary.vkGetPipelineExecutablePropertiesKHR(
                 device,
                 pipelineInfo,
                 properties);
@@ -2381,7 +2375,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("The statistics argument may not be null.  I should probably be an empty Collection.");
         }
         
-        return v11ProxyLibrary.vkGetPipelineExecutableStatisticsKHR(
+        return nativeFunctionsProxyLibrary.vkGetPipelineExecutableStatisticsKHR(
                 device,
                 executableInfo,
                 statistics);
@@ -2392,7 +2386,7 @@ public class VulkanFunctions
             VkPipelineExecutableInfoKHR executableInfo,
             Collection<VkPipelineExecutableInternalRepresentationKHR> internalRepresentations)
     {
-        return v11ProxyLibrary.vkGetPipelineExecutableInternalRepresentationsKHR(
+        return nativeFunctionsProxyLibrary.vkGetPipelineExecutableInternalRepresentationsKHR(
                 device,
                 executableInfo,
                 internalRepresentations);
@@ -2402,7 +2396,7 @@ public class VulkanFunctions
             VkDevice device,
             VkDeviceGroupPresentCapabilitiesKHR deviceGroupPresentCapabilities)
     {
-        return v11ProxyLibrary.vkGetDeviceGroupPresentCapabilitiesKHR(
+        return nativeFunctionsProxyLibrary.vkGetDeviceGroupPresentCapabilitiesKHR(
                 device,
                 deviceGroupPresentCapabilities);
     }
@@ -2412,7 +2406,7 @@ public class VulkanFunctions
             VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo,
             EnumSet<VkDeviceGroupPresentModeFlagBitsKHR> modes)
     {
-        return v11ProxyLibrary.vkGetDeviceGroupSurfacePresentModes2EXT(
+        return nativeFunctionsProxyLibrary.vkGetDeviceGroupSurfacePresentModes2EXT(
                 device,
                 surfaceInfo,
                 modes);
@@ -2423,7 +2417,7 @@ public class VulkanFunctions
             VkSurfaceKHR surface,
             EnumSet<VkDeviceGroupPresentModeFlagBitsKHR> modes)
     {
-        return v11ProxyLibrary.vkGetDeviceGroupSurfacePresentModesKHR(
+        return nativeFunctionsProxyLibrary.vkGetDeviceGroupSurfacePresentModesKHR(
                 device,
                 surface,
                 modes);
@@ -2445,7 +2439,7 @@ public class VulkanFunctions
             int lineStippleFactor,
             short lineStipplePattern)
     {
-        v11ProxyLibrary.vkCmdSetLineStippleEXT(
+        nativeFunctionsProxyLibrary.vkCmdSetLineStippleEXT(
                 commandBuffer,
                 lineStippleFactor,
                 lineStipplePattern);
@@ -2457,7 +2451,7 @@ public class VulkanFunctions
             VkAllocationCallbacks allocator,
             VkSurfaceKHR surface)
     {
-        return v11ProxyLibrary.vkCreateHeadlessSurfaceEXT(
+        return nativeFunctionsProxyLibrary.vkCreateHeadlessSurfaceEXT(
                 instance,
                 createInfo,
                 allocator,
@@ -2468,7 +2462,7 @@ public class VulkanFunctions
             VkDevice device,
             VkInitializePerformanceApiInfoINTEL initializeInfo)
     {
-        return v11ProxyLibrary.vkInitializePerformanceApiINTEL(
+        return nativeFunctionsProxyLibrary.vkInitializePerformanceApiINTEL(
                 device,
                 initializeInfo);
     }
@@ -2476,7 +2470,7 @@ public class VulkanFunctions
     public static void vkUninitializePerformanceApiINTEL(
             VkDevice device)
     {
-        v11ProxyLibrary.vkUninitializePerformanceApiINTEL(
+        nativeFunctionsProxyLibrary.vkUninitializePerformanceApiINTEL(
                 device);
     }
     
@@ -2484,7 +2478,7 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             VkPerformanceMarkerInfoINTEL markerInfo)
     {
-        return v11ProxyLibrary.vkCmdSetPerformanceMarkerINTEL(
+        return nativeFunctionsProxyLibrary.vkCmdSetPerformanceMarkerINTEL(
                 commandBuffer,
                 markerInfo);
     }
@@ -2493,7 +2487,7 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             VkPerformanceOverrideInfoINTEL overrideInfo)
     {
-        return v11ProxyLibrary.vkCmdSetPerformanceOverrideINTEL(
+        return nativeFunctionsProxyLibrary.vkCmdSetPerformanceOverrideINTEL(
                 commandBuffer,
                 overrideInfo);
     }
@@ -2502,7 +2496,7 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             VkPerformanceStreamMarkerInfoINTEL markerInfo)
     {
-        return v11ProxyLibrary.vkCmdSetPerformanceStreamMarkerINTEL(
+        return nativeFunctionsProxyLibrary.vkCmdSetPerformanceStreamMarkerINTEL(
                 commandBuffer,
                 markerInfo);
     }
@@ -2512,7 +2506,7 @@ public class VulkanFunctions
             VkPerformanceConfigurationAcquireInfoINTEL acquireInfo,
             VkPerformanceConfigurationINTEL configuration)
     {
-        return v11ProxyLibrary.vkAcquirePerformanceConfigurationINTEL(
+        return nativeFunctionsProxyLibrary.vkAcquirePerformanceConfigurationINTEL(
                 device,
                 acquireInfo,
                 configuration);
@@ -2522,7 +2516,7 @@ public class VulkanFunctions
             VkDevice device,
             VkPerformanceConfigurationINTEL configuration)
     {
-        return v11ProxyLibrary.vkReleasePerformanceConfigurationINTEL(
+        return nativeFunctionsProxyLibrary.vkReleasePerformanceConfigurationINTEL(
                 device,
                 configuration);
     }
@@ -2531,7 +2525,7 @@ public class VulkanFunctions
             VkQueue                                     queue,
             VkPerformanceConfigurationINTEL             configuration)
     {
-        return v11ProxyLibrary.vkQueueSetPerformanceConfigurationINTEL(
+        return nativeFunctionsProxyLibrary.vkQueueSetPerformanceConfigurationINTEL(
                 queue,
                 configuration);
     }
@@ -2541,7 +2535,7 @@ public class VulkanFunctions
             VkPerformanceParameterTypeINTEL parameter,
             VkPerformanceValueINTEL value)
     {
-        return v11ProxyLibrary.vkGetPerformanceParameterINTEL(
+        return nativeFunctionsProxyLibrary.vkGetPerformanceParameterINTEL(
                 device,
                 parameter,
                 value);
@@ -2551,7 +2545,7 @@ public class VulkanFunctions
             VkPhysicalDevice physicalDevice,
             Collection<VkFramebufferMixedSamplesCombinationNV> combinations)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(
                 physicalDevice,
                 combinations);
     }
@@ -2562,7 +2556,7 @@ public class VulkanFunctions
             int query,
             EnumSet<VkQueryControlFlagBits> flags)
     {
-        v11ProxyLibrary.vkCmdBeginQuery(
+        nativeFunctionsProxyLibrary.vkCmdBeginQuery(
                 commandBuffer,
                 queryPool,
                 query,
@@ -2578,7 +2572,7 @@ public class VulkanFunctions
             Collection<VkImageBlit>                     regions,
             VkFilter                                    filter)
     {
-        v11ProxyLibrary.vkCmdBlitImage(
+        nativeFunctionsProxyLibrary.vkCmdBlitImage(
                 commandBuffer,
                 srcImage,
                 srcImageLayout,
@@ -2593,7 +2587,7 @@ public class VulkanFunctions
             Collection<VkClearAttachment> attachments,
             Collection<VkClearRect> rects)
     {
-        v11ProxyLibrary.vkCmdClearAttachments(
+        nativeFunctionsProxyLibrary.vkCmdClearAttachments(
                 commandBuffer,
                 attachments,
                 rects);
@@ -2613,7 +2607,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("imageLayout argument must be VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR, VK_IMAGE_LAYOUT_GENERAL, or VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL.");
         }
         
-        v11ProxyLibrary.vkCmdClearColorImage(
+        nativeFunctionsProxyLibrary.vkCmdClearColorImage(
                 commandBuffer,
                 image,
                 imageLayout,
@@ -2628,7 +2622,7 @@ public class VulkanFunctions
             VkClearDepthStencilValue depthStencil,
             Collection<VkImageSubresourceRange> ranges)
     {
-        v11ProxyLibrary.vkCmdClearDepthStencilImage(
+        nativeFunctionsProxyLibrary.vkCmdClearDepthStencilImage(
                 commandBuffer,
                 image,
                 imageLayout,
@@ -2644,7 +2638,7 @@ public class VulkanFunctions
             VkImageLayout dstImageLayout,
             Collection<VkImageCopy> regions)
     {
-        v11ProxyLibrary.vkCmdCopyImage(
+        nativeFunctionsProxyLibrary.vkCmdCopyImage(
                 commandBuffer,
                 srcImage,
                 srcImageLayout,
@@ -2660,7 +2654,7 @@ public class VulkanFunctions
             VkBuffer dstBuffer,
             Collection<VkBufferImageCopy> regions)
     {
-        v11ProxyLibrary.vkCmdCopyImageToBuffer(
+        nativeFunctionsProxyLibrary.vkCmdCopyImageToBuffer(
                 commandBuffer,
                 srcImage,
                 srcImageLayout,
@@ -2678,7 +2672,7 @@ public class VulkanFunctions
             long stride,
             EnumSet<VkQueryResultFlagBits> flags)
     {
-        v11ProxyLibrary.vkCmdCopyQueryPoolResults(
+        nativeFunctionsProxyLibrary.vkCmdCopyQueryPoolResults(
                 commandBuffer,
                 queryPool,
                 firstQuery,
@@ -2693,7 +2687,7 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             VkDebugMarkerMarkerInfoEXT markerInfo)
     {
-        v11ProxyLibrary.vkCmdDebugMarkerBeginEXT(
+        nativeFunctionsProxyLibrary.vkCmdDebugMarkerBeginEXT(
                 commandBuffer,
                 markerInfo);
     }
@@ -2701,7 +2695,7 @@ public class VulkanFunctions
     public static void vkCmdDebugMarkerEndEXT(
             VkCommandBuffer commandBuffer)
     {
-        v11ProxyLibrary.vkCmdDebugMarkerEndEXT(
+        nativeFunctionsProxyLibrary.vkCmdDebugMarkerEndEXT(
                 commandBuffer);
     }
     
@@ -2709,7 +2703,7 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             VkDebugMarkerMarkerInfoEXT markerInfo)
     {
-        v11ProxyLibrary.vkCmdDebugMarkerInsertEXT(
+        nativeFunctionsProxyLibrary.vkCmdDebugMarkerInsertEXT(
                 commandBuffer,
                 markerInfo);
     }
@@ -2720,7 +2714,7 @@ public class VulkanFunctions
             int groupCountY,
             int groupCountZ)
     {
-        v11ProxyLibrary.vkCmdDispatch(
+        nativeFunctionsProxyLibrary.vkCmdDispatch(
                 commandBuffer,
                 groupCountX,
                 groupCountY,
@@ -2736,7 +2730,7 @@ public class VulkanFunctions
             int groupCountY,
             int groupCountZ)
     {
-        v11ProxyLibrary.vkCmdDispatchBase(
+        nativeFunctionsProxyLibrary.vkCmdDispatchBase(
                 commandBuffer,
                 baseGroupX,
                 baseGroupY,
@@ -2755,7 +2749,7 @@ public class VulkanFunctions
             int groupCountY,
             int groupCountZ)
     {
-        v11ProxyLibrary.vkCmdDispatchBase(
+        nativeFunctionsProxyLibrary.vkCmdDispatchBase(
                 commandBuffer,
                 baseGroupX,
                 baseGroupY,
@@ -2770,7 +2764,7 @@ public class VulkanFunctions
             VkBuffer buffer,
             long offset)
     {
-        v11ProxyLibrary.vkCmdDispatchIndirect(
+        nativeFunctionsProxyLibrary.vkCmdDispatchIndirect(
                 commandBuffer,
                 buffer,
                 offset);
@@ -2783,7 +2777,7 @@ public class VulkanFunctions
             int drawCount,
             int stride)
     {
-        v11ProxyLibrary.vkCmdDrawIndexedIndirect(
+        nativeFunctionsProxyLibrary.vkCmdDrawIndexedIndirect(
                 commandBuffer,
                 buffer,
                 offset,
@@ -2800,7 +2794,7 @@ public class VulkanFunctions
             int maxDrawCount,
             int stride)
     {
-        v11ProxyLibrary.vkCmdDrawIndexedIndirectCountKHR(
+        nativeFunctionsProxyLibrary.vkCmdDrawIndexedIndirectCount(
                 commandBuffer,
                 buffer,
                 offset,
@@ -2810,7 +2804,7 @@ public class VulkanFunctions
                 stride);
     }
     
-    public static void vkCmdDrawIndexedIndirectCountKHR(
+    public static void vkCmdDrawIndexedIndirectCount(
             VkCommandBuffer commandBuffer,
             VkBuffer buffer,
             long offset,
@@ -2819,7 +2813,7 @@ public class VulkanFunctions
             int maxDrawCount,
             int stride)
     {
-        v11ProxyLibrary.vkCmdDrawIndexedIndirectCountKHR(
+        nativeFunctionsProxyLibrary.vkCmdDrawIndexedIndirectCount(
                 commandBuffer,
                 buffer,
                 offset,
@@ -2836,7 +2830,7 @@ public class VulkanFunctions
             int drawCount,
             int stride)
     {
-        v11ProxyLibrary.vkCmdDrawIndirect(
+        nativeFunctionsProxyLibrary.vkCmdDrawIndirect(
                 commandBuffer,
                 buffer,
                 offset,
@@ -2844,7 +2838,7 @@ public class VulkanFunctions
                 stride);
     }
     
-    public static void vkCmdDrawIndirectCountKHR(
+    public static void vkCmdDrawIndirectCount(
             VkCommandBuffer commandBuffer,
             VkBuffer buffer,
             long offset,
@@ -2853,7 +2847,7 @@ public class VulkanFunctions
             int maxDrawCount,
             int stride)
     {
-        v11ProxyLibrary.vkCmdDrawIndirectCountKHR(
+        nativeFunctionsProxyLibrary.vkCmdDrawIndirectCount(
                 commandBuffer,
                 buffer,
                 offset,
@@ -2872,7 +2866,7 @@ public class VulkanFunctions
             int maxDrawCount,
             int stride)
     {
-        v11ProxyLibrary.vkCmdDrawIndirectCountKHR(
+        nativeFunctionsProxyLibrary.vkCmdDrawIndirectCount(
                 commandBuffer,
                 buffer,
                 offset,
@@ -2887,7 +2881,7 @@ public class VulkanFunctions
             VkQueryPool queryPool,
             int query)
     {
-        v11ProxyLibrary.vkCmdEndQuery(
+        nativeFunctionsProxyLibrary.vkCmdEndQuery(
                 commandBuffer,
                 queryPool,
                 query);
@@ -2897,7 +2891,7 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             Collection<VkCommandBuffer> commandBuffers)
     {
-        v11ProxyLibrary.vkCmdExecuteCommands(
+        nativeFunctionsProxyLibrary.vkCmdExecuteCommands(
                 commandBuffer,
                 commandBuffers);
     }
@@ -2909,7 +2903,7 @@ public class VulkanFunctions
             long size,
             int data)
     {
-        v11ProxyLibrary.vkCmdFillBuffer(
+        nativeFunctionsProxyLibrary.vkCmdFillBuffer(
                 commandBuffer,
                 dstBuffer,
                 dstOffset,
@@ -2921,18 +2915,9 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             VkSubpassContents contents)
     {
-        v11ProxyLibrary.vkCmdNextSubpass(
+        nativeFunctionsProxyLibrary.vkCmdNextSubpass(
                 commandBuffer,
                 contents);
-    }
-    
-    public static void vkCmdProcessCommandsNVX(
-            VkCommandBuffer commandBuffer,
-            VkCmdProcessCommandsInfoNVX processCommandsInfo)
-    {
-        v11ProxyLibrary.vkCmdProcessCommandsNVX(
-                commandBuffer,
-                processCommandsInfo);
     }
     
     public static void vkCmdPushConstants(
@@ -2942,7 +2927,7 @@ public class VulkanFunctions
             int offset,
             byte[] values)
     {
-        v11ProxyLibrary.vkCmdPushConstants(
+        nativeFunctionsProxyLibrary.vkCmdPushConstants(
                 commandBuffer,
                 layout,
                 stageFlags,
@@ -2969,7 +2954,7 @@ public class VulkanFunctions
             int offset,
             float[] values)
     {
-        v11ProxyLibrary.vkCmdPushConstants(
+        nativeFunctionsProxyLibrary.vkCmdPushConstants(
                 commandBuffer,
                 layout,
                 stageFlags,
@@ -2996,7 +2981,7 @@ public class VulkanFunctions
             int offset,
             int[] values)
     {
-        v11ProxyLibrary.vkCmdPushConstants(
+        nativeFunctionsProxyLibrary.vkCmdPushConstants(
                 commandBuffer,
                 layout,
                 stageFlags,
@@ -3011,7 +2996,7 @@ public class VulkanFunctions
             int set,
             Collection<VkWriteDescriptorSet> descriptorWrites)
     {
-        v11ProxyLibrary.vkCmdPushDescriptorSetKHR(
+        nativeFunctionsProxyLibrary.vkCmdPushDescriptorSetKHR(
                 commandBuffer,
                 pipelineBindPoint,
                 layout,
@@ -3035,20 +3020,11 @@ public class VulkanFunctions
             }
         }
         
-        v11ProxyLibrary.vkCmdPushDescriptorSetWithTemplateKHR(
+        nativeFunctionsProxyLibrary.vkCmdPushDescriptorSetWithTemplateKHR(
                 commandBuffer,
                 descriptorUpdateTemplate,
                 layout,
                 data);
-    }
-    
-    public static void vkCmdReserveSpaceForCommandsNVX(
-            VkCommandBuffer commandBuffer,
-            VkCmdReserveSpaceForCommandsInfoNVX reserveSpaceInfo)
-    {
-        v11ProxyLibrary.vkCmdReserveSpaceForCommandsNVX(
-                commandBuffer,
-                reserveSpaceInfo);
     }
     
     public static void vkCmdResetEvent(
@@ -3056,7 +3032,7 @@ public class VulkanFunctions
             VkEvent event,
             EnumSet<VkPipelineStageFlagBits> stageMask)
     {
-        v11ProxyLibrary.vkCmdResetEvent(
+        nativeFunctionsProxyLibrary.vkCmdResetEvent(
                 commandBuffer,
                 event,
                 stageMask);
@@ -3068,7 +3044,7 @@ public class VulkanFunctions
             int firstQuery,
             int queryCount)
     {
-        v11ProxyLibrary.vkCmdResetQueryPool(
+        nativeFunctionsProxyLibrary.vkCmdResetQueryPool(
                 commandBuffer,
                 queryPool,
                 firstQuery,
@@ -3083,7 +3059,7 @@ public class VulkanFunctions
             VkImageLayout dstImageLayout,
             Collection<VkImageResolve> regions)
     {
-        v11ProxyLibrary.vkCmdResolveImage(
+        nativeFunctionsProxyLibrary.vkCmdResolveImage(
                 commandBuffer,
                 srcImage,
                 srcImageLayout,
@@ -3101,7 +3077,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("blendConstants must have a length of 4");
         }
         
-        v11ProxyLibrary.vkCmdSetBlendConstants(
+        nativeFunctionsProxyLibrary.vkCmdSetBlendConstants(
                 commandBuffer,
                 blendConstants);
     }
@@ -3112,7 +3088,7 @@ public class VulkanFunctions
             float depthBiasClamp,
             float depthBiasSlopeFactor)
     {
-        v11ProxyLibrary.vkCmdSetDepthBias(
+        nativeFunctionsProxyLibrary.vkCmdSetDepthBias(
                 commandBuffer,
                 depthBiasConstantFactor,
                 depthBiasClamp,
@@ -3124,7 +3100,7 @@ public class VulkanFunctions
             float minDepthBounds,
             float maxDepthBounds)
     {
-        v11ProxyLibrary.vkCmdSetDepthBounds(
+        nativeFunctionsProxyLibrary.vkCmdSetDepthBounds(
                 commandBuffer,
                 minDepthBounds,
                 maxDepthBounds);
@@ -3134,7 +3110,7 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             int deviceMask)
     {
-        v11ProxyLibrary.vkCmdSetDeviceMask(
+        nativeFunctionsProxyLibrary.vkCmdSetDeviceMask(
                 commandBuffer,
                 deviceMask);
     }
@@ -3143,7 +3119,7 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             int deviceMask)
     {
-        v11ProxyLibrary.vkCmdSetDeviceMask(
+        nativeFunctionsProxyLibrary.vkCmdSetDeviceMask(
                 commandBuffer,
                 deviceMask);
     }
@@ -3153,7 +3129,7 @@ public class VulkanFunctions
             int firstDiscardRectangle,
             Collection<VkRect2D> discardRectangles)
     {
-        v11ProxyLibrary.vkCmdSetDiscardRectangleEXT(
+        nativeFunctionsProxyLibrary.vkCmdSetDiscardRectangleEXT(
                 commandBuffer,
                 firstDiscardRectangle,
                 discardRectangles);
@@ -3164,7 +3140,7 @@ public class VulkanFunctions
             VkEvent event,
             EnumSet<VkPipelineStageFlagBits> stageMask)
     {
-        v11ProxyLibrary.vkCmdSetEvent(
+        nativeFunctionsProxyLibrary.vkCmdSetEvent(
                 commandBuffer,
                 event,
                 stageMask);
@@ -3174,7 +3150,7 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             float lineWidth)
     {
-        v11ProxyLibrary.vkCmdSetLineWidth(
+        nativeFunctionsProxyLibrary.vkCmdSetLineWidth(
                 commandBuffer,
                 lineWidth);
     }
@@ -3183,7 +3159,7 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             VkSampleLocationsInfoEXT sampleLocationsInfo)
     {
-        v11ProxyLibrary.vkCmdSetSampleLocationsEXT(
+        nativeFunctionsProxyLibrary.vkCmdSetSampleLocationsEXT(
                 commandBuffer,
                 sampleLocationsInfo);
     }
@@ -3193,7 +3169,7 @@ public class VulkanFunctions
             int firstScissor,
             Collection<VkRect2D> scissors)
     {
-        v11ProxyLibrary.vkCmdSetScissor(
+        nativeFunctionsProxyLibrary.vkCmdSetScissor(
                 commandBuffer,
                 firstScissor,
                 scissors);
@@ -3214,7 +3190,7 @@ public class VulkanFunctions
         Collection<VkRect2D> scissors = new LinkedList<VkRect2D>();
         scissors.add(scissor);
         
-        v11ProxyLibrary.vkCmdSetScissor(
+        nativeFunctionsProxyLibrary.vkCmdSetScissor(
                 commandBuffer,
                 0,
                 scissors);
@@ -3225,7 +3201,7 @@ public class VulkanFunctions
             EnumSet<VkStencilFaceFlagBits> faceMask,
             int compareMask)
     {
-        v11ProxyLibrary.vkCmdSetStencilCompareMask(
+        nativeFunctionsProxyLibrary.vkCmdSetStencilCompareMask(
                 commandBuffer,
                 faceMask,
                 compareMask);
@@ -3236,7 +3212,7 @@ public class VulkanFunctions
             EnumSet<VkStencilFaceFlagBits> faceMask,
             int reference)
     {
-        v11ProxyLibrary.vkCmdSetStencilReference(
+        nativeFunctionsProxyLibrary.vkCmdSetStencilReference(
                 commandBuffer,
                 faceMask,
                 reference);
@@ -3247,7 +3223,7 @@ public class VulkanFunctions
             EnumSet<VkStencilFaceFlagBits> faceMask,
             int writeMask)
     {
-        v11ProxyLibrary.vkCmdSetStencilWriteMask(
+        nativeFunctionsProxyLibrary.vkCmdSetStencilWriteMask(
                 commandBuffer,
                 faceMask,
                 writeMask);
@@ -3258,7 +3234,7 @@ public class VulkanFunctions
             int firstViewport,
             Collection<VkViewport> viewports)
     {
-        v11ProxyLibrary.vkCmdSetViewport(
+        nativeFunctionsProxyLibrary.vkCmdSetViewport(
                 commandBuffer,
                 firstViewport,
                 viewports);
@@ -3279,7 +3255,7 @@ public class VulkanFunctions
         Collection<VkViewport> viewports = new LinkedList<VkViewport>();
         viewports.add(viewport);
         
-        v11ProxyLibrary.vkCmdSetViewport(
+        nativeFunctionsProxyLibrary.vkCmdSetViewport(
                 commandBuffer,
                 0,
                 viewports);
@@ -3290,7 +3266,7 @@ public class VulkanFunctions
             int firstViewport,
             Collection<VkViewportWScalingNV> viewportWScalings)
     {
-        v11ProxyLibrary.vkCmdSetViewportWScalingNV(
+        nativeFunctionsProxyLibrary.vkCmdSetViewportWScalingNV(
                 commandBuffer,
                 firstViewport,
                 viewportWScalings);
@@ -3307,7 +3283,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("data must have a length of 65536 or less.");
         }
         
-        v11ProxyLibrary.vkCmdUpdateBuffer(
+        nativeFunctionsProxyLibrary.vkCmdUpdateBuffer(
                 commandBuffer,
                 dstBuffer,
                 dstOffset,
@@ -3323,7 +3299,7 @@ public class VulkanFunctions
             Collection<VkBufferMemoryBarrier> bufferMemoryBarriers,
             Collection<VkImageMemoryBarrier> imageMemoryBarriers)
     {
-        v11ProxyLibrary.vkCmdWaitEvents(
+        nativeFunctionsProxyLibrary.vkCmdWaitEvents(
                 commandBuffer,
                 events,
                 srcStageMask,
@@ -3340,7 +3316,7 @@ public class VulkanFunctions
             long dstOffset,
             int marker)
     {
-        v11ProxyLibrary.vkCmdWriteBufferMarkerAMD(
+        nativeFunctionsProxyLibrary.vkCmdWriteBufferMarkerAMD(
                 commandBuffer,
                 pipelineStage,
                 dstBuffer,
@@ -3354,7 +3330,7 @@ public class VulkanFunctions
             VkQueryPool queryPool,
             int query)
     {
-        v11ProxyLibrary.vkCmdWriteTimestamp(
+        nativeFunctionsProxyLibrary.vkCmdWriteTimestamp(
                 commandBuffer,
                 pipelineStage,
                 queryPool,
@@ -3367,37 +3343,11 @@ public class VulkanFunctions
             VkAllocationCallbacks allocator,
             VkEvent event)
     {
-        return v11ProxyLibrary.vkCreateEvent(
+        return nativeFunctionsProxyLibrary.vkCreateEvent(
                 device,
                 createInfo,
                 allocator,
                 event);
-    }
-    
-    public static VkResult vkCreateIndirectCommandsLayoutNVX(
-            VkDevice device,
-            VkIndirectCommandsLayoutCreateInfoNVX createInfo,
-            VkAllocationCallbacks allocator,
-            VkIndirectCommandsLayoutNVX indirectCommandsLayout)
-    {
-        return v11ProxyLibrary.vkCreateIndirectCommandsLayoutNVX(
-                device,
-                createInfo,
-                allocator,
-                indirectCommandsLayout);
-    }
-    
-    public static VkResult vkCreateObjectTableNVX(
-            VkDevice device,
-            VkObjectTableCreateInfoNVX createInfo,
-            VkAllocationCallbacks allocator,
-            VkObjectTableNVX objectTable)
-    {
-        return v11ProxyLibrary.vkCreateObjectTableNVX(
-                device,
-                createInfo,
-                allocator,
-                objectTable);
     }
     
     public static VkResult vkCreatePipelineCache(
@@ -3412,7 +3362,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("Initial data must not be null if initial data size is != 0.");
         }
         
-        return v11ProxyLibrary.vkCreatePipelineCache(
+        return nativeFunctionsProxyLibrary.vkCreatePipelineCache(
                 device,
                 createInfo,
                 allocator,
@@ -3425,7 +3375,7 @@ public class VulkanFunctions
             VkAllocationCallbacks allocator,
             VkQueryPool queryPool)
     {
-        return v11ProxyLibrary.vkCreateQueryPool(
+        return nativeFunctionsProxyLibrary.vkCreateQueryPool(
                 device,
                 createInfo,
                 allocator,
@@ -3438,7 +3388,7 @@ public class VulkanFunctions
             VkAllocationCallbacks allocator,
             VkSamplerYcbcrConversion ycbcrConversion)
     {
-        return v11ProxyLibrary.vkCreateSamplerYcbcrConversion(
+        return nativeFunctionsProxyLibrary.vkCreateSamplerYcbcrConversion(
                 device,
                 createInfo,
                 allocator,
@@ -3451,7 +3401,7 @@ public class VulkanFunctions
             VkAllocationCallbacks allocator,
             VkSamplerYcbcrConversion ycbcrConversion)
     {
-        return v11ProxyLibrary.vkCreateSamplerYcbcrConversion(
+        return nativeFunctionsProxyLibrary.vkCreateSamplerYcbcrConversion(
                 device,
                 createInfo,
                 allocator,
@@ -3478,7 +3428,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException();
         }
         
-        return v11ProxyLibrary.vkCreateSharedSwapchainsKHR(
+        return nativeFunctionsProxyLibrary.vkCreateSharedSwapchainsKHR(
                 device,
                 createInfos,
                 allocator,
@@ -3491,7 +3441,7 @@ public class VulkanFunctions
             VkAllocationCallbacks allocator,
             VkValidationCacheEXT validationCache)
     {
-        return v11ProxyLibrary.vkCreateValidationCacheEXT(
+        return nativeFunctionsProxyLibrary.vkCreateValidationCacheEXT(
                 device,
                 createInfo,
                 allocator,
@@ -3502,7 +3452,7 @@ public class VulkanFunctions
             VkDevice device,
             VkDebugMarkerObjectNameInfoEXT nameInfo)
     {
-        return v11ProxyLibrary.vkDebugMarkerSetObjectNameEXT(
+        return nativeFunctionsProxyLibrary.vkDebugMarkerSetObjectNameEXT(
                 device,
                 nameInfo);
     }
@@ -3511,7 +3461,7 @@ public class VulkanFunctions
             VkDevice device,
             VkDebugMarkerObjectTagInfoEXT tagInfo)
     {
-        return v11ProxyLibrary.vkDebugMarkerSetObjectTagEXT(
+        return nativeFunctionsProxyLibrary.vkDebugMarkerSetObjectTagEXT(
                 device,
                 tagInfo);
     }
@@ -3526,7 +3476,7 @@ public class VulkanFunctions
             String layerPrefix,
             String message)
     {
-        v11ProxyLibrary.vkDebugReportMessageEXT(
+        nativeFunctionsProxyLibrary.vkDebugReportMessageEXT(
                 instance,
                 flags,
                 objectType,
@@ -3542,7 +3492,7 @@ public class VulkanFunctions
             VkBufferView bufferView,
             VkAllocationCallbacks allocator)
     {
-        v11ProxyLibrary.vkDestroyBufferView(
+        nativeFunctionsProxyLibrary.vkDestroyBufferView(
                 device,
                 bufferView,
                 allocator);
@@ -3553,7 +3503,7 @@ public class VulkanFunctions
             VkDescriptorUpdateTemplate descriptorUpdateTemplate,
             VkAllocationCallbacks allocator)
     {
-        v11ProxyLibrary.vkDestroyDescriptorUpdateTemplate(
+        nativeFunctionsProxyLibrary.vkDestroyDescriptorUpdateTemplate(
                 device,
                 descriptorUpdateTemplate,
                 allocator);
@@ -3564,7 +3514,7 @@ public class VulkanFunctions
             VkDescriptorUpdateTemplate descriptorUpdateTemplate,
             VkAllocationCallbacks allocator)
     {
-        v11ProxyLibrary.vkDestroyDescriptorUpdateTemplate(
+        nativeFunctionsProxyLibrary.vkDestroyDescriptorUpdateTemplate(
                 device,
                 descriptorUpdateTemplate,
                 allocator);
@@ -3575,31 +3525,20 @@ public class VulkanFunctions
             VkEvent event,
             VkAllocationCallbacks allocator)
     {
-        v11ProxyLibrary.vkDestroyEvent(
+        nativeFunctionsProxyLibrary.vkDestroyEvent(
                 device,
                 event,
                 allocator);
     }
     
-    public static void vkDestroyIndirectCommandsLayoutNVX(
+    public static void vkDestroyIndirectCommandsLayoutNV(
             VkDevice device,
-            VkIndirectCommandsLayoutNVX indirectCommandsLayout,
+            VkIndirectCommandsLayoutNV indirectCommandsLayout,
             VkAllocationCallbacks allocator)
     {
-        v11ProxyLibrary.vkDestroyIndirectCommandsLayoutNVX(
+        nativeFunctionsProxyLibrary.vkDestroyIndirectCommandsLayoutNV(
                 device,
                 indirectCommandsLayout,
-                allocator);
-    }
-    
-    public static void vkDestroyObjectTableNVX(
-            VkDevice device,
-            VkObjectTableNVX objectTable,
-            VkAllocationCallbacks allocator)
-    {
-        v11ProxyLibrary.vkDestroyObjectTableNVX(
-                device,
-                objectTable,
                 allocator);
     }
     
@@ -3608,7 +3547,7 @@ public class VulkanFunctions
             VkPipelineCache pipelineCache,
             VkAllocationCallbacks allocator)
     {
-        v11ProxyLibrary.vkDestroyPipelineCache(
+        nativeFunctionsProxyLibrary.vkDestroyPipelineCache(
                 device,
                 pipelineCache,
                 allocator);
@@ -3619,7 +3558,7 @@ public class VulkanFunctions
             VkQueryPool queryPool,
             VkAllocationCallbacks allocator)
     {
-        v11ProxyLibrary.vkDestroyQueryPool(
+        nativeFunctionsProxyLibrary.vkDestroyQueryPool(
                 device,
                 queryPool,
                 allocator);
@@ -3630,7 +3569,7 @@ public class VulkanFunctions
             VkSamplerYcbcrConversion ycbcrConversion,
             VkAllocationCallbacks allocator)
     {
-        v11ProxyLibrary.vkDestroySamplerYcbcrConversion(
+        nativeFunctionsProxyLibrary.vkDestroySamplerYcbcrConversion(
                 device,
                 ycbcrConversion,
                 allocator);
@@ -3641,7 +3580,7 @@ public class VulkanFunctions
             VkSamplerYcbcrConversion ycbcrConversion,
             VkAllocationCallbacks allocator)
     {
-        v11ProxyLibrary.vkDestroySamplerYcbcrConversion(
+        nativeFunctionsProxyLibrary.vkDestroySamplerYcbcrConversion(
                 device,
                 ycbcrConversion,
                 allocator);
@@ -3652,7 +3591,7 @@ public class VulkanFunctions
             VkValidationCacheEXT validationCache,
             VkAllocationCallbacks allocator)
     {
-        v11ProxyLibrary.vkDestroyValidationCacheEXT(
+        nativeFunctionsProxyLibrary.vkDestroyValidationCacheEXT(
                 device,
                 validationCache,
                 allocator);
@@ -3663,7 +3602,7 @@ public class VulkanFunctions
             VkDisplayKHR display,
             VkDisplayPowerInfoEXT displayPowerInfo)
     {
-        return v11ProxyLibrary.vkDisplayPowerControlEXT(
+        return nativeFunctionsProxyLibrary.vkDisplayPowerControlEXT(
                 device,
                 display,
                 displayPowerInfo);
@@ -3684,7 +3623,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("properties must not be null...it should most likely be an empty Collection.");
         }
 
-        return v11ProxyLibrary.vkEnumerateDeviceLayerProperties(
+        return nativeFunctionsProxyLibrary.vkEnumerateDeviceLayerProperties(
                 physicalDevice,
                 properties);
     }
@@ -3698,7 +3637,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("properties must not be null...it should most likely be an empty Collection.");
         }
 
-        return v11ProxyLibrary.vkEnumerateInstanceExtensionProperties(
+        return nativeFunctionsProxyLibrary.vkEnumerateInstanceExtensionProperties(
                 LayerName,
                 properties);
     }
@@ -3706,14 +3645,14 @@ public class VulkanFunctions
     public static VkResult vkEnumerateInstanceLayerProperties(
             Collection<VkLayerProperties> properties)
     {
-        return v11ProxyLibrary.vkEnumerateInstanceLayerProperties(
+        return nativeFunctionsProxyLibrary.vkEnumerateInstanceLayerProperties(
                 properties);
     }
     
     public static VkResult vkEnumerateInstanceVersion(
             IntReturnValue apiVersion)
     {
-        return v11ProxyLibrary.vkEnumerateInstanceVersion(
+        return nativeFunctionsProxyLibrary.vkEnumerateInstanceVersion(
                 apiVersion);
     }
     
@@ -3721,7 +3660,7 @@ public class VulkanFunctions
             VkInstance instance,
             Collection<VkPhysicalDeviceGroupProperties> physicalDeviceGroupProperties)
     {
-        return v11ProxyLibrary.vkEnumeratePhysicalDeviceGroups(
+        return nativeFunctionsProxyLibrary.vkEnumeratePhysicalDeviceGroups(
                 instance,
                 physicalDeviceGroupProperties);
     }
@@ -3730,7 +3669,7 @@ public class VulkanFunctions
             VkInstance instance,
             Collection<VkPhysicalDeviceGroupProperties> physicalDeviceGroupProperties)
     {
-        return v11ProxyLibrary.vkEnumeratePhysicalDeviceGroups(
+        return nativeFunctionsProxyLibrary.vkEnumeratePhysicalDeviceGroups(
                 instance,
                 physicalDeviceGroupProperties);
     }
@@ -3739,7 +3678,7 @@ public class VulkanFunctions
             VkDevice device,
             Collection<VkMappedMemoryRange> memoryRanges)
     {
-        return v11ProxyLibrary.vkFlushMappedMemoryRanges(
+        return nativeFunctionsProxyLibrary.vkFlushMappedMemoryRanges(
                  device,
                 memoryRanges);
     }
@@ -3749,7 +3688,7 @@ public class VulkanFunctions
             VkDescriptorPool descriptorPool,
             Collection<VkDescriptorSet> descriptorSets)
     {
-        return v11ProxyLibrary.vkFreeDescriptorSets(
+        return nativeFunctionsProxyLibrary.vkFreeDescriptorSets(
                 device,
                 descriptorPool,
                 descriptorSets);
@@ -3765,7 +3704,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("memoryRequirements must not be null");
         }
         
-        v11ProxyLibrary.vkGetBufferMemoryRequirements2(
+        nativeFunctionsProxyLibrary.vkGetBufferMemoryRequirements2(
                 device,
                 info,
                 memoryRequirements);
@@ -3776,7 +3715,7 @@ public class VulkanFunctions
             VkBufferMemoryRequirementsInfo2 info,
             VkMemoryRequirements2 memoryRequirements)
     {
-        v11ProxyLibrary.vkGetBufferMemoryRequirements2(
+        nativeFunctionsProxyLibrary.vkGetBufferMemoryRequirements2(
                 device,
                 info,
                 memoryRequirements);
@@ -3793,7 +3732,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("timestampInfos and timestamps must have the same number of elements");
         }
         
-        return v11ProxyLibrary.vkGetCalibratedTimestampsEXT(
+        return nativeFunctionsProxyLibrary.vkGetCalibratedTimestampsEXT(
                 device,
                 timestampInfos,
                 timestamps,
@@ -3805,7 +3744,7 @@ public class VulkanFunctions
             VkDeviceMemory memory,
             LongReturnValue committedMemoryInBytes)
     {
-        v11ProxyLibrary.vkGetDeviceMemoryCommitment(
+        nativeFunctionsProxyLibrary.vkGetDeviceMemoryCommitment(
                 device,
                 memory,
                 committedMemoryInBytes);
@@ -3816,7 +3755,7 @@ public class VulkanFunctions
             VkDeviceQueueInfo2 queueInfo,
             VkQueue queue)
     {
-        v11ProxyLibrary.vkGetDeviceQueue2(
+        nativeFunctionsProxyLibrary.vkGetDeviceQueue2(
                 device,
                 queueInfo,
                 queue);
@@ -3827,7 +3766,7 @@ public class VulkanFunctions
             VkDisplayKHR display,
             Collection<VkDisplayModeProperties2KHR> properties)
     {
-        return v11ProxyLibrary.vkGetDisplayModeProperties2KHR(
+        return nativeFunctionsProxyLibrary.vkGetDisplayModeProperties2KHR(
                 physicalDevice,
                 display,
                 properties);
@@ -3838,7 +3777,7 @@ public class VulkanFunctions
             VkDisplayKHR display,
             Collection<VkDisplayModePropertiesKHR> properties)
     {
-        return v11ProxyLibrary.vkGetDisplayModePropertiesKHR(
+        return nativeFunctionsProxyLibrary.vkGetDisplayModePropertiesKHR(
                 physicalDevice,
                 display,
                 properties);
@@ -3849,7 +3788,7 @@ public class VulkanFunctions
             VkDisplayPlaneInfo2KHR pisplayPlaneInfo,
             VkDisplayPlaneCapabilities2KHR capabilities)
     {
-        return v11ProxyLibrary.vkGetDisplayPlaneCapabilities2KHR(
+        return nativeFunctionsProxyLibrary.vkGetDisplayPlaneCapabilities2KHR(
                 physicalDevice,
                 pisplayPlaneInfo,
                 capabilities);
@@ -3861,7 +3800,7 @@ public class VulkanFunctions
             int planeIndex,
             VkDisplayPlaneCapabilitiesKHR capabilities)
     {
-        return v11ProxyLibrary.vkGetDisplayPlaneCapabilitiesKHR(
+        return nativeFunctionsProxyLibrary.vkGetDisplayPlaneCapabilitiesKHR(
                 physicalDevice,
                 mode,
                 planeIndex,
@@ -3873,7 +3812,7 @@ public class VulkanFunctions
             int planeIndex,
             Collection<VkDisplayKHR> displays)
     {
-        return v11ProxyLibrary.vkGetDisplayPlaneSupportedDisplaysKHR(
+        return nativeFunctionsProxyLibrary.vkGetDisplayPlaneSupportedDisplaysKHR(
                 physicalDevice,
                 planeIndex,
                 displays);
@@ -3883,7 +3822,7 @@ public class VulkanFunctions
             VkDevice device,
             VkEvent event)
     {
-        return v11ProxyLibrary.vkGetEventStatus(
+        return nativeFunctionsProxyLibrary.vkGetEventStatus(
                 device,
                 event);
     }
@@ -3893,7 +3832,7 @@ public class VulkanFunctions
             VkFenceGetFdInfoKHR getFdInfo,
             IntReturnValue fd)
     {
-        return v11ProxyLibrary.vkGetFenceFdKHR(
+        return nativeFunctionsProxyLibrary.vkGetFenceFdKHR(
                 device,
                 getFdInfo,
                 fd);
@@ -3903,7 +3842,7 @@ public class VulkanFunctions
             VkDevice device,
             VkFence fence)
     {
-        return v11ProxyLibrary.vkGetFenceStatus(
+        return nativeFunctionsProxyLibrary.vkGetFenceStatus(
                 device,
                 fence);
     }
@@ -3913,7 +3852,7 @@ public class VulkanFunctions
             VkImageMemoryRequirementsInfo2 info,
             VkMemoryRequirements2 memoryRequirements)
     {
-        v11ProxyLibrary.vkGetImageMemoryRequirements2(
+        nativeFunctionsProxyLibrary.vkGetImageMemoryRequirements2(
                 device,
                 info,
                 memoryRequirements);
@@ -3924,7 +3863,7 @@ public class VulkanFunctions
             VkImageMemoryRequirementsInfo2 info,
             VkMemoryRequirements2 memoryRequirements)
     {
-        v11ProxyLibrary.vkGetImageMemoryRequirements2(
+        nativeFunctionsProxyLibrary.vkGetImageMemoryRequirements2(
                 device,
                 info,
                 memoryRequirements);
@@ -3940,7 +3879,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("sparseMemoryRequirements must not be null");
         }
         
-        v11ProxyLibrary.vkGetImageSparseMemoryRequirements(
+        nativeFunctionsProxyLibrary.vkGetImageSparseMemoryRequirements(
                 device,
                 image,
                 sparseMemoryRequirements);
@@ -3956,7 +3895,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("sparseMemoryRequirements must not be null");
         }
         
-        v11ProxyLibrary.vkGetImageSparseMemoryRequirements2(
+        nativeFunctionsProxyLibrary.vkGetImageSparseMemoryRequirements2(
                 device,
                 info,
                 sparseMemoryRequirements);
@@ -3972,7 +3911,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("sparseMemoryRequirements must not be null");
         }
         
-        v11ProxyLibrary.vkGetImageSparseMemoryRequirements2(
+        nativeFunctionsProxyLibrary.vkGetImageSparseMemoryRequirements2(
                 device,
                 info,
                 sparseMemoryRequirements);
@@ -3984,7 +3923,7 @@ public class VulkanFunctions
             VkImageSubresource subresource,
             VkSubresourceLayout layout)
     {
-        v11ProxyLibrary.vkGetImageSubresourceLayout(
+        nativeFunctionsProxyLibrary.vkGetImageSubresourceLayout(
                 device,
                 image,
                 subresource,
@@ -3995,7 +3934,7 @@ public class VulkanFunctions
             VkDevice device,
             VkImageViewHandleInfoNVX info)
     {
-        return v11ProxyLibrary.vkGetImageViewHandleNVX(
+        return nativeFunctionsProxyLibrary.vkGetImageViewHandleNVX(
                 device,
                 info);
     }
@@ -4005,7 +3944,7 @@ public class VulkanFunctions
             VkMemoryGetFdInfoKHR getFdInfo,
             IntReturnValue fd)
     {
-        return v11ProxyLibrary.vkGetMemoryFdKHR(
+        return nativeFunctionsProxyLibrary.vkGetMemoryFdKHR(
                 device,
                 getFdInfo,
                 fd);
@@ -4017,7 +3956,7 @@ public class VulkanFunctions
             int fd,
             VkMemoryFdPropertiesKHR memoryFdProperties)
     {
-        return v11ProxyLibrary.vkGetMemoryFdPropertiesKHR(
+        return nativeFunctionsProxyLibrary.vkGetMemoryFdPropertiesKHR(
                 device,
                 handleType,
                 fd,
@@ -4030,7 +3969,7 @@ public class VulkanFunctions
             VulkanHandle hostPointer,
             VkMemoryHostPointerPropertiesEXT memoryHostPointerProperties)
     {
-        return v11ProxyLibrary.vkGetMemoryHostPointerPropertiesEXT(
+        return nativeFunctionsProxyLibrary.vkGetMemoryHostPointerPropertiesEXT(
                 device,
                 handleType,
                 hostPointer,
@@ -4042,7 +3981,7 @@ public class VulkanFunctions
             VkSwapchainKHR swapchain,
             Collection<VkPastPresentationTimingGOOGLE> presentationTimings)
     {
-        return v11ProxyLibrary.vkGetPastPresentationTimingGOOGLE(
+        return nativeFunctionsProxyLibrary.vkGetPastPresentationTimingGOOGLE(
                 device,
                 swapchain,
                 presentationTimings);
@@ -4052,7 +3991,7 @@ public class VulkanFunctions
             VkPhysicalDevice                            physicalDevice,
             Collection<VkDisplayPlaneProperties2KHR> properties)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
                 physicalDevice,
                 properties);
     }
@@ -4061,7 +4000,7 @@ public class VulkanFunctions
             VkPhysicalDevice physicalDevice,
             Collection<VkDisplayPlanePropertiesKHR> properties)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
                 physicalDevice,
                 properties);
     }
@@ -4070,7 +4009,7 @@ public class VulkanFunctions
             VkPhysicalDevice physicalDevice,
             Collection<VkDisplayProperties2KHR> properties)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceDisplayProperties2KHR(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceDisplayProperties2KHR(
                 physicalDevice,
                 properties);
     }
@@ -4079,7 +4018,7 @@ public class VulkanFunctions
             VkPhysicalDevice physicalDevice,
             VkDisplayPropertiesKHR properties)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceDisplayPropertiesKHR(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceDisplayPropertiesKHR(
                 physicalDevice,
                 properties);
     }
@@ -4089,7 +4028,7 @@ public class VulkanFunctions
             VkPhysicalDeviceExternalBufferInfo externalBufferInfo,
             VkExternalBufferProperties externalBufferProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceExternalBufferProperties(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceExternalBufferProperties(
                 physicalDevice,
                 externalBufferInfo,
                 externalBufferProperties);
@@ -4100,7 +4039,7 @@ public class VulkanFunctions
             VkPhysicalDeviceExternalBufferInfo externalBufferInfo,
             VkExternalBufferProperties externalBufferProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceExternalBufferProperties(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceExternalBufferProperties(
                 physicalDevice,
                 externalBufferInfo,
                 externalBufferProperties);
@@ -4111,7 +4050,7 @@ public class VulkanFunctions
             VkPhysicalDeviceExternalFenceInfo externalFenceInfo,
             VkExternalFenceProperties externalFenceProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceExternalFenceProperties(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceExternalFenceProperties(
                 physicalDevice,
                 externalFenceInfo,
                 externalFenceProperties);
@@ -4122,7 +4061,7 @@ public class VulkanFunctions
             VkPhysicalDeviceExternalFenceInfo externalFenceInfo,
             VkExternalFenceProperties externalFenceProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceExternalFenceProperties(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceExternalFenceProperties(
                 physicalDevice,
                 externalFenceInfo,
                 externalFenceProperties);
@@ -4138,7 +4077,7 @@ public class VulkanFunctions
             EnumSet<VkExternalMemoryHandleTypeFlagBitsNV> externalHandleType,
             VkExternalImageFormatPropertiesNV externalImageFormatProperties)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceExternalImageFormatPropertiesNV(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceExternalImageFormatPropertiesNV(
                 physicalDevice,
                 format,
                 type,
@@ -4154,7 +4093,7 @@ public class VulkanFunctions
             VkPhysicalDeviceExternalSemaphoreInfo externalSemaphoreInfo,
             VkExternalSemaphoreProperties externalSemaphoreProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceExternalSemaphoreProperties(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceExternalSemaphoreProperties(
                 physicalDevice,
                 externalSemaphoreInfo,
                 externalSemaphoreProperties);
@@ -4165,7 +4104,7 @@ public class VulkanFunctions
             VkPhysicalDeviceExternalSemaphoreInfo externalSemaphoreInfo,
             VkExternalSemaphoreProperties externalSemaphoreProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceExternalSemaphoreProperties(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceExternalSemaphoreProperties(
                 physicalDevice,
                 externalSemaphoreInfo,
                 externalSemaphoreProperties);
@@ -4175,7 +4114,7 @@ public class VulkanFunctions
             VkPhysicalDevice physicalDevice,
             VkPhysicalDeviceFeatures2 features)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceFeatures2(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceFeatures2(
                 physicalDevice,
                 features);
     }
@@ -4184,7 +4123,7 @@ public class VulkanFunctions
             VkPhysicalDevice physicalDevice,
             VkPhysicalDeviceFeatures2 features)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceFeatures2(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceFeatures2(
                 physicalDevice,
                 features);
     }
@@ -4194,7 +4133,7 @@ public class VulkanFunctions
             VkFormat format,
             VkFormatProperties2 formatProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceFormatProperties2(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceFormatProperties2(
                 physicalDevice,
                 format,
                 formatProperties);
@@ -4205,28 +4144,17 @@ public class VulkanFunctions
             VkFormat format,
             VkFormatProperties2 formatProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceFormatProperties2(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceFormatProperties2(
                 physicalDevice,
                 format,
                 formatProperties);
-    }
-    
-    public static void vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(
-            VkPhysicalDevice physicalDevice,
-            VkDeviceGeneratedCommandsFeaturesNVX features,
-            VkDeviceGeneratedCommandsLimitsNVX limits)
-    {
-        v11ProxyLibrary.vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(
-                physicalDevice,
-                features,
-                limits);
     }
     
     public static void vkGetPhysicalDeviceMemoryProperties2(
             VkPhysicalDevice physicalDevice,
             VkPhysicalDeviceMemoryProperties2 memoryProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceMemoryProperties2(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceMemoryProperties2(
                 physicalDevice,
                 memoryProperties);
     }
@@ -4236,7 +4164,7 @@ public class VulkanFunctions
             VkSampleCountFlagBits samples,
             VkMultisamplePropertiesEXT multisampleProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceMultisamplePropertiesEXT(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceMultisamplePropertiesEXT(
                 physicalDevice,
                 samples,
                 multisampleProperties);
@@ -4247,7 +4175,7 @@ public class VulkanFunctions
             VkSurfaceKHR surface,
             Collection<VkRect2D> rects)
     {
-        return v11ProxyLibrary.vkGetPhysicalDevicePresentRectanglesKHR(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDevicePresentRectanglesKHR(
                 physicalDevice,
                 surface,
                 rects);
@@ -4257,7 +4185,7 @@ public class VulkanFunctions
             VkPhysicalDevice physicalDevice,
             Collection<VkQueueFamilyProperties2> queueFamilyProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceQueueFamilyProperties2(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceQueueFamilyProperties2(
                 physicalDevice,
                 queueFamilyProperties);
     }
@@ -4266,7 +4194,7 @@ public class VulkanFunctions
             VkPhysicalDevice physicalDevice,
             Collection<VkQueueFamilyProperties2> queueFamilyProperties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceQueueFamilyProperties2(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceQueueFamilyProperties2(
                 physicalDevice,
                 queueFamilyProperties);
     }
@@ -4280,7 +4208,7 @@ public class VulkanFunctions
             VkImageTiling tiling,
             Collection<VkSparseImageFormatProperties> properties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceSparseImageFormatProperties(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceSparseImageFormatProperties(
                 physicalDevice,
                 format,
                 type,
@@ -4295,7 +4223,7 @@ public class VulkanFunctions
             VkPhysicalDeviceSparseImageFormatInfo2 formatInfo,
             Collection<VkSparseImageFormatProperties2> properties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceSparseImageFormatProperties2(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceSparseImageFormatProperties2(
                 physicalDevice,
                 formatInfo,
                 properties);
@@ -4306,7 +4234,7 @@ public class VulkanFunctions
             VkPhysicalDeviceSparseImageFormatInfo2 formatInfo,
             Collection<VkSparseImageFormatProperties2> properties)
     {
-        v11ProxyLibrary.vkGetPhysicalDeviceSparseImageFormatProperties2(
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceSparseImageFormatProperties2(
                 physicalDevice,
                 formatInfo,
                 properties);
@@ -4317,7 +4245,7 @@ public class VulkanFunctions
             VkSurfaceKHR surface,
             VkSurfaceCapabilities2EXT surfaceCapabilities)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceSurfaceCapabilities2EXT(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceSurfaceCapabilities2EXT(
                 physicalDevice,
                 surface,
                 surfaceCapabilities);
@@ -4328,7 +4256,7 @@ public class VulkanFunctions
             VkPhysicalDeviceSurfaceInfo2KHR surfaceInfo,
             Collection<VkSurfaceFormat2KHR> surfaceFormats)
     {
-        return v11ProxyLibrary.vkGetPhysicalDeviceSurfaceFormats2KHR(
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceSurfaceFormats2KHR(
                 physicalDevice,
                 surfaceInfo,
                 surfaceFormats);
@@ -4339,7 +4267,7 @@ public class VulkanFunctions
             VkPipelineCache pipelineCache,
             ByteArrayReturnValue data)
     {
-        return v11ProxyLibrary.vkGetPipelineCacheData(
+        return nativeFunctionsProxyLibrary.vkGetPipelineCacheData(
                 device,
                 pipelineCache,
                 data);
@@ -4365,7 +4293,7 @@ public class VulkanFunctions
             long stride,
             EnumSet<VkQueryResultFlagBits> flags)
     {
-        return v11ProxyLibrary.vkGetQueryPoolResults(
+        return nativeFunctionsProxyLibrary.vkGetQueryPoolResults(
                 device,
                 queryPool,
                 firstQuery,
@@ -4380,7 +4308,7 @@ public class VulkanFunctions
             VkSwapchainKHR swapchain,
             VkRefreshCycleDurationGOOGLE displayTimingProperties)
     {
-        return v11ProxyLibrary.vkGetRefreshCycleDurationGOOGLE(
+        return nativeFunctionsProxyLibrary.vkGetRefreshCycleDurationGOOGLE(
                 device,
                 swapchain,
                 displayTimingProperties);
@@ -4391,7 +4319,7 @@ public class VulkanFunctions
             VkRenderPass renderPass,
             VkExtent2D granularity)
     {
-        v11ProxyLibrary.vkGetRenderAreaGranularity(
+        nativeFunctionsProxyLibrary.vkGetRenderAreaGranularity(
                 device,
                 renderPass,
                 granularity);
@@ -4402,7 +4330,7 @@ public class VulkanFunctions
             VkSemaphoreGetFdInfoKHR getFdInfo,
             IntReturnValue fd)
     {
-        return v11ProxyLibrary.vkGetSemaphoreFdKHR(
+        return nativeFunctionsProxyLibrary.vkGetSemaphoreFdKHR(
                 device,
                 getFdInfo,
                 fd);
@@ -4415,7 +4343,7 @@ public class VulkanFunctions
             VkShaderInfoTypeAMD infoType,
             ByteArrayReturnValue info)
     {
-        return v11ProxyLibrary.vkGetShaderInfoAMD(
+        return nativeFunctionsProxyLibrary.vkGetShaderInfoAMD(
                 device,
                 pipeline,
                 shaderStage,
@@ -4429,7 +4357,7 @@ public class VulkanFunctions
             VkSurfaceCounterFlagBitsEXT counter,
             LongReturnValue counterValue)
     {
-        return v11ProxyLibrary.vkGetSwapchainCounterEXT(
+        return nativeFunctionsProxyLibrary.vkGetSwapchainCounterEXT(
                 device,
                 swapchain,
                 counter,
@@ -4440,7 +4368,7 @@ public class VulkanFunctions
             VkDevice device,
             VkSwapchainKHR swapchain)
     {
-        return v11ProxyLibrary.vkGetSwapchainStatusKHR(
+        return nativeFunctionsProxyLibrary.vkGetSwapchainStatusKHR(
                 device,
                 swapchain);
     }
@@ -4450,7 +4378,7 @@ public class VulkanFunctions
             VkValidationCacheEXT validationCache,
             ByteArrayReturnValue data)
     {
-        return v11ProxyLibrary.vkGetValidationCacheDataEXT(
+        return nativeFunctionsProxyLibrary.vkGetValidationCacheDataEXT(
                 device,
                 validationCache,
                 data);
@@ -4460,7 +4388,7 @@ public class VulkanFunctions
             VkDevice device,
             VkImportFenceFdInfoKHR importFenceFdInfo)
     {
-        return v11ProxyLibrary.vkImportFenceFdKHR(
+        return nativeFunctionsProxyLibrary.vkImportFenceFdKHR(
                 device,
                 importFenceFdInfo);
     }
@@ -4469,7 +4397,7 @@ public class VulkanFunctions
             VkDevice device,
             VkImportSemaphoreFdInfoKHR importSemaphoreFdInfo)
     {
-        return v11ProxyLibrary.vkImportSemaphoreFdKHR(
+        return nativeFunctionsProxyLibrary.vkImportSemaphoreFdKHR(
                 device,
                 importSemaphoreFdInfo);
     }
@@ -4478,7 +4406,7 @@ public class VulkanFunctions
             VkDevice device,
             Collection<VkMappedMemoryRange> memoryRanges)
     {
-        return v11ProxyLibrary.vkInvalidateMappedMemoryRanges(
+        return nativeFunctionsProxyLibrary.vkInvalidateMappedMemoryRanges(
                 device,
                 memoryRanges);
     }
@@ -4488,7 +4416,7 @@ public class VulkanFunctions
             VkPipelineCache dstCache,
             Collection<VkPipelineCache> srcCaches)
     {
-        return v11ProxyLibrary.vkMergePipelineCaches(
+        return nativeFunctionsProxyLibrary.vkMergePipelineCaches(
                 device,
                 dstCache,
                 srcCaches);
@@ -4499,7 +4427,7 @@ public class VulkanFunctions
             VkValidationCacheEXT dstCache,
             Collection<VkValidationCacheEXT> srcCaches)
     {
-        return v11ProxyLibrary.vkMergeValidationCachesEXT(
+        return nativeFunctionsProxyLibrary.vkMergeValidationCachesEXT(
                 device,
                 dstCache,
                 srcCaches);
@@ -4510,7 +4438,7 @@ public class VulkanFunctions
             Collection<VkBindSparseInfo> bindInfo,
             VkFence fence)
     {
-        return v11ProxyLibrary.vkQueueBindSparse(
+        return nativeFunctionsProxyLibrary.vkQueueBindSparse(
                 queue,
                 bindInfo,
                 fence);
@@ -4522,7 +4450,7 @@ public class VulkanFunctions
             VkAllocationCallbacks allocator,
             VkFence fence)
     {
-        return v11ProxyLibrary.vkRegisterDeviceEventEXT(
+        return nativeFunctionsProxyLibrary.vkRegisterDeviceEventEXT(
                 device,
                 deviceEventInfo,
                 allocator,
@@ -4536,7 +4464,7 @@ public class VulkanFunctions
             VkAllocationCallbacks allocator,
             VkFence fence)
     {
-        return v11ProxyLibrary.vkRegisterDisplayEventEXT(
+        return nativeFunctionsProxyLibrary.vkRegisterDisplayEventEXT(
                 device,
                 display,
                 displayEventInfo,
@@ -4550,7 +4478,7 @@ public class VulkanFunctions
             Collection<VkObjectTableEntryNVX> objectTableEntries,
             int[] objectIndices)
     {
-        return v11ProxyLibrary.vkRegisterObjectsNVX(
+        return nativeFunctionsProxyLibrary.vkRegisterObjectsNVX(
                 device,
                 objectTable,
                 objectTableEntries,
@@ -4561,7 +4489,7 @@ public class VulkanFunctions
             VkPhysicalDevice physicalDevice,
             VkDisplayKHR display)
     {
-        return v11ProxyLibrary.vkReleaseDisplayEXT(
+        return nativeFunctionsProxyLibrary.vkReleaseDisplayEXT(
                 physicalDevice,
                 display);
     }
@@ -4570,7 +4498,7 @@ public class VulkanFunctions
             VkCommandBuffer commandBuffer,
             EnumSet<VkCommandBufferResetFlagBits> flags)
     {
-        return v11ProxyLibrary.vkResetCommandBuffer(
+        return nativeFunctionsProxyLibrary.vkResetCommandBuffer(
                 commandBuffer,
                 flags);
     }
@@ -4580,7 +4508,7 @@ public class VulkanFunctions
             VkCommandPool commandPool,
             EnumSet<VkCommandPoolResetFlagBits> flags)
     {
-        return v11ProxyLibrary.vkResetCommandPool(
+        return nativeFunctionsProxyLibrary.vkResetCommandPool(
                 device,
                 commandPool,
                 flags);
@@ -4591,7 +4519,7 @@ public class VulkanFunctions
             VkDescriptorPool descriptorPool,
             EnumSet<VkDescriptorPoolResetFlagBits> flags)
     {
-        return v11ProxyLibrary.vkResetDescriptorPool(
+        return nativeFunctionsProxyLibrary.vkResetDescriptorPool(
                 device,
                 descriptorPool,
                 flags);
@@ -4601,18 +4529,18 @@ public class VulkanFunctions
             VkDevice device,
             VkEvent event)
     {
-        return v11ProxyLibrary.vkResetEvent(
+        return nativeFunctionsProxyLibrary.vkResetEvent(
                 device,
                 event);
     }
     
-    public static void vkResetQueryPoolEXT(
+    public static void vkResetQueryPool(
             VkDevice device,
             VkQueryPool queryPool,
             int firstQuery,
             int queryCount)
     {
-        v11ProxyLibrary.vkResetQueryPoolEXT(
+        nativeFunctionsProxyLibrary.vkResetQueryPool(
                 device,
                 queryPool,
                 firstQuery,
@@ -4623,7 +4551,7 @@ public class VulkanFunctions
             VkDevice device,
             VkEvent event)
     {
-        return v11ProxyLibrary.vkSetEvent(
+        return nativeFunctionsProxyLibrary.vkSetEvent(
                 device,
                 event);
     }
@@ -4638,7 +4566,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("swapchains and metadata MUST have the same number of elements.");
         }
         
-        v11ProxyLibrary.vkSetHdrMetadataEXT(
+        nativeFunctionsProxyLibrary.vkSetHdrMetadataEXT(
                 device,
                 swapchains,
                 metadata);
@@ -4649,7 +4577,7 @@ public class VulkanFunctions
             VkSwapchainKHR swapChain,
             boolean localDimmingEnable)
     {
-        v11ProxyLibrary.vkSetLocalDimmingAMD(
+        nativeFunctionsProxyLibrary.vkSetLocalDimmingAMD(
                 device,
                 swapChain,
                 localDimmingEnable);
@@ -4660,7 +4588,7 @@ public class VulkanFunctions
             VkCommandPool commandPool,
             EnumSet<VkCommandPoolTrimFlagBits> flags)
     {
-        v11ProxyLibrary.vkTrimCommandPool(
+        nativeFunctionsProxyLibrary.vkTrimCommandPool(
                 device,
                 commandPool,
                 flags);
@@ -4671,7 +4599,7 @@ public class VulkanFunctions
             VkCommandPool commandPool,
             EnumSet<VkCommandPoolTrimFlagBits> flags)
     {
-        v11ProxyLibrary.vkTrimCommandPool(
+        nativeFunctionsProxyLibrary.vkTrimCommandPool(
                 device,
                 commandPool,
                 flags);
@@ -4688,7 +4616,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("objectEntryTypes and objectIndices MUST have the same number of elements.");
         }
         
-        return v11ProxyLibrary.vkUnregisterObjectsNVX(
+        return nativeFunctionsProxyLibrary.vkUnregisterObjectsNVX(
                 device,
                 objectTable,
                 objectEntryTypes,
@@ -4702,7 +4630,7 @@ public class VulkanFunctions
             VkDescriptorUpdateTemplate descriptorUpdateTemplate,
             Collection<Object> data)
     {
-        v11ProxyLibrary.vkUpdateDescriptorSetWithTemplate(
+        nativeFunctionsProxyLibrary.vkUpdateDescriptorSetWithTemplate(
                 device,
                 descriptorSet,
                 descriptorUpdateTemplate,
@@ -4716,7 +4644,7 @@ public class VulkanFunctions
             VkDescriptorUpdateTemplate descriptorUpdateTemplate,
             Collection<Object> data)
     {
-        v11ProxyLibrary.vkUpdateDescriptorSetWithTemplate(
+        nativeFunctionsProxyLibrary.vkUpdateDescriptorSetWithTemplate(
                 device,
                 descriptorSet,
                 descriptorUpdateTemplate,
@@ -4728,7 +4656,7 @@ public class VulkanFunctions
             VkDescriptorSetLayoutCreateInfo createInfo,
             VkDescriptorSetLayoutSupport support)
     {
-        v11ProxyLibrary.vkGetDescriptorSetLayoutSupport(
+        nativeFunctionsProxyLibrary.vkGetDescriptorSetLayoutSupport(
                 device,
                 createInfo,
                 support);
@@ -4739,7 +4667,7 @@ public class VulkanFunctions
             VkDescriptorSetLayoutCreateInfo createInfo,
             VkDescriptorSetLayoutSupport support)
     {
-        v11ProxyLibrary.vkGetDescriptorSetLayoutSupport(
+        nativeFunctionsProxyLibrary.vkGetDescriptorSetLayoutSupport(
                 device,
                 createInfo,
                 support);
@@ -4760,7 +4688,7 @@ public class VulkanFunctions
             int remoteDeviceIndex,
             EnumSet<VkPeerMemoryFeatureFlagBits> peerMemoryFeatures)
     {
-        v11ProxyLibrary.vkGetDeviceGroupPeerMemoryFeatures(
+        nativeFunctionsProxyLibrary.vkGetDeviceGroupPeerMemoryFeatures(
                 device,
                 heapIndex,
                 localDeviceIndex,
@@ -4783,7 +4711,7 @@ public class VulkanFunctions
             int remoteDeviceIndex,
             EnumSet<VkPeerMemoryFeatureFlagBits> peerMemoryFeatures)
     {
-        v11ProxyLibrary.vkGetDeviceGroupPeerMemoryFeatures(
+        nativeFunctionsProxyLibrary.vkGetDeviceGroupPeerMemoryFeatures(
                 device,
                 heapIndex,
                 localDeviceIndex,
@@ -4791,33 +4719,33 @@ public class VulkanFunctions
                 peerMemoryFeatures);
     }
     
-    public static VkResult vkGetSemaphoreCounterValueKHR(
+    public static VkResult vkGetSemaphoreCounterValue(
             VkDevice device,
             VkSemaphore semaphore,
             LongReturnValue value)
     {
-        return v11ProxyLibrary.vkGetSemaphoreCounterValueKHR(
+        return nativeFunctionsProxyLibrary.vkGetSemaphoreCounterValue(
                 device,
                 semaphore,
                 value);
     }
     
-    public static VkResult vkWaitSemaphoresKHR(
+    public static VkResult vkWaitSemaphores(
             VkDevice device,
-            VkSemaphoreWaitInfoKHR waitInfo,
+            VkSemaphoreWaitInfo waitInfo,
             long timeout)
     {
-        return v11ProxyLibrary.vkWaitSemaphoresKHR(
+        return nativeFunctionsProxyLibrary.vkWaitSemaphores(
                 device,
                 waitInfo,
                 timeout);
     }
     
-    public static VkResult vkSignalSemaphoreKHR(
+    public static VkResult vkSignalSemaphore(
             VkDevice device,
-            VkSemaphoreSignalInfoKHR signalInfo)
+            VkSemaphoreSignalInfo signalInfo)
     {
-        return v11ProxyLibrary.vkSignalSemaphoreKHR(
+        return nativeFunctionsProxyLibrary.vkSignalSemaphore(
                 device,
                 signalInfo);
     }
@@ -4858,7 +4786,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("byteBuffer is not array backed.");
         }
 
-        v11ProxyLibrary.pushDataToVirtualMemory(byteBuffer.array(), pointerToMappedMemory);
+        nativeFunctionsProxyLibrary.pushDataToVirtualMemory(byteBuffer.array(), pointerToMappedMemory);
     }
 
     /**
@@ -4871,7 +4799,7 @@ public class VulkanFunctions
             byte[] byteArray,
             MappedMemoryPointer pointerToMappedMemory)
     {
-        v11ProxyLibrary.pushDataToVirtualMemory(byteArray, pointerToMappedMemory);
+        nativeFunctionsProxyLibrary.pushDataToVirtualMemory(byteArray, pointerToMappedMemory);
     }
 
     /**
@@ -4889,7 +4817,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("floatBuffer is not array backed.");
         }
         
-        v11ProxyLibrary.pushDataToVirtualMemory(floatBuffer.array(), pointerToMappedMemory);
+        nativeFunctionsProxyLibrary.pushDataToVirtualMemory(floatBuffer.array(), pointerToMappedMemory);
     }
 
     /**
@@ -4902,7 +4830,7 @@ public class VulkanFunctions
             float[] floatArray,
             MappedMemoryPointer pointerToMappedMemory)
     {
-        v11ProxyLibrary.pushDataToVirtualMemory(floatArray, pointerToMappedMemory);
+        nativeFunctionsProxyLibrary.pushDataToVirtualMemory(floatArray, pointerToMappedMemory);
     }
 
     /**
@@ -4926,7 +4854,7 @@ public class VulkanFunctions
             throw new IllegalArgumentException("intBuffer is not array backed.");
         }
         
-        v11ProxyLibrary.pushDataToVirtualMemory(intBuffer.array(), pointerToMappedMemory);
+        nativeFunctionsProxyLibrary.pushDataToVirtualMemory(intBuffer.array(), pointerToMappedMemory);
     }
 
     /**
@@ -4945,7 +4873,7 @@ public class VulkanFunctions
             int[] intArray,
             MappedMemoryPointer pointerToMappedMemory)
     {
-        v11ProxyLibrary.pushDataToVirtualMemory(intArray, pointerToMappedMemory);
+        nativeFunctionsProxyLibrary.pushDataToVirtualMemory(intArray, pointerToMappedMemory);
     }
 
     
@@ -5001,7 +4929,7 @@ public class VulkanFunctions
             String    displayName,
             LinkedBlockingQueue<WaylandEventObject> eventHandlerWorkQueue)
     {
-        return v11ProxyLibrary.wlDisplayConnect(
+        return nativeFunctionsProxyLibrary.wlDisplayConnect(
                 displayName,
                 eventHandlerWorkQueue);
     }
@@ -5009,56 +4937,56 @@ public class VulkanFunctions
     public static void wlDisplayDisconnect(
             WlDisplayHandle waylandDisplay)
     {
-        v11ProxyLibrary.wlDisplayDisconnect(waylandDisplay);
+        nativeFunctionsProxyLibrary.wlDisplayDisconnect(waylandDisplay);
     }
     
     public static void wlDisplayDispatch(
             WlDisplayHandle waylandDisplay)
     {
-        v11ProxyLibrary.wlDisplayDispatch(waylandDisplay);
+        nativeFunctionsProxyLibrary.wlDisplayDispatch(waylandDisplay);
     }
     
     public static int wlDisplayDispatchPending(
             WlDisplayHandle waylandDisplay)
     {
-        return v11ProxyLibrary.wlDisplayDispatchPending(waylandDisplay);
+        return nativeFunctionsProxyLibrary.wlDisplayDispatchPending(waylandDisplay);
     }
     
     public static int wlDisplayFlush(
             WlDisplayHandle waylandDisplay)
     {
-        return v11ProxyLibrary.wlDisplayFlush(waylandDisplay);
+        return nativeFunctionsProxyLibrary.wlDisplayFlush(waylandDisplay);
     }
     
     public static WlRegistryHandle wlDisplayGetRegistry(
             WlDisplayHandle waylandDisplay)
     {
-        return v11ProxyLibrary.wlDisplayGetRegistry(waylandDisplay);
+        return nativeFunctionsProxyLibrary.wlDisplayGetRegistry(waylandDisplay);
     }
     
     public static int wlDisplayPrepareRead(
             WlDisplayHandle waylandDisplay)
     {
-        return v11ProxyLibrary.wlDisplayPrepareRead(waylandDisplay);
+        return nativeFunctionsProxyLibrary.wlDisplayPrepareRead(waylandDisplay);
     }
     
     public static int wlDisplayReadEvents(
             WlDisplayHandle waylandDisplay)
     {
-        return v11ProxyLibrary.wlDisplayReadEvents(waylandDisplay);
+        return nativeFunctionsProxyLibrary.wlDisplayReadEvents(waylandDisplay);
     }
     
 
     public static void wlDisplayRoundTrip(
             WlDisplayHandle waylandDisplay)
     {
-        v11ProxyLibrary.wlDisplayRoundTrip(waylandDisplay);
+        nativeFunctionsProxyLibrary.wlDisplayRoundTrip(waylandDisplay);
     }
     
     public static void wlDisplaySync(
             WlDisplayHandle waylandDisplay)
     {
-        v11ProxyLibrary.wlDisplaySync(waylandDisplay);
+        nativeFunctionsProxyLibrary.wlDisplaySync(waylandDisplay);
     }
     
     public static VulkanHandle wlRegistryBind(
@@ -5067,7 +4995,7 @@ public class VulkanFunctions
             String textInterfaceName,
             int interfaceVersion)
     {
-        return v11ProxyLibrary.wlRegistryBind(
+        return nativeFunctionsProxyLibrary.wlRegistryBind(
                 waylandRegistry,
                 interfaceId,
                 textInterfaceName,
@@ -5077,25 +5005,25 @@ public class VulkanFunctions
     public static WlRegionHandle wlCompositorCreateRegion(
             WlCompositorHandle waylandCompositor)
     {
-        return v11ProxyLibrary.wlCompositorCreateRegion(waylandCompositor);
+        return nativeFunctionsProxyLibrary.wlCompositorCreateRegion(waylandCompositor);
     }
     
     public static WlSurfaceHandle wlCompositorCreateSurface(
             WlCompositorHandle waylandCompositor)
     {
-        return v11ProxyLibrary.wlCompositorCreateSurface(waylandCompositor);
+        return nativeFunctionsProxyLibrary.wlCompositorCreateSurface(waylandCompositor);
     }
     
     public static void wlKeyboardRelease(
             WlKeyboardHandle waylandKeyboard)
     {
-        v11ProxyLibrary.wlKeyboardRelease(waylandKeyboard);
+        nativeFunctionsProxyLibrary.wlKeyboardRelease(waylandKeyboard);
     }
     
     public static void wlPointerRelease(
             WlPointerHandle waylandPointer)
     {
-        v11ProxyLibrary.wlPointerRelease(waylandPointer);
+        nativeFunctionsProxyLibrary.wlPointerRelease(waylandPointer);
     }
     
     public static void wlPointerSetCursor(
@@ -5105,38 +5033,38 @@ public class VulkanFunctions
             int x,
             int y)
     {
-        v11ProxyLibrary.wlPointerSetCursor(waylandPointer, serialNumber, waylandSurface, x, y);
+        nativeFunctionsProxyLibrary.wlPointerSetCursor(waylandPointer, serialNumber, waylandSurface, x, y);
     }
     
     public static WlKeyboardHandle wlSeatGetKeyboard(
             WlSeatHandle waylandSeat)
     {
-        return v11ProxyLibrary.wlSeatGetKeyboard(waylandSeat);
+        return nativeFunctionsProxyLibrary.wlSeatGetKeyboard(waylandSeat);
     }
     
     public static WlPointerHandle wlSeatGetPointer(
             WlSeatHandle waylandSeat)
     {
-        return v11ProxyLibrary.wlSeatGetPointer(waylandSeat);
+        return nativeFunctionsProxyLibrary.wlSeatGetPointer(waylandSeat);
     }
     
     public static WlTouchHandle wlSeatGetTouch(
             WlSeatHandle waylandSeat)
     {
-        return v11ProxyLibrary.wlSeatGetTouch(waylandSeat);
+        return nativeFunctionsProxyLibrary.wlSeatGetTouch(waylandSeat);
     }
     
     public static void wlSeatRelease(
             WlSeatHandle waylandSeat)
     {
-        v11ProxyLibrary.wlSeatRelease(waylandSeat);
+        nativeFunctionsProxyLibrary.wlSeatRelease(waylandSeat);
     }
     
     public static WlShellSurfaceHandle wlShellGetShellSurface(
             WlShellHandle waylandShellInterface,
             WlSurfaceHandle waylandSurface)
     {
-        return v11ProxyLibrary.wlShellGetShellSurface(waylandShellInterface, waylandSurface);
+        return nativeFunctionsProxyLibrary.wlShellGetShellSurface(waylandShellInterface, waylandSurface);
     }
 
     public static void wlShellSurfaceMove(
@@ -5144,14 +5072,14 @@ public class VulkanFunctions
             WlSeatHandle waylandSeat,
             int serialNumber)
     {
-        v11ProxyLibrary.wlShellSurfaceMove(waylandshellSurface, waylandSeat, serialNumber);
+        nativeFunctionsProxyLibrary.wlShellSurfaceMove(waylandshellSurface, waylandSeat, serialNumber);
     }
     
     public static void wlShellSurfacePong(
             WlShellSurfaceHandle waylandshellSurface,
             int serialNumber)
     {
-        v11ProxyLibrary.wlShellSurfacePong(waylandshellSurface, serialNumber);
+        nativeFunctionsProxyLibrary.wlShellSurfacePong(waylandshellSurface, serialNumber);
     }
     
     public static void wlShellSurfaceResize(
@@ -5160,7 +5088,7 @@ public class VulkanFunctions
             int serialNumber,
             WlShellSurfaceResize edges)
     {
-        v11ProxyLibrary.wlShellSurfaceResize(
+        nativeFunctionsProxyLibrary.wlShellSurfaceResize(
                 waylandshellSurface,
                 waylandSeat,
                 serialNumber,
@@ -5171,7 +5099,7 @@ public class VulkanFunctions
             WlShellSurfaceHandle waylandshellSurface,
             String className)
     {
-        v11ProxyLibrary.wlShellSurfaceSetClass(waylandshellSurface, className);
+        nativeFunctionsProxyLibrary.wlShellSurfaceSetClass(waylandshellSurface, className);
     }
     
     public static void wlShellSurfaceSetFullscreen(
@@ -5180,7 +5108,7 @@ public class VulkanFunctions
             int framerate,
             WlOutputHandle waylandOutput)
     {
-        v11ProxyLibrary.wlShellSurfaceSetFullscreen(
+        nativeFunctionsProxyLibrary.wlShellSurfaceSetFullscreen(
                 waylandshellSurface,
                 method,
                 framerate,
@@ -5191,7 +5119,7 @@ public class VulkanFunctions
             WlShellSurfaceHandle waylandshellSurface,
             WlOutputHandle waylandOutput)
     {
-        v11ProxyLibrary.wlShellSurfaceSetMaximized(waylandshellSurface, waylandOutput);
+        nativeFunctionsProxyLibrary.wlShellSurfaceSetMaximized(waylandshellSurface, waylandOutput);
     }
     
     public static void wlShellSurfaceSetPopup(
@@ -5203,7 +5131,7 @@ public class VulkanFunctions
             int y,
             EnumSet<WlShellSurfaceTransientBehavior> flags)
     {
-        v11ProxyLibrary.wlShellSurfaceSetPopup(
+        nativeFunctionsProxyLibrary.wlShellSurfaceSetPopup(
                 waylandshellSurface,
                 waylandSeat,
                 serialNumber,
@@ -5217,13 +5145,13 @@ public class VulkanFunctions
             WlShellSurfaceHandle waylandshellSurface,
             byte[] surfaceTitle)
     {
-        v11ProxyLibrary.wlShellSurfaceSetTitle(waylandshellSurface, surfaceTitle);
+        nativeFunctionsProxyLibrary.wlShellSurfaceSetTitle(waylandshellSurface, surfaceTitle);
     }
     
     public static void wlShellSurfaceSetTopLevel(
             WlShellSurfaceHandle waylandshellSurface)
     {
-        v11ProxyLibrary.wlShellSurfaceSetTopLevel(waylandshellSurface);
+        nativeFunctionsProxyLibrary.wlShellSurfaceSetTopLevel(waylandshellSurface);
     }
     
     /**
@@ -5241,7 +5169,7 @@ public class VulkanFunctions
             int y,
             EnumSet<WlShellSurfaceTransientBehavior> flags)
     {
-        v11ProxyLibrary.wlShellSurfaceSetTransient(
+        nativeFunctionsProxyLibrary.wlShellSurfaceSetTransient(
                 waylandshellSurface,
                 parentSurface,
                 x,
@@ -5252,7 +5180,7 @@ public class VulkanFunctions
     public static void wlSurfaceCommit(
             WlSurfaceHandle waylandSurfaceHandle)
     {
-        v11ProxyLibrary.wlSurfaceCommit(
+        nativeFunctionsProxyLibrary.wlSurfaceCommit(
                 waylandSurfaceHandle);
     }
     
@@ -5263,7 +5191,7 @@ public class VulkanFunctions
             int width,
             int height)
     {
-        v11ProxyLibrary.wlSurfaceDamage(
+        nativeFunctionsProxyLibrary.wlSurfaceDamage(
                 waylandSurfaceHandle,
                 x,
                 y,

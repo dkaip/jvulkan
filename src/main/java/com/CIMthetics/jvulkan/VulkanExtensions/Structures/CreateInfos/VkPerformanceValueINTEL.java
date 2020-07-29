@@ -15,7 +15,7 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos;
 
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceValueTypeINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkPerformanceValueTypeINTEL;
 
 public class VkPerformanceValueINTEL
 {

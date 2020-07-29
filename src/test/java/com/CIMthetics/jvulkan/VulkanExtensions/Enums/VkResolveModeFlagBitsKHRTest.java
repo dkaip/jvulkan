@@ -19,14 +19,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkResolveModeFlagBitsKHR;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkResolveModeFlagBits;
 
 class VkResolveModeFlagBitsKHRTest
 {
     @Test
     void testNumberOfElements()
     {
-        VkResolveModeFlagBitsKHR[] values = VkResolveModeFlagBitsKHR.values();
+        VkResolveModeFlagBits[] values = VkResolveModeFlagBits.values();
         assertEquals(6, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
@@ -34,11 +34,11 @@ class VkResolveModeFlagBitsKHRTest
     @Test
     void testValues()
     {
-        assertEquals(0, VkResolveModeFlagBitsKHR.VK_RESOLVE_MODE_NONE_KHR.valueOf(), VkResolveModeFlagBitsKHR.VK_RESOLVE_MODE_NONE_KHR.toString() + " has an unexpected value.");
-        assertEquals(0x00000001, VkResolveModeFlagBitsKHR.VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR.valueOf(), VkResolveModeFlagBitsKHR.VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR.toString() + " has an unexpected value.");
-        assertEquals(0x00000002, VkResolveModeFlagBitsKHR.VK_RESOLVE_MODE_AVERAGE_BIT_KHR.valueOf(), VkResolveModeFlagBitsKHR.VK_RESOLVE_MODE_AVERAGE_BIT_KHR.toString() + " has an unexpected value.");
-        assertEquals(0x00000004, VkResolveModeFlagBitsKHR.VK_RESOLVE_MODE_MIN_BIT_KHR.valueOf(), VkResolveModeFlagBitsKHR.VK_RESOLVE_MODE_MIN_BIT_KHR.toString() + " has an unexpected value.");
-        assertEquals(0x00000008, VkResolveModeFlagBitsKHR.VK_RESOLVE_MODE_MAX_BIT_KHR.valueOf(), VkResolveModeFlagBitsKHR.VK_RESOLVE_MODE_MAX_BIT_KHR.toString() + " has an unexpected value.");
-        assertEquals(0x7FFFFFFF, VkResolveModeFlagBitsKHR.VK_RESOLVE_MODE_FLAG_BITS_MAX_ENUM_KHR.valueOf(), VkResolveModeFlagBitsKHR.VK_RESOLVE_MODE_FLAG_BITS_MAX_ENUM_KHR.toString() + " has an unexpected value.");
+        assertEquals(0, VkResolveModeFlagBits.VK_RESOLVE_MODE_NONE_KHR.valueOf(), VkResolveModeFlagBits.VK_RESOLVE_MODE_NONE_KHR.toString() + " has an unexpected value.");
+        assertEquals(0x00000001, VkResolveModeFlagBits.VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR.valueOf(), VkResolveModeFlagBits.VK_RESOLVE_MODE_SAMPLE_ZERO_BIT_KHR.toString() + " has an unexpected value.");
+        assertEquals(0x00000002, VkResolveModeFlagBits.VK_RESOLVE_MODE_AVERAGE_BIT_KHR.valueOf(), VkResolveModeFlagBits.VK_RESOLVE_MODE_AVERAGE_BIT_KHR.toString() + " has an unexpected value.");
+        assertEquals(0x00000004, VkResolveModeFlagBits.VK_RESOLVE_MODE_MIN_BIT_KHR.valueOf(), VkResolveModeFlagBits.VK_RESOLVE_MODE_MIN_BIT_KHR.toString() + " has an unexpected value.");
+        assertEquals(0x00000008, VkResolveModeFlagBits.VK_RESOLVE_MODE_MAX_BIT_KHR.valueOf(), VkResolveModeFlagBits.VK_RESOLVE_MODE_MAX_BIT_KHR.toString() + " has an unexpected value.");
+        assertEquals(0x7FFFFFFF, VkResolveModeFlagBits.VK_RESOLVE_MODE_FLAG_BITS_MAX_ENUM_KHR.valueOf(), VkResolveModeFlagBits.VK_RESOLVE_MODE_FLAG_BITS_MAX_ENUM_KHR.toString() + " has an unexpected value.");
     }
 }

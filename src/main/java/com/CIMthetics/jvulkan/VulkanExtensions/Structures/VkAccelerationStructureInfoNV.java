@@ -20,13 +20,13 @@ import java.util.EnumSet;
 
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkAccelerationStructureTypeNV;
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkBuildAccelerationStructureFlagBitsNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkAccelerationStructureTypeKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkBuildAccelerationStructureFlagBitsKHR;
 
 public class VkAccelerationStructureInfoNV extends VulkanCreateInfoStructure
 {
-    private VkAccelerationStructureTypeNV                   type;
-    private EnumSet<VkBuildAccelerationStructureFlagBitsNV> flags = EnumSet.noneOf(VkBuildAccelerationStructureFlagBitsNV.class);
+    private VkAccelerationStructureTypeKHR                   type;
+    private EnumSet<VkBuildAccelerationStructureFlagBitsKHR> flags = EnumSet.noneOf(VkBuildAccelerationStructureFlagBitsKHR.class);
     private int                                             instanceCount;
     private Collection<VkGeometryNV>                        geometries;
 
@@ -35,22 +35,22 @@ public class VkAccelerationStructureInfoNV extends VulkanCreateInfoStructure
         super(VkStructureType.VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_INFO_NV);
     }
 
-    public VkAccelerationStructureTypeNV getType()
+    public VkAccelerationStructureTypeKHR getType()
     {
         return type;
     }
 
-    public void setType(VkAccelerationStructureTypeNV type)
+    public void setType(VkAccelerationStructureTypeKHR type)
     {
         this.type = type;
     }
 
-    public EnumSet<VkBuildAccelerationStructureFlagBitsNV> getFlags()
+    public EnumSet<VkBuildAccelerationStructureFlagBitsKHR> getFlags()
     {
         return flags;
     }
 
-    public void setFlags(EnumSet<VkBuildAccelerationStructureFlagBitsNV> flags)
+    public void setFlags(EnumSet<VkBuildAccelerationStructureFlagBitsKHR> flags)
     {
         this.flags = flags;
     }

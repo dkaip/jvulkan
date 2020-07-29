@@ -43,9 +43,6 @@ public enum VkPointClippingBehavior
                 break;
         }
 
-        if (inputValue == (VK_POINT_CLIPPING_BEHAVIOR_USER_CLIP_PLANES_ONLY.valueOf() - VK_POINT_CLIPPING_BEHAVIOR_ALL_CLIP_PLANES.valueOf() + 1))
-            result = VK_POINT_CLIPPING_BEHAVIOR_RANGE_SIZE;
-        
         if (result == null)
             throw new IllegalArgumentException("Illegal value specified for this Enum.");
 

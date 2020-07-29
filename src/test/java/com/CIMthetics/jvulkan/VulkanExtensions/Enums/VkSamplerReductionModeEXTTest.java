@@ -19,14 +19,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkSamplerReductionModeEXT;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkSamplerReductionMode;
 
 class VkSamplerReductionModeEXTTest
 {
     @Test
     void testNumberOfElements()
     {
-        VkSamplerReductionModeEXT[] values = VkSamplerReductionModeEXT.values();
+        VkSamplerReductionMode[] values = VkSamplerReductionMode.values();
         assertEquals(7, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
@@ -34,12 +34,12 @@ class VkSamplerReductionModeEXTTest
     @Test
     void testValues()
     {
-        assertEquals(0, VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_EXT.valueOf(), VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_EXT.toString() + " has an unexpected value.");
-        assertEquals(1, VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_MIN_EXT.valueOf(), VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_MIN_EXT.toString() + " has an unexpected value.");
-        assertEquals(2, VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_MAX_EXT.valueOf(), VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_MAX_EXT.toString() + " has an unexpected value.");
-        assertEquals(VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_EXT.valueOf(), VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_BEGIN_RANGE_EXT.valueOf(), VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_BEGIN_RANGE_EXT.toString() + " has an unexpected value.");
-        assertEquals(VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_MAX_EXT.valueOf(), VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_END_RANGE_EXT.valueOf(), VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_END_RANGE_EXT.toString() + " has an unexpected value.");
-        assertEquals((VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_MAX_EXT.valueOf() - VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_EXT.valueOf() + 1), VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_RANGE_SIZE_EXT.valueOf(), VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_RANGE_SIZE_EXT.toString() + " has an unexpected value.");
-        assertEquals(0x7FFFFFFF, VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_MAX_ENUM_EXT.valueOf(), VkSamplerReductionModeEXT.VK_SAMPLER_REDUCTION_MODE_MAX_ENUM_EXT.toString() + " has an unexpected value.");
+        assertEquals(0, VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_EXT.valueOf(), VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_EXT.toString() + " has an unexpected value.");
+        assertEquals(1, VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_MIN_EXT.valueOf(), VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_MIN_EXT.toString() + " has an unexpected value.");
+        assertEquals(2, VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_MAX_EXT.valueOf(), VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_MAX_EXT.toString() + " has an unexpected value.");
+        assertEquals(VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_EXT.valueOf(), VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_BEGIN_RANGE_EXT.valueOf(), VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_BEGIN_RANGE_EXT.toString() + " has an unexpected value.");
+        assertEquals(VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_MAX_EXT.valueOf(), VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_END_RANGE_EXT.valueOf(), VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_END_RANGE_EXT.toString() + " has an unexpected value.");
+        assertEquals((VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_MAX_EXT.valueOf() - VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_EXT.valueOf() + 1), VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_RANGE_SIZE_EXT.valueOf(), VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_RANGE_SIZE_EXT.toString() + " has an unexpected value.");
+        assertEquals(0x7FFFFFFF, VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_MAX_ENUM_EXT.valueOf(), VkSamplerReductionMode.VK_SAMPLER_REDUCTION_MODE_MAX_ENUM_EXT.toString() + " has an unexpected value.");
     }
 }

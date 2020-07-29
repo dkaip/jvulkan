@@ -19,14 +19,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkGeometryInstanceFlagBitsNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkGeometryInstanceFlagBitsKHR;
 
 class VkGeometryInstanceFlagBitsNVTest
 {
     @Test
     void testNumberOfElements()
     {
-        VkGeometryInstanceFlagBitsNV[] values = VkGeometryInstanceFlagBitsNV.values();
+        VkGeometryInstanceFlagBitsKHR[] values = VkGeometryInstanceFlagBitsKHR.values();
         assertEquals(5, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
@@ -34,10 +34,10 @@ class VkGeometryInstanceFlagBitsNVTest
     @Test
     void testValues()
     {
-        assertEquals(0x00000001, VkGeometryInstanceFlagBitsNV.VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_DISABLE_BIT_NV.valueOf(), VkGeometryInstanceFlagBitsNV.VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_DISABLE_BIT_NV.toString() + " has an unexpected value.");
-        assertEquals(0x00000002, VkGeometryInstanceFlagBitsNV.VK_GEOMETRY_INSTANCE_TRIANGLE_FRONT_COUNTERCLOCKWISE_BIT_NV.valueOf(), VkGeometryInstanceFlagBitsNV.VK_GEOMETRY_INSTANCE_TRIANGLE_FRONT_COUNTERCLOCKWISE_BIT_NV.toString() + " has an unexpected value.");
-        assertEquals(0x00000004, VkGeometryInstanceFlagBitsNV.VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_NV.valueOf(), VkGeometryInstanceFlagBitsNV.VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_NV.toString() + " has an unexpected value.");
-        assertEquals(0x00000008, VkGeometryInstanceFlagBitsNV.VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_NV.valueOf(), VkGeometryInstanceFlagBitsNV.VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_NV.toString() + " has an unexpected value.");
-        assertEquals(0x7FFFFFFF, VkGeometryInstanceFlagBitsNV.VK_GEOMETRY_INSTANCE_FLAG_BITS_MAX_ENUM_NV.valueOf(), VkGeometryInstanceFlagBitsNV.VK_GEOMETRY_INSTANCE_FLAG_BITS_MAX_ENUM_NV.toString() + " has an unexpected value.");
+        assertEquals(0x00000001, VkGeometryInstanceFlagBitsKHR.VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_DISABLE_BIT_NV.valueOf(), VkGeometryInstanceFlagBitsKHR.VK_GEOMETRY_INSTANCE_TRIANGLE_CULL_DISABLE_BIT_NV.toString() + " has an unexpected value.");
+        assertEquals(0x00000002, VkGeometryInstanceFlagBitsKHR.VK_GEOMETRY_INSTANCE_TRIANGLE_FRONT_COUNTERCLOCKWISE_BIT_NV.valueOf(), VkGeometryInstanceFlagBitsKHR.VK_GEOMETRY_INSTANCE_TRIANGLE_FRONT_COUNTERCLOCKWISE_BIT_NV.toString() + " has an unexpected value.");
+        assertEquals(0x00000004, VkGeometryInstanceFlagBitsKHR.VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_NV.valueOf(), VkGeometryInstanceFlagBitsKHR.VK_GEOMETRY_INSTANCE_FORCE_OPAQUE_BIT_NV.toString() + " has an unexpected value.");
+        assertEquals(0x00000008, VkGeometryInstanceFlagBitsKHR.VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_NV.valueOf(), VkGeometryInstanceFlagBitsKHR.VK_GEOMETRY_INSTANCE_FORCE_NO_OPAQUE_BIT_NV.toString() + " has an unexpected value.");
+        assertEquals(0x7FFFFFFF, VkGeometryInstanceFlagBitsKHR.VK_GEOMETRY_INSTANCE_FLAG_BITS_MAX_ENUM_NV.valueOf(), VkGeometryInstanceFlagBitsKHR.VK_GEOMETRY_INSTANCE_FLAG_BITS_MAX_ENUM_NV.toString() + " has an unexpected value.");
     }
 }

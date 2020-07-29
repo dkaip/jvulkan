@@ -19,14 +19,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkGeometryFlagBitsNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkGeometryFlagBitsKHR;
 
 class VkGeometryFlagBitsNVTest
 {
     @Test
     void testNumberOfElements()
     {
-        VkGeometryFlagBitsNV[] values = VkGeometryFlagBitsNV.values();
+        VkGeometryFlagBitsKHR[] values = VkGeometryFlagBitsKHR.values();
         assertEquals(3, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
@@ -34,8 +34,8 @@ class VkGeometryFlagBitsNVTest
     @Test
     void testValues()
     {
-        assertEquals(0x00000001, VkGeometryFlagBitsNV.VK_GEOMETRY_OPAQUE_BIT_NV.valueOf(), VkGeometryFlagBitsNV.VK_GEOMETRY_OPAQUE_BIT_NV.toString() + " has an unexpected value.");
-        assertEquals(0x00000002, VkGeometryFlagBitsNV.VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_NV.valueOf(), VkGeometryFlagBitsNV.VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_NV.toString() + " has an unexpected value.");
-        assertEquals(0x7FFFFFFF, VkGeometryFlagBitsNV.VK_GEOMETRY_FLAG_BITS_MAX_ENUM_NV.valueOf(), VkGeometryFlagBitsNV.VK_GEOMETRY_FLAG_BITS_MAX_ENUM_NV.toString() + " has an unexpected value.");
+        assertEquals(0x00000001, VkGeometryFlagBitsKHR.VK_GEOMETRY_OPAQUE_BIT_NV.valueOf(), VkGeometryFlagBitsKHR.VK_GEOMETRY_OPAQUE_BIT_NV.toString() + " has an unexpected value.");
+        assertEquals(0x00000002, VkGeometryFlagBitsKHR.VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_NV.valueOf(), VkGeometryFlagBitsKHR.VK_GEOMETRY_NO_DUPLICATE_ANY_HIT_INVOCATION_BIT_NV.toString() + " has an unexpected value.");
+        assertEquals(0x7FFFFFFF, VkGeometryFlagBitsKHR.VK_GEOMETRY_FLAG_BITS_MAX_ENUM_NV.valueOf(), VkGeometryFlagBitsKHR.VK_GEOMETRY_FLAG_BITS_MAX_ENUM_NV.toString() + " has an unexpected value.");
     }
 }

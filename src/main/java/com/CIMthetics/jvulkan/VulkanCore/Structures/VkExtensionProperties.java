@@ -39,4 +39,15 @@ public class VkExtensionProperties
     {
         this.specVersion = specVersion;
     }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkExtensionProperties\n"));
+        sb.append(String.format("    extensionName:%s\n", extensionName));
+        sb.append(String.format("    specVersion:%d\n", specVersion));
+        
+        return sb.toString();
+    }
 }

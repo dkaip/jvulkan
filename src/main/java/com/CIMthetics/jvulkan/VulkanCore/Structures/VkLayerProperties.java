@@ -61,4 +61,17 @@ public class VkLayerProperties
     {
         this.description = description;
     }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("\nVkLayerProperties\n"));
+        sb.append(String.format("    layerName:%s\n", layerName));
+        sb.append(String.format("    specVersion:%d\n", specVersion));
+        sb.append(String.format("    implementationVersion:%d\n", implementationVersion));
+        sb.append(String.format("    description:%s\n", description));
+        
+        return sb.toString();
+    }
 }

@@ -36,9 +36,9 @@ command above it would be <code>cd jvulkan</code>.
 
 Enter the following <code>gradle</code> command:
 
-<code>gradle assemble test</code>
+<code>gradle assemble</code>
 
-This compiles and creates a jar file with the appropriate files and runs the unit tests.
+This compiles and creates a jar file with the appropriate files.
 
 The result of a successful build is file <code>jvulkan.jar</code> found in the <code>build/libs</code> directory.
 

@@ -10,17 +10,17 @@ The fine folks at JogAmp have created Java bindings that allow you to use the Vu
 Java, however, in my opinion it works fine, but, is not friendly to the Java way of doing things
 and is certainly not Java programmer friendly to the normal Java programmer.
 
-This current release is an attempt at providing access to the Vulkan Specification 1.1.126.0 
+This current release is an attempt at providing access to the Vulkan Specification 1.2.148.1 
 functionality ultimately via the [Vulkan® SDK](https://www.lunarg.com/vulkan-sdk/) from LUNARG.
 
-It is not, at this moment, complete in implementing all of the 1.1.126.0 functionality, however, it should 
+It is not, at this moment, complete in implementing all of the 1.2.148.1 functionality, however, it should 
 be able to run all of the example programs in the **jvulkan-examples** project.  
 
 Also, do not expect this software to work if you do not have Vulkan drivers available on your 
 machine for your graphics card.  
 
 Note: This has only been built and tested in a Linux 64 bit environment, 
-at this moment, Fedora 29 and Fedora 30.  It has been running just fine on a Radeon RX460 with 4GB of RAM. 
+at this moment Fedora 32.  It has been running just fine on a Radeon RX460 with 4GB of RAM. 
 I expect the examples to run fine on a card that has much less memory.
 
 ## Get the code

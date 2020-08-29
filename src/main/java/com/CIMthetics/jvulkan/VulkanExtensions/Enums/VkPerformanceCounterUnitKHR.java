@@ -35,4 +35,51 @@ public enum VkPerformanceCounterUnitKHR
     private VkPerformanceCounterUnitKHR(int value) { this.value = value; }
     
     public int valueOf() { return value; }
+    
+    static VkPerformanceCounterUnitKHR fromValue(int inputValue)
+    {
+        VkPerformanceCounterUnitKHR result = null;
+        
+        switch(inputValue)
+        {
+            case 0:
+                result = VK_PERFORMANCE_COUNTER_UNIT_GENERIC_KHR;
+                break;
+            case 1:
+                result = VK_PERFORMANCE_COUNTER_UNIT_PERCENTAGE_KHR;
+                break;
+            case 2:
+                result = VK_PERFORMANCE_COUNTER_UNIT_NANOSECONDS_KHR;
+                break;
+            case 3:
+                result = VK_PERFORMANCE_COUNTER_UNIT_BYTES_KHR;
+                break;
+            case 4:
+                result =  VK_PERFORMANCE_COUNTER_UNIT_BYTES_PER_SECOND_KHR;
+                break;
+            case 5:
+                result = VK_PERFORMANCE_COUNTER_UNIT_KELVIN_KHR;
+                break;
+            case 6:
+                result = VK_PERFORMANCE_COUNTER_UNIT_WATTS_KHR;
+                break;
+            case 7:
+                result = VK_PERFORMANCE_COUNTER_UNIT_VOLTS_KHR;
+                break;
+            case 8:
+                result = VK_PERFORMANCE_COUNTER_UNIT_AMPS_KHR;
+                break;
+            case 9:
+                result = VK_PERFORMANCE_COUNTER_UNIT_HERTZ_KHR;
+                break;
+            case 10:
+                result = VK_PERFORMANCE_COUNTER_UNIT_CYCLES_KHR;
+                break;
+        }
+
+        if (result == null)
+            throw new IllegalArgumentException("Illegal value specified for this Enum.");
+
+        return result;
+    }
 }

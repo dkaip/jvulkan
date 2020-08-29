@@ -30,4 +30,36 @@ public enum VkPerformanceCounterStorageKHR
     private VkPerformanceCounterStorageKHR(int value) { this.value = value; }
     
     public int valueOf() { return value; }
+    
+    static VkPerformanceCounterStorageKHR fromValue(int inputValue)
+    {
+        VkPerformanceCounterStorageKHR result = null;
+        
+        switch(inputValue)
+        {
+            case 0:
+                result = VK_PERFORMANCE_COUNTER_STORAGE_INT32_KHR;
+                break;
+            case 1:
+                result = VK_PERFORMANCE_COUNTER_STORAGE_INT64_KHR;
+                break;
+            case 2:
+                result = VK_PERFORMANCE_COUNTER_STORAGE_UINT32_KHR;
+                break;
+            case 3:
+                result = VK_PERFORMANCE_COUNTER_STORAGE_UINT64_KHR;
+                break;
+            case 4:
+                result = VK_PERFORMANCE_COUNTER_STORAGE_FLOAT32_KHR;
+                break;
+            case 5:
+                result = VK_PERFORMANCE_COUNTER_STORAGE_FLOAT64_KHR;
+                break;
+        }
+
+        if (result == null)
+            throw new IllegalArgumentException("Illegal value specified for this Enum.");
+
+        return result;
+    }
 }

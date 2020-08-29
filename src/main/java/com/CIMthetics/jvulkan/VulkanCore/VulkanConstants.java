@@ -21,7 +21,12 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDebugReportObjectTypeEXT;
 
 public class VulkanConstants
 {
-    public static final int     VK_HEADER_VERSION = 141;
+    public static final boolean VK_VERSION_1_0                  = true;
+    public static final boolean VK_VERSION_1_1                  = true;
+    public static final boolean VK_VERSION_1_2                  = true;
+    
+    public static final int     VK_HEADER_VERSION               = 148;
+    
     public static final float   VK_LOD_CLAMP_NONE               = 1000.0f;
     public static final int     VK_REMAINING_MIP_LEVELS         = -1;
     public static final int     VK_REMAINING_ARRAY_LAYERS       = -1;
@@ -301,10 +306,10 @@ public class VulkanConstants
     public static final int     VK_EXT_SHADER_SUBGROUP_VOTE_SPEC_VERSION    = 1;
     public static final String  VK_EXT_SHADER_SUBGROUP_VOTE_EXTENSION_NAME  = "VK_EXT_shader_subgroup_vote";
 
-    public static final boolean VK_NVX_device_generated_commands    = true;
-    public static final int     VK_NVX_DEVICE_GENERATED_COMMANDS_SPEC_VERSION   = 3;
-    public static final String  VK_NVX_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME = "VK_NVX_device_generated_commands";
-
+//    public static final boolean VK_NVX_device_generated_commands    = true;
+//    public static final int     VK_NVX_DEVICE_GENERATED_COMMANDS_SPEC_VERSION   = 3;
+//    public static final String  VK_NVX_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME = "VK_NVX_device_generated_commands";
+//
     public static final boolean VK_NV_clip_space_w_scaling  = true;
     public static final int     VK_NV_CLIP_SPACE_W_SCALING_SPEC_VERSION = 1;
     public static final String  VK_NV_CLIP_SPACE_W_SCALING_EXTENSION_NAME   = "VK_NV_clip_space_w_scaling";
@@ -753,4 +758,52 @@ public class VulkanConstants
     public static final boolean VK_EXT_tooling_info                = true;
     public static final int     VK_EXT_TOOLING_INFO_SPEC_VERSION   = 1;
     public static final String  VK_EXT_TOOLING_INFO_EXTENSION_NAME = "VK_EXT_tooling_info";
+
+    public static final boolean VK_NV_device_generated_commands                = true;
+    public static final int     VK_NV_DEVICE_GENERATED_COMMANDS_SPEC_VERSION   = 3;
+    public static final String  VK_NV_DEVICE_GENERATED_COMMANDS_EXTENSION_NAME = "VK_NV_device_generated_commands";
+
+    public static final boolean VK_NV_device_diagnostics_config                = true;
+    public static final int     VK_NV_DEVICE_DIAGNOSTICS_CONFIG_SPEC_VERSION   = 1;
+    public static final String  VK_NV_DEVICE_DIAGNOSTICS_CONFIG_EXTENSION_NAME = "VK_NV_device_diagnostics_config";
+
+    public static final boolean VK_QCOM_render_pass_store_ops                = true;
+    public static final int     VK_QCOM_render_pass_store_ops_SPEC_VERSION   = 2;
+    public static final String  VK_QCOM_render_pass_store_ops_EXTENSION_NAME = "VK_QCOM_render_pass_store_ops";
+
+    public static final boolean VK_EXT_pipeline_creation_cache_control                = true;
+    public static final int     VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_SPEC_VERSION   = 3;
+    public static final String  VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_EXTENSION_NAME = "VK_EXT_pipeline_creation_cache_control";
+
+    public static final boolean VK_EXT_private_data                = true;
+    public static final int     VK_EXT_PRIVATE_DATA_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_PRIVATE_DATA_EXTENSION_NAME = "VK_EXT_private_data";
+
+    public static final boolean VK_QCOM_render_pass_transform                = true;
+    public static final int     VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION   = 1;
+    public static final String  VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME = "VK_QCOM_render_pass_transform";
+
+    public static final boolean VK_EXT_robustness2                = true;
+    public static final int     VK_EXT_ROBUSTNESS_2_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_ROBUSTNESS_2_EXTENSION_NAME = "VK_EXT_robustness2";
+
+    public static final boolean VK_EXT_custom_border_color                = true;
+    public static final int     VK_EXT_CUSTOM_BORDER_COLOR_SPEC_VERSION   = 12;
+    public static final String  VK_EXT_CUSTOM_BORDER_COLOR_EXTENSION_NAME = "VK_EXT_custom_border_color";
+
+    public static final boolean VK_EXT_extended_dynamic_state                = true;
+    public static final int     VK_EXT_EXTENDED_DYNAMIC_STATE_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_EXTENDED_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_extended_dynamic_state";
+
+    public static final boolean VK_EXT_fragment_density_map2                 = true;
+    public static final int     VK_EXT_FRAGMENT_DENSITY_MAP_2_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_FRAGMENT_DENSITY_MAP_2_EXTENSION_NAME = "VK_EXT_fragment_density_map2";
+
+    public static final boolean VK_EXT_image_robustness                = true;
+    public static final int     VK_EXT_IMAGE_ROBUSTNESS_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_IMAGE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_image_robustness";
+
+    public static final boolean VK_EXT_shader_atomic_float                = true;
+    public static final int     VK_EXT_SHADER_ATOMIC_FLOAT_SPEC_VERSION   = 1;
+    public static final String  VK_EXT_SHADER_ATOMIC_FLOAT_EXTENSION_NAME = "VK_EXT_shader_atomic_float";
 }

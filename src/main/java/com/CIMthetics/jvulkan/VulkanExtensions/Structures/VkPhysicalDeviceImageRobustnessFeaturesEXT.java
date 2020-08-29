@@ -13,38 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos;
+package com.CIMthetics.jvulkan.VulkanExtensions.Structures;
 
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkQueryPoolPerformanceCreateInfoKHR extends VulkanCreateInfoStructure
+public class VkPhysicalDeviceImageRobustnessFeaturesEXT extends VulkanCreateInfoStructure
 {
-    private int     queueFamilyIndex;
-    private int[]   counterIndices;
-
-    public VkQueryPoolPerformanceCreateInfoKHR()
+    private boolean robustImageAccess;
+    
+    public VkPhysicalDeviceImageRobustnessFeaturesEXT()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR);
+        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ROBUSTNESS_FEATURES_EXT);
     }
 
-    public int getQueueFamilyIndex()
+    public boolean isRobustImageAccess()
     {
-        return queueFamilyIndex;
+        return robustImageAccess;
     }
 
-    public void setQueueFamilyIndex(int queueFamilyIndex)
+    public void setRobustImageAccess(boolean robustImageAccess)
     {
-        this.queueFamilyIndex = queueFamilyIndex;
-    }
-
-    public int[] getCounterIndices()
-    {
-        return counterIndices;
-    }
-
-    public void setCounterIndices(int[] counterIndices)
-    {
-        this.counterIndices = counterIndices;
+        this.robustImageAccess = robustImageAccess;
     }
 }

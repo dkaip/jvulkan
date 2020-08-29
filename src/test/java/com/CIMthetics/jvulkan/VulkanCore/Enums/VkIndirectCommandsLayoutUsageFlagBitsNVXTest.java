@@ -24,7 +24,7 @@ class VkIndirectCommandsLayoutUsageFlagBitsNVXTest
     @Test
     void testNumberOfElements()
     {
-        VkIndirectCommandsLayoutUsageFlagBitsNVX[] values = VkIndirectCommandsLayoutUsageFlagBitsNVX.values();
+        VkIndirectCommandsLayoutUsageFlagBitsNV[] values = VkIndirectCommandsLayoutUsageFlagBitsNV.values();
         assertEquals(5, values.length, "This enum has the wrong number of entries in it. Did it change without this test being updated?");
     }
 
@@ -32,10 +32,10 @@ class VkIndirectCommandsLayoutUsageFlagBitsNVXTest
     @Test
     void testValues()
     {
-        assertEquals(0x00000001, VkIndirectCommandsLayoutUsageFlagBitsNVX.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NVX.valueOf(), VkIndirectCommandsLayoutUsageFlagBitsNVX.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NVX.toString() + " has an unexpected value.");
-        assertEquals(0x00000002, VkIndirectCommandsLayoutUsageFlagBitsNVX.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_SPARSE_SEQUENCES_BIT_NVX.valueOf(), VkIndirectCommandsLayoutUsageFlagBitsNVX.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_SPARSE_SEQUENCES_BIT_NVX.toString() + " has an unexpected value.");
-        assertEquals(0x00000004, VkIndirectCommandsLayoutUsageFlagBitsNVX.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EMPTY_EXECUTIONS_BIT_NVX.valueOf(), VkIndirectCommandsLayoutUsageFlagBitsNVX.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EMPTY_EXECUTIONS_BIT_NVX.toString() + " has an unexpected value.");
-        assertEquals(0x00000008, VkIndirectCommandsLayoutUsageFlagBitsNVX.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NVX.valueOf(), VkIndirectCommandsLayoutUsageFlagBitsNVX.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NVX.toString() + " has an unexpected value.");
-        assertEquals(0x7FFFFFFF, VkIndirectCommandsLayoutUsageFlagBitsNVX.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_FLAG_BITS_MAX_ENUM_NVX.valueOf(), VkIndirectCommandsLayoutUsageFlagBitsNVX.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_FLAG_BITS_MAX_ENUM_NVX.toString() + " has an unexpected value.");
+        assertEquals(0x00000001, VkIndirectCommandsLayoutUsageFlagBitsNV.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NVX.valueOf(), VkIndirectCommandsLayoutUsageFlagBitsNV.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_UNORDERED_SEQUENCES_BIT_NVX.toString() + " has an unexpected value.");
+        assertEquals(0x00000002, VkIndirectCommandsLayoutUsageFlagBitsNV.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_SPARSE_SEQUENCES_BIT_NVX.valueOf(), VkIndirectCommandsLayoutUsageFlagBitsNV.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_SPARSE_SEQUENCES_BIT_NVX.toString() + " has an unexpected value.");
+        assertEquals(0x00000004, VkIndirectCommandsLayoutUsageFlagBitsNV.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EMPTY_EXECUTIONS_BIT_NVX.valueOf(), VkIndirectCommandsLayoutUsageFlagBitsNV.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_EMPTY_EXECUTIONS_BIT_NVX.toString() + " has an unexpected value.");
+        assertEquals(0x00000008, VkIndirectCommandsLayoutUsageFlagBitsNV.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NVX.valueOf(), VkIndirectCommandsLayoutUsageFlagBitsNV.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_INDEXED_SEQUENCES_BIT_NVX.toString() + " has an unexpected value.");
+        assertEquals(0x7FFFFFFF, VkIndirectCommandsLayoutUsageFlagBitsNV.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_FLAG_BITS_MAX_ENUM_NVX.valueOf(), VkIndirectCommandsLayoutUsageFlagBitsNV.VK_INDIRECT_COMMANDS_LAYOUT_USAGE_FLAG_BITS_MAX_ENUM_NVX.toString() + " has an unexpected value.");
     }
 }

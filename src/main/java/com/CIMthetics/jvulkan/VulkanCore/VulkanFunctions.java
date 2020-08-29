@@ -29,11 +29,14 @@ import org.slf4j.LoggerFactory;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkCommandBufferResetFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkCommandPoolResetFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkCommandPoolTrimFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkCompareOp;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkCullModeFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkDependencyFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkDescriptorPoolResetFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkExternalMemoryHandleTypeFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkFilter;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkFormat;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkFrontFace;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkImageCreateFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkImageLayout;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkImageTiling;
@@ -41,10 +44,12 @@ import com.CIMthetics.jvulkan.VulkanCore.Enums.VkImageType;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkImageUsageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkIndexType;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkMemoryMapFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkObjectType;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkPeerMemoryFeatureFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkPipelineBindPoint;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkPipelineStageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkPresentModeKHR;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkPrimitiveTopology;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkQueryControlFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkQueryResultFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkQueryType;
@@ -53,6 +58,7 @@ import com.CIMthetics.jvulkan.VulkanCore.Enums.VkSampleCountFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkShaderInfoTypeAMD;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkShaderStageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStencilFaceFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStencilOp;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkSubpassContents;
 import com.CIMthetics.jvulkan.VulkanCore.Handles.MappedMemoryPointer;
 import com.CIMthetics.jvulkan.VulkanCore.Handles.VkBuffer;
@@ -107,6 +113,7 @@ import com.CIMthetics.jvulkan.VulkanCore.Structures.VkCopyDescriptorSet;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkDescriptorBufferInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkDescriptorImageInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkDescriptorSetLayoutSupport;
+import com.CIMthetics.jvulkan.VulkanCore.Structures.VkDeviceMemoryOpaqueCaptureAddressInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkDeviceQueueInfo2;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkExtensionProperties;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkExtent2D;
@@ -197,7 +204,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDebugUtilsMessageSeverity
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDebugUtilsMessageTypeFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDeviceGroupPresentModeFlagBitsKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkExternalMemoryHandleTypeFlagBitsNV;
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkObjectEntryTypeNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkPerformanceParameterTypeINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkSurfaceCounterFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkTimeDomainEXT;
@@ -208,12 +214,13 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkDeviceAddress;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkDisplayKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkDisplayModeKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkIndirectCommandsLayoutNV;
-import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkObjectTableNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkPerformanceConfigurationINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkPrivateDataSlotEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkSurfaceKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkValidationCacheEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkAccelerationStructureInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkAccelerationStructureMemoryRequirementsInfoNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkAcquireProfilingLockInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkBindAccelerationStructureMemoryInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkCalibratedTimestampInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkCheckpointDataNV;
@@ -244,8 +251,11 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkDisplayPropertiesKHR
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkExternalImageFormatPropertiesNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkFenceGetFdInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkFramebufferMixedSamplesCombinationNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkGeneratedCommandsInfoNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkGeneratedCommandsMemoryRequirementsInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkHdrMetadataEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkImageDrmFormatModifierPropertiesEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkImageViewAddressPropertiesNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkImageViewHandleInfoNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkImportFenceFdInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkImportSemaphoreFdInfoKHR;
@@ -256,14 +266,16 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkMemoryHostPointerPro
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkMemoryRequirements2;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkMemoryRequirements2KHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkMultisamplePropertiesEXT;
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkObjectTableEntryNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPastPresentationTimingGOOGLE;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceConfigurationAcquireInfoINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceCounterDescriptionKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceCounterKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceMarkerInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceOverrideInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceStreamMarkerInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPhysicalDeviceImageFormatInfo2;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPhysicalDeviceSurfaceInfo2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPhysicalDeviceToolPropertiesEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPipelineExecutableInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPipelineExecutableInternalRepresentationKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPipelineExecutablePropertiesKHR;
@@ -283,7 +295,10 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkDebugUti
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkDisplayModeCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkDisplaySurfaceCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkHeadlessSurfaceCreateInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkIndirectCommandsLayoutCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkPerformanceValueINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkPrivateDataSlotCreateInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkQueryPoolPerformanceCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkRayTracingPipelineCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkValidationCacheCreateInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkWaylandSurfaceCreateInfoKHR;
@@ -328,13 +343,11 @@ public class VulkanFunctions
         nativeFunctionsProxyLibrary = new NativeProxies();
     }
     
-//    static
-//    {
-//        System.load("/home/dkaip/JavaWorkspaces/CIMthetics/jvulkan-natives-Linux-x86_64/Debug/libjvulkan-natives-Linux-x86_64.so");
-//        
-//        v11ProxyLibrary = new NativeProxies();
-//    }
-//
+    public static int VK_API_VERSION_1_2()
+    {
+        return VK_MAKE_VERSION(1, 2, 0);
+    }
+    
     public static int VK_API_VERSION_1_1()
     {
         return VK_MAKE_VERSION(1, 1, 0);
@@ -343,6 +356,11 @@ public class VulkanFunctions
     public static int VK_API_VERSION_1_0()
     {
         return VK_MAKE_VERSION(1, 0, 0);
+    }
+    
+    public static int VK_HEADER_VERSION_COMPLETE()
+    {
+        return VK_MAKE_VERSION(1, 2, VulkanConstants.VK_HEADER_VERSION);
     }
     
     /**
@@ -1078,6 +1096,21 @@ public class VulkanFunctions
                 shadingRatePalettes);
     }
     
+    public static void vkCmdWriteAccelerationStructuresPropertiesKHR(
+            VkCommandBuffer vkCommandBuffer,
+            Collection<VkAccelerationStructureKHR> accelerationStructures,
+            VkQueryType queryType,
+            VkQueryPool queryPool,
+            int queryPoolIndex)
+    {
+        nativeFunctionsProxyLibrary.vkCmdWriteAccelerationStructuresPropertiesNV(
+                vkCommandBuffer,
+                accelerationStructures,
+                queryType,
+                queryPool,
+                queryPoolIndex);
+    }
+    
     public static void vkCmdWriteAccelerationStructuresPropertiesNV(
             VkCommandBuffer vkCommandBuffer,
             Collection<VkAccelerationStructureKHR> accelerationStructures,
@@ -1444,6 +1477,15 @@ public class VulkanFunctions
                 data);
     }
     
+    public static VkResult vkBindAccelerationStructureMemoryKHR(
+            VkDevice vulkanLogicalDevice,
+            Collection<VkBindAccelerationStructureMemoryInfoKHR> bindInfos)
+    {
+        return nativeFunctionsProxyLibrary.vkBindAccelerationStructureMemoryKHR(
+                vulkanLogicalDevice,
+                bindInfos);
+    }
+    
     public static VkResult vkBindAccelerationStructureMemoryNV(
             VkDevice vulkanLogicalDevice,
             Collection<VkBindAccelerationStructureMemoryInfoKHR> bindInfos)
@@ -1503,6 +1545,17 @@ public class VulkanFunctions
                 firstBinding,
                 vkBufferCollection,
                 offsets);
+    }
+    
+    public static void vkDestroyAccelerationStructureKHR(
+            VkDevice vkDevice,
+            VkAccelerationStructureKHR accelerationStructure,
+            VkAllocationCallbacks alternateAllocator)
+    {
+        nativeFunctionsProxyLibrary.vkDestroyAccelerationStructureNV(
+                vkDevice,
+                accelerationStructure,
+                alternateAllocator);
     }
     
     public static void vkDestroyAccelerationStructureNV(
@@ -2056,6 +2109,23 @@ public class VulkanFunctions
                 device,
                 image,
                 properties);
+    }
+    
+    public static VkResult vkGetRayTracingShaderGroupHandlesKHR(
+            VkDevice device,
+            VkPipeline pipeline,
+            int firstGroup,
+            int groupCount,
+            long dataSize,
+            byte[] data)
+    {
+        return nativeFunctionsProxyLibrary.vkGetRayTracingShaderGroupHandlesKHR(
+                device,
+                pipeline,
+                firstGroup,
+                groupCount,
+                dataSize,
+                data);
     }
     
     public static VkResult vkGetRayTracingShaderGroupHandlesNV(
@@ -4472,19 +4542,19 @@ public class VulkanFunctions
                 fence);
     }
     
-    public static VkResult vkRegisterObjectsNVX(
-            VkDevice device,
-            VkObjectTableNVX objectTable,
-            Collection<VkObjectTableEntryNVX> objectTableEntries,
-            int[] objectIndices)
-    {
-        return nativeFunctionsProxyLibrary.vkRegisterObjectsNVX(
-                device,
-                objectTable,
-                objectTableEntries,
-                objectIndices);
-    }
-    
+//    public static VkResult vkRegisterObjectsNVX(
+//            VkDevice device,
+//            VkObjectTableNVX objectTable,
+//            Collection<VkObjectTableEntryNVX> objectTableEntries,
+//            int[] objectIndices)
+//    {
+//        return nativeFunctionsProxyLibrary.vkRegisterObjectsNVX(
+//                device,
+//                objectTable,
+//                objectTableEntries,
+//                objectIndices);
+//    }
+//    
     public static VkResult vkReleaseDisplayEXT(
             VkPhysicalDevice physicalDevice,
             VkDisplayKHR display)
@@ -4605,24 +4675,24 @@ public class VulkanFunctions
                 flags);
     }
     
-    public static VkResult vkUnregisterObjectsNVX(
-            VkDevice device,
-            VkObjectTableNVX objectTable,
-            Collection<VkObjectEntryTypeNVX> objectEntryTypes,
-            int[] objectIndices)
-    {
-        if (objectEntryTypes.size() != objectIndices.length)
-        {
-            throw new IllegalArgumentException("objectEntryTypes and objectIndices MUST have the same number of elements.");
-        }
-        
-        return nativeFunctionsProxyLibrary.vkUnregisterObjectsNVX(
-                device,
-                objectTable,
-                objectEntryTypes,
-                objectIndices);
-    }
-    
+//    public static VkResult vkUnregisterObjectsNVX(
+//            VkDevice device,
+//            VkObjectTableNVX objectTable,
+//            Collection<VkObjectEntryTypeNVX> objectEntryTypes,
+//            int[] objectIndices)
+//    {
+//        if (objectEntryTypes.size() != objectIndices.length)
+//        {
+//            throw new IllegalArgumentException("objectEntryTypes and objectIndices MUST have the same number of elements.");
+//        }
+//        
+//        return nativeFunctionsProxyLibrary.vkUnregisterObjectsNVX(
+//                device,
+//                objectTable,
+//                objectEntryTypes,
+//                objectIndices);
+//    }
+//    
     //TODO Fix this
     public static void vkUpdateDescriptorSetWithTemplate(
             VkDevice device,
@@ -4750,12 +4820,355 @@ public class VulkanFunctions
                 signalInfo);
     }
     
+    public static VulkanHandle vkGetBufferOpaqueCaptureAddress(
+            VkDevice device,
+            VkBufferDeviceAddressInfo info)
+    {
+        return nativeFunctionsProxyLibrary.vkGetBufferOpaqueCaptureAddress(
+                device,
+                info);
+    }
+   
+    public static VulkanHandle vkGetDeviceMemoryOpaqueCaptureAddress(
+            VkDevice device,
+            VkDeviceMemoryOpaqueCaptureAddressInfo info)
+    {
+        return nativeFunctionsProxyLibrary.vkGetDeviceMemoryOpaqueCaptureAddress(
+                device,
+                info);
+    }
+   
+    public static VkResult vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(
+            VkPhysicalDevice physicalDevice,
+            int queueFamilyIndex,
+            IntReturnValue counterCount,
+            Collection<VkPerformanceCounterKHR> counters,
+            Collection<VkPerformanceCounterDescriptionKHR> counterDescriptions)
+    {
+        return nativeFunctionsProxyLibrary.vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(
+                physicalDevice,
+                queueFamilyIndex,
+                counterCount,
+                counters,
+                counterDescriptions);
+    }
+    
+    public static void vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(
+            VkPhysicalDevice physicalDevice,
+            VkQueryPoolPerformanceCreateInfoKHR performanceQueryCreateInfo,
+            IntReturnValue numPasses)
+    {
+        nativeFunctionsProxyLibrary.vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(
+                physicalDevice,
+                performanceQueryCreateInfo,
+                numPasses);
+    }
+    
+    public static VkResult vkAcquireProfilingLockKHR(
+            VkDevice device,
+            VkAcquireProfilingLockInfoKHR info)
+    {
+        return nativeFunctionsProxyLibrary.vkAcquireProfilingLockKHR(
+                device,
+                info);
+    }
+    
+    public static void vkReleaseProfilingLockKHR(
+            VkDevice device)
+    {
+        nativeFunctionsProxyLibrary.vkReleaseProfilingLockKHR(
+                device);
+    }
+    
+    public static VkResult vkGetImageViewAddressNVX(
+            VkDevice device,
+            VkImageView imageView,
+            VkImageViewAddressPropertiesNVX properties)
+    {
+        return nativeFunctionsProxyLibrary.vkGetImageViewAddressNVX(
+                device,
+                imageView,
+                properties);
+    }
+    
+    public static VkResult vkCreatePrivateDataSlotEXT(
+            VkDevice device,
+            VkPrivateDataSlotCreateInfoEXT createInfo,
+            VkAllocationCallbacks alternateAllocator,
+            VkPrivateDataSlotEXT privateDataSlot)
+    {
+        return nativeFunctionsProxyLibrary.vkCreatePrivateDataSlotEXT(
+                device,
+                createInfo,
+                alternateAllocator,
+                privateDataSlot);
+    }
+    
+    public static void vkDestroyPrivateDataSlotEXT(
+            VkDevice device,
+            VkPrivateDataSlotEXT privateDataSlot,
+            VkAllocationCallbacks alternateAllocator)
+    {
+        nativeFunctionsProxyLibrary.vkDestroyPrivateDataSlotEXT(
+                device,
+                privateDataSlot,
+                alternateAllocator);
+    }
+    
+    public static VkResult vkSetPrivateDataEXT(
+            VkDevice device,
+            VkObjectType objectType,
+            long objectHandle,
+            VkPrivateDataSlotEXT privateDataSlot,
+            long data)
+    {
+        return nativeFunctionsProxyLibrary.vkSetPrivateDataEXT(
+                device,
+                objectType,
+                objectHandle,
+                 privateDataSlot,
+                data);
+    }
+    
+    public static void vkGetPrivateDataEXT(
+            VkDevice device,
+            VkObjectType objectType,
+            long objectHandle,
+            VkPrivateDataSlotEXT privateDataSlot,
+            LongReturnValue data)
+    {
+        nativeFunctionsProxyLibrary.vkGetPrivateDataEXT(
+                device,
+                objectType,
+                objectHandle,
+                privateDataSlot,
+                data);
+    }
+    
+    public static VkResult vkGetPhysicalDeviceToolPropertiesEXT(
+            VkPhysicalDevice                            physicalDevice,
+            Collection<VkPhysicalDeviceToolPropertiesEXT> toolProperties)
+    {
+        return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceToolPropertiesEXT(
+                physicalDevice,
+                toolProperties);
+    }
+    
+    public static void vkGetGeneratedCommandsMemoryRequirementsNV(
+            VkDevice device,
+            VkGeneratedCommandsMemoryRequirementsInfoNV info,
+            VkMemoryRequirements2 memoryRequirements)
+    {
+        nativeFunctionsProxyLibrary.vkGetGeneratedCommandsMemoryRequirementsNV(
+                device,
+                info,
+                memoryRequirements);
+    }
+    
+    public static void vkCmdPreprocessGeneratedCommandsNV(
+            VkCommandBuffer commandBuffer,
+            VkGeneratedCommandsInfoNV generatedCommandsInfo)
+    {
+        nativeFunctionsProxyLibrary.vkCmdPreprocessGeneratedCommandsNV(
+                commandBuffer,
+                generatedCommandsInfo);
+    }
+    
+    public static void vkCmdExecuteGeneratedCommandsNV(
+            VkCommandBuffer commandBuffer,
+            boolean isPreprocessed,
+            VkGeneratedCommandsInfoNV generatedCommandsInfo)
+    {
+        nativeFunctionsProxyLibrary.vkCmdExecuteGeneratedCommandsNV(
+                commandBuffer,
+                isPreprocessed,
+                generatedCommandsInfo);
+    }
+    
+    public static void vkCmdBindPipelineShaderGroupNV(
+            VkCommandBuffer commandBuffer,
+            VkPipelineBindPoint pipelineBindPoint,
+            VkPipeline pipeline,
+            int groupIndex)
+    {
+        nativeFunctionsProxyLibrary.vkCmdBindPipelineShaderGroupNV(
+                commandBuffer,
+                pipelineBindPoint,
+                pipeline,
+                groupIndex);
+    }
+    
+    public static VkResult vkCreateIndirectCommandsLayoutNV(
+            VkDevice device,
+            VkIndirectCommandsLayoutCreateInfoNV createInfo,
+            VkAllocationCallbacks allocator,
+            VkIndirectCommandsLayoutNV indirectCommandsLayout)
+    {
+        return nativeFunctionsProxyLibrary.vkCreateIndirectCommandsLayoutNV(
+                device,
+                createInfo,
+                allocator,
+                indirectCommandsLayout);
+    }
+    
+    public static void vkCmdSetCullModeEXT(
+            VkCommandBuffer commandBuffer,
+            EnumSet<VkCullModeFlagBits> cullMode)
+    {
+        nativeFunctionsProxyLibrary.vkCmdSetCullModeEXT(
+                commandBuffer,
+                cullMode);
+    }
+    
+    public static void vkCmdSetFrontFaceEXT(
+            VkCommandBuffer commandBuffer,
+            VkFrontFace frontFace)
+    {
+        nativeFunctionsProxyLibrary.vkCmdSetFrontFaceEXT(
+                commandBuffer,
+                frontFace);
+    }
+    
+    public static void vkCmdSetPrimitiveTopologyEXT(
+            VkCommandBuffer commandBuffer,
+            VkPrimitiveTopology primitiveTopology)
+    {
+        nativeFunctionsProxyLibrary.vkCmdSetPrimitiveTopologyEXT(
+                commandBuffer,
+                primitiveTopology);
+    }
+    
+    public static void vkCmdSetViewportWithCountEXT(
+            VkCommandBuffer commandBuffer,
+            Collection<VkViewport> viewports)
+    {
+        nativeFunctionsProxyLibrary.vkCmdSetViewportWithCountEXT(
+                commandBuffer,
+                viewports);
+    }
+    
+    public static void vkCmdSetScissorWithCountEXT(
+            VkCommandBuffer commandBuffer,
+            Collection<VkRect2D> scissors)
+    {
+        nativeFunctionsProxyLibrary.vkCmdSetScissorWithCountEXT(
+                commandBuffer,
+                scissors);
+    }
+    
+    /**
+     * Bind vertex buffers, along with their sizes and strides, to a command buffer for use in subsequent draw commands
+     * <p>
+     * Note: The length of the offsets array, the sizes array (if present), and the strides array (if present) <b>must</b>
+     * be the same as the size of the collection of buffers.
+     * 
+     * @param commandBuffer the command buffer into which the command is recorded
+     * @param firstBinding the index of the first vertex input binding whose state is updated by the command
+     * @param buffers a collection of buffer handles
+     * @param offsets an array of buffer offsets
+     * @param sizes an optional array of the size in bytes of vertex data bound from buffers
+     * @param strides an optional that when present is an array of buffer strides.
+     */
+    public static void vkCmdBindVertexBuffers2EXT(
+            VkCommandBuffer commandBuffer,
+            int firstBinding,
+            Collection<VkBuffer> buffers,
+            long[] offsets,
+            long[] sizes,
+            long[] strides)
+    {
+        if (offsets.length != buffers.size())
+        {
+            throw new IllegalArgumentException("Argument \"offsets\" MUST contain the same number of elements that are in the buffer collection.");
+        }
+        
+        if (sizes != null && sizes.length != offsets.length)
+        {
+            throw new IllegalArgumentException("Argument \"sizes\" when present MUST contain the same number of elements that are in the offsets array.");
+        }
+        
+        if (strides != null && strides.length != offsets.length)
+        {
+            throw new IllegalArgumentException("Argument \"strides\" when present MUST contain the same number of elements that are in the offsets array.");
+        }
+        
+        nativeFunctionsProxyLibrary.vkCmdBindVertexBuffers2EXT(
+                commandBuffer,
+                firstBinding,
+                buffers,
+                offsets,
+                sizes,
+                strides);
+    }
+    
+    public static void vkCmdSetDepthTestEnableEXT(
+            VkCommandBuffer commandBuffer,
+            boolean depthTestEnable)
+    {
+        nativeFunctionsProxyLibrary.vkCmdSetDepthTestEnableEXT(
+                commandBuffer,
+                depthTestEnable);
+    }
+    
+    public static void vkCmdSetDepthWriteEnableEXT(
+            VkCommandBuffer commandBuffer,
+            boolean depthWriteEnable)
+    {
+        nativeFunctionsProxyLibrary.vkCmdSetDepthWriteEnableEXT(
+                commandBuffer,
+                depthWriteEnable);
+    }
+    
+    public static void vkCmdSetDepthCompareOpEXT(
+            VkCommandBuffer commandBuffer,
+            VkCompareOp depthCompareOp)
+    {
+        nativeFunctionsProxyLibrary.vkCmdSetDepthCompareOpEXT(
+                commandBuffer,
+                depthCompareOp);
+    }
+    
+    public static void vkCmdSetDepthBoundsTestEnableEXT(
+            VkCommandBuffer commandBuffer,
+            boolean depthBoundsTestEnable)
+    {
+        nativeFunctionsProxyLibrary.vkCmdSetDepthBoundsTestEnableEXT(
+                commandBuffer,
+                depthBoundsTestEnable);
+    }
+    
+    public static void vkCmdSetStencilTestEnableEXT(
+            VkCommandBuffer commandBuffer,
+            boolean stencilTestEnable)
+    {
+        nativeFunctionsProxyLibrary.vkCmdSetStencilTestEnableEXT(
+                commandBuffer,
+                stencilTestEnable);
+    }
+    
+    public static void vkCmdSetStencilOpEXT(
+            VkCommandBuffer commandBuffer,
+            EnumSet<VkStencilFaceFlagBits> faceMask,
+            VkStencilOp failOp,
+            VkStencilOp passOp,
+            VkStencilOp depthFailOp,
+            VkCompareOp compareOp)
+    {
+        nativeFunctionsProxyLibrary.vkCmdSetStencilOpEXT(
+                commandBuffer,
+                faceMask,
+                failOp,
+                passOp,
+                depthFailOp,
+                compareOp);
+    }
+
     
     
     
     
     
-    
+
     
 
     

@@ -15,36 +15,28 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos;
 
+import java.util.EnumSet;
+
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDeviceDiagnosticsConfigFlagBitsNV;
 
-public class VkQueryPoolPerformanceCreateInfoKHR extends VulkanCreateInfoStructure
+public class VkDeviceDiagnosticsConfigCreateInfoNV extends VulkanCreateInfoStructure
 {
-    private int     queueFamilyIndex;
-    private int[]   counterIndices;
-
-    public VkQueryPoolPerformanceCreateInfoKHR()
+    private EnumSet<VkDeviceDiagnosticsConfigFlagBitsNV> flags = EnumSet.noneOf(VkDeviceDiagnosticsConfigFlagBitsNV.class);
+    
+    public VkDeviceDiagnosticsConfigCreateInfoNV()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR);
+        super(VkStructureType.VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV);
     }
 
-    public int getQueueFamilyIndex()
+    public EnumSet<VkDeviceDiagnosticsConfigFlagBitsNV> getFlags()
     {
-        return queueFamilyIndex;
+        return flags;
     }
 
-    public void setQueueFamilyIndex(int queueFamilyIndex)
+    public void setFlags(EnumSet<VkDeviceDiagnosticsConfigFlagBitsNV> flags)
     {
-        this.queueFamilyIndex = queueFamilyIndex;
-    }
-
-    public int[] getCounterIndices()
-    {
-        return counterIndices;
-    }
-
-    public void setCounterIndices(int[] counterIndices)
-    {
-        this.counterIndices = counterIndices;
+        this.flags = flags;
     }
 }

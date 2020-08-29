@@ -22,11 +22,14 @@ import java.util.concurrent.LinkedBlockingQueue;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkCommandBufferResetFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkCommandPoolResetFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkCommandPoolTrimFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkCompareOp;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkCullModeFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkDependencyFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkDescriptorPoolResetFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkExternalMemoryHandleTypeFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkFilter;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkFormat;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkFrontFace;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkImageCreateFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkImageLayout;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkImageTiling;
@@ -34,10 +37,12 @@ import com.CIMthetics.jvulkan.VulkanCore.Enums.VkImageType;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkImageUsageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkIndexType;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkMemoryMapFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkObjectType;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkPeerMemoryFeatureFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkPipelineBindPoint;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkPipelineStageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkPresentModeKHR;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkPrimitiveTopology;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkQueryControlFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkQueryResultFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkQueryType;
@@ -46,6 +51,7 @@ import com.CIMthetics.jvulkan.VulkanCore.Enums.VkSampleCountFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkShaderInfoTypeAMD;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkShaderStageFlagBits;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStencilFaceFlagBits;
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStencilOp;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkSubpassContents;
 import com.CIMthetics.jvulkan.VulkanCore.Handles.MappedMemoryPointer;
 import com.CIMthetics.jvulkan.VulkanCore.Handles.VkBuffer;
@@ -98,6 +104,7 @@ import com.CIMthetics.jvulkan.VulkanCore.Structures.VkClearDepthStencilValue;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkClearRect;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkCopyDescriptorSet;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkDescriptorSetLayoutSupport;
+import com.CIMthetics.jvulkan.VulkanCore.Structures.VkDeviceMemoryOpaqueCaptureAddressInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkDeviceQueueInfo2;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkExtensionProperties;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.VkExtent2D;
@@ -187,7 +194,6 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDebugUtilsMessageSeverity
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDebugUtilsMessageTypeFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkDeviceGroupPresentModeFlagBitsKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkExternalMemoryHandleTypeFlagBitsNV;
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkObjectEntryTypeNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkPerformanceParameterTypeINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkSurfaceCounterFlagBitsEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkTimeDomainEXT;
@@ -198,12 +204,13 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkDeviceAddress;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkDisplayKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkDisplayModeKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkIndirectCommandsLayoutNV;
-import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkObjectTableNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkPerformanceConfigurationINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkPrivateDataSlotEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkSurfaceKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkValidationCacheEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkAccelerationStructureInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkAccelerationStructureMemoryRequirementsInfoNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkAcquireProfilingLockInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkBindAccelerationStructureMemoryInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkCalibratedTimestampInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkCheckpointDataNV;
@@ -234,8 +241,11 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkDisplayPropertiesKHR
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkExternalImageFormatPropertiesNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkFenceGetFdInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkFramebufferMixedSamplesCombinationNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkGeneratedCommandsInfoNV;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkGeneratedCommandsMemoryRequirementsInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkHdrMetadataEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkImageDrmFormatModifierPropertiesEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkImageViewAddressPropertiesNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkImageViewHandleInfoNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkImportFenceFdInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkImportSemaphoreFdInfoKHR;
@@ -246,14 +256,16 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkMemoryHostPointerPro
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkMemoryRequirements2;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkMemoryRequirements2KHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkMultisamplePropertiesEXT;
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkObjectTableEntryNVX;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPastPresentationTimingGOOGLE;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceConfigurationAcquireInfoINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceCounterDescriptionKHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceCounterKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceMarkerInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceOverrideInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPerformanceStreamMarkerInfoINTEL;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPhysicalDeviceImageFormatInfo2;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPhysicalDeviceSurfaceInfo2KHR;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPhysicalDeviceToolPropertiesEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPipelineExecutableInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPipelineExecutableInternalRepresentationKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkPipelineExecutablePropertiesKHR;
@@ -273,7 +285,10 @@ import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkDebugUti
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkDisplayModeCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkDisplaySurfaceCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkHeadlessSurfaceCreateInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkIndirectCommandsLayoutCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkPerformanceValueINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkPrivateDataSlotCreateInfoEXT;
+import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkQueryPoolPerformanceCreateInfoKHR;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkRayTracingPipelineCreateInfoNV;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkValidationCacheCreateInfoEXT;
 import com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos.VkWaylandSurfaceCreateInfoKHR;
@@ -315,6 +330,10 @@ class NativeProxies
             VkPerformanceConfigurationAcquireInfoINTEL acquireInfo,
             VkPerformanceConfigurationINTEL configuration);
     
+    native VkResult vkAcquireProfilingLockKHR(
+            VkDevice device,
+            VkAcquireProfilingLockInfoKHR info);
+    
     native VkResult vkAllocateCommandBuffers(
             VkDevice vulkanLogicalDevice,
             VkCommandBufferAllocateInfo commandBufferAllocateInfo,
@@ -334,6 +353,10 @@ class NativeProxies
     native VkResult vkBeginCommandBuffer(
             VkCommandBuffer vkCommandBuffer,
             VkCommandBufferBeginInfo vkCommandBufferBeginInfo);
+    
+    native VkResult vkBindAccelerationStructureMemoryKHR(
+            VkDevice vulkanLogicalDevice,
+            Collection<VkBindAccelerationStructureMemoryInfoKHR> bindInfos);
     
     native VkResult vkBindAccelerationStructureMemoryNV(
             VkDevice vulkanLogicalDevice,
@@ -367,6 +390,14 @@ class NativeProxies
             VkDevice vulkanLogicalDevice,
             Collection<VkBindImageMemoryInfo> bindInfos);
     
+    native void vkCmdBindVertexBuffers2EXT(
+            VkCommandBuffer commandBuffer,
+            int firstBinding,
+            Collection<VkBuffer> buffers,
+            long[] offsets,
+            long[] sizes,
+            long[] strides);
+
     native void vkCmdBeginConditionalRenderingEXT(
             VkCommandBuffer vkCommandBuffer,
             VkConditionalRenderingBeginInfoEXT vkConditionalRenderingBeginInfoEXT);
@@ -423,6 +454,12 @@ class NativeProxies
             VkPipelineBindPoint vkPipelineBindPoint,
             VkPipeline vkPipeline);
     
+    native void vkCmdBindPipelineShaderGroupNV(
+            VkCommandBuffer commandBuffer,
+            VkPipelineBindPoint pipelineBindPoint,
+            VkPipeline pipeline,
+            int groupIndex);
+
     native void vkCmdBindShadingRateImageNV(
             VkCommandBuffer vkCommandBuffer,
             VkImageView imageView,
@@ -666,6 +703,11 @@ class NativeProxies
             VkCommandBuffer commandBuffer,
             Collection<VkCommandBuffer> commandBuffers);
     
+    native void vkCmdExecuteGeneratedCommandsNV(
+            VkCommandBuffer commandBuffer,
+            boolean isPreprocessed,
+            VkGeneratedCommandsInfoNV generatedCommandsInfo);
+
     native void vkCmdFillBuffer(
             VkCommandBuffer commandBuffer,
             VkBuffer dstBuffer,
@@ -695,6 +737,10 @@ class NativeProxies
             Collection<VkBufferMemoryBarrier> bufferMemoryBarriers,
             Collection<VkImageMemoryBarrier> imageMemoryBarriers);
     
+    native void vkCmdPreprocessGeneratedCommandsNV(
+            VkCommandBuffer commandBuffer,
+            VkGeneratedCommandsInfoNV generatedCommandsInfo);
+
     native void vkCmdPushConstants(
             VkCommandBuffer commandBuffer,
             VkPipelineLayout layout,
@@ -761,6 +807,10 @@ class NativeProxies
             VkCoarseSampleOrderTypeNV sampleOrderType,
             Collection<VkCoarseSampleOrderCustomNV> customSampleOrders);
     
+    native void vkCmdSetCullModeEXT(
+            VkCommandBuffer commandBuffer,
+            EnumSet<VkCullModeFlagBits> cullMode);
+
     native void vkCmdSetDepthBias(
             VkCommandBuffer commandBuffer,
             float depthBiasConstantFactor,
@@ -772,6 +822,22 @@ class NativeProxies
             float minDepthBounds,
             float maxDepthBounds);
     
+    native void vkCmdSetDepthBoundsTestEnableEXT(
+            VkCommandBuffer commandBuffer,
+            boolean depthBoundsTestEnable);
+
+    native void vkCmdSetDepthCompareOpEXT(
+            VkCommandBuffer commandBuffer,
+            VkCompareOp depthCompareOp);
+
+    native void vkCmdSetDepthTestEnableEXT(
+            VkCommandBuffer commandBuffer,
+            boolean depthTestEnable);
+
+    native void vkCmdSetDepthWriteEnableEXT(
+            VkCommandBuffer commandBuffer,
+            boolean depthWriteEnable);
+
     native void vkCmdSetDeviceMask(
             VkCommandBuffer commandBuffer,
             int deviceMask);
@@ -791,6 +857,10 @@ class NativeProxies
             int firstExclusiveScissor,
             Collection<VkRect2D> exclusiveScissors);
     
+    native void vkCmdSetFrontFaceEXT(
+            VkCommandBuffer commandBuffer,
+            VkFrontFace frontFace);
+
     native void vkCmdSetLineWidth(
             VkCommandBuffer commandBuffer,
             float lineWidth);
@@ -812,6 +882,10 @@ class NativeProxies
             VkCommandBuffer commandBuffer,
             VkPerformanceStreamMarkerInfoINTEL markerInfo);
     
+    native void vkCmdSetPrimitiveTopologyEXT(
+            VkCommandBuffer commandBuffer,
+            VkPrimitiveTopology primitiveTopology);
+
     native void vkCmdSetSampleLocationsEXT(
             VkCommandBuffer commandBuffer,
             VkSampleLocationsInfoEXT sampleLocationsInfo);
@@ -821,16 +895,32 @@ class NativeProxies
             int firstScissor,
             Collection<VkRect2D> scissors);
     
+    native void vkCmdSetScissorWithCountEXT(
+            VkCommandBuffer commandBuffer,
+            Collection<VkRect2D> scissors);
+
     native void vkCmdSetStencilCompareMask(
             VkCommandBuffer commandBuffer,
             EnumSet<VkStencilFaceFlagBits> faceMask,
             int compareMask);
     
+    native void vkCmdSetStencilOpEXT(
+            VkCommandBuffer commandBuffer,
+            EnumSet<VkStencilFaceFlagBits> faceMask,
+            VkStencilOp failOp,
+            VkStencilOp passOp,
+            VkStencilOp depthFailOp,
+            VkCompareOp compareOp);
+
     native void vkCmdSetStencilReference(
             VkCommandBuffer commandBuffer,
             EnumSet<VkStencilFaceFlagBits> faceMask,
             int reference);
     
+    native void vkCmdSetStencilTestEnableEXT(
+            VkCommandBuffer commandBuffer,
+            boolean stencilTestEnable);
+
     native void vkCmdSetStencilWriteMask(
             VkCommandBuffer commandBuffer,
             EnumSet<VkStencilFaceFlagBits> faceMask,
@@ -846,6 +936,10 @@ class NativeProxies
             int firstViewport,
             Collection<VkShadingRatePaletteNV> shadingRatePalettes);
     
+    native void vkCmdSetViewportWithCountEXT(
+            VkCommandBuffer commandBuffer,
+            Collection<VkViewport> viewports);
+
     native void vkCmdSetViewportWScalingNV(
             VkCommandBuffer commandBuffer,
             int firstViewport,
@@ -882,6 +976,13 @@ class NativeProxies
             Collection<VkMemoryBarrier> memoryBarriers,
             Collection<VkBufferMemoryBarrier> bufferMemoryBarriers,
             Collection<VkImageMemoryBarrier> imageMemoryBarriers);
+    
+    native void vkCmdWriteAccelerationStructuresPropertiesKHR(
+            VkCommandBuffer vkCommandBuffer,
+            Collection<VkAccelerationStructureKHR> accelerationStructures,
+            VkQueryType queryType,
+            VkQueryPool queryPool,
+            int firstQuery);
     
     native void vkCmdWriteAccelerationStructuresPropertiesNV(
             VkCommandBuffer vkCommandBuffer,
@@ -1038,6 +1139,12 @@ class NativeProxies
             VkAllocationCallbacks alternateAllocator,
             VkImageView imageViewHandle);
     
+    native VkResult vkCreateIndirectCommandsLayoutNV(
+            VkDevice device,
+            VkIndirectCommandsLayoutCreateInfoNV createInfo,
+            VkAllocationCallbacks allocator,
+            VkIndirectCommandsLayoutNV indirectCommandsLayout);
+
     native VkResult vkCreateInstance(
             VkInstanceCreateInfo instanceCreateInfo,
             VkAllocationCallbacks alternateAllocator,
@@ -1054,6 +1161,12 @@ class NativeProxies
             VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo,
             VkAllocationCallbacks alternateAllocator,
             VkPipelineLayout pipelineLayout);
+    
+    native VkResult vkCreatePrivateDataSlotEXT(
+            VkDevice device,
+            VkPrivateDataSlotCreateInfoEXT createInfo,
+            VkAllocationCallbacks alternateAllocator,
+            VkPrivateDataSlotEXT privateDataSlot);
     
     native VkResult vkCreateQueryPool(
             VkDevice device,
@@ -1145,6 +1258,11 @@ class NativeProxies
             int messageCode,
             String layerPrefix,
             String message);
+    
+    native void vkDestroyAccelerationStructureKHR(
+            VkDevice vkDevice,
+            VkAccelerationStructureKHR accelerationStructure,
+            VkAllocationCallbacks alternateAllocator);
     
     native void vkDestroyAccelerationStructureNV(
             VkDevice vkDevice,
@@ -1244,6 +1362,11 @@ class NativeProxies
             VkPipelineLayout renderPassHandle,
             VkAllocationCallbacks alternateAllocator);
     
+    native void vkDestroyPrivateDataSlotEXT(
+            VkDevice device,
+            VkPrivateDataSlotEXT privateDataSlot,
+            VkAllocationCallbacks alternateAllocator);
+    
     native void vkDestroyQueryPool(
             VkDevice device,
             VkQueryPool queryPool,
@@ -1327,6 +1450,13 @@ class NativeProxies
             VkInstance instance,
             Collection<VkPhysicalDeviceGroupProperties> physicalDeviceGroupProperties);
     
+    native VkResult vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(
+            VkPhysicalDevice physicalDevice,
+            int queueFamilyIndex,
+            IntReturnValue counterCount,
+            Collection<VkPerformanceCounterKHR> counters,
+            Collection<VkPerformanceCounterDescriptionKHR> counterDescriptions);
+
     native VkResult vkFlushMappedMemoryRanges(
             VkDevice device,
             Collection<VkMappedMemoryRange> memoryRanges);
@@ -1375,6 +1505,10 @@ class NativeProxies
             VkBufferMemoryRequirementsInfo2 info,
             VkMemoryRequirements2 memoryRequirements);
     
+    native VulkanHandle vkGetBufferOpaqueCaptureAddress(
+            VkDevice device,
+            VkBufferDeviceAddressInfo info);
+
     native VkResult vkGetCalibratedTimestampsEXT(
             VkDevice device,
             Collection<VkCalibratedTimestampInfoEXT> timestampInfos,
@@ -1407,6 +1541,10 @@ class NativeProxies
             VkSurfaceKHR surface,
             EnumSet<VkDeviceGroupPresentModeFlagBitsKHR> modes);
     
+    native VulkanHandle vkGetDeviceMemoryOpaqueCaptureAddress(
+            VkDevice device,
+            VkDeviceMemoryOpaqueCaptureAddressInfo info);
+
     native void vkGetDeviceMemoryCommitment(
             VkDevice device,
             VkDeviceMemory memory,
@@ -1462,10 +1600,20 @@ class NativeProxies
             VkDevice device,
             VkFence fence);
     
+    native void vkGetGeneratedCommandsMemoryRequirementsNV(
+            VkDevice device,
+            VkGeneratedCommandsMemoryRequirementsInfoNV info,
+            VkMemoryRequirements2 memoryRequirements);
+
     native VkResult vkGetImageDrmFormatModifierPropertiesEXT(
             VkDevice device,
             VkImage image,
             VkImageDrmFormatModifierPropertiesEXT properties);
+
+    native VkResult vkGetImageViewAddressNVX(
+            VkDevice device,
+            VkImageView imageView,
+            VkImageViewAddressPropertiesNVX properties);
 
     native void vkGetImageMemoryRequirements(
             VkDevice vulkanLogicalDevice,
@@ -1640,6 +1788,11 @@ class NativeProxies
             VkPhysicalDevice physicalDevice,
             VkPhysicalDeviceProperties2 deviceProperties);
     
+    native void vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(
+            VkPhysicalDevice physicalDevice,
+            VkQueryPoolPerformanceCreateInfoKHR performanceQueryCreateInfo,
+            IntReturnValue numPasses);
+    
     native void vkGetPhysicalDeviceQueueFamilyProperties(
             VkPhysicalDevice physicalDevice,
             Collection<VkQueueFamilyProperties> collectionOfExtensionProperties);
@@ -1702,6 +1855,10 @@ class NativeProxies
             VkSurfaceKHR surface,
             BooleanReturnValue supported);
     
+    native VkResult vkGetPhysicalDeviceToolPropertiesEXT(
+            VkPhysicalDevice                            physicalDevice,
+            Collection<VkPhysicalDeviceToolPropertiesEXT> toolProperties);
+
     native boolean vkGetPhysicalDeviceWaylandPresentationSupportKHR(
             VkPhysicalDevice physicalDevice,
             int queueFamilyIndex,
@@ -1727,6 +1884,13 @@ class NativeProxies
             VkPipelineExecutableInfoKHR executableInfo,
             Collection<VkPipelineExecutableStatisticKHR> statistics);
     
+    native void vkGetPrivateDataEXT(
+            VkDevice device,
+            VkObjectType objectType,
+            long objectHandle,
+            VkPrivateDataSlotEXT privateDataSlot,
+            LongReturnValue data);
+    
     native VkResult vkGetQueryPoolResults(
             VkDevice device,
             VkQueryPool queryPool,
@@ -1740,6 +1904,14 @@ class NativeProxies
             VkQueue queue,
             Collection<VkCheckpointDataNV> checkpointData);
     
+    native VkResult vkGetRayTracingShaderGroupHandlesKHR(
+            VkDevice device,
+            VkPipeline pipeline,
+            int firstGroup,
+            int groupCount,
+            long dataSize, // may not need this
+            byte[] data);
+
     native VkResult vkGetRayTracingShaderGroupHandlesNV(
             VkDevice device,
             VkPipeline pipeline,
@@ -1876,12 +2048,12 @@ class NativeProxies
             VkAllocationCallbacks allocator,
             VkFence fence);
     
-    native VkResult vkRegisterObjectsNVX(
-            VkDevice device,
-            VkObjectTableNVX objectTable,
-            Collection<VkObjectTableEntryNVX> objectTableEntries,
-            int[] objectIndices);
-    
+//    native VkResult vkRegisterObjectsNVX(
+//            VkDevice device,
+//            VkObjectTableNVX objectTable,
+//            Collection<VkObjectTableEntryNVX> objectTableEntries,
+//            int[] objectIndices);
+//    
     native VkResult vkReleaseDisplayEXT(
             VkPhysicalDevice physicalDevice,
             VkDisplayKHR display);
@@ -1889,6 +2061,9 @@ class NativeProxies
     native VkResult vkReleasePerformanceConfigurationINTEL(
             VkDevice device,
             VkPerformanceConfigurationINTEL configuration);
+    
+    native void vkReleaseProfilingLockKHR(
+            VkDevice device);
     
     native VkResult vkResetCommandBuffer(
             VkCommandBuffer commandBuffer,
@@ -1940,6 +2115,13 @@ class NativeProxies
             VkSwapchainKHR swapChain,
             boolean localDimmingEnable);
     
+    native VkResult vkSetPrivateDataEXT(
+            VkDevice device,
+            VkObjectType objectType,
+            long objectHandle,
+            VkPrivateDataSlotEXT privateDataSlot,
+            long data);
+    
     native VkResult vkSignalSemaphore(
             VkDevice device,
             VkSemaphoreSignalInfo signalInfo);
@@ -1962,12 +2144,12 @@ class NativeProxies
             VkDevice vulkanLogicalDevice,
             VkDeviceMemory vkDeviceMemory);
     
-    native VkResult vkUnregisterObjectsNVX(
-            VkDevice device,
-            VkObjectTableNVX objectTable,
-            Collection<VkObjectEntryTypeNVX> objectEntryTypes,
-            int[] objectIndices);
-    
+//    native VkResult vkUnregisterObjectsNVX(
+//            VkDevice device,
+//            VkObjectTableNVX objectTable,
+//            Collection<VkObjectEntryTypeNVX> objectEntryTypes,
+//            int[] objectIndices);
+//    
     native void vkUpdateDescriptorSets(
             VkDevice vulkanLogicalDevice,
             Collection<VkWriteDescriptorSet> descriptorWrites,

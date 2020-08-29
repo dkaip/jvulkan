@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author dkaip
+ * @author Douglas Kaip
  *
  */
 package com.CIMthetics.jvulkan.Wayland;

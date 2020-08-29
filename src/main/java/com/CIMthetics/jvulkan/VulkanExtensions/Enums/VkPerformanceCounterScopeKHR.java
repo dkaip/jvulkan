@@ -30,4 +30,27 @@ public enum VkPerformanceCounterScopeKHR
     private VkPerformanceCounterScopeKHR(int value) { this.value = value; }
     
     public int valueOf() { return value; }
+    
+    static VkPerformanceCounterScopeKHR fromValue(int inputValue)
+    {
+        VkPerformanceCounterScopeKHR result = null;
+        
+        switch(inputValue)
+        {
+            case 0:
+                result = VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR;
+                break;
+            case 1:
+                result = VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR;
+                break;
+            case 2:
+                result = VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_KHR;
+                break;
+        }
+
+        if (result == null)
+            throw new IllegalArgumentException("Illegal value specified for this Enum.");
+
+        return result;
+    }
 }

@@ -15,36 +15,39 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos;
 
+import java.util.Collection;
+
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
+import com.CIMthetics.jvulkan.VulkanCore.Handles.VkPipeline;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkQueryPoolPerformanceCreateInfoKHR extends VulkanCreateInfoStructure
+public class VkGraphicsPipelineShaderGroupsCreateInfoNV extends VulkanCreateInfoStructure
 {
-    private int     queueFamilyIndex;
-    private int[]   counterIndices;
+    private Collection<VkGraphicsShaderGroupCreateInfoNV>   groups;
+    private Collection<VkPipeline>                          pipelines;
 
-    public VkQueryPoolPerformanceCreateInfoKHR()
+    public VkGraphicsPipelineShaderGroupsCreateInfoNV()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR);
+        super(VkStructureType.VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_SHADER_GROUPS_CREATE_INFO_NV);
     }
 
-    public int getQueueFamilyIndex()
+    public Collection<VkGraphicsShaderGroupCreateInfoNV> getGroups()
     {
-        return queueFamilyIndex;
+        return groups;
     }
 
-    public void setQueueFamilyIndex(int queueFamilyIndex)
+    public void setGroups(Collection<VkGraphicsShaderGroupCreateInfoNV> groups)
     {
-        this.queueFamilyIndex = queueFamilyIndex;
+        this.groups = groups;
     }
 
-    public int[] getCounterIndices()
+    public Collection<VkPipeline> getPipelines()
     {
-        return counterIndices;
+        return pipelines;
     }
 
-    public void setCounterIndices(int[] counterIndices)
+    public void setPipelines(Collection<VkPipeline> pipelines)
     {
-        this.counterIndices = counterIndices;
+        this.pipelines = pipelines;
     }
 }

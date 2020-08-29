@@ -13,38 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos;
+package com.CIMthetics.jvulkan.VulkanExtensions.Structures;
 
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkQueryPoolPerformanceCreateInfoKHR extends VulkanCreateInfoStructure
+public class VkPhysicalDeviceExtendedDynamicStateFeaturesEXT extends VulkanCreateInfoStructure
 {
-    private int     queueFamilyIndex;
-    private int[]   counterIndices;
+    private boolean extendedDynamicState;
 
-    public VkQueryPoolPerformanceCreateInfoKHR()
+    public VkPhysicalDeviceExtendedDynamicStateFeaturesEXT()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR);
+        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTENDED_DYNAMIC_STATE_FEATURES_EXT);
     }
 
-    public int getQueueFamilyIndex()
+    public boolean isExtendedDynamicState()
     {
-        return queueFamilyIndex;
+        return extendedDynamicState;
     }
 
-    public void setQueueFamilyIndex(int queueFamilyIndex)
+    public void setExtendedDynamicState(boolean extendedDynamicState)
     {
-        this.queueFamilyIndex = queueFamilyIndex;
-    }
-
-    public int[] getCounterIndices()
-    {
-        return counterIndices;
-    }
-
-    public void setCounterIndices(int[] counterIndices)
-    {
-        this.counterIndices = counterIndices;
+        this.extendedDynamicState = extendedDynamicState;
     }
 }

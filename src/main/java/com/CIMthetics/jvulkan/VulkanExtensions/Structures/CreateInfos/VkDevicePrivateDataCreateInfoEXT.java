@@ -18,33 +18,22 @@ package com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkQueryPoolPerformanceCreateInfoKHR extends VulkanCreateInfoStructure
+public class VkDevicePrivateDataCreateInfoEXT extends VulkanCreateInfoStructure
 {
-    private int     queueFamilyIndex;
-    private int[]   counterIndices;
-
-    public VkQueryPoolPerformanceCreateInfoKHR()
+    private int privateDataSlotRequestCount;
+    
+    public VkDevicePrivateDataCreateInfoEXT()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR);
+        super(VkStructureType.VK_STRUCTURE_TYPE_DEVICE_PRIVATE_DATA_CREATE_INFO_EXT);
     }
 
-    public int getQueueFamilyIndex()
+    public int getPrivateDataSlotRequestCount()
     {
-        return queueFamilyIndex;
+        return privateDataSlotRequestCount;
     }
 
-    public void setQueueFamilyIndex(int queueFamilyIndex)
+    public void setPrivateDataSlotRequestCount(int privateDataSlotRequestCount)
     {
-        this.queueFamilyIndex = queueFamilyIndex;
-    }
-
-    public int[] getCounterIndices()
-    {
-        return counterIndices;
-    }
-
-    public void setCounterIndices(int[] counterIndices)
-    {
-        this.counterIndices = counterIndices;
+        this.privateDataSlotRequestCount = privateDataSlotRequestCount;
     }
 }

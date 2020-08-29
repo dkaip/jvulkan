@@ -13,38 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos;
+package com.CIMthetics.jvulkan.VulkanExtensions.Structures;
 
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkQueryPoolPerformanceCreateInfoKHR extends VulkanCreateInfoStructure
+public class VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT extends VulkanCreateInfoStructure
 {
-    private int     queueFamilyIndex;
-    private int[]   counterIndices;
-
-    public VkQueryPoolPerformanceCreateInfoKHR()
+    private boolean pipelineCreationCacheControl;
+    
+    public boolean isPipelineCreationCacheControl()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR);
+        return pipelineCreationCacheControl;
     }
 
-    public int getQueueFamilyIndex()
+    public void setPipelineCreationCacheControl(boolean pipelineCreationCacheControl)
     {
-        return queueFamilyIndex;
+        this.pipelineCreationCacheControl = pipelineCreationCacheControl;
     }
 
-    public void setQueueFamilyIndex(int queueFamilyIndex)
+    public VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT()
     {
-        this.queueFamilyIndex = queueFamilyIndex;
-    }
-
-    public int[] getCounterIndices()
-    {
-        return counterIndices;
-    }
-
-    public void setCounterIndices(int[] counterIndices)
-    {
-        this.counterIndices = counterIndices;
+        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES_EXT);
     }
 }

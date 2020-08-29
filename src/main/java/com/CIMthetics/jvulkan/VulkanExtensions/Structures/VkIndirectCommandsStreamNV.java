@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 Douglas Kaip
+ * Copyright 2020 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,25 +15,30 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.Structures;
 
-import java.util.EnumSet;
-
 import com.CIMthetics.jvulkan.VulkanCore.Handles.VkBuffer;
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkObjectEntryTypeNVX;
-import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkObjectEntryUsageFlagBitsNVX;
 
-public class VkObjectTableVertexBufferEntryNVX extends VkObjectTableEntryNVX
+public class VkIndirectCommandsStreamNV
 {
-    private VkBuffer buffer;
+    private VkBuffer    buffer;
+    private long        offset;
     
-    public VkObjectTableVertexBufferEntryNVX(EnumSet<VkObjectEntryUsageFlagBitsNVX> flags, VkBuffer buffer)
-    {
-        super(VkObjectEntryTypeNVX.VK_OBJECT_ENTRY_TYPE_VERTEX_BUFFER_NVX);
-        setFlags(flags);
-        this.buffer = buffer;
-    }
-
     public VkBuffer getBuffer()
     {
         return buffer;
+    }
+    
+    public void setBuffer(VkBuffer buffer)
+    {
+        this.buffer = buffer;
+    }
+    
+    public long getOffset()
+    {
+        return offset;
+    }
+    
+    public void setOffset(long offset)
+    {
+        this.offset = offset;
     }
 }

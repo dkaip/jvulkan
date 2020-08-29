@@ -15,36 +15,28 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos;
 
+import java.util.EnumSet;
+
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkPrivateDataSlotCreateFlagBitsEXT;
 
-public class VkQueryPoolPerformanceCreateInfoKHR extends VulkanCreateInfoStructure
+public class VkPrivateDataSlotCreateInfoEXT extends VulkanCreateInfoStructure
 {
-    private int     queueFamilyIndex;
-    private int[]   counterIndices;
-
-    public VkQueryPoolPerformanceCreateInfoKHR()
+    private EnumSet<VkPrivateDataSlotCreateFlagBitsEXT> flags = EnumSet.noneOf(VkPrivateDataSlotCreateFlagBitsEXT.class);
+    
+    public VkPrivateDataSlotCreateInfoEXT()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR);
+        super(VkStructureType.VK_STRUCTURE_TYPE_PRIVATE_DATA_SLOT_CREATE_INFO_EXT);
     }
 
-    public int getQueueFamilyIndex()
+    public EnumSet<VkPrivateDataSlotCreateFlagBitsEXT> getFlags()
     {
-        return queueFamilyIndex;
+        return flags;
     }
 
-    public void setQueueFamilyIndex(int queueFamilyIndex)
+    public void setFlags(EnumSet<VkPrivateDataSlotCreateFlagBitsEXT> flags)
     {
-        this.queueFamilyIndex = queueFamilyIndex;
-    }
-
-    public int[] getCounterIndices()
-    {
-        return counterIndices;
-    }
-
-    public void setCounterIndices(int[] counterIndices)
-    {
-        this.counterIndices = counterIndices;
+        this.flags = flags;
     }
 }

@@ -15,36 +15,38 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos;
 
+import com.CIMthetics.jvulkan.VulkanCore.Enums.VkFormat;
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
+import com.CIMthetics.jvulkan.VulkanCore.Structures.VkClearColorValue;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
 
-public class VkQueryPoolPerformanceCreateInfoKHR extends VulkanCreateInfoStructure
+public class VkSamplerCustomBorderColorCreateInfoEXT extends VulkanCreateInfoStructure
 {
-    private int     queueFamilyIndex;
-    private int[]   counterIndices;
+    private VkClearColorValue   customBorderColor;
+    private VkFormat            format;
 
-    public VkQueryPoolPerformanceCreateInfoKHR()
+    public VkSamplerCustomBorderColorCreateInfoEXT()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_QUERY_POOL_PERFORMANCE_CREATE_INFO_KHR);
+        super(VkStructureType.VK_STRUCTURE_TYPE_SAMPLER_CUSTOM_BORDER_COLOR_CREATE_INFO_EXT);
     }
 
-    public int getQueueFamilyIndex()
+    public VkClearColorValue getCustomBorderColor()
     {
-        return queueFamilyIndex;
+        return customBorderColor;
     }
 
-    public void setQueueFamilyIndex(int queueFamilyIndex)
+    public void setCustomBorderColor(VkClearColorValue customBorderColor)
     {
-        this.queueFamilyIndex = queueFamilyIndex;
+        this.customBorderColor = customBorderColor;
     }
 
-    public int[] getCounterIndices()
+    public VkFormat getFormat()
     {
-        return counterIndices;
+        return format;
     }
 
-    public void setCounterIndices(int[] counterIndices)
+    public void setFormat(VkFormat format)
     {
-        this.counterIndices = counterIndices;
+        this.format = format;
     }
 }

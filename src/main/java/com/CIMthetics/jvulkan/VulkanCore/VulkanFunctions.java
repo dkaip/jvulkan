@@ -1552,7 +1552,7 @@ public class VulkanFunctions
             VkAccelerationStructureKHR accelerationStructure,
             VkAllocationCallbacks alternateAllocator)
     {
-        nativeFunctionsProxyLibrary.vkDestroyAccelerationStructureNV(
+        nativeFunctionsProxyLibrary.vkDestroyAccelerationStructureKHR(
                 vkDevice,
                 accelerationStructure,
                 alternateAllocator);

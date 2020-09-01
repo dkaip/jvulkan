@@ -15,6 +15,7 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.Structures;
 
+import java.util.Collection;
 import java.util.EnumSet;
 
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkIndexType;
@@ -40,7 +41,7 @@ public class VkIndirectCommandsLayoutTokenNV extends VulkanCreateInfoStructure
     /*
      * indexTypes and indexTypeValues must have the same number of elements.
      */
-    private VkIndexType[]                       indexTypes;
+    private Collection<VkIndexType>             indexTypes;
     private int[]                               indexTypeValues;
     
     public VkIndirectCommandsLayoutTokenNV()
@@ -148,12 +149,12 @@ public class VkIndirectCommandsLayoutTokenNV extends VulkanCreateInfoStructure
         this.indirectStateFlags = indirectStateFlags;
     }
 
-    public VkIndexType[] getIndexTypes()
+    public Collection<VkIndexType> getIndexTypes()
     {
         return indexTypes;
     }
 
-    public void setIndexTypes(VkIndexType[] indexTypes)
+    public void setIndexTypes(Collection<VkIndexType> indexTypes)
     {
         this.indexTypes = indexTypes;
     }

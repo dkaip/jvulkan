@@ -15,6 +15,7 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos;
 
+import java.util.Collection;
 import java.util.EnumSet;
 
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkPipelineBindPoint;
@@ -27,7 +28,7 @@ public class VkIndirectCommandsLayoutCreateInfoNV extends VulkanCreateInfoStruct
 {
     private EnumSet<VkIndirectCommandsLayoutUsageFlagBitsNV>    flags = EnumSet.noneOf(VkIndirectCommandsLayoutUsageFlagBitsNV.class);
     private VkPipelineBindPoint                                 pipelineBindPoint;
-    private VkIndirectCommandsLayoutTokenNV[]                   tokens;
+    private Collection<VkIndirectCommandsLayoutTokenNV>         tokens;
     private int[]                                               streamStrides;
 
     public VkIndirectCommandsLayoutCreateInfoNV()
@@ -55,12 +56,12 @@ public class VkIndirectCommandsLayoutCreateInfoNV extends VulkanCreateInfoStruct
         this.pipelineBindPoint = pipelineBindPoint;
     }
 
-    public VkIndirectCommandsLayoutTokenNV[] getTokens()
+    public Collection<VkIndirectCommandsLayoutTokenNV> getTokens()
     {
         return tokens;
     }
 
-    public void setTokens(VkIndirectCommandsLayoutTokenNV[] tokens)
+    public void setTokens(Collection<VkIndirectCommandsLayoutTokenNV> tokens)
     {
         this.tokens = tokens;
     }

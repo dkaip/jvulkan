@@ -1402,7 +1402,7 @@ public class VulkanFunctions
     public static VkResult vkGetAccelerationStructureHandleNV(
             VkDevice vulkanLogicalDevice,
             VkAccelerationStructureKHR accelerationStructure,
-            Collection<VkAccelerationStructureKHR> data)
+            VulkanHandle data)
     {
         return nativeFunctionsProxyLibrary.vkGetAccelerationStructureHandleNV(
                 vulkanLogicalDevice,

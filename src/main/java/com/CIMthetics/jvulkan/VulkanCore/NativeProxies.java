@@ -1479,7 +1479,7 @@ class NativeProxies
     native VkResult vkGetAccelerationStructureHandleNV(
             VkDevice vulkanLogicalDevice,
             VkAccelerationStructureKHR accelerationStructure,
-            Collection<VkAccelerationStructureKHR> data);
+            VulkanHandle data);
     
     native void vkGetAccelerationStructureMemoryRequirementsNV(
             VkDevice vulkanLogicalDevice,

@@ -1969,10 +1969,27 @@ public class VulkanFunctions
                 alternateAllocator);
     }
     
+    /**
+     * Retrieve information on the most recent diagnostic checkpoints that were executed by the device.
+     * <p>
+     * If the device encounters an error during execution, the implementation will return a 
+     * <code>VK_ERROR_DEVICE_LOST</code> error to the application at a certain point during 
+     * host execution. When this happens, the application can call this function to 
+     * retrieve information on the most recent diagnostic checkpoints that were executed 
+     * by the device.
+     * 
+     * @param queue the <code>VkQueue</code> object the caller would like to retrieve checkpoint data for
+     * @param checkpointData must not be <code>null</code>
+     */
     public static void vkGetQueueCheckpointDataNV(
             VkQueue queue,
             Collection<VkCheckpointDataNV> checkpointData)
     {
+        if (checkpointData == null)
+        {
+            throw new IllegalArgumentException("checkpointData argument must not be null.");
+        }
+        
         nativeFunctionsProxyLibrary.vkGetQueueCheckpointDataNV(
                 queue,
                 checkpointData);
@@ -2167,6 +2184,11 @@ public class VulkanFunctions
             VkPhysicalDevice                            physicalDevice,
             Collection<VkCooperativeMatrixPropertiesNV> properties)
     {
+        if (properties == null)
+        {
+            throw new IllegalArgumentException("properties argument must not be null.");
+        }
+        
         return nativeFunctionsProxyLibrary.vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(
                 physicalDevice,
                 properties);

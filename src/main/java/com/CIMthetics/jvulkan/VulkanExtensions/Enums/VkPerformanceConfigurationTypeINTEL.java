@@ -13,17 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.VulkanExtensions.Structures;
+package com.CIMthetics.jvulkan.VulkanExtensions.Enums;
 
-public enum VkPerformanceOverrideTypeINTEL
+public enum VkPerformanceConfigurationTypeINTEL
 {
-    VK_PERFORMANCE_OVERRIDE_TYPE_NULL_HARDWARE_INTEL(0),
-    VK_PERFORMANCE_OVERRIDE_TYPE_FLUSH_GPU_CACHES_INTEL(1),
-    VK_PERFORMANCE_OVERRIDE_TYPE_MAX_ENUM_INTEL(0x7FFFFFFF);
+    VK_PERFORMANCE_CONFIGURATION_TYPE_COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED_INTEL(0),
+    VK_PERFORMANCE_CONFIGURATION_TYPE_MAX_ENUM_INTEL(0x7FFFFFFF);
 
     private int value;
     
-    private VkPerformanceOverrideTypeINTEL(int value) { this.value = value; }
+    private VkPerformanceConfigurationTypeINTEL(int value) { this.value = value; }
     
     public int valueOf() { return value; }
 }

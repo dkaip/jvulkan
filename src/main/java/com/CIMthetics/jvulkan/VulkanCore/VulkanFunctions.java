@@ -1453,30 +1453,6 @@ public class VulkanFunctions
                 vkPhysicalDeviceMemoryProperties);
     }
     
-    /**
-     * TODO this method signature may have issues...
-     * @param vulkanLogicalDevice
-     * @param pipeline
-     * @param firstGroup
-     * @param shaderCount
-     * @param data
-     * @return
-     */
-    public static VkResult vkGetRayTracingShaderHandlesNV(
-            VkDevice vulkanLogicalDevice,
-            VkPipeline  pipeline,
-            int firstGroup,
-            int shaderCount,
-            Collection<VkShaderModule> data)
-    {
-        return nativeFunctionsProxyLibrary.vkGetRayTracingShaderHandlesNV(
-                vulkanLogicalDevice,
-                pipeline,
-                firstGroup,
-                shaderCount,
-                data);
-    }
-    
     public static VkResult vkBindAccelerationStructureMemoryKHR(
             VkDevice vulkanLogicalDevice,
             Collection<VkBindAccelerationStructureMemoryInfoKHR> bindInfos)
@@ -2133,15 +2109,13 @@ public class VulkanFunctions
             VkPipeline pipeline,
             int firstGroup,
             int groupCount,
-            long dataSize,
-            byte[] data)
+            Collection<VulkanHandle> data)
     {
         return nativeFunctionsProxyLibrary.vkGetRayTracingShaderGroupHandlesKHR(
                 device,
                 pipeline,
                 firstGroup,
                 groupCount,
-                dataSize,
                 data);
     }
     
@@ -2150,15 +2124,13 @@ public class VulkanFunctions
             VkPipeline pipeline,
             int firstGroup,
             int groupCount,
-            long dataSize,
-            byte[] data)
+            Collection<VulkanHandle> data)
     {
         return nativeFunctionsProxyLibrary.vkGetRayTracingShaderGroupHandlesNV(
                 device,
                 pipeline,
                 firstGroup,
                 groupCount,
-                dataSize,
                 data);
     }
     

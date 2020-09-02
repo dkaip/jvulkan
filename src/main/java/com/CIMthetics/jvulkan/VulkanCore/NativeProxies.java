@@ -1909,24 +1909,15 @@ class NativeProxies
             VkPipeline pipeline,
             int firstGroup,
             int groupCount,
-            long dataSize, // may not need this
-            byte[] data);
+            Collection<VulkanHandle> data);
 
     native VkResult vkGetRayTracingShaderGroupHandlesNV(
             VkDevice device,
             VkPipeline pipeline,
             int firstGroup,
             int groupCount,
-            long dataSize, // may not need this
-            byte[] data);
+            Collection<VulkanHandle> data);
 
-    native VkResult vkGetRayTracingShaderHandlesNV(
-            VkDevice vulkanLogicalDevice,
-            VkPipeline  pipeline,
-            int firstGroup,
-            int shaderCount,
-            Collection<VkShaderModule> data);
-    
     native VkResult vkGetRefreshCycleDurationGOOGLE(
             VkDevice device,
             VkSwapchainKHR swapchain,

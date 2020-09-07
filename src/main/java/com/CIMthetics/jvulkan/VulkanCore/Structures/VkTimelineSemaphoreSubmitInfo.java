@@ -20,7 +20,7 @@ import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfo
 
 public class VkTimelineSemaphoreSubmitInfo extends VulkanCreateInfoStructure
 {
-    private int[]   waitSemaphoreValues;
+    private long[]   waitSemaphoreValues;
     private long[]  signalSemaphoreValues;
     
     public VkTimelineSemaphoreSubmitInfo()
@@ -28,12 +28,12 @@ public class VkTimelineSemaphoreSubmitInfo extends VulkanCreateInfoStructure
         super(VkStructureType.VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO);
     }
 
-    public int[] getWaitSemaphoreValues()
+    public long[] getWaitSemaphoreValues()
     {
         return waitSemaphoreValues;
     }
 
-    public void setWaitSemaphoreValues(int[] waitSemaphoreValues)
+    public void setWaitSemaphoreValues(long[] waitSemaphoreValues)
     {
         this.waitSemaphoreValues = waitSemaphoreValues;
     }

@@ -40,5 +40,4 @@ public class VkValidationFlagsEXT extends VulkanCreateInfoStructure
     {
         this.disabledValidationChecks = disabledValidationChecks;
     }
-
 }

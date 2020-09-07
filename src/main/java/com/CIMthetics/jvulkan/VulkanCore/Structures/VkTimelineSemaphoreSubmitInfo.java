@@ -47,5 +47,4 @@ public class VkTimelineSemaphoreSubmitInfo extends VulkanCreateInfoStructure
     {
         this.signalSemaphoreValues = signalSemaphoreValues;
     }
-
 }

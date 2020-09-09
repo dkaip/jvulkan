@@ -25,9 +25,9 @@ import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfo
 
 public class VkPhysicalDeviceVulkan11Properties extends VulkanCreateInfoStructure
 {
-    private long[]                              deviceUUID;
-    private long[]                              driverUUID;
-    private long[]                              deviceLUID;
+    private byte[]                              deviceUUID;
+    private byte[]                              driverUUID;
+    private byte[]                              deviceLUID;
     private int                                 deviceNodeMask;
     private boolean                             deviceLUIDValid;
     private int                                 subgroupSize;
@@ -46,32 +46,32 @@ public class VkPhysicalDeviceVulkan11Properties extends VulkanCreateInfoStructur
         super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_1_PROPERTIES);
     }
 
-    public long[] getDeviceUUID()
+    public byte[] getDeviceUUID()
     {
         return deviceUUID;
     }
 
-    public void setDeviceUUID(long[] deviceUUID)
+    public void setDeviceUUID(byte[] deviceUUID)
     {
         this.deviceUUID = deviceUUID;
     }
 
-    public long[] getDriverUUID()
+    public byte[] getDriverUUID()
     {
         return driverUUID;
     }
 
-    public void setDriverUUID(long[] driverUUID)
+    public void setDriverUUID(byte[] driverUUID)
     {
         this.driverUUID = driverUUID;
     }
 
-    public long[] getDeviceLUID()
+    public byte[] getDeviceLUID()
     {
         return deviceLUID;
     }
 
-    public void setDeviceLUID(long[] deviceLUID)
+    public void setDeviceLUID(byte[] deviceLUID)
     {
         this.deviceLUID = deviceLUID;
     }

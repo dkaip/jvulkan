@@ -17,7 +17,7 @@ package com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos;
 
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
-import com.CIMthetics.jvulkan.VulkanExtensions.Structures.VkQueryPoolSamplingModeINTEL;
+import com.CIMthetics.jvulkan.VulkanExtensions.Enums.VkQueryPoolSamplingModeINTEL;
 
 public class VkQueryPoolPerformanceQueryCreateInfoINTEL extends VulkanCreateInfoStructure
 {

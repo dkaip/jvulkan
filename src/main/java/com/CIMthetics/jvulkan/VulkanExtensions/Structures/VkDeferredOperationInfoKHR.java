@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 Douglas Kaip
+ * Copyright 2020 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,25 +17,24 @@ package com.CIMthetics.jvulkan.VulkanExtensions.Structures;
 
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
-import com.CIMthetics.jvulkan.VulkanExtensions.Handles.AndroidHardwareBuffer;
+import com.CIMthetics.jvulkan.VulkanExtensions.Handles.VkDeferredOperationKHR;
 
-public class VkImportAndroidHardwareBufferInfoANDROID extends VulkanCreateInfoStructure
+public class VkDeferredOperationInfoKHR extends VulkanCreateInfoStructure
 {
-    private AndroidHardwareBuffer   buffer;
+    private VkDeferredOperationKHR  operationHandle;
 
-    public VkImportAndroidHardwareBufferInfoANDROID()
+    public VkDeferredOperationInfoKHR()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID);
+        super(VkStructureType.VK_STRUCTURE_TYPE_DEFERRED_OPERATION_INFO_KHR);
     }
 
-    public AndroidHardwareBuffer getBuffer()
+    public VkDeferredOperationKHR getOperationHandle()
     {
-        return buffer;
+        return operationHandle;
     }
 
-    public void setBuffer(AndroidHardwareBuffer buffer)
+    public void setOperationHandle(VkDeferredOperationKHR operationHandle)
     {
-        this.buffer = buffer;
+        this.operationHandle = operationHandle;
     }
-
 }

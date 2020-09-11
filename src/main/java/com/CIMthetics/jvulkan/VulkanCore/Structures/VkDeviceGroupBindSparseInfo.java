@@ -1,5 +1,5 @@
 /*
- * Copyright 2019-2020 Douglas Kaip
+ * Copyright 2020 Douglas Kaip
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,29 +13,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.CIMthetics.jvulkan.VulkanExtensions.Structures;
+package com.CIMthetics.jvulkan.VulkanCore.Structures;
 
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfoStructure;
-import com.CIMthetics.jvulkan.VulkanExtensions.Handles.AndroidHardwareBuffer;
 
-public class VkImportAndroidHardwareBufferInfoANDROID extends VulkanCreateInfoStructure
+public class VkDeviceGroupBindSparseInfo extends VulkanCreateInfoStructure
 {
-    private AndroidHardwareBuffer   buffer;
-
-    public VkImportAndroidHardwareBufferInfoANDROID()
+    private int resourceDeviceIndex;
+    private int memoryDeviceIndex;
+    
+    public VkDeviceGroupBindSparseInfo()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID);
+        super(VkStructureType.VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO);
     }
 
-    public AndroidHardwareBuffer getBuffer()
+    public int getResourceDeviceIndex()
     {
-        return buffer;
+        return resourceDeviceIndex;
     }
 
-    public void setBuffer(AndroidHardwareBuffer buffer)
+    public void setResourceDeviceIndex(int resourceDeviceIndex)
     {
-        this.buffer = buffer;
+        this.resourceDeviceIndex = resourceDeviceIndex;
     }
 
+    public int getMemoryDeviceIndex()
+    {
+        return memoryDeviceIndex;
+    }
+
+    public void setMemoryDeviceIndex(int memoryDeviceIndex)
+    {
+        this.memoryDeviceIndex = memoryDeviceIndex;
+    }
 }

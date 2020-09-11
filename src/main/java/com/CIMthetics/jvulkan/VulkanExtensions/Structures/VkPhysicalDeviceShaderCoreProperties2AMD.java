@@ -28,7 +28,7 @@ public class VkPhysicalDeviceShaderCoreProperties2AMD extends VulkanCreateInfoSt
     
     public VkPhysicalDeviceShaderCoreProperties2AMD()
     {
-        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD);
+        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD);
     }
 
     public EnumSet<VkShaderCorePropertiesFlagBitsAMD> getShaderCoreFeatures()

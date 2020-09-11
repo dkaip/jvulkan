@@ -21,7 +21,12 @@ import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfo
 public class VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT extends VulkanCreateInfoStructure
 {
     private boolean pipelineCreationCacheControl;
-    
+
+    public VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT()
+    {
+        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES_EXT);
+    }
+
     public boolean isPipelineCreationCacheControl()
     {
         return pipelineCreationCacheControl;
@@ -30,10 +35,5 @@ public class VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT extends Vul
     public void setPipelineCreationCacheControl(boolean pipelineCreationCacheControl)
     {
         this.pipelineCreationCacheControl = pipelineCreationCacheControl;
-    }
-
-    public VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT()
-    {
-        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES_EXT);
     }
 }

@@ -21,7 +21,7 @@ import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 public class VkSemaphoreTypeCreateInfo extends VulkanCreateInfoStructure
 {
     private VkSemaphoreType  semaphoreType;
-    private long                initialValue;
+    private long             initialValue;
     
     public VkSemaphoreTypeCreateInfo()
     {

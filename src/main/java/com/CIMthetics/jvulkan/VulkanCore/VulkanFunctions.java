@@ -2420,7 +2420,7 @@ public class VulkanFunctions
     {
         if (properties == null)
         {
-            throw new IllegalArgumentException("The properties argument may not be null.  I should probably be an empty Collection.");
+            throw new IllegalArgumentException("The properties argument may not be null.  It should probably be an empty Collection.");
         }
         
         return nativeFunctionsProxyLibrary.vkGetPipelineExecutablePropertiesKHR(
@@ -2436,7 +2436,7 @@ public class VulkanFunctions
     {
         if (statistics == null)
         {
-            throw new IllegalArgumentException("The statistics argument may not be null.  I should probably be an empty Collection.");
+            throw new IllegalArgumentException("The statistics argument may not be null.  It should probably be an empty Collection.");
         }
         
         return nativeFunctionsProxyLibrary.vkGetPipelineExecutableStatisticsKHR(
@@ -3489,7 +3489,7 @@ public class VulkanFunctions
     {
         if (createInfos.size() != swapchains.size())
         {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("The number of createInfos and swapchains needs to be the same.");
         }
         
         return nativeFunctionsProxyLibrary.vkCreateSharedSwapchainsKHR(
@@ -4669,24 +4669,6 @@ public class VulkanFunctions
                 flags);
     }
     
-//    public static VkResult vkUnregisterObjectsNVX(
-//            VkDevice device,
-//            VkObjectTableNVX objectTable,
-//            Collection<VkObjectEntryTypeNVX> objectEntryTypes,
-//            int[] objectIndices)
-//    {
-//        if (objectEntryTypes.size() != objectIndices.length)
-//        {
-//            throw new IllegalArgumentException("objectEntryTypes and objectIndices MUST have the same number of elements.");
-//        }
-//        
-//        return nativeFunctionsProxyLibrary.vkUnregisterObjectsNVX(
-//                device,
-//                objectTable,
-//                objectEntryTypes,
-//                objectIndices);
-//    }
-//    
     //TODO Fix this
     public static void vkUpdateDescriptorSetWithTemplate(
             VkDevice device,

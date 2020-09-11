@@ -15,6 +15,8 @@
  */
 package com.CIMthetics.jvulkan.VulkanExtensions.Structures.CreateInfos;
 
+import java.util.Collection;
+
 import com.CIMthetics.jvulkan.VulkanCore.Enums.VkStructureType;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkPipelineTessellationStateCreateInfo;
 import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VkPipelineVertexInputStateCreateInfo;
@@ -22,21 +24,21 @@ import com.CIMthetics.jvulkan.VulkanCore.Structures.CreateInfos.VulkanCreateInfo
 
 public class VkGraphicsShaderGroupCreateInfoNV extends VulkanCreateInfoStructure
 {
-    private VkPipelineShaderStageCreateInfo         stages;
-    private VkPipelineVertexInputStateCreateInfo    vertexInputState;
-    private VkPipelineTessellationStateCreateInfo   tessellationState;
+    private Collection<VkPipelineShaderStageCreateInfo> stages;
+    private VkPipelineVertexInputStateCreateInfo        vertexInputState;
+    private VkPipelineTessellationStateCreateInfo       tessellationState;
 
     public VkGraphicsShaderGroupCreateInfoNV()
     {
         super(VkStructureType.VK_STRUCTURE_TYPE_GRAPHICS_SHADER_GROUP_CREATE_INFO_NV);
     }
 
-    public VkPipelineShaderStageCreateInfo getStages()
+    public Collection<VkPipelineShaderStageCreateInfo> getStages()
     {
         return stages;
     }
 
-    public void setStages(VkPipelineShaderStageCreateInfo stages)
+    public void setStages(Collection<VkPipelineShaderStageCreateInfo> stages)
     {
         this.stages = stages;
     }

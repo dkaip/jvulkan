@@ -22,6 +22,11 @@ public class VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures extends VulkanC
 {
     private boolean separateDepthStencilLayouts;
 
+    public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures()
+    {
+        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES);
+    }
+
     public boolean isSeparateDepthStencilLayouts()
     {
         return separateDepthStencilLayouts;
@@ -30,10 +35,5 @@ public class VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures extends VulkanC
     public void setSeparateDepthStencilLayouts(boolean separateDepthStencilLayouts)
     {
         this.separateDepthStencilLayouts = separateDepthStencilLayouts;
-    }
-
-    public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures()
-    {
-        super(VkStructureType.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SEPARATE_DEPTH_STENCIL_LAYOUTS_FEATURES);
     }
 }
